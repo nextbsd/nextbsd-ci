@@ -30,7 +30,7 @@ golden "loader: UEFI self-ID (FreeBSD brand)" $re_efi_banner \
 golden "loader: UEFI self-ID (NextBSD brand)" $re_efi_banner \
     "NextBSD/amd64 EFI loader, Revision 3.0"
 golden "loader: leaving the prompt to boot" $re_boot_go \
-    "Booting [/boot/kernel/kernel] in 2 seconds..."
+    "Booting \[/boot/kernel/kernel\] in 2 seconds..."
 golden "loader: kernel entry marker" $re_boot_go \
     "---<<BOOT>>---"
 

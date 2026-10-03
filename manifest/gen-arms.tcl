@@ -41,9 +41,12 @@ if {[lindex $argv 0] eq "list"} {
 }
 
 # ------------------------------------------------------------------ loading --
+# 8.6-compatible: no `array names -pattern` (an 8.7 feature) — track the
+# marker list explicitly while loading.
 array set eff {}
+set markers {}
 proc load_table {file} {
-    global eff
+    global eff markers
     if {![file exists $file]} { return }
     set fh [open $file r]
     while {[gets $fh line] >= 0} {
@@ -53,6 +56,7 @@ proc load_table {file} {
         if {[llength $f] < 6} continue
         lassign $f m o a p t r
         if {$m eq "marker"} continue
+        if {![info exists eff($m,policy)]} { lappend markers $m }
         set eff($m,owner) $o
         set eff($m,arches) $a
         set eff($m,policy) $p
@@ -65,7 +69,7 @@ load_table $base
 load_table $overlay
 
 # ------------------------------------------------------------ classification --
-set markers [lsort [array names eff -pattern *,policy]]
+set markers [lsort -unique $markers]
 set onarch {}
 set offarch {}
 set mustpass {}
@@ -150,7 +154,7 @@ for {set i 0} {$i < $suites} {incr i} {
 }
 if {$scope eq ""} { set scope "any" }
 puts "set nb_scope { $scope }"
-foreach m [lsort [array names eff -pattern *,policy]] {
+foreach m $markers {
     puts "set nb_owner($m) [set eff($m,owner)]"
 }
 
