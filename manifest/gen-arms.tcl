@@ -208,18 +208,20 @@ for {set i 0} {$i < $suites} {incr i} {
     # summary (which ends the block) is seen last. A sentinel arm ahead of the
     # markers would end the block on the first scan and drop every marker in
     # the same chunk.
-# The marker arms are ONE arm (re_marker, from patterns.tcl) plus the runtime
-# policy table above: the runners' expect takes the first arm in FILE ORDER
-# that matches ANYWHERE in the buffer, so 93 sorted per-marker arms let a
-# marker whose text arrives late in the stream match first and consume every
-# marker in between (the selftest's 3-of-86 cascade). One pattern consumes
-# the stream strictly in arrival order; nb_pol decides each marker's outcome.
-    puts "    -re \$re_marker {"
+# The marker arms: one arm PER SUFFIX (re_marker_ok/fail/skip, from patterns.tcl)
+# plus the runtime policy table above. The runners' expect takes the first arm
+# in file order that matches anywhere in the buffer, so 93 sorted per-marker
+# arms let a marker whose text arrives late match first and consume every
+# marker in between; one pattern family consumes the stream in arrival order.
+# The name is group 1 and the suffix is fixed per arm, because this expect
+# does not populate expect_out(string)/expect_out(2,string) for the single-
+# alternation pattern; nb_pol decides each marker's outcome.
+    foreach sfx {OK FAIL SKIP} {
+        set sfxl [string tolower $sfx]
+    puts "    -re \$re_marker_$sfxl {"
     puts "        incr dbg_arms"
-    puts "        set whole \$expect_out(1,string)"
-    puts "        set dash \[string last \"-\" \$whole]"
-    puts "        set m   \[string range \$whole 0 \$dash]"
-    puts "        set sfx \[string range \$whole \[expr {\$dash + 1}] end]"
+    puts "        set m \$expect_out(1,string)"
+    puts "        set sfx $sfx"
     puts "        if {!\[info exists nb_pol(\$m)]} { puts \"\\nDBG-ARM: unlisted marker <\$m>-\$sfx — ignoring\"; exp_continue }"
     puts "        set pol \$nb_pol(\$m)"
     puts "        set r   \$nb_reason(\$m)"
@@ -251,6 +253,7 @@ for {set i 0} {$i < $suites} {incr i} {
     puts "            exp_continue"
     puts "        }"
     puts "    }"
+    }
     puts "    -re \$re_summary {"
     puts "        set nb_ok   \$expect_out(1,string)"
     puts "        set nb_fail \$expect_out(2,string)"

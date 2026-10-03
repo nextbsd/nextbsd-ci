@@ -45,15 +45,15 @@ set re_reboot        {Rebooting|rebooting}
 set re_summary {NEXTBSD-TEST-SUMMARY ok=([0-9]+) fail=([0-9]+) skip=([0-9]+)}
 
 # A capability marker line (T1): "<NAME>-<OK|SKIP|FAIL>".
-# Matched by ONE arm (a runtime policy table decides the outcome) instead of
-# one arm per marker: the runners' expect takes the first arm in file order
-# that matches ANYWHERE in the buffer, so 93 sorted marker arms let a marker
-# whose text arrives late in the stream match first and consume every marker
-# in between. One pattern consumes the stream strictly in arrival order.
-# Grouping note: the runners' expect populates expect_out(1,string) but
-# NOT expect_out(string)/expect_out(2,string) for this arm, so the whole match
-# must be group 1. The line-end tail is deliberately NOT in the pattern: the selftest's
-# transcript (the same bytes expect reads) shows the pty delivers the markers
-# with a bare LF, and a (\r\n|\n) tail must stay out of the arm's pattern
-# so a match can never fail on line-ending shape.
-set re_marker {([A-Z0-9][A-Z0-9-]*-(OK|SKIP|FAIL))}
+# Matched by ONE arm PER SUFFIX plus a runtime policy table (nb_pol/nb_reason):
+# the runners' expect takes the first arm in file order that matches ANYWHERE
+# in the buffer, so 93 sorted per-marker arms let a marker whose text arrives
+# late in the stream match first and consume every marker in between. And this
+# expect does not populate expect_out(string) / expect_out(2,string) for the
+# single-alternation marker pattern, so the marker name must be group 1 and the
+# suffix is fixed per arm. The line-end tail stays out of the pattern: a
+# (\\r\\n|\\n) tail group makes the arm never match in this expect, even
+# though the same pattern matches under plain regexp (the golden proves it).
+set re_marker_ok   {([A-Z0-9][A-Z0-9-]*)-OK}
+set re_marker_fail {([A-Z0-9][A-Z0-9-]*)-FAIL}
+set re_marker_skip {([A-Z0-9][A-Z0-9-]*)-SKIP}
