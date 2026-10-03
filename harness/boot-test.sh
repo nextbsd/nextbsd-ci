@@ -69,6 +69,7 @@ esac
 echo "==> boot test: $IMG"
 ls -lh "$IMG"
 
+# shellcheck source=./qemu-arch.sh
 . "$HERE/qemu-arch.sh"
 qemu_arch_setup "$IMG" "$ARTIFACT"
 
@@ -92,7 +93,7 @@ done
 # minutes a TCG arm64 boot needs). The selftest sets it small so a broken arm
 # fails in seconds. NB_SUITE_TIMEOUT: per-suite budget for the sentinel blocks.
 NB_TIMEOUT_GLOBAL=${NB_TIMEOUT_GLOBAL:-480}
-export NB_LOG="$LOG" NB_MEDIA NB_BOOT_TRACE NB_BANNER_POLICY NB_QEMU_ARGV=${NB_QEMU_ARGV:-} NB_TIMEOUT_GLOBAL NB_SUITE_TIMEOUT
+export NB_LOG="$LOG" NB_MEDIA NB_BOOT_TRACE NB_BANNER_POLICY NB_QEMU_ARGV="${NB_QEMU_ARGV:-}" NB_TIMEOUT_GLOBAL NB_SUITE_TIMEOUT
 
 # manifest -> expect arms (one block per suite, generated for this arch and
 # overlay; selftest passes NB_QEMU_ARGV so no firmware is needed)
