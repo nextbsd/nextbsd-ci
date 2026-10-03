@@ -1,0 +1,8 @@
+# manifest/overlay-nextbsd-userland.tsv — the nextbsd-userland boot-test tolerances.
+#
+# Rows here override same-named rows in markers.tsv, for the nextbsd-userland
+# workflows only. Same rule as overlay-nextbsd.tsv: declare a row only when
+# this consumer must gate differently (an image that predates a capability
+# the base table lists must-pass gets a warn here until it backports).
+#
+marker	owner	arches	policy	timeout	reason
