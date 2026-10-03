@@ -24,7 +24,7 @@ proc golden {name pat sample} {
 
 # Stage 0 — the UEFI loader handshake.
 golden "loader: EDK2 autoboot countdown" $re_hit_enter \
-    "Hit [Enter] to boot immediately, or any other key for command prompt."
+    "Hit \[Enter\] to boot immediately, or any other key for command prompt."
 golden "loader: UEFI self-ID (FreeBSD brand)" $re_efi_banner \
     "FreeBSD/amd64 EFI loader, Revision 3.0"
 golden "loader: UEFI self-ID (NextBSD brand)" $re_efi_banner \
