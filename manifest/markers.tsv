@@ -1,0 +1,116 @@
+# nextbsd-ci marker manifest (T1 baseline -- T3 performs the exit-code audit)
+#
+# schema (tab-separated, header below): marker  owner  arches  policy  timeout  reason
+#   marker   base name; the harness arms <marker>-OK / <marker>-FAIL / <marker>-SKIP
+#   owner    repo that owns the capability under test
+#   arches   both | amd64 | arm64 -- the arch(es) on which the marker is expected
+#   policy   must-pass   absence AND an explicit -FAIL gate the lane
+#            fail-gates  only an explicit -FAIL gates; absence warns (old-image tolerance)
+#            warn        informational; never gates
+#   timeout  seconds, used by block mode (sentinel mode uses NB_SUITE_TIMEOUT)
+#   reason   the decision record; 'pending T3 audit' = T1 baseline derived from the
+#            live expect arms in nextbsd/tests/boot-test.sh and
+#            nextbsd-userland/tests/boot-test.sh (t=/f=/s= are those arm severities)
+marker	owner	arches	policy	timeout	reason
+ACCT-HELPERS	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
+ACCT-LIFECYCLE	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
+ADVCMD-LEAF	nextbsd-freebsd-compat	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue
+ASLMANAGER-DEMAND	nextbsd-userland	both	warn	480	pending T3 audit; live arms: fork t=warn/f=warn/s=warn
+BOOT-BANNER	nextbsd	both	warn	60	pending T3: monolith hard-fails the 8-min window, warns on an Amnesiac banner (getty/hostnamed race, cosmetic); the userland fork records a mismatch and hard-fails at the end. T3 decides the gate.
+BOOTSTRAP	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+BOOTSTRAP-REMOTE	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+BUSYSTATE	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+CAFFEINATE	nextbsd-kernel-extensions	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
+CONFIGD-LIST	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+CONFIGD-MULTI	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+CONFIGD-NOTIFY	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+CONFIGD-PATTERN	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+CONFIGD-STORE	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+COREFOUNDATION	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+DA-BOOT	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+DA-IOKIT	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: monolith t=warn/f=fail/s=warn ; fork t=warn/f=fail/s=warn
+DAEMON-STATE	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
+DOMAIN-DIRS	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: fork t=fail/f=continue/s=continue
+EM-AUTOLOAD	nextbsd-kernel-extensions	both	fail-gates	480	pending T3 audit; live arms: monolith t=warn/f=fail/s=warn ; fork t=warn/f=fail/s=continue
+EVFILT-MACHPORT	nextbsd-userland	both	warn	480	pending T3 audit; live arms: monolith t=warn/f=warn/s=warn ; fork t=warn/f=warn/s=warn
+EVFILT-MACHPORT-CONCURRENT	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: monolith t=warn/f=fail/s=warn ; fork t=warn/f=fail/s=warn
+FBSDGLUE	nextbsd-freebsd-compat	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue
+FILECMD-LEAF	nextbsd-freebsd-compat	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue
+GETTY	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
+HOMEDIR	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=warn
+HOST-BOOTSTRAP	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+HOSTNAMED	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+HOSTNAMED-BONJOUR-RENAME	nextbsd-userland	both	warn	480	pending T3 audit; live arms: monolith t=warn/f=warn/s=continue ; fork t=warn/f=warn/s=continue
+HOSTNAMED-DHCP	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=warn/s=continue
+HOSTNAMED-MDNS	nextbsd-userland	both	warn	480	pending T3 audit; live arms: monolith t=warn/f=warn/s=continue ; fork t=warn/f=warn/s=continue
+HOSTNAMED-PREFS	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+IOCATALOGUE	nextbsd-kernel-extensions	both	fail-gates	480	pending T3 audit; live arms: monolith t=warn/f=fail/s=warn ; fork t=warn/f=fail/s=continue
+IOKIT-LOOKUP	nextbsd-kernel-extensions	both	fail-gates	480	pending T3 audit; live arms: monolith t=warn/f=fail/s=warn ; fork t=warn/f=fail/s=continue
+IOKITNOTIFY	nextbsd-kernel-extensions	both	fail-gates	480	pending T3 audit; live arms: monolith t=warn/f=fail/s=warn ; fork t=warn/f=fail/s=continue
+IOREG	nextbsd-kernel-extensions	both	fail-gates	480	pending T3 audit; live arms: monolith t=warn/f=fail/s=warn ; fork t=warn/f=fail/s=continue
+IPCFG-ARP	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=continue/s=continue ; fork t=fail/f=continue/s=continue
+IPCFG-BOOT	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+IPCFG-BOUND	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+IPCFG-DHCP	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+IPCFG-IPCONFIG	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+IPCFG-RA	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=continue/s=continue ; fork t=fail/f=continue/s=continue
+IPCFG-RENEW	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=continue/s=continue ; fork t=fail/f=continue/s=continue
+IPCFG-RPC	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+IPCFG-STORE	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+KEM-LINK	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+KEXTD-LOAD	nextbsd-kernel-extensions	both	fail-gates	480	pending T3 audit; live arms: monolith t=warn/f=fail/s=warn ; fork t=warn/f=fail/s=continue
+LAUNCHCTL-BUILD	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+LAUNCHCTL-LIST	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+LAUNCHD-BUILD	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+LIBDISPATCH	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+LIBDISPATCH-MACH	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+LIBDS	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
+LIBSYSTEM-KERNEL	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+LIBXPC	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+LINUX-MOUNTS	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: fork t=fail/f=continue/s=continue
+MACH-PORT	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+MACH-SMOKE	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+MDNS-BOOT	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+MDNS-DNSSD	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+MDNS-ENGINE	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+MDNS-IFWATCH	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=continue/s=continue ; fork t=fail/f=continue/s=continue
+MDNS-STATIC	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
+MIG-BUILD	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+NFS	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
+NOTIFYD-PROC	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+NSS-DS	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=warn
+NTP	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
+SC-BOND	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SC-BRIDGE	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SC-LOCK	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SC-MULTI	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SC-NETIF	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SC-NETSET	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SC-NETSVC	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SC-NOTIFY	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SC-PATH	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SC-PLINK	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SC-PNOTIFY	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SC-PREFS	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SC-RUNLOOP	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SC-STORE	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SC-VLAN	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SERVICE-LDCONFIG	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: fork t=fail/f=fail/s=continue
+SHELLCMD-LEAF	nextbsd-freebsd-compat	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue
+SUDO	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=warn
+SYSCMD-LEAF	nextbsd-freebsd-compat	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue
+SYSLOG-RUN	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+SYSLOGD-PROC	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+TASK-SPECIAL-PORT	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+TEXTCMD-LEAF	nextbsd-freebsd-compat	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue
+WAITQUIET	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
+WEDGE-CHECK	nextbsd-userland	both	warn	60	pending T3: emitted by wedge-check.sh, invoked with || true, armed nowhere today; the fork leaves its verdict informational.
+#
+# retired (not carried into the shared harness):
+#   PAM-FRAMEWORK PAM-MODULES PAM-LOGIN -- the on-image PAM gates were retired from
+#   run.sh; PAM is validated in nextbsd-freebsd-compat, not the native Darwin/Mach lane.
+#   DARWIN-SYSCTL-QUIET FSTAB-ROOT-QUIET LOGIN NB-SHELL-READY PIVOT-OK
+#   ROOT-IS-UFS ROOT-IS-UNION ROOT-NOATIME SHUTDOWN-P -- harness- and host-side
+#   verdicts (puts/grep, not guest-stream markers), so they have no rows: the
+#   absence check must only apply to markers the suites actually print.
+#   BOOT-BANNER keeps its row as the sole harness-side policy knob (warn default).
