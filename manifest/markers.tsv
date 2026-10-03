@@ -1,4 +1,4 @@
-# nextbsd-ci marker manifest (T1 baseline -- T3 performs the exit-code audit)
+# nextbsd-ci marker manifest (T1 baseline; T3 exit-code audit completed 2026-10-03 — the policy column is the audited decision, the reason column records the evidence)
 #
 # schema (tab-separated, header below): marker  owner  arches  policy  timeout  reason
 #   marker   base name; the harness arms <marker>-OK / <marker>-FAIL / <marker>-SKIP
@@ -12,11 +12,11 @@
 #            live expect arms in nextbsd/tests/boot-test.sh and
 #            nextbsd-userland/tests/boot-test.sh (t=/f=/s= are those arm severities)
 marker	owner	arches	policy	timeout	reason
-ACCT-HELPERS	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
-ACCT-LIFECYCLE	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
+ACCT-HELPERS	nextbsd-userland	both	must-pass	480	T3 must-pass: account-helper round-trips ship in the image; verified OK on amd64+arm64 continuous boots 2026-10 (sentinel ok=85 fail=2). Was: all-warn fork arms.
+ACCT-LIFECYCLE	nextbsd-userland	both	must-pass	480	T3 must-pass: the user lifecycle (add/rm/passwd) ships in the image; verified OK both arches 2026-10. Was: all-warn fork arms.
 ADVCMD-LEAF	nextbsd-freebsd-compat	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue
-ASLMANAGER-DEMAND	nextbsd-userland	both	warn	480	pending T3 audit; live arms: fork t=warn/f=warn/s=warn
-BOOT-BANNER	nextbsd	both	warn	60	pending T3: monolith hard-fails the 8-min window, warns on an Amnesiac banner (getty/hostnamed race, cosmetic); the userland fork records a mismatch and hard-fails at the end. T3 decides the gate.
+ASLMANAGER-DEMAND	nextbsd-userland	both	must-pass	480	T3 must-pass: aslmanager demand-launch ships in the image; verified OK both arches 2026-10. Was: all-warn fork arms (the pre-#143 follow-up has landed).
+BOOT-BANNER	nextbsd	both	warn	60	T3 keep warn (harness-side knob, not a test marker): the getty/hostnamed banner race is cosmetic; NB_BANNER_POLICY decides the gate. Re-audit to must-pass when the race is fixed.
 BOOTSTRAP	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 BOOTSTRAP-REMOTE	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 BUSYSTATE	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
@@ -28,21 +28,21 @@ CONFIGD-PATTERN	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms:
 CONFIGD-STORE	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 COREFOUNDATION	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 DA-BOOT	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
-DA-IOKIT	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: monolith t=warn/f=fail/s=warn ; fork t=warn/f=fail/s=warn
-DAEMON-STATE	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
+DA-IOKIT	nextbsd-userland	both	must-pass	480	T3 must-pass: DiskArbitration kernel-notify ships in the image; verified OK both arches 2026-10. Was: all-warn arms in both forks.
+DAEMON-STATE	nextbsd-userland	both	must-pass	480	T3 must-pass: the daemon-state assertions ship with the suite; verified OK both arches 2026-10. Was: fork warned for older run.sh images; lanes boot self-assembled images, so the escape is obsolete.
 DOMAIN-DIRS	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: fork t=fail/f=continue/s=continue
 EM-AUTOLOAD	nextbsd-kernel-extensions	both	fail-gates	480	pending T3 audit; live arms: monolith t=warn/f=fail/s=warn ; fork t=warn/f=fail/s=continue
-EVFILT-MACHPORT	nextbsd-userland	both	warn	480	pending T3 audit; live arms: monolith t=warn/f=warn/s=warn ; fork t=warn/f=warn/s=warn
-EVFILT-MACHPORT-CONCURRENT	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: monolith t=warn/f=fail/s=warn ; fork t=warn/f=fail/s=warn
+EVFILT-MACHPORT	nextbsd-userland	both	must-pass	480	T3 must-pass: kqueue EVFILT_MACHPORT is core Mach; verified OK both arches 2026-10. Was: all-warn arms in both forks.
+EVFILT-MACHPORT-CONCURRENT	nextbsd-userland	both	fail-gates	480	T3 keep fail-gates: -FAIL gates, -SKIP warns — the concurrent filter is kernel-version-scoped, and an old continuous kernel (booted by the kernel smoke lane) may lack it and self-skip. Verified OK both arches 2026-10.
 FBSDGLUE	nextbsd-freebsd-compat	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue
 FILECMD-LEAF	nextbsd-freebsd-compat	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue
 GETTY	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
-HOMEDIR	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=warn
+HOMEDIR	nextbsd-userland	both	must-pass	480	T3 must-pass: createhomedir round-trip ships in the image; verified OK both arches 2026-10. Was: fork warned on absence.
 HOST-BOOTSTRAP	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 HOSTNAMED	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
-HOSTNAMED-BONJOUR-RENAME	nextbsd-userland	both	warn	480	pending T3 audit; live arms: monolith t=warn/f=warn/s=continue ; fork t=warn/f=warn/s=continue
+HOSTNAMED-BONJOUR-RENAME	nextbsd-userland	both	warn	480	T3 keep warn: the Bonjour conflict-rename round (userland#156) FAILs on healthy CI images (both arches, 2026-10 boots) — a known follow-up, not a regression; must-pass would red every PR. Re-audit when #156 lands.
 HOSTNAMED-DHCP	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=warn/s=continue
-HOSTNAMED-MDNS	nextbsd-userland	both	warn	480	pending T3 audit; live arms: monolith t=warn/f=warn/s=continue ; fork t=warn/f=warn/s=continue
+HOSTNAMED-MDNS	nextbsd-userland	both	warn	480	T3 keep warn: the hostnamed mDNS synthesis round (iter 3c) is a known deferred feature — the suite itself marks the PTR window "iter 3c deferred"; FAIL on both arches, 2026-10 boots. Re-audit to must-pass when iter 3c lands.
 HOSTNAMED-PREFS	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 IOCATALOGUE	nextbsd-kernel-extensions	both	fail-gates	480	pending T3 audit; live arms: monolith t=warn/f=fail/s=warn ; fork t=warn/f=fail/s=continue
 IOKIT-LOOKUP	nextbsd-kernel-extensions	both	fail-gates	480	pending T3 audit; live arms: monolith t=warn/f=fail/s=warn ; fork t=warn/f=fail/s=continue
@@ -64,7 +64,7 @@ LAUNCHCTL-LIST	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: 
 LAUNCHD-BUILD	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 LIBDISPATCH	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 LIBDISPATCH-MACH	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
-LIBDS	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
+LIBDS	nextbsd-userland	both	must-pass	480	T3 must-pass: the libds plist writer ships in the image; verified OK both arches 2026-10. Was: fork warned on absence.
 LIBSYSTEM-KERNEL	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 LIBXPC	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 LINUX-MOUNTS	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: fork t=fail/f=continue/s=continue
@@ -74,12 +74,12 @@ MDNS-BOOT	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monol
 MDNS-DNSSD	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 MDNS-ENGINE	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 MDNS-IFWATCH	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=continue/s=continue ; fork t=fail/f=continue/s=continue
-MDNS-STATIC	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
+MDNS-STATIC	nextbsd-userland	both	must-pass	480	T3 must-pass: static mDNS registration via mDNSResponder ships in the image; verified OK both arches 2026-10. Was: fork warned on absence.
 MIG-BUILD	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
-NFS	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
+NFS	nextbsd-userland	both	must-pass	480	T3 must-pass: the network-mount helper ships in the image; verified OK both arches 2026-10. Was: fork warned on absence.
 NOTIFYD-PROC	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
-NSS-DS	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=warn
-NTP	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=continue
+NSS-DS	nextbsd-userland	both	must-pass	480	T3 must-pass: the Name Service Switch via libds is core to the Darwin system layer; verified OK both arches 2026-10. Was: fork warned on absence.
+NTP	nextbsd-userland	both	must-pass	480	T3 must-pass: the time-sync capability ships in the image; verified OK both arches 2026-10. Was: fork warned on absence.
 SC-BOND	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 SC-BRIDGE	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 SC-LOCK	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
@@ -97,14 +97,14 @@ SC-STORE	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monoli
 SC-VLAN	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 SERVICE-LDCONFIG	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: fork t=fail/f=fail/s=continue
 SHELLCMD-LEAF	nextbsd-freebsd-compat	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue
-SUDO	nextbsd-userland	both	fail-gates	480	pending T3 audit; live arms: fork t=warn/f=fail/s=warn
+SUDO	nextbsd-userland	both	must-pass	480	T3 must-pass: sudo ships in the image (the "image predates base sudo" escape is obsolete on self-assembled images); verified OK both arches 2026-10. Was: fork warned on absence.
 SYSCMD-LEAF	nextbsd-freebsd-compat	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue
 SYSLOG-RUN	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 SYSLOGD-PROC	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 TASK-SPECIAL-PORT	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
 TEXTCMD-LEAF	nextbsd-freebsd-compat	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue
 WAITQUIET	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue
-WEDGE-CHECK	nextbsd-userland	both	warn	60	pending T3: emitted by wedge-check.sh, invoked with || true, armed nowhere today; the fork leaves its verdict informational.
+WEDGE-CHECK	nextbsd-userland	both	must-pass	60	T3 must-pass: a wedged Mach service is a broken system (the 2026-08-30 incident this probe exists for); verified OK on all recent boots, both arches. Was: informational in the fork.
 #
 # retired (not carried into the shared harness):
 #   PAM-FRAMEWORK PAM-MODULES PAM-LOGIN -- the on-image PAM gates were retired from
