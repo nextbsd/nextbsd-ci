@@ -82,14 +82,25 @@ golden "teardown: reboot (the wrong outcome)" $re_reboot "Rebooting system now..
 golden "sentinel: summary line" $re_summary \
     "NEXTBSD-TEST-SUMMARY ok=92 fail=3 skip=18"
 
-# The capability marker lines (T1) — one arm, any marker, in arrival order.
-golden "marker: OK line (LF)" $re_marker "ACCT-HELPERS-OK\n"
-golden "marker: FAIL line (CR LF, as the pty delivers it)" $re_marker "ADVCMD-LEAF-FAIL\r\n"
-golden "marker: SKIP line (embedded in a burst)" $re_marker "garbage WEDGE-CHECK-SKIP\r\nmore"
-golden_not "marker: the summary line is not a marker" $re_marker \
-    "NEXTBSD-TEST-SUMMARY ok=80 fail=0 skip=6\n"
-golden_not "marker: the shell prompt is not a marker" $re_marker "admin@selftest ~ % "
-golden_not "marker: lowercase output is not a marker" $re_marker "acct-helpers-ok\n"
+# The capability marker lines (T1) — one arm per suffix, in arrival order.
+golden "marker: OK line (LF)" $re_marker_ok "ACCT-HELPERS-OK\n"
+golden "marker: FAIL line (CR LF, as the pty delivers it)" $re_marker_fail "ADVCMD-LEAF-FAIL\r\n"
+golden "marker: SKIP line (embedded in a burst)" $re_marker_skip "garbage WEDGE-CHECK-SKIP\r\nmore"
+# Each arm must match only its own suffix (the suffix is literal, not an alternation).
+golden_not "marker: the FAIL arm does not match an OK line" $re_marker_fail "ACCT-HELPERS-OK\n"
+golden_not "marker: the OK arm does not match a FAIL line" $re_marker_ok "ADVCMD-LEAF-FAIL\n"
+golden_not "marker: the SKIP arm does not match a FAIL line" $re_marker_skip "ADVCMD-LEAF-FAIL\n"
+# No arm may match the stream lines that are not marker lines.
+set marker_pats [list $re_marker_ok $re_marker_fail $re_marker_skip]
+foreach {nm smp} {
+    "summary line" "NEXTBSD-TEST-SUMMARY ok=80 fail=0 skip=6\n"
+    "shell prompt" "admin@selftest ~ % "
+    "lowercase output" "acct-helpers-ok\n"
+} {
+    foreach mp $marker_pats {
+        golden_not "marker: $nm is not a marker" $mp $smp
+    }
+}
 
 if {$failures > 0} {
     puts "\ngolden: $failures assertion(s) FAILED"
