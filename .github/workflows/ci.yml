@@ -1,0 +1,53 @@
+# nextbsd-ci — CI for the shared NextBSD test harness.
+#
+# This repo is code: the checks are the static schema of the manifest and the
+# selftest, which runs the REAL harness against a mock guest on the same
+# ubuntu-24.04(-arm) runners the production boots use.
+
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  selftest:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: amd64
+            runner: ubuntu-24.04
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install expect (provides tclsh) + shellcheck
+        run: sudo apt-get update && sudo apt-get install -y expect shellcheck
+
+      - name: Syntax: all shell scripts
+        run: |
+          fail=0
+          for f in $(find harness manifest selftest -name '*.sh' -type f); do
+            sh -n "$f" || { echo "sh -n failed: $f"; fail=1; }
+          done
+          exit $fail
+
+      - name: Lint: shellcheck
+        run: find harness manifest selftest -name '*.sh' -type f -print0 | xargs -0 -r shellcheck -x
+
+      - name: Manifest: schema
+        run: |
+          sh manifest/validate.sh \
+            manifest/markers.tsv \
+            manifest/overlay-nextbsd.tsv \
+            manifest/overlay-nextbsd-userland.tsv \
+            manifest/overlay-nextbsd-kernel.tsv
+
+      - name: Selftest: harness vs mock guest
+        env:
+          ARCH: ${{ matrix.arch }}
+        run: sh selftest/run-selftest.sh
