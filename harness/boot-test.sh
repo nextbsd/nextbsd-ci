@@ -69,7 +69,9 @@ esac
 echo "==> boot test: $IMG"
 ls -lh "$IMG"
 
-# shellcheck source=./qemu-arch.sh
+# $HERE is runtime-resolved, so shellcheck's -x cannot follow it from the
+# repo root; qemu-arch.sh is linted as its own file by the same find.
+# shellcheck disable=SC1091
 . "$HERE/qemu-arch.sh"
 qemu_arch_setup "$IMG" "$ARTIFACT"
 
