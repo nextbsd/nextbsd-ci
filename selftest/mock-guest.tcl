@@ -26,8 +26,11 @@ if {[info exists env(NB_SELFTEST)] && $env(NB_SELFTEST) ne ""} { set mode $env(N
 set arch amd64
 if {[info exists env(NB_ARCH)] && $env(NB_ARCH) ne ""} { set arch $env(NB_ARCH) }
 
-proc say {line} { puts -nonewline "$line\r\n" }
-proc sayraw {s} { puts -nonewline $s }
+# flush every time: tclsh line-buffers a tty stdout, so an un-newlined prompt
+# (the loader's "OK ") would sit in the buffer forever and the handshake would
+# stall. Real qemu writes unbuffered; the mock must behave the same.
+proc say {line} { puts -nonewline "$line\r\n"; flush stdout }
+proc sayraw {s} { puts -nonewline $s; flush stdout }
 proc prompt {} { sayraw "admin@selftest ~ % " }
 proc readline {} {
     set line [gets stdin]
