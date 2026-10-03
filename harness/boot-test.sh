@@ -80,6 +80,7 @@ NB_SUITE_TIMEOUT=${NB_SUITE_TIMEOUT:-480}
 NB_OVERLAY=${NB_OVERLAY:-$ROOT/manifest/overlay-nextbsd.tsv}
 NB_BOOT_TRACE=${NB_BOOT_TRACE:-0}
 NB_MEDIA=${NB_MEDIA:-disk}
+NB_DEBUG=${NB_DEBUG:-}
 
 # The banner verdict policy: the consumer's overlay wins, then the base table,
 # then warn (the nextbsd monolith's long-standing treatment).
@@ -95,7 +96,7 @@ done
 # minutes a TCG arm64 boot needs). The selftest sets it small so a broken arm
 # fails in seconds. NB_SUITE_TIMEOUT: per-suite budget for the sentinel blocks.
 NB_TIMEOUT_GLOBAL=${NB_TIMEOUT_GLOBAL:-480}
-export NB_LOG="$LOG" NB_MEDIA NB_BOOT_TRACE NB_BANNER_POLICY NB_QEMU_ARGV="${NB_QEMU_ARGV:-}" NB_TIMEOUT_GLOBAL NB_SUITE_TIMEOUT
+export NB_LOG="$LOG" NB_MEDIA NB_BOOT_TRACE NB_BANNER_POLICY NB_QEMU_ARGV="${NB_QEMU_ARGV:-}" NB_TIMEOUT_GLOBAL NB_SUITE_TIMEOUT NB_DEBUG
 
 # manifest -> expect arms (one block per suite, generated for this arch and
 # overlay; selftest passes NB_QEMU_ARGV so no firmware is needed)

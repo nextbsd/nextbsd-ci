@@ -46,6 +46,7 @@ export NB_TIMEOUT_GLOBAL=30
 export NB_SUITE_TIMEOUT=20
 export NB_MEDIA=disk
 export NB_OVERLAY=/dev/null
+export NB_DEBUG=1
 
 run_case() {
     name=$1
