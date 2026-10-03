@@ -118,10 +118,12 @@ fi
 } > "$EXP"
 
 if [ -n "$NB_DEBUG" ]; then
-    echo "=== DBG: arm structure of $EXP"
-    grep -n 'expect {\|-re \|timeout {\|eof {' "$EXP" | sed -n '1,80p'
-    echo "=== DBG: patterns set"
-    grep -n 'set re_marker\|set re_summary' "$EXP" | head
+    echo "=== DBG: $EXP total lines: $(wc -l < "$EXP")"
+    grep -n 'set nb_scope\|set nb_pol(ACCT-HELPERS)\|running on-image suite\|set nb_mustpass' "$EXP" | head
+    echo "=== DBG: context around the suite expect"
+    sed -n '355,380p' "$EXP"
+    echo "=== DBG: context around the marker arm"
+    sed -n '655,690p' "$EXP"
 fi
 
 set +e
