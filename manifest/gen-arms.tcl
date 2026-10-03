@@ -163,6 +163,10 @@ puts "# arch: $arch | suites: $suites | manifest: $base + $overlay"
 puts "set nb_mustpass { $mustpass }"
 puts "set nb_warnfail { $warnfail }"
 puts "set nb_dbgmarks { $onarch }"
+# Whether any on-image suite ran: the suite-tail absence check applies only
+# then. A login-only boot (NB_LOGIN_ONLY, no suite) must not fail for a
+# must-pass marker it never had the chance to print.
+puts "set nb_suites_ran $suites"
 
 set scope {}
 for {set i 0} {$i < $suites} {incr i} {

@@ -10,20 +10,27 @@
 # declare the tolerance in their overlay (warn), which removes the marker
 # from this check.
 
-set nb_missing 0
-foreach m $nb_mustpass {
-    if {![info exists nb_seen($m)]} {
-        if {$nb_scope eq "any" || [expr {[llength $nb_scope] > 0 && [lsearch -exact $nb_scope [set nb_owner($m)]] >= 0}]} {
-            puts "\nFAIL: $m — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)"
-            incr nb_missing
-        } else {
-            puts "\nINFO: $m — must-pass but owned by [set nb_owner($m)]; no running suite owns it, so it is out of scope for this boot"
+# The absence check applies only when a suite actually ran. A login-only boot
+# (NB_LOGIN_ONLY, no on-image suite) has no markers to require, so a must-pass
+# marker that never appeared is expected there, not a failure.
+if {[info exists nb_suites_ran] && $nb_suites_ran > 0} {
+    set nb_missing 0
+    foreach m $nb_mustpass {
+        if {![info exists nb_seen($m)]} {
+            if {$nb_scope eq "any" || [expr {[llength $nb_scope] > 0 && [lsearch -exact $nb_scope [set nb_owner($m)]] >= 0}]} {
+                puts "\nFAIL: $m — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)"
+                incr nb_missing
+            } else {
+                puts "\nINFO: $m — must-pass but owned by [set nb_owner($m)]; no running suite owns it, so it is out of scope for this boot"
+            }
         }
     }
-}
-if {$nb_missing > 0} {
-    puts "\nFAIL: $nb_missing must-pass marker(s) missing from the suite output"
-    exit 1
+    if {$nb_missing > 0} {
+        puts "\nFAIL: $nb_missing must-pass marker(s) missing from the suite output"
+        exit 1
+    }
+} else {
+    puts "\nOK: login-only boot (no on-image suite) — skipping the must-pass absence check"
 }
 
 if {[info exists banner_fail] && $banner_fail ne ""} {

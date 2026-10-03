@@ -52,10 +52,11 @@ run_case() {
     name=$1
     expect_rc=$2
     suite=$3
-    echo "==> case: $name (suite: $suite) — expect rc $expect_rc"
+    login_only=${4:-}
+    echo "==> case: $name (suite: $suite, login_only: ${login_only:-no}) — expect rc $expect_rc"
     set +e
     NB_SELFTEST=$name NB_SELFTEST_MARKERS="$HERE/../tests/plan.tsv" \
-        NB_SUITE="$suite" sh "$ROOT/harness/boot-test.sh" tests/fake.img
+        NB_SUITE="$suite" NB_LOGIN_ONLY="$login_only" sh "$ROOT/harness/boot-test.sh" tests/fake.img
     rc=$?
     set -e
     if [ "$rc" -ne "$expect_rc" ]; then
@@ -72,6 +73,10 @@ run_case nosummary 2 /usr/tests/freebsd-launchd-mach/run.sh
 run_case deadend   2 /usr/tests/freebsd-launchd-mach/run.sh
 run_case reboot    1 /usr/tests/freebsd-launchd-mach/run.sh
 run_case two-suite 0 "/usr/tests/freebsd-launchd-mach/run.sh /usr/tests/nextbsd-iokit/run.sh"
+# login-only: no on-image suite (an image that ships no sentinel suite, e.g. the
+# kernel smoke image or nextbsd img/iso). Reaches login, skips the absence check,
+# holds a clean end-state, powers off -> rc 0.
+run_case loginonly 0 "" 1
 
 if [ "$fail" -ne 0 ]; then
     echo "==> SELFTEST FAILED"

@@ -81,6 +81,15 @@ NB_OVERLAY=${NB_OVERLAY:-$ROOT/manifest/overlay-nextbsd.tsv}
 NB_BOOT_TRACE=${NB_BOOT_TRACE:-0}
 NB_MEDIA=${NB_MEDIA:-disk}
 NB_DEBUG=${NB_DEBUG:-}
+# NB_LOGIN_ONLY=1: boot -> login -> clean end-state -> poweroff, and NO on-image
+# suite. For images that ship no sentinel-emitting suite (the kernel smoke image,
+# the nextbsd img/iso light-smoke gates): those boots gate on "reached login and
+# stayed up", not on a userland marker suite the image doesn't carry.
+NB_LOGIN_ONLY=${NB_LOGIN_ONLY:-}
+if [ -n "$NB_LOGIN_ONLY" ]; then
+    NB_SUITE=""
+    echo "==> login-only mode: no on-image suite (gate on login + clean end-state)"
+fi
 
 # The banner verdict policy: the consumer's overlay wins, then the base table,
 # then warn (the nextbsd monolith's long-standing treatment).
@@ -132,8 +141,11 @@ rc=$?
 set -e
 
 # Informational: the suite's own aggregate verdict, straight from the transcript.
-# The expect rc above is the gate; this is for the workflow logs.
-sh "$HERE/summary.sh" "$LOG" || true
+# The expect rc above is the gate; this is for the workflow logs. Skipped in
+# login-only mode (no suite ran, so there is no sentinel aggregate to show).
+if [ -z "$NB_LOGIN_ONLY" ]; then
+    sh "$HERE/summary.sh" "$LOG" || true
+fi
 
 if [ "$rc" -eq 0 ]; then
     echo "==> boot-test PASSED (arch=$ARCH suite=$NB_SUITE)"
