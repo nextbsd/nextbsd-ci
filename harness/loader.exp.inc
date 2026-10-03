@@ -22,7 +22,7 @@ set send_slow {1 .04}
 # banner line is matched brand-agnostically: the ostype is NextBSD after the
 # kernel rebrand, and neither a rebrand nor a new brand may break the handshake.
 proc loader_prompt {secs} {
-    global timeout
+    global timeout re_hit_enter re_efi_banner
     set saved $timeout
     set timeout $secs
     expect {
@@ -63,7 +63,7 @@ proc loader_set {cmd} {
 # Success = the loader leaves the prompt to load the kernel: no "unknown
 # command" and no fresh "OK " inside the settle window.
 proc loader_boot {cmd} {
-    global timeout
+    global timeout re_boot_go
     set saved $timeout
     set timeout 10
     for {set try 1} {$try <= 5} {incr try} {
