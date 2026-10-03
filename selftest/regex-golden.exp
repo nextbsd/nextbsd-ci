@@ -1,0 +1,110 @@
+# regex-golden.exp — the golden test for the shared patterns (harness/patterns.tcl).
+#
+# Each pattern must match the stream shapes the production CI has actually
+# printed (samples from a green nextbsd-userland amd64 boot, Sept 2026). The
+# test runs on the same ubuntu-24.04 runners as the production boots, so it
+# re-proves the patterns under exactly the Tcl/expect the lanes use.
+#
+# Run: expect -f selftest/regex-golden.exp
+
+source [file normalize [file join [file dirname [info script]] .. harness patterns.tcl]]
+
+set failures 0
+proc golden {name pat sample} {
+    global failures
+    if {[regexp $pat $sample]} {
+        puts "OK   $name"
+    } else {
+        puts "FAIL $name"
+        puts "     pattern: $pat"
+        puts "     sample:  $sample"
+        incr failures
+    }
+}
+
+# The negative twin: the pattern must NOT match (guards the marker arm from
+# consuming lines it should leave alone — the summary, prompts, kernel chatter).
+proc golden_not {name pat sample} {
+    global failures
+    if {[regexp $pat $sample]} {
+        puts "FAIL $name"
+        puts "     pattern matched where it must not:"
+        puts "     pattern: $pat"
+        puts "     sample:  $sample"
+        incr failures
+    } else {
+        puts "OK   $name"
+    }
+}
+
+# Stage 0 — the UEFI loader handshake.
+golden "loader: EDK2 autoboot countdown" $re_hit_enter \
+    "Hit \[Enter\] to boot immediately, or any other key for command prompt."
+golden "loader: UEFI self-ID (FreeBSD brand)" $re_efi_banner \
+    "FreeBSD/amd64 EFI loader, Revision 3.0"
+golden "loader: UEFI self-ID (NextBSD brand)" $re_efi_banner \
+    "NextBSD/amd64 EFI loader, Revision 3.0"
+golden "loader: leaving the prompt to boot" $re_boot_go \
+    "Booting \[/boot/kernel/kernel\] in 2 seconds..."
+golden "loader: kernel entry marker" $re_boot_go \
+    "---<<BOOT>>---"
+
+# Stage 1a — the getty banner (the early-init race, nextbsd#325).
+golden "banner: synthesized hostname (amd64)" $re_boot_banner \
+    "NextBSD/amd64 (pc-q35-8-2) (console)"
+golden "banner: synthesized hostname (arm64)" $re_boot_banner \
+    "NextBSD/arm64 (qemu) (console)"
+golden "banner: the Amnesiac race-loser" $re_boot_banner \
+    "NextBSD/amd64 (Amnesiac) (console)"
+golden "banner: the early-init sethostname line" $re_early_init \
+    "early-init: sethostname('pc-q35-8-2')"
+
+# Stage 1b — login.
+golden "login: login(1) session message" $re_session_msg \
+    "login on console as admin"
+golden "login: zsh prompt" $re_shell_prompt \
+    "admin@pc-q35-8-2 ~ % "
+
+# The panic family.
+golden "panic: page fault" $re_panic "kernel: Fatal trap 12: page fault in kernel mode"
+golden "panic: data abort (arm64)" $re_panic "Fatal data abort: data abort from kernel"
+
+# Teardown.
+golden "teardown: shutdown progress" $re_shutdown_wait \
+    "Waiting (max 60 seconds) for system process \"login\" to stop"
+golden "teardown: syncing" $re_shutdown_wait "Syncing disks..."
+golden "teardown: buffers synced" $re_shutdown_wait "All buffers synced."
+golden "teardown: uptime" $re_shutdown_wait "Uptime:  0 day  0:02,  2 users"
+golden "teardown: poweroff" $re_poweroff "Powering system off"
+golden "teardown: reboot (the wrong outcome)" $re_reboot "Rebooting system now..."
+
+# The sentinel (T1).
+golden "sentinel: summary line" $re_summary \
+    "NEXTBSD-TEST-SUMMARY ok=92 fail=3 skip=18"
+
+# The capability marker lines (T1) — one arm per suffix, in arrival order.
+golden "marker: OK line (LF)" $re_marker_ok "ACCT-HELPERS-OK\n"
+golden "marker: FAIL line (CR LF, as the pty delivers it)" $re_marker_fail "ADVCMD-LEAF-FAIL\r\n"
+golden "marker: SKIP line (embedded in a burst)" $re_marker_skip "garbage WEDGE-CHECK-SKIP\r\nmore"
+# Each arm must match only its own suffix (the suffix is literal, not an alternation).
+golden_not "marker: the FAIL arm does not match an OK line" $re_marker_fail "ACCT-HELPERS-OK\n"
+golden_not "marker: the OK arm does not match a FAIL line" $re_marker_ok "ADVCMD-LEAF-FAIL\n"
+golden_not "marker: the SKIP arm does not match a FAIL line" $re_marker_skip "ADVCMD-LEAF-FAIL\n"
+# No arm may match the stream lines that are not marker lines.
+set marker_pats [list $re_marker_ok $re_marker_fail $re_marker_skip]
+foreach {nm smp} {
+    "summary line" "NEXTBSD-TEST-SUMMARY ok=80 fail=0 skip=6\n"
+    "shell prompt" "admin@selftest ~ % "
+    "lowercase output" "acct-helpers-ok\n"
+} {
+    foreach mp $marker_pats {
+        golden_not "marker: $nm is not a marker" $mp $smp
+    }
+}
+
+if {$failures > 0} {
+    puts "\ngolden: $failures assertion(s) FAILED"
+    exit 1
+}
+puts "\ngolden: all patterns match the production stream shapes"
+exit 0

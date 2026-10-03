@@ -1,0 +1,6 @@
+# manifest/overlay-nextbsd-kernel.tsv — the nextbsd-kernel boot-test tolerances.
+#
+# Rows here override same-named rows in markers.tsv, for the nextbsd-kernel
+# smoke tests only (T4 re-points them at this harness).
+#
+marker	owner	arches	policy	timeout	reason

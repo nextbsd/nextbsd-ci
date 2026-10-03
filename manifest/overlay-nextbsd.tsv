@@ -1,0 +1,11 @@
+# manifest/overlay-nextbsd.tsv — the nextbsd repo's boot-test tolerances.
+#
+# Rows here override same-named rows in markers.tsv, for the nextbsd repo's
+# boot tests only (harness/boot-test.sh passes this overlay by default).
+# Declare a row only when this consumer must gate a marker differently than
+# the base table — for example, an image that predates a capability whose
+# marker the base table lists must-pass:
+#
+# CAFFEINATE	nextbsd-kernel-extensions	both	warn	fail	pending backport of overlays#NNN
+#
+marker	owner	arches	policy	timeout	reason
