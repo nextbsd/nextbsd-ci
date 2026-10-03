@@ -1,0 +1,2661 @@
+﻿2026-10-03T10:30:18.0061356Z Current runner version: '2.337.0'
+2026-10-03T10:30:18.0087031Z ##[group]Runner Image Provisioner
+2026-10-03T10:30:18.0087891Z Hosted Compute Agent
+2026-10-03T10:30:18.0089046Z Version: 20260901.588
+2026-10-03T10:30:18.0089799Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-03T10:30:18.0090602Z Build Date: 2026-09-01T19:56:44Z
+2026-10-03T10:30:18.0091281Z Worker ID: {984ad50a-1704-4221-ae75-6139bc6ed7bf}
+2026-10-03T10:30:18.0092072Z Azure Region: eastus
+2026-10-03T10:30:18.0092678Z ##[endgroup]
+2026-10-03T10:30:18.0094586Z ##[group]Operating System
+2026-10-03T10:30:18.0095289Z Ubuntu
+2026-10-03T10:30:18.0095804Z 24.04.5
+2026-10-03T10:30:18.0096372Z LTS
+2026-10-03T10:30:18.0096891Z ##[endgroup]
+2026-10-03T10:30:18.0097470Z ##[group]Runner Image
+2026-10-03T10:30:18.0098377Z Image: ubuntu-24.04
+2026-10-03T10:30:18.0099325Z Version: 20260927.320.1
+2026-10-03T10:30:18.0100731Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-03T10:30:18.0102364Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+2026-10-03T10:30:18.0103405Z ##[endgroup]
+2026-10-03T10:30:18.0104783Z ##[group]GITHUB_TOKEN Permissions
+2026-10-03T10:30:18.0107071Z Contents: read
+2026-10-03T10:30:18.0107719Z Metadata: read
+2026-10-03T10:30:18.0108654Z Packages: read
+2026-10-03T10:30:18.0109264Z ##[endgroup]
+2026-10-03T10:30:18.0111489Z Secret source: Actions
+2026-10-03T10:30:18.0112481Z Cache mode: write
+2026-10-03T10:30:18.0113778Z Prepare workflow directory
+2026-10-03T10:30:18.0590127Z Prepare all required actions
+2026-10-03T10:30:18.0663699Z Getting action download info
+2026-10-03T10:30:18.2820950Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-03T10:30:18.4760650Z Complete job name: selftest (amd64, ubuntu-24.04)
+2026-10-03T10:30:18.5569298Z ##[group]Run actions/checkout@v4
+2026-10-03T10:30:18.5570242Z with:
+2026-10-03T10:30:18.5570701Z   repository: nextbsd/nextbsd-ci
+2026-10-03T10:30:18.5574509Z   token: ***
+2026-10-03T10:30:18.5574951Z   ssh-strict: true
+2026-10-03T10:30:18.5575400Z   ssh-user: git
+2026-10-03T10:30:18.5575849Z   persist-credentials: true
+2026-10-03T10:30:18.5576344Z   clean: true
+2026-10-03T10:30:18.5576800Z   sparse-checkout-cone-mode: true
+2026-10-03T10:30:18.5577337Z   fetch-depth: 1
+2026-10-03T10:30:18.5577773Z   fetch-tags: false
+2026-10-03T10:30:18.5578414Z   show-progress: true
+2026-10-03T10:30:18.5578884Z   lfs: false
+2026-10-03T10:30:18.5579300Z   submodules: false
+2026-10-03T10:30:18.5579764Z   set-safe-directory: true
+2026-10-03T10:30:18.5580282Z   allow-unsafe-pr-checkout: false
+2026-10-03T10:30:18.5581060Z ##[endgroup]
+2026-10-03T10:30:18.6611650Z Syncing repository: nextbsd/nextbsd-ci
+2026-10-03T10:30:18.6614657Z ##[group]Getting Git version info
+2026-10-03T10:30:18.6615930Z Working directory is '/home/runner/work/nextbsd-ci/nextbsd-ci'
+2026-10-03T10:30:18.6617627Z [command]/usr/bin/git version
+2026-10-03T10:30:18.6683364Z git version 2.55.0
+2026-10-03T10:30:18.6705192Z ##[endgroup]
+2026-10-03T10:30:18.6730344Z Temporarily overriding HOME='/home/runner/work/_temp/97d86145-3f8a-40d9-9224-4e51f0ff81f2' before making global git config changes
+2026-10-03T10:30:18.6733385Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-03T10:30:18.6737448Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/nextbsd-ci/nextbsd-ci
+2026-10-03T10:30:18.6796741Z Deleting the contents of '/home/runner/work/nextbsd-ci/nextbsd-ci'
+2026-10-03T10:30:18.6801782Z ##[group]Initializing the repository
+2026-10-03T10:30:18.6805657Z [command]/usr/bin/git init /home/runner/work/nextbsd-ci/nextbsd-ci
+2026-10-03T10:30:18.6937907Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-03T10:30:18.6940069Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-03T10:30:18.6941682Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-03T10:30:18.6943307Z hint: call:
+2026-10-03T10:30:18.6944323Z hint:
+2026-10-03T10:30:18.6945143Z hint: 	git config --global init.defaultBranch <name>
+2026-10-03T10:30:18.6946141Z hint:
+2026-10-03T10:30:18.6947182Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-03T10:30:18.6949029Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-03T10:30:18.6950251Z hint:
+2026-10-03T10:30:18.6950915Z hint: 	git branch -m <name>
+2026-10-03T10:30:18.6951761Z hint:
+2026-10-03T10:30:18.6952850Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-03T10:30:18.6954610Z Initialized empty Git repository in /home/runner/work/nextbsd-ci/nextbsd-ci/.git/
+2026-10-03T10:30:18.6957860Z [command]/usr/bin/git remote add origin https://github.com/nextbsd/nextbsd-ci
+2026-10-03T10:30:18.7025073Z ##[endgroup]
+2026-10-03T10:30:18.7026503Z ##[group]Disabling automatic garbage collection
+2026-10-03T10:30:18.7028626Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-03T10:30:18.7063610Z ##[endgroup]
+2026-10-03T10:30:18.7064885Z ##[group]Setting up auth
+2026-10-03T10:30:18.7071851Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-03T10:30:18.7119481Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-03T10:30:18.7528660Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-03T10:30:18.7567489Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-03T10:30:18.7808384Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-03T10:30:18.7846473Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-03T10:30:18.8082044Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-03T10:30:18.8127119Z ##[endgroup]
+2026-10-03T10:30:18.8128885Z ##[group]Fetching the repository
+2026-10-03T10:30:18.8139534Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +d603cb9ee40a415fba10fcdca4b2e830f2d4c2c6:refs/remotes/pull/9/merge
+2026-10-03T10:30:19.0829403Z From https://github.com/nextbsd/nextbsd-ci
+2026-10-03T10:30:19.0831482Z  * [new ref]         d603cb9ee40a415fba10fcdca4b2e830f2d4c2c6 -> pull/9/merge
+2026-10-03T10:30:19.0836258Z ##[endgroup]
+2026-10-03T10:30:19.0837891Z ##[group]Determining the checkout info
+2026-10-03T10:30:19.0840476Z ##[endgroup]
+2026-10-03T10:30:19.0847655Z [command]/usr/bin/git sparse-checkout disable
+2026-10-03T10:30:19.0914941Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-03T10:30:19.0952450Z ##[group]Checking out the ref
+2026-10-03T10:30:19.0956827Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/9/merge
+2026-10-03T10:30:19.1067139Z Note: switching to 'refs/remotes/pull/9/merge'.
+2026-10-03T10:30:19.1068370Z 
+2026-10-03T10:30:19.1069340Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-03T10:30:19.1070774Z changes and commit them, and you can discard any commits you make in this
+2026-10-03T10:30:19.1071939Z state without impacting any branches by switching back to a branch.
+2026-10-03T10:30:19.1072588Z 
+2026-10-03T10:30:19.1073176Z If you want to create a new branch to retain commits you create, you may
+2026-10-03T10:30:19.1074930Z do so (now or later) by using -c with the switch command. Example:
+2026-10-03T10:30:19.1076014Z 
+2026-10-03T10:30:19.1076530Z   git switch -c <new-branch-name>
+2026-10-03T10:30:19.1077295Z 
+2026-10-03T10:30:19.1077734Z Or undo this operation with:
+2026-10-03T10:30:19.1078830Z 
+2026-10-03T10:30:19.1079631Z   git switch -
+2026-10-03T10:30:19.1080269Z 
+2026-10-03T10:30:19.1081040Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-03T10:30:19.1082158Z 
+2026-10-03T10:30:19.1083361Z HEAD is now at d603cb9 Merge 086612891137c42bc2a95847a8053c1b57b06e33 into bae13410f0ff570b952d51053ed0c462272008b7
+2026-10-03T10:30:19.1087513Z ##[endgroup]
+2026-10-03T10:30:19.1132939Z [command]/usr/bin/git log -1 --format=%H
+2026-10-03T10:30:19.1161955Z d603cb9ee40a415fba10fcdca4b2e830f2d4c2c6
+2026-10-03T10:30:19.1410870Z ##[group]Run sudo apt-get update && sudo apt-get install -y expect shellcheck
+2026-10-03T10:30:19.1412089Z [36;1msudo apt-get update && sudo apt-get install -y expect shellcheck[0m
+2026-10-03T10:30:19.1775219Z shell: /usr/bin/bash -e {0}
+2026-10-03T10:30:19.1775921Z ##[endgroup]
+2026-10-03T10:30:19.3218858Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-03T10:30:19.3372180Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-10-03T10:30:19.3582649Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-10-03T10:30:19.3605957Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-10-03T10:30:19.3696326Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-10-03T10:30:19.3798034Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-10-03T10:30:19.4671717Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [12.6 kB]
+2026-10-03T10:30:19.4816734Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [511 kB]
+2026-10-03T10:30:19.4901512Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [458 kB]
+2026-10-03T10:30:19.5949756Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1364 kB]
+2026-10-03T10:30:19.6044957Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [304 kB]
+2026-10-03T10:30:19.6067954Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [180 kB]
+2026-10-03T10:30:19.6089330Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1699 kB]
+2026-10-03T10:30:19.6177886Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [341 kB]
+2026-10-03T10:30:19.6204629Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [388 kB]
+2026-10-03T10:30:19.6234345Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1720 kB]
+2026-10-03T10:30:19.6324066Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [394 kB]
+2026-10-03T10:30:19.6352212Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2026-10-03T10:30:19.6595908Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [5764 B]
+2026-10-03T10:30:19.7095204Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [12.6 kB]
+2026-10-03T10:30:19.7110626Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1069 kB]
+2026-10-03T10:30:19.7175730Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [221 kB]
+2026-10-03T10:30:19.7197587Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [46.3 kB]
+2026-10-03T10:30:19.7215057Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1216 kB]
+2026-10-03T10:30:19.7289967Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [244 kB]
+2026-10-03T10:30:19.7311304Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [76.3 kB]
+2026-10-03T10:30:19.7328614Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1566 kB]
+2026-10-03T10:30:19.7413902Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [361 kB]
+2026-10-03T10:30:26.4614493Z Fetched 12.6 MB in 1s (8771 kB/s)
+2026-10-03T10:30:27.3249931Z Reading package lists...
+2026-10-03T10:30:27.3560309Z Reading package lists...
+2026-10-03T10:30:27.5537841Z Building dependency tree...
+2026-10-03T10:30:27.5545365Z Reading state information...
+2026-10-03T10:30:27.7379274Z shellcheck is already the newest version (0.9.0-1).
+2026-10-03T10:30:27.7380484Z The following NEW packages will be installed:
+2026-10-03T10:30:27.7389215Z   expect tcl-expect
+2026-10-03T10:30:27.7574049Z 0 upgraded, 2 newly installed, 0 to remove and 25 not upgraded.
+2026-10-03T10:30:27.7574659Z Need to get 247 kB of archives.
+2026-10-03T10:30:27.7911991Z After this operation, 538 kB of additional disk space will be used.
+2026-10-03T10:30:27.7912582Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-03T10:30:27.7913425Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 tcl-expect amd64 5.45.4-3 [110 kB]
+2026-10-03T10:30:27.8092869Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 expect amd64 5.45.4-3 [137 kB]
+2026-10-03T10:30:28.1163786Z Fetched 247 kB in 0s (3853 kB/s)
+2026-10-03T10:30:28.1545004Z Selecting previously unselected package tcl-expect:amd64.
+2026-10-03T10:30:28.2250643Z (Reading database ... 
+2026-10-03T10:30:28.2251025Z (Reading database ... 5%
+2026-10-03T10:30:28.2251329Z (Reading database ... 10%
+2026-10-03T10:30:28.2251566Z (Reading database ... 15%
+2026-10-03T10:30:28.2252454Z (Reading database ... 20%
+2026-10-03T10:30:28.2252784Z (Reading database ... 25%
+2026-10-03T10:30:28.2253043Z (Reading database ... 30%
+2026-10-03T10:30:28.2253333Z (Reading database ... 35%
+2026-10-03T10:30:28.2253556Z (Reading database ... 40%
+2026-10-03T10:30:28.2253778Z (Reading database ... 45%
+2026-10-03T10:30:28.2254000Z (Reading database ... 50%
+2026-10-03T10:30:28.2571278Z (Reading database ... 55%
+2026-10-03T10:30:28.8099266Z (Reading database ... 60%
+2026-10-03T10:30:29.0574700Z (Reading database ... 65%
+2026-10-03T10:30:29.3180695Z (Reading database ... 70%
+2026-10-03T10:30:29.5759359Z (Reading database ... 75%
+2026-10-03T10:30:29.8905535Z (Reading database ... 80%
+2026-10-03T10:30:30.4004929Z (Reading database ... 85%
+2026-10-03T10:30:31.0115839Z (Reading database ... 90%
+2026-10-03T10:30:31.4905992Z (Reading database ... 95%
+2026-10-03T10:30:31.4906371Z (Reading database ... 100%
+2026-10-03T10:30:31.4907033Z (Reading database ... 202296 files and directories currently installed.)
+2026-10-03T10:30:31.4946220Z Preparing to unpack .../tcl-expect_5.45.4-3_amd64.deb ...
+2026-10-03T10:30:31.4982287Z Unpacking tcl-expect:amd64 (5.45.4-3) ...
+2026-10-03T10:30:31.5297826Z Selecting previously unselected package expect.
+2026-10-03T10:30:31.5420393Z Preparing to unpack .../expect_5.45.4-3_amd64.deb ...
+2026-10-03T10:30:31.5430817Z Unpacking expect (5.45.4-3) ...
+2026-10-03T10:30:31.6114320Z Setting up tcl-expect:amd64 (5.45.4-3) ...
+2026-10-03T10:30:31.6137244Z Setting up expect (5.45.4-3) ...
+2026-10-03T10:30:31.6159086Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-10-03T10:30:31.6182479Z Not building database; man-db/auto-update is not 'true'.
+2026-10-03T10:30:31.6195366Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+2026-10-03T10:30:32.7762922Z 
+2026-10-03T10:30:32.7763471Z Running kernel seems to be up-to-date.
+2026-10-03T10:30:32.7763717Z 
+2026-10-03T10:30:32.7763836Z No services need to be restarted.
+2026-10-03T10:30:32.7764162Z 
+2026-10-03T10:30:32.7764342Z No containers need to be restarted.
+2026-10-03T10:30:32.7764831Z 
+2026-10-03T10:30:32.7765062Z No user sessions are running outdated binaries.
+2026-10-03T10:30:32.7765397Z 
+2026-10-03T10:30:32.7765854Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-10-03T10:30:34.7995717Z ##[group]Run fail=0
+2026-10-03T10:30:34.7996286Z [36;1mfail=0[0m
+2026-10-03T10:30:34.7996835Z [36;1mfor f in $(find harness manifest selftest -name '*.sh' -type f); do[0m
+2026-10-03T10:30:34.7997556Z [36;1m  sh -n "$f" || { echo "sh -n failed: $f"; fail=1; }[0m
+2026-10-03T10:30:34.7998533Z [36;1mdone[0m
+2026-10-03T10:30:34.7998849Z [36;1mexit $fail[0m
+2026-10-03T10:30:34.8074630Z shell: /usr/bin/bash -e {0}
+2026-10-03T10:30:34.8074890Z ##[endgroup]
+2026-10-03T10:30:34.8253363Z ##[group]Run find harness manifest selftest -name '*.sh' -type f -print0 | xargs -0 -r shellcheck -x
+2026-10-03T10:30:34.8254106Z [36;1mfind harness manifest selftest -name '*.sh' -type f -print0 | xargs -0 -r shellcheck -x[0m
+2026-10-03T10:30:34.8321759Z shell: /usr/bin/bash -e {0}
+2026-10-03T10:30:34.8322018Z ##[endgroup]
+2026-10-03T10:30:35.3419953Z ##[group]Run sh manifest/validate.sh \
+2026-10-03T10:30:35.3420322Z [36;1msh manifest/validate.sh \[0m
+2026-10-03T10:30:35.3420601Z [36;1m  manifest/markers.tsv \[0m
+2026-10-03T10:30:35.3420874Z [36;1m  manifest/overlay-nextbsd.tsv \[0m
+2026-10-03T10:30:35.3421198Z [36;1m  manifest/overlay-nextbsd-userland.tsv \[0m
+2026-10-03T10:30:35.3421530Z [36;1m  manifest/overlay-nextbsd-kernel.tsv[0m
+2026-10-03T10:30:35.3485812Z shell: /usr/bin/bash -e {0}
+2026-10-03T10:30:35.3486076Z ##[endgroup]
+2026-10-03T10:30:35.3617287Z manifest/markers.tsv: 93 markers OK
+2026-10-03T10:30:35.3637011Z manifest/overlay-nextbsd.tsv:  markers OK
+2026-10-03T10:30:35.3655975Z manifest/overlay-nextbsd-userland.tsv:  markers OK
+2026-10-03T10:30:35.3674369Z manifest/overlay-nextbsd-kernel.tsv:  markers OK
+2026-10-03T10:30:35.3752622Z ##[group]Run sh selftest/run-selftest.sh
+2026-10-03T10:30:35.3752985Z [36;1msh selftest/run-selftest.sh[0m
+2026-10-03T10:30:35.3816780Z shell: /usr/bin/bash -e {0}
+2026-10-03T10:30:35.3817057Z env:
+2026-10-03T10:30:35.3817237Z   ARCH: amd64
+2026-10-03T10:30:35.3817440Z ##[endgroup]
+2026-10-03T10:30:35.3925189Z ==> golden: the shared patterns against production stream shapes
+2026-10-03T10:30:35.4396599Z OK   loader: EDK2 autoboot countdown
+2026-10-03T10:30:35.4397141Z OK   loader: UEFI self-ID (FreeBSD brand)
+2026-10-03T10:30:35.4397638Z OK   loader: UEFI self-ID (NextBSD brand)
+2026-10-03T10:30:35.4398325Z OK   loader: leaving the prompt to boot
+2026-10-03T10:30:35.4398846Z OK   loader: kernel entry marker
+2026-10-03T10:30:35.4399347Z OK   banner: synthesized hostname (amd64)
+2026-10-03T10:30:35.4399827Z OK   banner: synthesized hostname (arm64)
+2026-10-03T10:30:35.4400302Z OK   banner: the Amnesiac race-loser
+2026-10-03T10:30:35.4400949Z OK   banner: the early-init sethostname line
+2026-10-03T10:30:35.4401747Z OK   login: login(1) session message
+2026-10-03T10:30:35.4402178Z OK   login: zsh prompt
+2026-10-03T10:30:35.4402564Z OK   panic: page fault
+2026-10-03T10:30:35.4403045Z OK   panic: data abort (arm64)
+2026-10-03T10:30:35.4404105Z OK   teardown: shutdown progress
+2026-10-03T10:30:35.4404455Z OK   teardown: syncing
+2026-10-03T10:30:35.4404696Z OK   teardown: buffers synced
+2026-10-03T10:30:35.4404986Z OK   teardown: uptime
+2026-10-03T10:30:35.4405223Z OK   teardown: poweroff
+2026-10-03T10:30:35.4405786Z OK   teardown: reboot (the wrong outcome)
+2026-10-03T10:30:35.4407642Z OK   sentinel: summary line
+2026-10-03T10:30:35.4407862Z 
+2026-10-03T10:30:35.4408364Z golden: all patterns match the production stream shapes
+2026-10-03T10:30:35.4412681Z ==> manifest: schema
+2026-10-03T10:30:35.4457978Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/markers.tsv: 93 markers OK
+2026-10-03T10:30:35.4477727Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/overlay-nextbsd.tsv:  markers OK
+2026-10-03T10:30:35.4496674Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/overlay-nextbsd-userland.tsv:  markers OK
+2026-10-03T10:30:35.4515367Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/overlay-nextbsd-kernel.tsv:  markers OK
+2026-10-03T10:30:35.4546370Z ==> harness vs mock guest (arch=amd64)
+2026-10-03T10:30:35.4624828Z     plan: 94 markers
+2026-10-03T10:30:35.4625775Z ==> case: ok (suite: /usr/tests/freebsd-launchd-mach/run.sh) — expect rc 0
+2026-10-03T10:30:35.4656000Z ==> boot test: tests/fake.img
+2026-10-03T10:30:35.4666865Z -rw-r--r-- 1 runner runner 0 Oct  3 10:30 tests/fake.img
+2026-10-03T10:30:35.4740959Z ==> using KVM acceleration
+2026-10-03T10:30:35.4741916Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T10:30:35.4918795Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T10:30:35.4974901Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T10:30:35.4975178Z 
+2026-10-03T10:30:35.4975184Z 
+2026-10-03T10:30:35.4975308Z Loading /boot/loader.conf
+2026-10-03T10:30:35.4975471Z 
+2026-10-03T10:30:35.4975474Z 
+2026-10-03T10:30:35.4975658Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T10:30:35.4975936Z 
+2026-10-03T10:30:35.4975940Z 
+2026-10-03T10:30:35.4976017Z OK 
+2026-10-03T10:30:35.4976193Z ==> at loader prompt
+2026-10-03T10:30:36.6809843Z  set console=comconsole
+2026-10-03T10:30:36.6810218Z OK set console=comconsole
+2026-10-03T10:30:36.6810432Z 
+2026-10-03T10:30:36.6810437Z 
+2026-10-03T10:30:37.7442411Z OK set boot_serial=YES
+2026-10-03T10:30:37.7442848Z OK set boot_serial=YES
+2026-10-03T10:30:37.7443100Z 
+2026-10-03T10:30:37.7443105Z 
+2026-10-03T10:30:39.1279245Z OK set comconsole_speed=115200
+2026-10-03T10:30:39.1279834Z OK set comconsole_speed=115200
+2026-10-03T10:30:39.1280179Z 
+2026-10-03T10:30:39.1280185Z 
+2026-10-03T10:30:40.3110315Z OK set boot_multicons=YES
+2026-10-03T10:30:40.3110844Z OK set boot_multicons=YES
+2026-10-03T10:30:40.3111145Z 
+2026-10-03T10:30:40.3111152Z 
+2026-10-03T10:30:41.4146665Z OK set boot_mutemsgs=NO
+2026-10-03T10:30:41.4147314Z OK set boot_mutemsgs=NO
+2026-10-03T10:30:41.4147614Z 
+2026-10-03T10:30:41.4147621Z 
+2026-10-03T10:30:41.9963453Z OK boot -v
+2026-10-03T10:30:41.9963949Z Booting [/boot/kernel/kernel]
+2026-10-03T10:30:41.9969450Z 
+2026-10-03T10:30:41.9969798Z 
+2026-10-03T10:30:41.9969998Z ---<<BOOT>>---
+2026-10-03T10:30:41.9970263Z 
+2026-10-03T10:30:41.9970270Z 
+2026-10-03T10:30:41.9970468Z Copyright (c) 1992-2025 The FreeBSD Project.
+2026-10-03T10:30:41.9970696Z 
+2026-10-03T10:30:41.9970700Z 
+2026-10-03T10:30:41.9970810Z early-init: sethostname('selftest')
+2026-10-03T10:30:41.9970996Z 
+2026-10-03T10:30:41.9971024Z 
+2026-10-03T10:30:41.9971205Z early-init: opened /dev/klog (kernel.log_open=1; console quiet)
+2026-10-03T10:30:41.9971471Z 
+2026-10-03T10:30:41.9971475Z 
+2026-10-03T10:30:41.9971580Z NextBSD/amd64 (selftest) (console)
+2026-10-03T10:30:41.9971752Z 
+2026-10-03T10:30:41.9971755Z 
+2026-10-03T10:30:41.9971758Z 
+2026-10-03T10:30:41.9972264Z OK: BOOT-BANNER-OK — getty shows the synthesized hostname 'selftest'
+2026-10-03T10:30:42.2977576Z login:
+2026-10-03T10:30:42.2977878Z 
+2026-10-03T10:30:42.2977886Z 
+2026-10-03T10:30:42.2977899Z 
+2026-10-03T10:30:42.2978419Z OK: boot reached the login prompt
+2026-10-03T10:30:42.2979002Z admin
+2026-10-03T10:30:42.2979398Z Password:
+2026-10-03T10:30:42.2979631Z 
+2026-10-03T10:30:42.2979638Z 
+2026-10-03T10:30:42.2980087Z 
+2026-10-03T10:30:42.2982191Z admin@selftest ~ % 
+2026-10-03T10:30:42.2982609Z OK: logged in as admin
+2026-10-03T10:30:42.2983155Z ==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T10:30:42.2993896Z r() { if [ "$(id -u)" = 0 ]; then "$@"; else sudo "$@"; fi; }
+2026-10-03T10:30:42.2994607Z admin@selftest ~ % r /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T10:30:42.2995182Z ACCT-HELPERS-OK
+2026-10-03T10:30:42.2995397Z 
+2026-10-03T10:30:42.2995402Z 
+2026-10-03T10:30:42.2995543Z ACCT-LIFECYCLE-OK
+2026-10-03T10:30:42.2995746Z 
+2026-10-03T10:30:42.2995751Z 
+2026-10-03T10:30:42.2995888Z ADVCMD-LEAF-OK
+2026-10-03T10:30:42.2996089Z 
+2026-10-03T10:30:42.2996094Z 
+2026-10-03T10:30:42.2996252Z ASLMANAGER-DEMAND-SKIP
+2026-10-03T10:30:42.2996484Z 
+2026-10-03T10:30:42.2996498Z 
+2026-10-03T10:30:42.2996633Z BOOT-BANNER-SKIP
+2026-10-03T10:30:42.2996837Z 
+2026-10-03T10:30:42.2996842Z 
+2026-10-03T10:30:42.2996972Z BOOTSTRAP-OK
+2026-10-03T10:30:42.2997161Z 
+2026-10-03T10:30:42.2997166Z 
+2026-10-03T10:30:42.2997306Z BOOTSTRAP-REMOTE-OK
+2026-10-03T10:30:42.2997523Z 
+2026-10-03T10:30:42.2997527Z 
+2026-10-03T10:30:42.2997657Z BUSYSTATE-OK
+2026-10-03T10:30:42.2997840Z 
+2026-10-03T10:30:42.2997844Z 
+2026-10-03T10:30:42.2997980Z CONFIGD-LIST-OK
+2026-10-03T10:30:42.2998718Z 
+2026-10-03T10:30:42.2998723Z 
+2026-10-03T10:30:42.2998864Z CONFIGD-MULTI-OK
+2026-10-03T10:30:42.2999067Z 
+2026-10-03T10:30:42.2999071Z 
+2026-10-03T10:30:42.2999337Z CONFIGD-NOTIFY-OK
+2026-10-03T10:30:42.2999547Z 
+2026-10-03T10:30:42.2999605Z 
+2026-10-03T10:30:42.2999757Z CONFIGD-PATTERN-OK
+2026-10-03T10:30:42.2999966Z 
+2026-10-03T10:30:42.2999971Z 
+2026-10-03T10:30:42.3000122Z CONFIGD-STORE-OK
+2026-10-03T10:30:42.3000321Z 
+2026-10-03T10:30:42.3000333Z 
+2026-10-03T10:30:42.3000469Z COREFOUNDATION-OK
+2026-10-03T10:30:42.3000672Z 
+2026-10-03T10:30:42.3000677Z 
+2026-10-03T10:30:42.3000802Z DA-BOOT-OK
+2026-10-03T10:30:42.3000980Z 
+2026-10-03T10:30:42.3000985Z 
+2026-10-03T10:30:42.3001108Z DA-IOKIT-OK
+2026-10-03T10:30:42.3001288Z 
+2026-10-03T10:30:42.3001293Z 
+2026-10-03T10:30:42.3001431Z DAEMON-STATE-OK
+2026-10-03T10:30:42.3001626Z 
+2026-10-03T10:30:42.3001630Z 
+2026-10-03T10:30:42.3001767Z DOMAIN-DIRS-OK
+2026-10-03T10:30:42.3001952Z 
+2026-10-03T10:30:42.3001956Z 
+2026-10-03T10:30:42.3002110Z EVFILT-MACHPORT-SKIP
+2026-10-03T10:30:42.3002354Z 
+2026-10-03T10:30:42.3002364Z 
+2026-10-03T10:30:42.3002472Z EVFILT-MACHPORT-CONCURRENT-OK
+2026-10-03T10:30:42.3002653Z 
+2026-10-03T10:30:42.3002656Z 
+2026-10-03T10:30:42.3002730Z FBSDGLUE-OK
+2026-10-03T10:30:42.3002842Z 
+2026-10-03T10:30:42.3002845Z 
+2026-10-03T10:30:42.3002920Z FILECMD-LEAF-OK
+2026-10-03T10:30:42.3003044Z 
+2026-10-03T10:30:42.3003247Z 
+2026-10-03T10:30:42.3003335Z GETTY-OK
+2026-10-03T10:30:42.3003433Z 
+2026-10-03T10:30:42.3003436Z 
+2026-10-03T10:30:42.3003513Z HOMEDIR-OK
+2026-10-03T10:30:42.3003611Z 
+2026-10-03T10:30:42.3003614Z 
+2026-10-03T10:30:42.3003699Z HOST-BOOTSTRAP-OK
+2026-10-03T10:30:42.3003815Z 
+2026-10-03T10:30:42.3003818Z 
+2026-10-03T10:30:42.3003903Z HOSTNAMED-OK
+2026-10-03T10:30:42.3004014Z 
+2026-10-03T10:30:42.3004017Z 
+2026-10-03T10:30:42.3004112Z HOSTNAMED-BONJOUR-RENAME-SKIP
+2026-10-03T10:30:42.3004277Z 
+2026-10-03T10:30:42.3004280Z 
+2026-10-03T10:30:42.3004358Z HOSTNAMED-DHCP-OK
+2026-10-03T10:30:42.3004480Z 
+2026-10-03T10:30:42.3004489Z 
+2026-10-03T10:30:42.3004579Z HOSTNAMED-MDNS-SKIP
+2026-10-03T10:30:42.3004700Z 
+2026-10-03T10:30:42.3004703Z 
+2026-10-03T10:30:42.3004790Z HOSTNAMED-PREFS-OK
+2026-10-03T10:30:42.3004908Z 
+2026-10-03T10:30:42.3004911Z 
+2026-10-03T10:30:42.3004993Z IPCFG-ARP-OK
+2026-10-03T10:30:42.3005098Z 
+2026-10-03T10:30:42.3005101Z 
+2026-10-03T10:30:42.3005182Z IPCFG-BOOT-OK
+2026-10-03T10:30:42.3005301Z 
+2026-10-03T10:30:42.3005304Z 
+2026-10-03T10:30:42.3005382Z IPCFG-BOUND-OK
+2026-10-03T10:30:42.3005497Z 
+2026-10-03T10:30:42.3005500Z 
+2026-10-03T10:30:42.3005574Z IPCFG-DHCP-OK
+2026-10-03T10:30:42.3005689Z 
+2026-10-03T10:30:42.3005692Z 
+2026-10-03T10:30:42.3005776Z IPCFG-IPCONFIG-OK
+2026-10-03T10:30:42.3005891Z 
+2026-10-03T10:30:42.3005894Z 
+2026-10-03T10:30:42.3005971Z IPCFG-RA-OK
+2026-10-03T10:30:42.3006070Z 
+2026-10-03T10:30:42.3006073Z 
+2026-10-03T10:30:42.3006154Z IPCFG-RENEW-OK
+2026-10-03T10:30:42.3006258Z 
+2026-10-03T10:30:42.3006262Z 
+2026-10-03T10:30:42.3006341Z IPCFG-RPC-OK
+2026-10-03T10:30:42.3006449Z 
+2026-10-03T10:30:42.3006456Z 
+2026-10-03T10:30:42.3006531Z IPCFG-STORE-OK
+2026-10-03T10:30:42.3006642Z 
+2026-10-03T10:30:42.3006645Z 
+2026-10-03T10:30:42.3006716Z KEM-LINK-OK
+2026-10-03T10:30:42.3006820Z 
+2026-10-03T10:30:42.3006823Z 
+2026-10-03T10:30:42.3006906Z LAUNCHCTL-BUILD-OK
+2026-10-03T10:30:42.3007023Z 
+2026-10-03T10:30:42.3007026Z 
+2026-10-03T10:30:42.3007128Z LAUNCHCTL-LIST-OK
+2026-10-03T10:30:42.3007250Z 
+2026-10-03T10:30:42.3007253Z 
+2026-10-03T10:30:42.3007328Z LAUNCHD-BUILD-OK
+2026-10-03T10:30:42.3007448Z 
+2026-10-03T10:30:42.3007451Z 
+2026-10-03T10:30:42.3007534Z LIBDISPATCH-OK
+2026-10-03T10:30:42.3007637Z 
+2026-10-03T10:30:42.3007640Z 
+2026-10-03T10:30:42.3007726Z LIBDISPATCH-MACH-OK
+2026-10-03T10:30:42.3007845Z 
+2026-10-03T10:30:42.3007848Z 
+2026-10-03T10:30:42.3007926Z LIBDS-OK
+2026-10-03T10:30:42.3008026Z 
+2026-10-03T10:30:42.3008029Z 
+2026-10-03T10:30:42.3008377Z LIBSYSTEM-KERNEL-OK
+2026-10-03T10:30:42.3008516Z 
+2026-10-03T10:30:42.3008519Z 
+2026-10-03T10:30:42.3008593Z LIBXPC-OK
+2026-10-03T10:30:42.3008835Z 
+2026-10-03T10:30:42.3008839Z 
+2026-10-03T10:30:42.3008918Z LINUX-MOUNTS-OK
+2026-10-03T10:30:42.3009032Z 
+2026-10-03T10:30:42.3009036Z 
+2026-10-03T10:30:42.3009115Z MACH-PORT-OK
+2026-10-03T10:30:42.3009325Z 
+2026-10-03T10:30:42.3009331Z 
+2026-10-03T10:30:42.3009473Z MACH-SMOKE-OK
+2026-10-03T10:30:42.3009665Z 
+2026-10-03T10:30:42.3009670Z 
+2026-10-03T10:30:42.3009810Z MDNS-BOOT-OK
+2026-10-03T10:30:42.3010000Z 
+2026-10-03T10:30:42.3010005Z 
+2026-10-03T10:30:42.3010133Z MDNS-DNSSD-OK
+2026-10-03T10:30:42.3010330Z 
+2026-10-03T10:30:42.3010335Z 
+2026-10-03T10:30:42.3010462Z MDNS-ENGINE-OK
+2026-10-03T10:30:42.3010662Z 
+2026-10-03T10:30:42.3010667Z 
+2026-10-03T10:30:42.3010802Z MDNS-IFWATCH-OK
+2026-10-03T10:30:42.3011007Z 
+2026-10-03T10:30:42.3011011Z 
+2026-10-03T10:30:42.3011142Z MDNS-STATIC-OK
+2026-10-03T10:30:42.3011331Z 
+2026-10-03T10:30:42.3011342Z 
+2026-10-03T10:30:42.3011470Z MIG-BUILD-OK
+2026-10-03T10:30:42.3011741Z 
+2026-10-03T10:30:42.3011745Z 
+2026-10-03T10:30:42.3011855Z NFS-OK
+2026-10-03T10:30:42.3012040Z 
+2026-10-03T10:30:42.3012044Z 
+2026-10-03T10:30:42.3012183Z NOTIFYD-PROC-OK
+2026-10-03T10:30:42.3012396Z 
+2026-10-03T10:30:42.3012401Z 
+2026-10-03T10:30:42.3012540Z NSS-DS-OK
+2026-10-03T10:30:42.3012720Z 
+2026-10-03T10:30:42.3012724Z 
+2026-10-03T10:30:42.3012854Z NTP-OK
+2026-10-03T10:30:42.3013029Z 
+2026-10-03T10:30:42.3013034Z 
+2026-10-03T10:30:42.3013370Z SC-BOND-OK
+2026-10-03T10:30:42.3013621Z 
+2026-10-03T10:30:42.3013626Z 
+2026-10-03T10:30:42.3013773Z SC-BRIDGE-OK
+2026-10-03T10:30:42.3013980Z 
+2026-10-03T10:30:42.3013985Z 
+2026-10-03T10:30:42.3014114Z SC-LOCK-OK
+2026-10-03T10:30:42.3014296Z 
+2026-10-03T10:30:42.3014301Z 
+2026-10-03T10:30:42.3014434Z SC-MULTI-OK
+2026-10-03T10:30:42.3014626Z 
+2026-10-03T10:30:42.3014632Z 
+2026-10-03T10:30:42.3014772Z SC-NETIF-OK
+2026-10-03T10:30:42.3014945Z 
+2026-10-03T10:30:42.3014950Z 
+2026-10-03T10:30:42.3015087Z SC-NETSET-OK
+2026-10-03T10:30:42.3015277Z 
+2026-10-03T10:30:42.3015282Z 
+2026-10-03T10:30:42.3015412Z SC-NETSVC-OK
+2026-10-03T10:30:42.3015618Z 
+2026-10-03T10:30:42.3015623Z 
+2026-10-03T10:30:42.3015760Z SC-NOTIFY-OK
+2026-10-03T10:30:42.3015946Z 
+2026-10-03T10:30:42.3015950Z 
+2026-10-03T10:30:42.3016077Z SC-PATH-OK
+2026-10-03T10:30:42.3016259Z 
+2026-10-03T10:30:42.3016264Z 
+2026-10-03T10:30:42.3016397Z SC-PLINK-OK
+2026-10-03T10:30:42.3016695Z 
+2026-10-03T10:30:42.3016700Z 
+2026-10-03T10:30:42.3016850Z SC-PNOTIFY-OK
+2026-10-03T10:30:42.3017051Z 
+2026-10-03T10:30:42.3017057Z 
+2026-10-03T10:30:42.3017188Z SC-PREFS-OK
+2026-10-03T10:30:42.3017363Z 
+2026-10-03T10:30:42.3017368Z 
+2026-10-03T10:30:42.3017503Z SC-RUNLOOP-OK
+2026-10-03T10:30:42.3017688Z 
+2026-10-03T10:30:42.3017693Z 
+2026-10-03T10:30:42.3017823Z SC-STORE-OK
+2026-10-03T10:30:42.3018003Z 
+2026-10-03T10:30:42.3018007Z 
+2026-10-03T10:30:42.3018344Z SC-VLAN-OK
+2026-10-03T10:30:42.3018536Z 
+2026-10-03T10:30:42.3018542Z 
+2026-10-03T10:30:42.3018683Z SERVICE-LDCONFIG-OK
+2026-10-03T10:30:42.3018910Z 
+2026-10-03T10:30:42.3018915Z 
+2026-10-03T10:30:42.3019047Z SHELLCMD-LEAF-OK
+2026-10-03T10:30:42.3019263Z 
+2026-10-03T10:30:42.3019268Z 
+2026-10-03T10:30:42.3019398Z SUDO-OK
+2026-10-03T10:30:42.3019563Z 
+2026-10-03T10:30:42.3019568Z 
+2026-10-03T10:30:42.3019704Z SYSCMD-LEAF-OK
+2026-10-03T10:30:42.3019892Z 
+2026-10-03T10:30:42.3019897Z 
+2026-10-03T10:30:42.3020032Z SYSLOG-RUN-OK
+2026-10-03T10:30:42.3020220Z 
+2026-10-03T10:30:42.3020225Z 
+2026-10-03T10:30:42.3020368Z SYSLOGD-PROC-OK
+2026-10-03T10:30:42.3020567Z 
+2026-10-03T10:30:42.3020572Z 
+2026-10-03T10:30:42.3020712Z TASK-SPECIAL-PORT-OK
+2026-10-03T10:30:42.3020940Z 
+2026-10-03T10:30:42.3020946Z 
+2026-10-03T10:30:42.3021076Z TEXTCMD-LEAF-OK
+2026-10-03T10:30:42.3021274Z 
+2026-10-03T10:30:42.3021278Z 
+2026-10-03T10:30:42.3021411Z WAITQUIET-OK
+2026-10-03T10:30:42.3021590Z 
+2026-10-03T10:30:42.3021595Z 
+2026-10-03T10:30:42.3021734Z WEDGE-CHECK-SKIP
+2026-10-03T10:30:42.3021930Z 
+2026-10-03T10:30:42.3021935Z 
+2026-10-03T10:30:42.3022070Z ADVCMD-LEAF-OK
+2026-10-03T10:30:42.3022268Z 
+2026-10-03T10:30:42.3022273Z 
+2026-10-03T10:30:42.3022446Z NEXTBSD-TEST-SUMMARY ok=81 fail=0 skip=6
+2026-10-03T10:30:42.3022995Z 
+2026-10-03T10:30:42.3023000Z 
+2026-10-03T10:30:42.3023135Z admin@selftest ~ % 
+2026-10-03T10:30:42.3023474Z OK: ACCT-HELPERS
+2026-10-03T10:30:42.3023678Z 
+2026-10-03T10:30:42.3023808Z OK: ACCT-LIFECYCLE
+2026-10-03T10:30:42.3024017Z 
+2026-10-03T10:30:42.3024150Z OK: ADVCMD-LEAF
+2026-10-03T10:30:42.3024339Z 
+2026-10-03T10:30:42.3024483Z OK: ADVCMD-LEAF
+2026-10-03T10:30:42.3024723Z 
+2026-10-03T10:30:42.3025130Z OK: /usr/tests/freebsd-launchd-mach/run.sh: NEXTBSD-TEST-SUMMARY ok=81 fail=0 skip=6
+2026-10-03T10:30:42.3025724Z 
+2026-10-03T10:30:42.3028571Z DBG: transcript 2446 bytes; tail: <NL><NL>SC-RUNLOOP-OK<NL><NL><NL>SC-STORE-OK<NL><NL><NL>SC-VLAN-OK<NL><NL><NL>SERVICE-LDCONFIG-OK<NL><NL><NL>SHELLCMD-LEAF-OK<NL><NL><NL>SUDO-OK<NL><NL><NL>SYSCMD-LEAF-OK<NL><NL><NL>SYSLOG-RUN-OK<NL><NL><NL>SYSLOGD-PROC-OK<NL><NL><NL>TASK-SPECIAL-PORT-OK<NL><NL><NL>TEXTCMD-LEAF-OK<NL><NL><NL>WAITQUIET-OK<NL><NL><NL>WEDGE-CHECK-SKIP<NL><NL><NL>ADVCMD-LEAF-OK<NL><NL><NL>NEXTBSD-TEST-SUMMARY ok=81 fail=0 skip=6<NL><NL><NL>admin@selftest ~ % 
+2026-10-03T10:30:42.3031140Z 
+2026-10-03T10:30:42.3031278Z DBG: markers recorded: 3
+2026-10-03T10:30:42.3031490Z 
+2026-10-03T10:30:42.3031703Z DBG-MARK: <ACCT-HELPERS> at OK/SKIP/FAIL = 905/-1/-1
+2026-10-03T10:30:42.3032106Z 
+2026-10-03T10:30:42.3032341Z DBG-MARK: <ACCT-LIFECYCLE> at OK/SKIP/FAIL = 923/-1/-1
+2026-10-03T10:30:42.3032940Z 
+2026-10-03T10:30:42.3033156Z DBG-MARK: <ADVCMD-LEAF> at OK/SKIP/FAIL = 943/-1/-1
+2026-10-03T10:30:42.3033652Z 
+2026-10-03T10:30:42.3033918Z DBG-MARK: <ASLMANAGER-DEMAND> at OK/SKIP/FAIL = -1/960/-1
+2026-10-03T10:30:42.3034342Z 
+2026-10-03T10:30:42.3034561Z DBG-MARK: <BOOT-BANNER> at OK/SKIP/FAIL = -1/985/-1
+2026-10-03T10:30:42.3034935Z 
+2026-10-03T10:30:42.3035151Z DBG-MARK: <BOOTSTRAP> at OK/SKIP/FAIL = 1004/-1/-1
+2026-10-03T10:30:42.3035501Z 
+2026-10-03T10:30:42.3035742Z DBG-MARK: <BOOTSTRAP-REMOTE> at OK/SKIP/FAIL = 1019/-1/-1
+2026-10-03T10:30:42.3036112Z 
+2026-10-03T10:30:42.3036308Z DBG-MARK: <BUSYSTATE> at OK/SKIP/FAIL = 1041/-1/-1
+2026-10-03T10:30:42.3036687Z 
+2026-10-03T10:30:42.3037877Z FAIL: BOOTSTRAP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3039116Z 
+2026-10-03T10:30:42.3039929Z FAIL: BOOTSTRAP-REMOTE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3040503Z 
+2026-10-03T10:30:42.3041022Z FAIL: BUSYSTATE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3041952Z 
+2026-10-03T10:30:42.3042902Z FAIL: CONFIGD-LIST — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3043918Z 
+2026-10-03T10:30:42.3044992Z FAIL: CONFIGD-MULTI — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3046068Z 
+2026-10-03T10:30:42.3047123Z FAIL: CONFIGD-NOTIFY — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3048443Z 
+2026-10-03T10:30:42.3049522Z FAIL: CONFIGD-PATTERN — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3050522Z 
+2026-10-03T10:30:42.3051543Z FAIL: CONFIGD-STORE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3052522Z 
+2026-10-03T10:30:42.3053543Z FAIL: COREFOUNDATION — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3054525Z 
+2026-10-03T10:30:42.3055499Z FAIL: DA-BOOT — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3056610Z 
+2026-10-03T10:30:42.3057182Z FAIL: DOMAIN-DIRS — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3057707Z 
+2026-10-03T10:30:42.3058536Z FAIL: FBSDGLUE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3059058Z 
+2026-10-03T10:30:42.3059597Z FAIL: FILECMD-LEAF — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3060127Z 
+2026-10-03T10:30:42.3060659Z FAIL: HOST-BOOTSTRAP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3061198Z 
+2026-10-03T10:30:42.3061707Z FAIL: HOSTNAMED — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3062420Z 
+2026-10-03T10:30:42.3062965Z FAIL: HOSTNAMED-DHCP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3063506Z 
+2026-10-03T10:30:42.3064661Z FAIL: HOSTNAMED-PREFS — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3065470Z 
+2026-10-03T10:30:42.3066026Z FAIL: IPCFG-ARP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3066558Z 
+2026-10-03T10:30:42.3067070Z FAIL: IPCFG-BOOT — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3067793Z 
+2026-10-03T10:30:42.3068979Z FAIL: IPCFG-BOUND — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3069686Z 
+2026-10-03T10:30:42.3070241Z FAIL: IPCFG-DHCP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3070770Z 
+2026-10-03T10:30:42.3071310Z FAIL: IPCFG-IPCONFIG — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3071850Z 
+2026-10-03T10:30:42.3072353Z FAIL: IPCFG-RA — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3072867Z 
+2026-10-03T10:30:42.3073383Z FAIL: IPCFG-RENEW — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3073911Z 
+2026-10-03T10:30:42.3074435Z FAIL: IPCFG-RPC — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3074953Z 
+2026-10-03T10:30:42.3075472Z FAIL: IPCFG-STORE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3076009Z 
+2026-10-03T10:30:42.3076514Z FAIL: KEM-LINK — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3077031Z 
+2026-10-03T10:30:42.3077577Z FAIL: LAUNCHCTL-BUILD — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3078391Z 
+2026-10-03T10:30:42.3078952Z FAIL: LAUNCHCTL-LIST — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3079841Z 
+2026-10-03T10:30:42.3080387Z FAIL: LAUNCHD-BUILD — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3081108Z 
+2026-10-03T10:30:42.3082084Z FAIL: LIBDISPATCH — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3082638Z 
+2026-10-03T10:30:42.3083207Z FAIL: LIBDISPATCH-MACH — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3083765Z 
+2026-10-03T10:30:42.3084307Z FAIL: LIBSYSTEM-KERNEL — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3084862Z 
+2026-10-03T10:30:42.3085469Z FAIL: LIBXPC — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3086412Z 
+2026-10-03T10:30:42.3087216Z FAIL: LINUX-MOUNTS — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3087760Z 
+2026-10-03T10:30:42.3088809Z FAIL: MACH-PORT — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3089369Z 
+2026-10-03T10:30:42.3089909Z FAIL: MACH-SMOKE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3090441Z 
+2026-10-03T10:30:42.3090952Z FAIL: MDNS-BOOT — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3091465Z 
+2026-10-03T10:30:42.3091982Z FAIL: MDNS-DNSSD — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3092509Z 
+2026-10-03T10:30:42.3093033Z FAIL: MDNS-ENGINE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3093559Z 
+2026-10-03T10:30:42.3094093Z FAIL: MDNS-IFWATCH — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3094628Z 
+2026-10-03T10:30:42.3095134Z FAIL: MIG-BUILD — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3095656Z 
+2026-10-03T10:30:42.3096180Z FAIL: NOTIFYD-PROC — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3096709Z 
+2026-10-03T10:30:42.3097219Z FAIL: SC-BOND — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3097738Z 
+2026-10-03T10:30:42.3098530Z FAIL: SC-BRIDGE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3099242Z 
+2026-10-03T10:30:42.3100269Z FAIL: SC-LOCK — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3100888Z 
+2026-10-03T10:30:42.3101429Z FAIL: SC-MULTI — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3101945Z 
+2026-10-03T10:30:42.3102451Z FAIL: SC-NETIF — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3103421Z 
+2026-10-03T10:30:42.3104259Z FAIL: SC-NETSET — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3104971Z 
+2026-10-03T10:30:42.3105496Z FAIL: SC-NETSVC — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3106020Z 
+2026-10-03T10:30:42.3106531Z FAIL: SC-NOTIFY — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3107052Z 
+2026-10-03T10:30:42.3107555Z FAIL: SC-PATH — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3108064Z 
+2026-10-03T10:30:42.3108911Z FAIL: SC-PLINK — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3109455Z 
+2026-10-03T10:30:42.3109990Z FAIL: SC-PNOTIFY — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3110542Z 
+2026-10-03T10:30:42.3111060Z FAIL: SC-PREFS — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3111586Z 
+2026-10-03T10:30:42.3112247Z FAIL: SC-RUNLOOP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3112777Z 
+2026-10-03T10:30:42.3113290Z FAIL: SC-STORE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3113986Z 
+2026-10-03T10:30:42.3114505Z FAIL: SC-VLAN — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3115172Z 
+2026-10-03T10:30:42.3116245Z FAIL: SERVICE-LDCONFIG — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3116848Z 
+2026-10-03T10:30:42.3117845Z FAIL: SHELLCMD-LEAF — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3119055Z 
+2026-10-03T10:30:42.3119918Z FAIL: SYSCMD-LEAF — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3120885Z 
+2026-10-03T10:30:42.3121617Z FAIL: SYSLOG-RUN — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3122157Z 
+2026-10-03T10:30:42.3122833Z FAIL: SYSLOGD-PROC — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3123380Z 
+2026-10-03T10:30:42.3123938Z FAIL: TASK-SPECIAL-PORT — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3124516Z 
+2026-10-03T10:30:42.3125045Z FAIL: TEXTCMD-LEAF — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3125582Z 
+2026-10-03T10:30:42.3126098Z FAIL: WAITQUIET — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:30:42.3126618Z 
+2026-10-03T10:30:42.3126770Z FAIL: 66 must-pass marker(s) missing from the suite output
+2026-10-03T10:30:42.3127131Z NEXTBSD-TEST-SUMMARY ok=81 fail=0 skip=6
+2026-10-03T10:30:42.3127528Z ==> boot-test FAILED rc=1 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh)
+2026-10-03T10:30:42.3127935Z     serial transcript: tests/boot.log
+2026-10-03T10:30:42.3128588Z SELFTEST FAIL: case ok — expected rc 0, got 1
+2026-10-03T10:30:42.3129326Z ==> case: fail (suite: /usr/tests/freebsd-launchd-mach/run.sh) — expect rc 1
+2026-10-03T10:30:42.3153300Z ==> boot test: tests/fake.img
+2026-10-03T10:30:42.3163856Z -rw-r--r-- 1 runner runner 0 Oct  3 10:30 tests/fake.img
+2026-10-03T10:30:42.3241415Z ==> using KVM acceleration
+2026-10-03T10:30:42.3416339Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T10:30:42.3417199Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T10:30:42.3464103Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T10:30:42.3464352Z 
+2026-10-03T10:30:42.3464357Z 
+2026-10-03T10:30:42.3464457Z Loading /boot/loader.conf
+2026-10-03T10:30:42.3464617Z 
+2026-10-03T10:30:42.3464621Z 
+2026-10-03T10:30:42.3464816Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T10:30:42.3465135Z 
+2026-10-03T10:30:42.3465138Z 
+2026-10-03T10:30:42.3465320Z OK 
+2026-10-03T10:30:42.3465553Z ==> at loader prompt
+2026-10-03T10:30:43.5303472Z  set console=comconsole
+2026-10-03T10:30:43.5303899Z OK set console=comconsole
+2026-10-03T10:30:43.5304063Z 
+2026-10-03T10:30:43.5304075Z 
+2026-10-03T10:30:44.5936980Z OK set boot_serial=YES
+2026-10-03T10:30:44.5937512Z OK set boot_serial=YES
+2026-10-03T10:30:44.5937816Z 
+2026-10-03T10:30:44.5937825Z 
+2026-10-03T10:30:45.9776199Z OK set comconsole_speed=115200
+2026-10-03T10:30:45.9776952Z OK set comconsole_speed=115200
+2026-10-03T10:30:45.9777543Z 
+2026-10-03T10:30:45.9777550Z 
+2026-10-03T10:30:47.1611389Z OK set boot_multicons=YES
+2026-10-03T10:30:47.1611815Z OK set boot_multicons=YES
+2026-10-03T10:30:47.1612011Z 
+2026-10-03T10:30:47.1612016Z 
+2026-10-03T10:30:48.2643389Z OK set boot_mutemsgs=NO
+2026-10-03T10:30:48.2643907Z OK set boot_mutemsgs=NO
+2026-10-03T10:30:48.2644103Z 
+2026-10-03T10:30:48.2644108Z 
+2026-10-03T10:30:48.8459722Z OK boot -v
+2026-10-03T10:30:48.8460047Z Booting [/boot/kernel/kernel]
+2026-10-03T10:30:48.8460281Z 
+2026-10-03T10:30:48.8460287Z 
+2026-10-03T10:30:48.8460387Z ---<<BOOT>>---
+2026-10-03T10:30:48.8460543Z 
+2026-10-03T10:30:48.8460575Z 
+2026-10-03T10:30:48.8460728Z Copyright (c) 1992-2025 The FreeBSD Project.
+2026-10-03T10:30:48.8460987Z 
+2026-10-03T10:30:48.8460991Z 
+2026-10-03T10:30:48.8461122Z early-init: sethostname('selftest')
+2026-10-03T10:30:48.8461335Z 
+2026-10-03T10:30:48.8461339Z 
+2026-10-03T10:30:48.8461550Z early-init: opened /dev/klog (kernel.log_open=1; console quiet)
+2026-10-03T10:30:48.8461890Z 
+2026-10-03T10:30:48.8461894Z 
+2026-10-03T10:30:48.8462009Z NextBSD/amd64 (selftest) (console)
+2026-10-03T10:30:48.8462215Z 
+2026-10-03T10:30:48.8462219Z 
+2026-10-03T10:30:48.8464910Z 
+2026-10-03T10:30:48.8465660Z OK: BOOT-BANNER-OK — getty shows the synthesized hostname 'selftest'
+2026-10-03T10:30:49.1474850Z login:
+2026-10-03T10:30:49.1475195Z 
+2026-10-03T10:30:49.1475203Z 
+2026-10-03T10:30:49.1475210Z 
+2026-10-03T10:30:49.1475447Z OK: boot reached the login prompt
+2026-10-03T10:30:49.1476036Z admin
+2026-10-03T10:30:49.1476490Z Password:
+2026-10-03T10:30:49.1476743Z 
+2026-10-03T10:30:49.1476750Z 
+2026-10-03T10:30:49.1477143Z 
+2026-10-03T10:30:49.1477390Z admin@selftest ~ % 
+2026-10-03T10:30:49.1477876Z OK: logged in as admin
+2026-10-03T10:30:49.1481121Z ==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T10:30:49.1491671Z r() { if [ "$(id -u)" = 0 ]; then "$@"; else sudo "$@"; fi; }
+2026-10-03T10:30:49.1492351Z admin@selftest ~ % r /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T10:30:49.1492734Z ACCT-HELPERS-OK
+2026-10-03T10:30:49.1492865Z 
+2026-10-03T10:30:49.1492869Z 
+2026-10-03T10:30:49.1492956Z ACCT-LIFECYCLE-OK
+2026-10-03T10:30:49.1493088Z 
+2026-10-03T10:30:49.1493092Z 
+2026-10-03T10:30:49.1493166Z ADVCMD-LEAF-OK
+2026-10-03T10:30:49.1493338Z 
+2026-10-03T10:30:49.1493342Z 
+2026-10-03T10:30:49.1493501Z ASLMANAGER-DEMAND-SKIP
+2026-10-03T10:30:49.1493729Z 
+2026-10-03T10:30:49.1493827Z 
+2026-10-03T10:30:49.1493976Z BOOT-BANNER-SKIP
+2026-10-03T10:30:49.1494164Z 
+2026-10-03T10:30:49.1494169Z 
+2026-10-03T10:30:49.1494294Z BOOTSTRAP-OK
+2026-10-03T10:30:49.1494466Z 
+2026-10-03T10:30:49.1494471Z 
+2026-10-03T10:30:49.1494904Z BOOTSTRAP-REMOTE-OK
+2026-10-03T10:30:49.1495112Z 
+2026-10-03T10:30:49.1495117Z 
+2026-10-03T10:30:49.1495244Z BUSYSTATE-OK
+2026-10-03T10:30:49.1495429Z 
+2026-10-03T10:30:49.1495433Z 
+2026-10-03T10:30:49.1495558Z CONFIGD-LIST-OK
+2026-10-03T10:30:49.1495751Z 
+2026-10-03T10:30:49.1495756Z 
+2026-10-03T10:30:49.1495883Z CONFIGD-MULTI-OK
+2026-10-03T10:30:49.1496131Z 
+2026-10-03T10:30:49.1496136Z 
+2026-10-03T10:30:49.1496271Z CONFIGD-NOTIFY-OK
+2026-10-03T10:30:49.1496478Z 
+2026-10-03T10:30:49.1496482Z 
+2026-10-03T10:30:49.1496651Z CONFIGD-PATTERN-OK
+2026-10-03T10:30:49.1496848Z 
+2026-10-03T10:30:49.1496852Z 
+2026-10-03T10:30:49.1497007Z CONFIGD-STORE-OK
+2026-10-03T10:30:49.1497196Z 
+2026-10-03T10:30:49.1497201Z 
+2026-10-03T10:30:49.1497373Z COREFOUNDATION-OK
+2026-10-03T10:30:49.1497568Z 
+2026-10-03T10:30:49.1497572Z 
+2026-10-03T10:30:49.1497647Z DA-BOOT-OK
+2026-10-03T10:30:49.1497757Z 
+2026-10-03T10:30:49.1497760Z 
+2026-10-03T10:30:49.1497834Z DA-IOKIT-OK
+2026-10-03T10:30:49.1497937Z 
+2026-10-03T10:30:49.1497948Z 
+2026-10-03T10:30:49.1498021Z DAEMON-STATE-OK
+2026-10-03T10:30:49.1498462Z 
+2026-10-03T10:30:49.1498468Z 
+2026-10-03T10:30:49.1498576Z DOMAIN-DIRS-OK
+2026-10-03T10:30:49.1498690Z 
+2026-10-03T10:30:49.1498693Z 
+2026-10-03T10:30:49.1498784Z EVFILT-MACHPORT-SKIP
+2026-10-03T10:30:49.1498912Z 
+2026-10-03T10:30:49.1498915Z 
+2026-10-03T10:30:49.1499198Z EVFILT-MACHPORT-CONCURRENT-OK
+2026-10-03T10:30:49.1499368Z 
+2026-10-03T10:30:49.1499371Z 
+2026-10-03T10:30:49.1499443Z FBSDGLUE-OK
+2026-10-03T10:30:49.1499548Z 
+2026-10-03T10:30:49.1499552Z 
+2026-10-03T10:30:49.1499627Z FILECMD-LEAF-OK
+2026-10-03T10:30:49.1499739Z 
+2026-10-03T10:30:49.1499742Z 
+2026-10-03T10:30:49.1499811Z GETTY-OK
+2026-10-03T10:30:49.1499911Z 
+2026-10-03T10:30:49.1499914Z 
+2026-10-03T10:30:49.1499990Z HOMEDIR-OK
+2026-10-03T10:30:49.1500088Z 
+2026-10-03T10:30:49.1500091Z 
+2026-10-03T10:30:49.1500174Z HOST-BOOTSTRAP-OK
+2026-10-03T10:30:49.1500319Z 
+2026-10-03T10:30:49.1500322Z 
+2026-10-03T10:30:49.1500405Z HOSTNAMED-OK
+2026-10-03T10:30:49.1500520Z 
+2026-10-03T10:30:49.1500523Z 
+2026-10-03T10:30:49.1500617Z HOSTNAMED-BONJOUR-RENAME-SKIP
+2026-10-03T10:30:49.1500777Z 
+2026-10-03T10:30:49.1500780Z 
+2026-10-03T10:30:49.1500857Z HOSTNAMED-DHCP-OK
+2026-10-03T10:30:49.1500985Z 
+2026-10-03T10:30:49.1500988Z 
+2026-10-03T10:30:49.1501067Z HOSTNAMED-MDNS-SKIP
+2026-10-03T10:30:49.1501194Z 
+2026-10-03T10:30:49.1501203Z 
+2026-10-03T10:30:49.1501290Z HOSTNAMED-PREFS-OK
+2026-10-03T10:30:49.1501408Z 
+2026-10-03T10:30:49.1501411Z 
+2026-10-03T10:30:49.1501537Z IPCFG-ARP-OK
+2026-10-03T10:30:49.1501716Z 
+2026-10-03T10:30:49.1501720Z 
+2026-10-03T10:30:49.1501840Z IPCFG-BOOT-OK
+2026-10-03T10:30:49.1502016Z 
+2026-10-03T10:30:49.1502020Z 
+2026-10-03T10:30:49.1502139Z IPCFG-BOUND-OK
+2026-10-03T10:30:49.1502320Z 
+2026-10-03T10:30:49.1502325Z 
+2026-10-03T10:30:49.1502443Z IPCFG-DHCP-OK
+2026-10-03T10:30:49.1502632Z 
+2026-10-03T10:30:49.1502636Z 
+2026-10-03T10:30:49.1502767Z IPCFG-IPCONFIG-OK
+2026-10-03T10:30:49.1502964Z 
+2026-10-03T10:30:49.1502968Z 
+2026-10-03T10:30:49.1503102Z IPCFG-RA-OK
+2026-10-03T10:30:49.1503269Z 
+2026-10-03T10:30:49.1503273Z 
+2026-10-03T10:30:49.1503404Z IPCFG-RENEW-OK
+2026-10-03T10:30:49.1503593Z 
+2026-10-03T10:30:49.1503597Z 
+2026-10-03T10:30:49.1503731Z IPCFG-RPC-OK
+2026-10-03T10:30:49.1503928Z 
+2026-10-03T10:30:49.1503933Z 
+2026-10-03T10:30:49.1504012Z IPCFG-STORE-OK
+2026-10-03T10:30:49.1504129Z 
+2026-10-03T10:30:49.1504140Z 
+2026-10-03T10:30:49.1504214Z KEM-LINK-OK
+2026-10-03T10:30:49.1504319Z 
+2026-10-03T10:30:49.1504322Z 
+2026-10-03T10:30:49.1504400Z LAUNCHCTL-BUILD-OK
+2026-10-03T10:30:49.1504523Z 
+2026-10-03T10:30:49.1504526Z 
+2026-10-03T10:30:49.1504611Z LAUNCHCTL-LIST-OK
+2026-10-03T10:30:49.1504721Z 
+2026-10-03T10:30:49.1504724Z 
+2026-10-03T10:30:49.1504803Z LAUNCHD-BUILD-OK
+2026-10-03T10:30:49.1504915Z 
+2026-10-03T10:30:49.1504918Z 
+2026-10-03T10:30:49.1504999Z LIBDISPATCH-OK
+2026-10-03T10:30:49.1505104Z 
+2026-10-03T10:30:49.1505115Z 
+2026-10-03T10:30:49.1505193Z LIBDISPATCH-MACH-OK
+2026-10-03T10:30:49.1505315Z 
+2026-10-03T10:30:49.1505475Z 
+2026-10-03T10:30:49.1505550Z LIBDS-OK
+2026-10-03T10:30:49.1505651Z 
+2026-10-03T10:30:49.1505654Z 
+2026-10-03T10:30:49.1505732Z LIBSYSTEM-KERNEL-OK
+2026-10-03T10:30:49.1505854Z 
+2026-10-03T10:30:49.1505857Z 
+2026-10-03T10:30:49.1505933Z LIBXPC-OK
+2026-10-03T10:30:49.1506031Z 
+2026-10-03T10:30:49.1506034Z 
+2026-10-03T10:30:49.1506117Z LINUX-MOUNTS-OK
+2026-10-03T10:30:49.1506234Z 
+2026-10-03T10:30:49.1506238Z 
+2026-10-03T10:30:49.1506322Z MACH-PORT-OK
+2026-10-03T10:30:49.1506428Z 
+2026-10-03T10:30:49.1506437Z 
+2026-10-03T10:30:49.1506510Z MACH-SMOKE-OK
+2026-10-03T10:30:49.1506618Z 
+2026-10-03T10:30:49.1506621Z 
+2026-10-03T10:30:49.1506694Z MDNS-BOOT-OK
+2026-10-03T10:30:49.1506800Z 
+2026-10-03T10:30:49.1506803Z 
+2026-10-03T10:30:49.1506874Z MDNS-DNSSD-OK
+2026-10-03T10:30:49.1506981Z 
+2026-10-03T10:30:49.1506984Z 
+2026-10-03T10:30:49.1507063Z MDNS-ENGINE-OK
+2026-10-03T10:30:49.1507168Z 
+2026-10-03T10:30:49.1507171Z 
+2026-10-03T10:30:49.1507254Z MDNS-IFWATCH-OK
+2026-10-03T10:30:49.1507360Z 
+2026-10-03T10:30:49.1507369Z 
+2026-10-03T10:30:49.1507448Z MDNS-STATIC-OK
+2026-10-03T10:30:49.1507555Z 
+2026-10-03T10:30:49.1507558Z 
+2026-10-03T10:30:49.1507635Z MIG-BUILD-OK
+2026-10-03T10:30:49.1507741Z 
+2026-10-03T10:30:49.1507744Z 
+2026-10-03T10:30:49.1507812Z NFS-OK
+2026-10-03T10:30:49.1507914Z 
+2026-10-03T10:30:49.1507916Z 
+2026-10-03T10:30:49.1507991Z NOTIFYD-PROC-OK
+2026-10-03T10:30:49.1508498Z 
+2026-10-03T10:30:49.1508503Z 
+2026-10-03T10:30:49.1508588Z NSS-DS-OK
+2026-10-03T10:30:49.1508695Z 
+2026-10-03T10:30:49.1508698Z 
+2026-10-03T10:30:49.1508772Z NTP-OK
+2026-10-03T10:30:49.1508866Z 
+2026-10-03T10:30:49.1508869Z 
+2026-10-03T10:30:49.1508944Z SC-BOND-OK
+2026-10-03T10:30:49.1509043Z 
+2026-10-03T10:30:49.1509047Z 
+2026-10-03T10:30:49.1509128Z SC-BRIDGE-OK
+2026-10-03T10:30:49.1509237Z 
+2026-10-03T10:30:49.1509240Z 
+2026-10-03T10:30:49.1509309Z SC-LOCK-OK
+2026-10-03T10:30:49.1509411Z 
+2026-10-03T10:30:49.1509414Z 
+2026-10-03T10:30:49.1509484Z SC-MULTI-OK
+2026-10-03T10:30:49.1509588Z 
+2026-10-03T10:30:49.1509597Z 
+2026-10-03T10:30:49.1509667Z SC-NETIF-OK
+2026-10-03T10:30:49.1509770Z 
+2026-10-03T10:30:49.1509773Z 
+2026-10-03T10:30:49.1509850Z SC-NETSET-OK
+2026-10-03T10:30:49.1509951Z 
+2026-10-03T10:30:49.1509954Z 
+2026-10-03T10:30:49.1510032Z SC-NETSVC-OK
+2026-10-03T10:30:49.1510132Z 
+2026-10-03T10:30:49.1510135Z 
+2026-10-03T10:30:49.1510212Z SC-NOTIFY-OK
+2026-10-03T10:30:49.1510323Z 
+2026-10-03T10:30:49.1510326Z 
+2026-10-03T10:30:49.1510399Z SC-PATH-OK
+2026-10-03T10:30:49.1510502Z 
+2026-10-03T10:30:49.1510505Z 
+2026-10-03T10:30:49.1510576Z SC-PLINK-OK
+2026-10-03T10:30:49.1510682Z 
+2026-10-03T10:30:49.1510686Z 
+2026-10-03T10:30:49.1510758Z SC-PNOTIFY-OK
+2026-10-03T10:30:49.1510868Z 
+2026-10-03T10:30:49.1510871Z 
+2026-10-03T10:30:49.1510948Z SC-PREFS-OK
+2026-10-03T10:30:49.1511045Z 
+2026-10-03T10:30:49.1511048Z 
+2026-10-03T10:30:49.1511131Z SC-RUNLOOP-OK
+2026-10-03T10:30:49.1511234Z 
+2026-10-03T10:30:49.1511237Z 
+2026-10-03T10:30:49.1511313Z SC-STORE-OK
+2026-10-03T10:30:49.1511416Z 
+2026-10-03T10:30:49.1511419Z 
+2026-10-03T10:30:49.1511498Z SC-VLAN-OK
+2026-10-03T10:30:49.1511604Z 
+2026-10-03T10:30:49.1511607Z 
+2026-10-03T10:30:49.1511688Z SERVICE-LDCONFIG-OK
+2026-10-03T10:30:49.1511815Z 
+2026-10-03T10:30:49.1511818Z 
+2026-10-03T10:30:49.1511895Z SHELLCMD-LEAF-OK
+2026-10-03T10:30:49.1512016Z 
+2026-10-03T10:30:49.1512019Z 
+2026-10-03T10:30:49.1512094Z SUDO-OK
+2026-10-03T10:30:49.1512193Z 
+2026-10-03T10:30:49.1512196Z 
+2026-10-03T10:30:49.1512277Z SYSCMD-LEAF-OK
+2026-10-03T10:30:49.1512383Z 
+2026-10-03T10:30:49.1512386Z 
+2026-10-03T10:30:49.1512466Z SYSLOG-RUN-OK
+2026-10-03T10:30:49.1512633Z 
+2026-10-03T10:30:49.1512648Z 
+2026-10-03T10:30:49.1512790Z SYSLOGD-PROC-OK
+2026-10-03T10:30:49.1512990Z 
+2026-10-03T10:30:49.1512995Z 
+2026-10-03T10:30:49.1513137Z TASK-SPECIAL-PORT-OK
+2026-10-03T10:30:49.1513370Z 
+2026-10-03T10:30:49.1513375Z 
+2026-10-03T10:30:49.1513505Z TEXTCMD-LEAF-OK
+2026-10-03T10:30:49.1513704Z 
+2026-10-03T10:30:49.1513708Z 
+2026-10-03T10:30:49.1513843Z WAITQUIET-OK
+2026-10-03T10:30:49.1514019Z 
+2026-10-03T10:30:49.1514198Z 
+2026-10-03T10:30:49.1514350Z WEDGE-CHECK-SKIP
+2026-10-03T10:30:49.1514554Z 
+2026-10-03T10:30:49.1514559Z 
+2026-10-03T10:30:49.1514695Z ADVCMD-LEAF-FAIL
+2026-10-03T10:30:49.1514896Z 
+2026-10-03T10:30:49.1514907Z 
+2026-10-03T10:30:49.1515090Z NEXTBSD-TEST-SUMMARY ok=80 fail=1 skip=6
+2026-10-03T10:30:49.1515433Z 
+2026-10-03T10:30:49.1515439Z 
+2026-10-03T10:30:49.1515589Z admin@selftest ~ % 
+2026-10-03T10:30:49.1515931Z OK: ACCT-HELPERS
+2026-10-03T10:30:49.1516129Z 
+2026-10-03T10:30:49.1516300Z OK: ACCT-LIFECYCLE
+2026-10-03T10:30:49.1516578Z 
+2026-10-03T10:30:49.1517319Z FAIL: ADVCMD-LEAF — pending T3 audit; live arms: monolith t=fail/f=fail/s=continue
+2026-10-03T10:30:49.1573705Z NEXTBSD-TEST-SUMMARY ok=80 fail=1 skip=6
+2026-10-03T10:30:49.1575453Z ==> boot-test FAILED rc=1 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh)
+2026-10-03T10:30:49.1576222Z     serial transcript: tests/boot.log
+2026-10-03T10:30:49.1576947Z SELFTEST OK:   case fail (rc=1)
+2026-10-03T10:30:49.1577790Z ==> case: nosummary (suite: /usr/tests/freebsd-launchd-mach/run.sh) — expect rc 2
+2026-10-03T10:30:49.1607739Z ==> boot test: tests/fake.img
+2026-10-03T10:30:49.1618018Z -rw-r--r-- 1 runner runner 0 Oct  3 10:30 tests/fake.img
+2026-10-03T10:30:49.1690922Z ==> using KVM acceleration
+2026-10-03T10:30:49.1691258Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T10:30:49.1869349Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T10:30:49.1915074Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T10:30:49.1915452Z 
+2026-10-03T10:30:49.1915457Z 
+2026-10-03T10:30:49.1915563Z Loading /boot/loader.conf
+2026-10-03T10:30:49.1915724Z 
+2026-10-03T10:30:49.1915729Z 
+2026-10-03T10:30:49.1915933Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T10:30:49.1916224Z 
+2026-10-03T10:30:49.1916227Z 
+2026-10-03T10:30:49.1916301Z OK 
+2026-10-03T10:30:49.1916475Z ==> at loader prompt
+2026-10-03T10:30:50.3754604Z  set console=comconsole
+2026-10-03T10:30:50.3755158Z OK set console=comconsole
+2026-10-03T10:30:50.3755521Z 
+2026-10-03T10:30:50.3755542Z 
+2026-10-03T10:30:51.4386652Z OK set boot_serial=YES
+2026-10-03T10:30:51.4387184Z OK set boot_serial=YES
+2026-10-03T10:30:51.4387474Z 
+2026-10-03T10:30:51.4387481Z 
+2026-10-03T10:30:52.8231535Z OK set comconsole_speed=115200
+2026-10-03T10:30:52.8232145Z OK set comconsole_speed=115200
+2026-10-03T10:30:52.8232542Z 
+2026-10-03T10:30:52.8232550Z 
+2026-10-03T10:30:54.0071170Z OK set boot_multicons=YES
+2026-10-03T10:30:54.0071771Z OK set boot_multicons=YES
+2026-10-03T10:30:54.0072051Z 
+2026-10-03T10:30:54.0072057Z 
+2026-10-03T10:30:55.1107331Z OK set boot_mutemsgs=NO
+2026-10-03T10:30:55.1108690Z OK set boot_mutemsgs=NO
+2026-10-03T10:30:55.1109168Z 
+2026-10-03T10:30:55.1109475Z 
+2026-10-03T10:30:55.6925057Z OK boot -v
+2026-10-03T10:30:55.6925447Z Booting [/boot/kernel/kernel]
+2026-10-03T10:30:55.6925652Z 
+2026-10-03T10:30:55.6925657Z 
+2026-10-03T10:30:55.6925743Z ---<<BOOT>>---
+2026-10-03T10:30:55.6925870Z 
+2026-10-03T10:30:55.6925899Z 
+2026-10-03T10:30:55.6926025Z Copyright (c) 1992-2025 The FreeBSD Project.
+2026-10-03T10:30:55.6926240Z 
+2026-10-03T10:30:55.6926244Z 
+2026-10-03T10:30:55.6926354Z early-init: sethostname('selftest')
+2026-10-03T10:30:55.6926539Z 
+2026-10-03T10:30:55.6926549Z 
+2026-10-03T10:30:55.6926729Z early-init: opened /dev/klog (kernel.log_open=1; console quiet)
+2026-10-03T10:30:55.6927022Z 
+2026-10-03T10:30:55.6927025Z 
+2026-10-03T10:30:55.6927122Z NextBSD/amd64 (selftest) (console)
+2026-10-03T10:30:55.6927299Z 
+2026-10-03T10:30:55.6927303Z 
+2026-10-03T10:30:55.6929979Z 
+2026-10-03T10:30:55.6930858Z OK: BOOT-BANNER-OK — getty shows the synthesized hostname 'selftest'
+2026-10-03T10:30:55.9929657Z login:
+2026-10-03T10:30:55.9930038Z 
+2026-10-03T10:30:55.9930046Z 
+2026-10-03T10:30:55.9930053Z 
+2026-10-03T10:30:55.9930286Z OK: boot reached the login prompt
+2026-10-03T10:30:55.9930919Z admin
+2026-10-03T10:30:55.9931352Z Password:
+2026-10-03T10:30:55.9931594Z 
+2026-10-03T10:30:55.9931601Z 
+2026-10-03T10:30:55.9931612Z 
+2026-10-03T10:30:55.9932377Z admin@selftest ~ % 
+2026-10-03T10:30:55.9932848Z OK: logged in as admin
+2026-10-03T10:30:55.9934593Z ==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T10:30:55.9945916Z r() { if [ "$(id -u)" = 0 ]; then "$@"; else sudo "$@"; fi; }
+2026-10-03T10:30:55.9946626Z admin@selftest ~ % r /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T10:30:55.9947130Z ACCT-HELPERS-OK
+2026-10-03T10:30:55.9947273Z 
+2026-10-03T10:30:55.9947277Z 
+2026-10-03T10:30:55.9947361Z ACCT-LIFECYCLE-OK
+2026-10-03T10:30:55.9947496Z 
+2026-10-03T10:30:55.9947499Z 
+2026-10-03T10:30:55.9947663Z ADVCMD-LEAF-OK
+2026-10-03T10:30:55.9947872Z 
+2026-10-03T10:30:55.9947877Z 
+2026-10-03T10:30:55.9947975Z ASLMANAGER-DEMAND-SKIP
+2026-10-03T10:30:55.9948386Z 
+2026-10-03T10:30:55.9948391Z 
+2026-10-03T10:30:55.9948542Z BOOT-BANNER-SKIP
+2026-10-03T10:30:55.9948714Z 
+2026-10-03T10:30:55.9948749Z 
+2026-10-03T10:30:55.9948834Z BOOTSTRAP-OK
+2026-10-03T10:30:55.9948946Z 
+2026-10-03T10:30:55.9948949Z 
+2026-10-03T10:30:55.9949048Z BOOTSTRAP-REMOTE-OK
+2026-10-03T10:30:55.9949239Z 
+2026-10-03T10:30:55.9949243Z 
+2026-10-03T10:30:55.9949387Z BUSYSTATE-OK
+2026-10-03T10:30:55.9949599Z 
+2026-10-03T10:30:55.9949604Z 
+2026-10-03T10:30:55.9949745Z CONFIGD-LIST-OK
+2026-10-03T10:30:55.9949875Z 
+2026-10-03T10:30:55.9949878Z 
+2026-10-03T10:30:55.9949956Z CONFIGD-MULTI-OK
+2026-10-03T10:30:55.9950277Z 
+2026-10-03T10:30:55.9950281Z 
+2026-10-03T10:30:55.9950363Z CONFIGD-NOTIFY-OK
+2026-10-03T10:30:55.9950604Z 
+2026-10-03T10:30:55.9950609Z 
+2026-10-03T10:30:55.9950766Z CONFIGD-PATTERN-OK
+2026-10-03T10:30:55.9950900Z 
+2026-10-03T10:30:55.9950903Z 
+2026-10-03T10:30:55.9950986Z CONFIGD-STORE-OK
+2026-10-03T10:30:55.9951096Z 
+2026-10-03T10:30:55.9951099Z 
+2026-10-03T10:30:55.9951183Z COREFOUNDATION-OK
+2026-10-03T10:30:55.9951301Z 
+2026-10-03T10:30:55.9951304Z 
+2026-10-03T10:30:55.9951377Z DA-BOOT-OK
+2026-10-03T10:30:55.9951482Z 
+2026-10-03T10:30:55.9951485Z 
+2026-10-03T10:30:55.9951557Z DA-IOKIT-OK
+2026-10-03T10:30:55.9951661Z 
+2026-10-03T10:30:55.9951671Z 
+2026-10-03T10:30:55.9951747Z DAEMON-STATE-OK
+2026-10-03T10:30:55.9951862Z 
+2026-10-03T10:30:55.9951865Z 
+2026-10-03T10:30:55.9951946Z DOMAIN-DIRS-OK
+2026-10-03T10:30:55.9952052Z 
+2026-10-03T10:30:55.9952055Z 
+2026-10-03T10:30:55.9952146Z EVFILT-MACHPORT-SKIP
+2026-10-03T10:30:55.9952275Z 
+2026-10-03T10:30:55.9952278Z 
+2026-10-03T10:30:55.9952393Z EVFILT-MACHPORT-CONCURRENT-OK
+2026-10-03T10:30:55.9952563Z 
+2026-10-03T10:30:55.9952565Z 
+2026-10-03T10:30:55.9952639Z FBSDGLUE-OK
+2026-10-03T10:30:55.9952747Z 
+2026-10-03T10:30:55.9952750Z 
+2026-10-03T10:30:55.9952825Z FILECMD-LEAF-OK
+2026-10-03T10:30:55.9952940Z 
+2026-10-03T10:30:55.9952943Z 
+2026-10-03T10:30:55.9953013Z GETTY-OK
+2026-10-03T10:30:55.9953114Z 
+2026-10-03T10:30:55.9953117Z 
+2026-10-03T10:30:55.9953195Z HOMEDIR-OK
+2026-10-03T10:30:55.9953293Z 
+2026-10-03T10:30:55.9953296Z 
+2026-10-03T10:30:55.9953380Z HOST-BOOTSTRAP-OK
+2026-10-03T10:30:55.9953493Z 
+2026-10-03T10:30:55.9953497Z 
+2026-10-03T10:30:55.9953576Z HOSTNAMED-OK
+2026-10-03T10:30:55.9953683Z 
+2026-10-03T10:30:55.9953693Z 
+2026-10-03T10:30:55.9953788Z HOSTNAMED-BONJOUR-RENAME-SKIP
+2026-10-03T10:30:55.9953949Z 
+2026-10-03T10:30:55.9953952Z 
+2026-10-03T10:30:55.9954028Z HOSTNAMED-DHCP-OK
+2026-10-03T10:30:55.9954148Z 
+2026-10-03T10:30:55.9954151Z 
+2026-10-03T10:30:55.9954229Z HOSTNAMED-MDNS-SKIP
+2026-10-03T10:30:55.9954355Z 
+2026-10-03T10:30:55.9954358Z 
+2026-10-03T10:30:55.9954447Z HOSTNAMED-PREFS-OK
+2026-10-03T10:30:55.9954566Z 
+2026-10-03T10:30:55.9954568Z 
+2026-10-03T10:30:55.9954652Z IPCFG-ARP-OK
+2026-10-03T10:30:55.9954756Z 
+2026-10-03T10:30:55.9954759Z 
+2026-10-03T10:30:55.9954838Z IPCFG-BOOT-OK
+2026-10-03T10:30:55.9954942Z 
+2026-10-03T10:30:55.9954949Z 
+2026-10-03T10:30:55.9955024Z IPCFG-BOUND-OK
+2026-10-03T10:30:55.9955136Z 
+2026-10-03T10:30:55.9955139Z 
+2026-10-03T10:30:55.9955211Z IPCFG-DHCP-OK
+2026-10-03T10:30:55.9955319Z 
+2026-10-03T10:30:55.9955322Z 
+2026-10-03T10:30:55.9955399Z IPCFG-IPCONFIG-OK
+2026-10-03T10:30:55.9955519Z 
+2026-10-03T10:30:55.9955523Z 
+2026-10-03T10:30:55.9955739Z IPCFG-RA-OK
+2026-10-03T10:30:55.9955839Z 
+2026-10-03T10:30:55.9955842Z 
+2026-10-03T10:30:55.9955922Z IPCFG-RENEW-OK
+2026-10-03T10:30:55.9956026Z 
+2026-10-03T10:30:55.9956029Z 
+2026-10-03T10:30:55.9956108Z IPCFG-RPC-OK
+2026-10-03T10:30:55.9956210Z 
+2026-10-03T10:30:55.9956219Z 
+2026-10-03T10:30:55.9956293Z IPCFG-STORE-OK
+2026-10-03T10:30:55.9956400Z 
+2026-10-03T10:30:55.9956409Z 
+2026-10-03T10:30:55.9956481Z KEM-LINK-OK
+2026-10-03T10:30:55.9956582Z 
+2026-10-03T10:30:55.9956585Z 
+2026-10-03T10:30:55.9956661Z LAUNCHCTL-BUILD-OK
+2026-10-03T10:30:55.9956781Z 
+2026-10-03T10:30:55.9956784Z 
+2026-10-03T10:30:55.9956865Z LAUNCHCTL-LIST-OK
+2026-10-03T10:30:55.9956979Z 
+2026-10-03T10:30:55.9956982Z 
+2026-10-03T10:30:55.9957063Z LAUNCHD-BUILD-OK
+2026-10-03T10:30:55.9957174Z 
+2026-10-03T10:30:55.9957177Z 
+2026-10-03T10:30:55.9957257Z LIBDISPATCH-OK
+2026-10-03T10:30:55.9957367Z 
+2026-10-03T10:30:55.9957375Z 
+2026-10-03T10:30:55.9957456Z LIBDISPATCH-MACH-OK
+2026-10-03T10:30:55.9957580Z 
+2026-10-03T10:30:55.9957583Z 
+2026-10-03T10:30:55.9957658Z LIBDS-OK
+2026-10-03T10:30:55.9957759Z 
+2026-10-03T10:30:55.9957762Z 
+2026-10-03T10:30:55.9957841Z LIBSYSTEM-KERNEL-OK
+2026-10-03T10:30:55.9957963Z 
+2026-10-03T10:30:55.9957966Z 
+2026-10-03T10:30:55.9958042Z LIBXPC-OK
+2026-10-03T10:30:55.9958314Z 
+2026-10-03T10:30:55.9958317Z 
+2026-10-03T10:30:55.9958400Z LINUX-MOUNTS-OK
+2026-10-03T10:30:55.9958637Z 
+2026-10-03T10:30:55.9958641Z 
+2026-10-03T10:30:55.9958721Z MACH-PORT-OK
+2026-10-03T10:30:55.9958828Z 
+2026-10-03T10:30:55.9958831Z 
+2026-10-03T10:30:55.9958911Z MACH-SMOKE-OK
+2026-10-03T10:30:55.9959021Z 
+2026-10-03T10:30:55.9959024Z 
+2026-10-03T10:30:55.9959095Z MDNS-BOOT-OK
+2026-10-03T10:30:55.9959199Z 
+2026-10-03T10:30:55.9959202Z 
+2026-10-03T10:30:55.9959273Z MDNS-DNSSD-OK
+2026-10-03T10:30:55.9959379Z 
+2026-10-03T10:30:55.9959382Z 
+2026-10-03T10:30:55.9959462Z MDNS-ENGINE-OK
+2026-10-03T10:30:55.9959569Z 
+2026-10-03T10:30:55.9959572Z 
+2026-10-03T10:30:55.9959652Z MDNS-IFWATCH-OK
+2026-10-03T10:30:55.9959759Z 
+2026-10-03T10:30:55.9959767Z 
+2026-10-03T10:30:55.9959847Z MDNS-STATIC-OK
+2026-10-03T10:30:55.9959951Z 
+2026-10-03T10:30:55.9959953Z 
+2026-10-03T10:30:55.9960035Z MIG-BUILD-OK
+2026-10-03T10:30:55.9960142Z 
+2026-10-03T10:30:55.9960145Z 
+2026-10-03T10:30:55.9960213Z NFS-OK
+2026-10-03T10:30:55.9960315Z 
+2026-10-03T10:30:55.9960318Z 
+2026-10-03T10:30:55.9960394Z NOTIFYD-PROC-OK
+2026-10-03T10:30:55.9960513Z 
+2026-10-03T10:30:55.9960516Z 
+2026-10-03T10:30:55.9960586Z NSS-DS-OK
+2026-10-03T10:30:55.9960687Z 
+2026-10-03T10:30:55.9960690Z 
+2026-10-03T10:30:55.9960766Z NTP-OK
+2026-10-03T10:30:55.9960860Z 
+2026-10-03T10:30:55.9960863Z 
+2026-10-03T10:30:55.9960938Z SC-BOND-OK
+2026-10-03T10:30:55.9961033Z 
+2026-10-03T10:30:55.9961036Z 
+2026-10-03T10:30:55.9961114Z SC-BRIDGE-OK
+2026-10-03T10:30:55.9961222Z 
+2026-10-03T10:30:55.9961224Z 
+2026-10-03T10:30:55.9961295Z SC-LOCK-OK
+2026-10-03T10:30:55.9961396Z 
+2026-10-03T10:30:55.9961398Z 
+2026-10-03T10:30:55.9961469Z SC-MULTI-OK
+2026-10-03T10:30:55.9961572Z 
+2026-10-03T10:30:55.9961575Z 
+2026-10-03T10:30:55.9961652Z SC-NETIF-OK
+2026-10-03T10:30:55.9961758Z 
+2026-10-03T10:30:55.9961761Z 
+2026-10-03T10:30:55.9961836Z SC-NETSET-OK
+2026-10-03T10:30:55.9961936Z 
+2026-10-03T10:30:55.9961939Z 
+2026-10-03T10:30:55.9962019Z SC-NETSVC-OK
+2026-10-03T10:30:55.9962117Z 
+2026-10-03T10:30:55.9962120Z 
+2026-10-03T10:30:55.9962196Z SC-NOTIFY-OK
+2026-10-03T10:30:55.9962299Z 
+2026-10-03T10:30:55.9962307Z 
+2026-10-03T10:30:55.9962380Z SC-PATH-OK
+2026-10-03T10:30:55.9962484Z 
+2026-10-03T10:30:55.9962487Z 
+2026-10-03T10:30:55.9962559Z SC-PLINK-OK
+2026-10-03T10:30:55.9962659Z 
+2026-10-03T10:30:55.9962661Z 
+2026-10-03T10:30:55.9962735Z SC-PNOTIFY-OK
+2026-10-03T10:30:55.9962848Z 
+2026-10-03T10:30:55.9962851Z 
+2026-10-03T10:30:55.9962932Z SC-PREFS-OK
+2026-10-03T10:30:55.9963031Z 
+2026-10-03T10:30:55.9963033Z 
+2026-10-03T10:30:55.9963114Z SC-RUNLOOP-OK
+2026-10-03T10:30:55.9963218Z 
+2026-10-03T10:30:55.9963221Z 
+2026-10-03T10:30:55.9963297Z SC-STORE-OK
+2026-10-03T10:30:55.9963393Z 
+2026-10-03T10:30:55.9963402Z 
+2026-10-03T10:30:55.9963597Z SC-VLAN-OK
+2026-10-03T10:30:55.9963698Z 
+2026-10-03T10:30:55.9963700Z 
+2026-10-03T10:30:55.9963781Z SERVICE-LDCONFIG-OK
+2026-10-03T10:30:55.9963906Z 
+2026-10-03T10:30:55.9963909Z 
+2026-10-03T10:30:55.9963985Z SHELLCMD-LEAF-OK
+2026-10-03T10:30:55.9964104Z 
+2026-10-03T10:30:55.9964107Z 
+2026-10-03T10:30:55.9964180Z SUDO-OK
+2026-10-03T10:30:55.9964273Z 
+2026-10-03T10:30:55.9964281Z 
+2026-10-03T10:30:55.9964360Z SYSCMD-LEAF-OK
+2026-10-03T10:30:55.9964465Z 
+2026-10-03T10:30:55.9964468Z 
+2026-10-03T10:30:55.9964549Z SYSLOG-RUN-OK
+2026-10-03T10:30:55.9964651Z 
+2026-10-03T10:30:55.9964654Z 
+2026-10-03T10:30:55.9964735Z SYSLOGD-PROC-OK
+2026-10-03T10:30:55.9964850Z 
+2026-10-03T10:30:55.9964853Z 
+2026-10-03T10:30:55.9964935Z TASK-SPECIAL-PORT-OK
+2026-10-03T10:30:55.9965069Z 
+2026-10-03T10:30:55.9965072Z 
+2026-10-03T10:30:55.9965145Z TEXTCMD-LEAF-OK
+2026-10-03T10:30:55.9965256Z 
+2026-10-03T10:30:55.9965259Z 
+2026-10-03T10:30:55.9965337Z WAITQUIET-OK
+2026-10-03T10:30:55.9965438Z 
+2026-10-03T10:30:55.9965441Z 
+2026-10-03T10:30:55.9965530Z WEDGE-CHECK-SKIP
+2026-10-03T10:30:55.9965644Z 
+2026-10-03T10:30:55.9965647Z 
+2026-10-03T10:30:55.9965726Z ADVCMD-LEAF-OK
+2026-10-03T10:30:55.9965833Z 
+2026-10-03T10:30:55.9965836Z 
+2026-10-03T10:30:55.9965918Z admin@selftest ~ % 
+2026-10-03T10:30:55.9966110Z OK: ACCT-HELPERS
+2026-10-03T10:30:55.9966225Z 
+2026-10-03T10:30:55.9966391Z OK: ACCT-LIFECYCLE
+2026-10-03T10:30:55.9966516Z 
+2026-10-03T10:30:55.9966588Z OK: ADVCMD-LEAF
+2026-10-03T10:30:55.9966706Z 
+2026-10-03T10:30:55.9966784Z OK: ADVCMD-LEAF
+2026-10-03T10:31:15.9954315Z 
+2026-10-03T10:31:15.9956072Z FAIL: /usr/tests/freebsd-launchd-mach/run.sh printed no NEXTBSD-TEST-SUMMARY within the 20s budget (no sentinel — the suite hung or died)
+2026-10-03T10:31:15.9957524Z can't read "dcmap": no such variable
+2026-10-03T10:31:15.9958070Z     while executing
+2026-10-03T10:31:15.9958733Z "string map $dcmap $d2"
+2026-10-03T10:31:15.9959094Z     invoked from within
+2026-10-03T10:31:15.9959436Z "expect {
+2026-10-03T10:31:15.9959722Z     timeout {
+2026-10-03T10:31:15.9960651Z         puts "\nFAIL: /usr/tests/freebsd-launchd-mach/run.sh printed no NEXTBSD-TEST-SUMMARY within the $env(NB_SUITE_TIMEOUT)s..."
+2026-10-03T10:31:15.9961627Z     (file "tests/boot.exp" line 468)
+2026-10-03T10:31:16.0037904Z NEXTBSD-TEST-SUMMARY ok= fail= skip=
+2026-10-03T10:31:16.0039779Z ==> boot-test FAILED rc=1 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh)
+2026-10-03T10:31:16.0040585Z     serial transcript: tests/boot.log
+2026-10-03T10:31:16.0041519Z SELFTEST FAIL: case nosummary — expected rc 2, got 1
+2026-10-03T10:31:16.0042397Z ==> case: deadend (suite: /usr/tests/freebsd-launchd-mach/run.sh) — expect rc 2
+2026-10-03T10:31:16.0073746Z ==> boot test: tests/fake.img
+2026-10-03T10:31:16.0084166Z -rw-r--r-- 1 runner runner 0 Oct  3 10:30 tests/fake.img
+2026-10-03T10:31:16.0158378Z ==> using KVM acceleration
+2026-10-03T10:31:16.0158734Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T10:31:16.0332970Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T10:31:16.0379188Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T10:31:16.0379572Z 
+2026-10-03T10:31:16.0379579Z 
+2026-10-03T10:31:16.0379707Z Loading /boot/loader.conf
+2026-10-03T10:31:16.0379866Z 
+2026-10-03T10:31:16.0379869Z 
+2026-10-03T10:31:16.0380083Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T10:31:16.0380364Z 
+2026-10-03T10:31:16.0380367Z 
+2026-10-03T10:31:16.0380440Z OK 
+2026-10-03T10:31:16.0380618Z ==> at loader prompt
+2026-10-03T10:31:17.2209830Z  set console=comconsole
+2026-10-03T10:31:17.2210236Z OK set console=comconsole
+2026-10-03T10:31:17.2210445Z 
+2026-10-03T10:31:17.2210450Z 
+2026-10-03T10:31:18.2840549Z OK set boot_serial=YES
+2026-10-03T10:31:18.2841103Z OK set boot_serial=YES
+2026-10-03T10:31:18.2841364Z 
+2026-10-03T10:31:18.2841376Z 
+2026-10-03T10:31:19.6683117Z OK set comconsole_speed=115200
+2026-10-03T10:31:19.6683527Z OK set comconsole_speed=115200
+2026-10-03T10:31:19.6683745Z 
+2026-10-03T10:31:19.6684121Z 
+2026-10-03T10:31:20.8520965Z OK set boot_multicons=YES
+2026-10-03T10:31:20.8521563Z OK set boot_multicons=YES
+2026-10-03T10:31:20.8521809Z 
+2026-10-03T10:31:20.8521815Z 
+2026-10-03T10:31:21.9553603Z OK set boot_mutemsgs=NO
+2026-10-03T10:31:21.9554154Z OK set boot_mutemsgs=NO
+2026-10-03T10:31:21.9554459Z 
+2026-10-03T10:31:21.9554467Z 
+2026-10-03T10:31:22.5368005Z OK boot -v
+2026-10-03T10:31:22.5368759Z Booting [/boot/kernel/kernel]
+2026-10-03T10:31:22.5369140Z 
+2026-10-03T10:31:22.5369147Z 
+2026-10-03T10:31:22.5369328Z ---<<BOOT>>---
+2026-10-03T10:31:22.5369580Z 
+2026-10-03T10:31:22.5369587Z 
+2026-10-03T10:31:22.5369831Z Copyright (c) 1992-2025 The FreeBSD Project.
+2026-10-03T10:31:22.5370266Z 
+2026-10-03T10:31:22.5370271Z 
+2026-10-03T10:31:22.5370479Z early-init: sethostname('selftest')
+2026-10-03T10:31:22.5370845Z 
+2026-10-03T10:31:22.5370851Z 
+2026-10-03T10:31:22.5371203Z early-init: opened /dev/klog (kernel.log_open=1; console quiet)
+2026-10-03T10:31:22.5371763Z 
+2026-10-03T10:31:22.5371769Z 
+2026-10-03T10:31:22.5371978Z NextBSD/amd64 (selftest) (console)
+2026-10-03T10:31:22.5372301Z 
+2026-10-03T10:31:22.5372306Z 
+2026-10-03T10:31:22.5372571Z 
+2026-10-03T10:31:22.5373216Z OK: BOOT-BANNER-OK — getty shows the synthesized hostname 'selftest'
+2026-10-03T10:31:22.8371962Z login:
+2026-10-03T10:31:22.8372247Z 
+2026-10-03T10:31:22.8372255Z 
+2026-10-03T10:31:22.8372261Z 
+2026-10-03T10:31:22.8372864Z OK: boot reached the login prompt
+2026-10-03T10:31:22.8373550Z admin
+2026-10-03T10:31:22.8374799Z Password:
+2026-10-03T10:31:22.8375053Z 
+2026-10-03T10:31:22.8375060Z 
+2026-10-03T10:31:22.8375072Z 
+2026-10-03T10:31:22.8375316Z admin@selftest ~ % 
+2026-10-03T10:31:22.8375767Z OK: logged in as admin
+2026-10-03T10:31:22.8378002Z ==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T10:31:22.8389416Z r() { if [ "$(id -u)" = 0 ]; then "$@"; else sudo "$@"; fi; }
+2026-10-03T10:31:22.8389869Z r /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T10:31:22.8390342Z admin@selftest ~ % ACCT-HELPERS-OK
+2026-10-03T10:31:22.8390536Z 
+2026-10-03T10:31:22.8390540Z 
+2026-10-03T10:31:22.8390549Z 
+2026-10-03T10:31:22.8390635Z OK: ACCT-HELPERS
+2026-10-03T10:31:22.8393375Z 
+2026-10-03T10:31:22.8393971Z FAIL: /usr/tests/freebsd-launchd-mach/run.sh died (serial stream closed) before printing NEXTBSD-TEST-SUMMARY
+2026-10-03T10:31:22.8395345Z can't read "dcmap": no such variable
+2026-10-03T10:31:22.8395828Z     while executing
+2026-10-03T10:31:22.8396182Z "string map $dcmap $d2"
+2026-10-03T10:31:22.8396550Z     invoked from within
+2026-10-03T10:31:22.8396905Z "expect {
+2026-10-03T10:31:22.8397205Z     timeout {
+2026-10-03T10:31:22.8398328Z         puts "\nFAIL: /usr/tests/freebsd-launchd-mach/run.sh printed no NEXTBSD-TEST-SUMMARY within the $env(NB_SUITE_TIMEOUT)s..."
+2026-10-03T10:31:22.8399355Z     (file "tests/boot.exp" line 468)
+2026-10-03T10:31:22.8471639Z NEXTBSD-TEST-SUMMARY ok= fail= skip=
+2026-10-03T10:31:22.8473018Z ==> boot-test FAILED rc=1 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh)
+2026-10-03T10:31:22.8473743Z     serial transcript: tests/boot.log
+2026-10-03T10:31:22.8474729Z SELFTEST FAIL: case deadend — expected rc 2, got 1
+2026-10-03T10:31:22.8475515Z ==> case: reboot (suite: /usr/tests/freebsd-launchd-mach/run.sh) — expect rc 1
+2026-10-03T10:31:22.8504823Z ==> boot test: tests/fake.img
+2026-10-03T10:31:22.8515278Z -rw-r--r-- 1 runner runner 0 Oct  3 10:30 tests/fake.img
+2026-10-03T10:31:22.8587128Z ==> using KVM acceleration
+2026-10-03T10:31:22.8587664Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T10:31:22.8764583Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T10:31:22.8810665Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T10:31:22.8811015Z 
+2026-10-03T10:31:22.8811030Z 
+2026-10-03T10:31:22.8811186Z Loading /boot/loader.conf
+2026-10-03T10:31:22.8811443Z 
+2026-10-03T10:31:22.8811448Z 
+2026-10-03T10:31:22.8811754Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T10:31:22.8812220Z 
+2026-10-03T10:31:22.8812431Z 
+2026-10-03T10:31:22.8812521Z OK 
+2026-10-03T10:31:22.8812700Z ==> at loader prompt
+2026-10-03T10:31:24.0642646Z  set console=comconsole
+2026-10-03T10:31:24.0643191Z OK set console=comconsole
+2026-10-03T10:31:24.0643507Z 
+2026-10-03T10:31:24.0643516Z 
+2026-10-03T10:31:25.1269935Z OK set boot_serial=YES
+2026-10-03T10:31:25.1270466Z OK set boot_serial=YES
+2026-10-03T10:31:25.1270812Z 
+2026-10-03T10:31:25.1270821Z 
+2026-10-03T10:31:26.5116344Z OK set comconsole_speed=115200
+2026-10-03T10:31:26.5116960Z OK set comconsole_speed=115200
+2026-10-03T10:31:26.5117312Z 
+2026-10-03T10:31:26.5117317Z 
+2026-10-03T10:31:27.6953188Z OK set boot_multicons=YES
+2026-10-03T10:31:27.6953574Z OK set boot_multicons=YES
+2026-10-03T10:31:27.6953769Z 
+2026-10-03T10:31:27.6953774Z 
+2026-10-03T10:31:28.7989399Z OK set boot_mutemsgs=NO
+2026-10-03T10:31:28.7989785Z OK set boot_mutemsgs=NO
+2026-10-03T10:31:28.7989982Z 
+2026-10-03T10:31:28.7989987Z 
+2026-10-03T10:31:29.3807305Z OK boot -v
+2026-10-03T10:31:29.3807860Z Booting [/boot/kernel/kernel]
+2026-10-03T10:31:29.3808570Z 
+2026-10-03T10:31:29.3808578Z 
+2026-10-03T10:31:29.3808767Z ---<<BOOT>>---
+2026-10-03T10:31:29.3809043Z 
+2026-10-03T10:31:29.3809050Z 
+2026-10-03T10:31:29.3809314Z Copyright (c) 1992-2025 The FreeBSD Project.
+2026-10-03T10:31:29.3809817Z 
+2026-10-03T10:31:29.3809823Z 
+2026-10-03T10:31:29.3810422Z early-init: sethostname('selftest')
+2026-10-03T10:31:29.3810823Z 
+2026-10-03T10:31:29.3810830Z 
+2026-10-03T10:31:29.3811208Z early-init: opened /dev/klog (kernel.log_open=1; console quiet)
+2026-10-03T10:31:29.3811756Z 
+2026-10-03T10:31:29.3811761Z 
+2026-10-03T10:31:29.3811942Z NextBSD/amd64 (selftest) (console)
+2026-10-03T10:31:29.3812258Z 
+2026-10-03T10:31:29.3812263Z 
+2026-10-03T10:31:29.3813614Z 
+2026-10-03T10:31:29.3814463Z OK: BOOT-BANNER-OK — getty shows the synthesized hostname 'selftest'
+2026-10-03T10:31:29.6812709Z login:
+2026-10-03T10:31:29.6813405Z 
+2026-10-03T10:31:29.6813630Z 
+2026-10-03T10:31:29.6813671Z 
+2026-10-03T10:31:29.6814085Z OK: boot reached the login prompt
+2026-10-03T10:31:29.6814766Z admin
+2026-10-03T10:31:29.6815172Z Password:
+2026-10-03T10:31:29.6815416Z 
+2026-10-03T10:31:29.6815423Z 
+2026-10-03T10:31:29.6815430Z 
+2026-10-03T10:31:29.6815598Z admin@selftest ~ % 
+2026-10-03T10:31:29.6816048Z OK: logged in as admin
+2026-10-03T10:31:29.6817748Z ==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T10:31:29.6829179Z r() { if [ "$(id -u)" = 0 ]; then "$@"; else sudo "$@"; fi; }
+2026-10-03T10:31:29.6829850Z admin@selftest ~ % r /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T10:31:29.6830289Z ACCT-HELPERS-OK
+2026-10-03T10:31:29.6830421Z 
+2026-10-03T10:31:29.6830426Z 
+2026-10-03T10:31:29.6830511Z ACCT-LIFECYCLE-OK
+2026-10-03T10:31:29.6830628Z 
+2026-10-03T10:31:29.6830632Z 
+2026-10-03T10:31:29.6830716Z ADVCMD-LEAF-OK
+2026-10-03T10:31:29.6830826Z 
+2026-10-03T10:31:29.6830829Z 
+2026-10-03T10:31:29.6830987Z ASLMANAGER-DEMAND-SKIP
+2026-10-03T10:31:29.6831233Z 
+2026-10-03T10:31:29.6831238Z 
+2026-10-03T10:31:29.6831386Z BOOT-BANNER-SKIP
+2026-10-03T10:31:29.6831527Z 
+2026-10-03T10:31:29.6831530Z 
+2026-10-03T10:31:29.6831608Z BOOTSTRAP-OK
+2026-10-03T10:31:29.6831719Z 
+2026-10-03T10:31:29.6831722Z 
+2026-10-03T10:31:29.6831804Z BOOTSTRAP-REMOTE-OK
+2026-10-03T10:31:29.6831941Z 
+2026-10-03T10:31:29.6831946Z 
+2026-10-03T10:31:29.6832155Z BUSYSTATE-OK
+2026-10-03T10:31:29.6832351Z 
+2026-10-03T10:31:29.6832356Z 
+2026-10-03T10:31:29.6832494Z CONFIGD-LIST-OK
+2026-10-03T10:31:29.6832706Z 
+2026-10-03T10:31:29.6832712Z 
+2026-10-03T10:31:29.6832862Z CONFIGD-MULTI-OK
+2026-10-03T10:31:29.6833070Z 
+2026-10-03T10:31:29.6833074Z 
+2026-10-03T10:31:29.6833329Z CONFIGD-NOTIFY-OK
+2026-10-03T10:31:29.6833549Z 
+2026-10-03T10:31:29.6833554Z 
+2026-10-03T10:31:29.6833658Z CONFIGD-PATTERN-OK
+2026-10-03T10:31:29.6833782Z 
+2026-10-03T10:31:29.6833785Z 
+2026-10-03T10:31:29.6833866Z CONFIGD-STORE-OK
+2026-10-03T10:31:29.6833978Z 
+2026-10-03T10:31:29.6833986Z 
+2026-10-03T10:31:29.6834062Z COREFOUNDATION-OK
+2026-10-03T10:31:29.6834183Z 
+2026-10-03T10:31:29.6834186Z 
+2026-10-03T10:31:29.6834546Z DA-BOOT-OK
+2026-10-03T10:31:29.6834649Z 
+2026-10-03T10:31:29.6834653Z 
+2026-10-03T10:31:29.6834724Z DA-IOKIT-OK
+2026-10-03T10:31:29.6834828Z 
+2026-10-03T10:31:29.6834831Z 
+2026-10-03T10:31:29.6834912Z DAEMON-STATE-OK
+2026-10-03T10:31:29.6835023Z 
+2026-10-03T10:31:29.6835026Z 
+2026-10-03T10:31:29.6835104Z DOMAIN-DIRS-OK
+2026-10-03T10:31:29.6835211Z 
+2026-10-03T10:31:29.6835222Z 
+2026-10-03T10:31:29.6835314Z EVFILT-MACHPORT-SKIP
+2026-10-03T10:31:29.6835450Z 
+2026-10-03T10:31:29.6835460Z 
+2026-10-03T10:31:29.6835561Z EVFILT-MACHPORT-CONCURRENT-OK
+2026-10-03T10:31:29.6835728Z 
+2026-10-03T10:31:29.6835732Z 
+2026-10-03T10:31:29.6835805Z FBSDGLUE-OK
+2026-10-03T10:31:29.6835912Z 
+2026-10-03T10:31:29.6835915Z 
+2026-10-03T10:31:29.6835989Z FILECMD-LEAF-OK
+2026-10-03T10:31:29.6836106Z 
+2026-10-03T10:31:29.6836109Z 
+2026-10-03T10:31:29.6836185Z GETTY-OK
+2026-10-03T10:31:29.6836279Z 
+2026-10-03T10:31:29.6836282Z 
+2026-10-03T10:31:29.6836359Z HOMEDIR-OK
+2026-10-03T10:31:29.6836457Z 
+2026-10-03T10:31:29.6836466Z 
+2026-10-03T10:31:29.6836550Z HOST-BOOTSTRAP-OK
+2026-10-03T10:31:29.6836663Z 
+2026-10-03T10:31:29.6836666Z 
+2026-10-03T10:31:29.6836743Z HOSTNAMED-OK
+2026-10-03T10:31:29.6836852Z 
+2026-10-03T10:31:29.6836855Z 
+2026-10-03T10:31:29.6837003Z HOSTNAMED-BONJOUR-RENAME-SKIP
+2026-10-03T10:31:29.6837313Z 
+2026-10-03T10:31:29.6837318Z 
+2026-10-03T10:31:29.6837689Z HOSTNAMED-DHCP-OK
+2026-10-03T10:31:29.6837899Z 
+2026-10-03T10:31:29.6837902Z 
+2026-10-03T10:31:29.6837992Z HOSTNAMED-MDNS-SKIP
+2026-10-03T10:31:29.6838360Z 
+2026-10-03T10:31:29.6838363Z 
+2026-10-03T10:31:29.6838458Z HOSTNAMED-PREFS-OK
+2026-10-03T10:31:29.6838581Z 
+2026-10-03T10:31:29.6838584Z 
+2026-10-03T10:31:29.6838666Z IPCFG-ARP-OK
+2026-10-03T10:31:29.6838773Z 
+2026-10-03T10:31:29.6838776Z 
+2026-10-03T10:31:29.6838857Z IPCFG-BOOT-OK
+2026-10-03T10:31:29.6838968Z 
+2026-10-03T10:31:29.6838971Z 
+2026-10-03T10:31:29.6839047Z IPCFG-BOUND-OK
+2026-10-03T10:31:29.6839160Z 
+2026-10-03T10:31:29.6839163Z 
+2026-10-03T10:31:29.6839237Z IPCFG-DHCP-OK
+2026-10-03T10:31:29.6839355Z 
+2026-10-03T10:31:29.6839358Z 
+2026-10-03T10:31:29.6839443Z IPCFG-IPCONFIG-OK
+2026-10-03T10:31:29.6839555Z 
+2026-10-03T10:31:29.6839559Z 
+2026-10-03T10:31:29.6839636Z IPCFG-RA-OK
+2026-10-03T10:31:29.6839738Z 
+2026-10-03T10:31:29.6839741Z 
+2026-10-03T10:31:29.6839822Z IPCFG-RENEW-OK
+2026-10-03T10:31:29.6840001Z 
+2026-10-03T10:31:29.6840006Z 
+2026-10-03T10:31:29.6840165Z IPCFG-RPC-OK
+2026-10-03T10:31:29.6840299Z 
+2026-10-03T10:31:29.6840302Z 
+2026-10-03T10:31:29.6840413Z IPCFG-STORE-OK
+2026-10-03T10:31:29.6840616Z 
+2026-10-03T10:31:29.6840621Z 
+2026-10-03T10:31:29.6840751Z KEM-LINK-OK
+2026-10-03T10:31:29.6840944Z 
+2026-10-03T10:31:29.6840950Z 
+2026-10-03T10:31:29.6841093Z LAUNCHCTL-BUILD-OK
+2026-10-03T10:31:29.6841315Z 
+2026-10-03T10:31:29.6841320Z 
+2026-10-03T10:31:29.6841463Z LAUNCHCTL-LIST-OK
+2026-10-03T10:31:29.6841670Z 
+2026-10-03T10:31:29.6841675Z 
+2026-10-03T10:31:29.6841822Z LAUNCHD-BUILD-OK
+2026-10-03T10:31:29.6842034Z 
+2026-10-03T10:31:29.6842038Z 
+2026-10-03T10:31:29.6842138Z LIBDISPATCH-OK
+2026-10-03T10:31:29.6842263Z 
+2026-10-03T10:31:29.6842266Z 
+2026-10-03T10:31:29.6842346Z LIBDISPATCH-MACH-OK
+2026-10-03T10:31:29.6842470Z 
+2026-10-03T10:31:29.6842474Z 
+2026-10-03T10:31:29.6842546Z LIBDS-OK
+2026-10-03T10:31:29.6842746Z 
+2026-10-03T10:31:29.6842751Z 
+2026-10-03T10:31:29.6842902Z LIBSYSTEM-KERNEL-OK
+2026-10-03T10:31:29.6843108Z 
+2026-10-03T10:31:29.6843120Z 
+2026-10-03T10:31:29.6843256Z LIBXPC-OK
+2026-10-03T10:31:29.6843436Z 
+2026-10-03T10:31:29.6843441Z 
+2026-10-03T10:31:29.6843583Z LINUX-MOUNTS-OK
+2026-10-03T10:31:29.6843784Z 
+2026-10-03T10:31:29.6843788Z 
+2026-10-03T10:31:29.6843922Z MACH-PORT-OK
+2026-10-03T10:31:29.6844122Z 
+2026-10-03T10:31:29.6844126Z 
+2026-10-03T10:31:29.6844253Z MACH-SMOKE-OK
+2026-10-03T10:31:29.6844448Z 
+2026-10-03T10:31:29.6844452Z 
+2026-10-03T10:31:29.6844578Z MDNS-BOOT-OK
+2026-10-03T10:31:29.6844769Z 
+2026-10-03T10:31:29.6844774Z 
+2026-10-03T10:31:29.6844909Z MDNS-DNSSD-OK
+2026-10-03T10:31:29.6845104Z 
+2026-10-03T10:31:29.6845109Z 
+2026-10-03T10:31:29.6845475Z MDNS-ENGINE-OK
+2026-10-03T10:31:29.6845669Z 
+2026-10-03T10:31:29.6845674Z 
+2026-10-03T10:31:29.6845802Z MDNS-IFWATCH-OK
+2026-10-03T10:31:29.6845989Z 
+2026-10-03T10:31:29.6845994Z 
+2026-10-03T10:31:29.6846127Z MDNS-STATIC-OK
+2026-10-03T10:31:29.6846308Z 
+2026-10-03T10:31:29.6846312Z 
+2026-10-03T10:31:29.6846426Z MIG-BUILD-OK
+2026-10-03T10:31:29.6846613Z 
+2026-10-03T10:31:29.6846628Z 
+2026-10-03T10:31:29.6846754Z NFS-OK
+2026-10-03T10:31:29.6846928Z 
+2026-10-03T10:31:29.6846932Z 
+2026-10-03T10:31:29.6847059Z NOTIFYD-PROC-OK
+2026-10-03T10:31:29.6847278Z 
+2026-10-03T10:31:29.6847283Z 
+2026-10-03T10:31:29.6847415Z NSS-DS-OK
+2026-10-03T10:31:29.6847591Z 
+2026-10-03T10:31:29.6847595Z 
+2026-10-03T10:31:29.6847729Z NTP-OK
+2026-10-03T10:31:29.6847883Z 
+2026-10-03T10:31:29.6847887Z 
+2026-10-03T10:31:29.6848001Z SC-BOND-OK
+2026-10-03T10:31:29.6848403Z 
+2026-10-03T10:31:29.6848410Z 
+2026-10-03T10:31:29.6848547Z SC-BRIDGE-OK
+2026-10-03T10:31:29.6848744Z 
+2026-10-03T10:31:29.6848749Z 
+2026-10-03T10:31:29.6848862Z SC-LOCK-OK
+2026-10-03T10:31:29.6849056Z 
+2026-10-03T10:31:29.6849061Z 
+2026-10-03T10:31:29.6849184Z SC-MULTI-OK
+2026-10-03T10:31:29.6849365Z 
+2026-10-03T10:31:29.6849370Z 
+2026-10-03T10:31:29.6849498Z SC-NETIF-OK
+2026-10-03T10:31:29.6849712Z 
+2026-10-03T10:31:29.6849716Z 
+2026-10-03T10:31:29.6849847Z SC-NETSET-OK
+2026-10-03T10:31:29.6850029Z 
+2026-10-03T10:31:29.6850033Z 
+2026-10-03T10:31:29.6850397Z SC-NETSVC-OK
+2026-10-03T10:31:29.6850584Z 
+2026-10-03T10:31:29.6850597Z 
+2026-10-03T10:31:29.6850749Z SC-NOTIFY-OK
+2026-10-03T10:31:29.6850930Z 
+2026-10-03T10:31:29.6850935Z 
+2026-10-03T10:31:29.6851088Z SC-PATH-OK
+2026-10-03T10:31:29.6851266Z 
+2026-10-03T10:31:29.6851271Z 
+2026-10-03T10:31:29.6851394Z SC-PLINK-OK
+2026-10-03T10:31:29.6851574Z 
+2026-10-03T10:31:29.6851579Z 
+2026-10-03T10:31:29.6851718Z SC-PNOTIFY-OK
+2026-10-03T10:31:29.6851903Z 
+2026-10-03T10:31:29.6851908Z 
+2026-10-03T10:31:29.6852041Z SC-PREFS-OK
+2026-10-03T10:31:29.6852211Z 
+2026-10-03T10:31:29.6852215Z 
+2026-10-03T10:31:29.6852351Z SC-RUNLOOP-OK
+2026-10-03T10:31:29.6852543Z 
+2026-10-03T10:31:29.6852547Z 
+2026-10-03T10:31:29.6852676Z SC-STORE-OK
+2026-10-03T10:31:29.6852851Z 
+2026-10-03T10:31:29.6852856Z 
+2026-10-03T10:31:29.6852977Z SC-VLAN-OK
+2026-10-03T10:31:29.6853150Z 
+2026-10-03T10:31:29.6853154Z 
+2026-10-03T10:31:29.6853291Z SERVICE-LDCONFIG-OK
+2026-10-03T10:31:29.6853510Z 
+2026-10-03T10:31:29.6853514Z 
+2026-10-03T10:31:29.6853660Z SHELLCMD-LEAF-OK
+2026-10-03T10:31:29.6853858Z 
+2026-10-03T10:31:29.6853863Z 
+2026-10-03T10:31:29.6853988Z SUDO-OK
+2026-10-03T10:31:29.6854150Z 
+2026-10-03T10:31:29.6854155Z 
+2026-10-03T10:31:29.6854288Z SYSCMD-LEAF-OK
+2026-10-03T10:31:29.6854510Z 
+2026-10-03T10:31:29.6854514Z 
+2026-10-03T10:31:29.6854651Z SYSLOG-RUN-OK
+2026-10-03T10:31:29.6854844Z 
+2026-10-03T10:31:29.6854848Z 
+2026-10-03T10:31:29.6854980Z SYSLOGD-PROC-OK
+2026-10-03T10:31:29.6855199Z 
+2026-10-03T10:31:29.6855203Z 
+2026-10-03T10:31:29.6855347Z TASK-SPECIAL-PORT-OK
+2026-10-03T10:31:29.6855576Z 
+2026-10-03T10:31:29.6855581Z 
+2026-10-03T10:31:29.6855717Z TEXTCMD-LEAF-OK
+2026-10-03T10:31:29.6855915Z 
+2026-10-03T10:31:29.6855920Z 
+2026-10-03T10:31:29.6856054Z WAITQUIET-OK
+2026-10-03T10:31:29.6856233Z 
+2026-10-03T10:31:29.6856237Z 
+2026-10-03T10:31:29.6856385Z WEDGE-CHECK-SKIP
+2026-10-03T10:31:29.6856519Z 
+2026-10-03T10:31:29.6856522Z 
+2026-10-03T10:31:29.6856609Z ADVCMD-LEAF-OK
+2026-10-03T10:31:29.6856730Z 
+2026-10-03T10:31:29.6856739Z 
+2026-10-03T10:31:29.6856845Z NEXTBSD-TEST-SUMMARY ok=81 fail=0 skip=6
+2026-10-03T10:31:29.6857046Z 
+2026-10-03T10:31:29.6857049Z 
+2026-10-03T10:31:29.6857127Z admin@selftest ~ % 
+2026-10-03T10:31:29.6857328Z OK: ACCT-HELPERS
+2026-10-03T10:31:29.6857447Z 
+2026-10-03T10:31:29.6857533Z OK: ACCT-LIFECYCLE
+2026-10-03T10:31:29.6857653Z 
+2026-10-03T10:31:29.6857734Z OK: ADVCMD-LEAF
+2026-10-03T10:31:29.6857878Z 
+2026-10-03T10:31:29.6857950Z OK: ADVCMD-LEAF
+2026-10-03T10:31:29.6858063Z 
+2026-10-03T10:31:29.6858618Z OK: /usr/tests/freebsd-launchd-mach/run.sh: NEXTBSD-TEST-SUMMARY ok=81 fail=0 skip=6
+2026-10-03T10:31:29.6858967Z 
+2026-10-03T10:31:29.6860543Z DBG: transcript 2446 bytes; tail: <NL><NL>SC-RUNLOOP-OK<NL><NL><NL>SC-STORE-OK<NL><NL><NL>SC-VLAN-OK<NL><NL><NL>SERVICE-LDCONFIG-OK<NL><NL><NL>SHELLCMD-LEAF-OK<NL><NL><NL>SUDO-OK<NL><NL><NL>SYSCMD-LEAF-OK<NL><NL><NL>SYSLOG-RUN-OK<NL><NL><NL>SYSLOGD-PROC-OK<NL><NL><NL>TASK-SPECIAL-PORT-OK<NL><NL><NL>TEXTCMD-LEAF-OK<NL><NL><NL>WAITQUIET-OK<NL><NL><NL>WEDGE-CHECK-SKIP<NL><NL><NL>ADVCMD-LEAF-OK<NL><NL><NL>NEXTBSD-TEST-SUMMARY ok=81 fail=0 skip=6<NL><NL><NL>admin@selftest ~ % 
+2026-10-03T10:31:29.6862029Z 
+2026-10-03T10:31:29.6862114Z DBG: markers recorded: 3
+2026-10-03T10:31:29.6862256Z 
+2026-10-03T10:31:29.6862380Z DBG-MARK: <ACCT-HELPERS> at OK/SKIP/FAIL = 905/-1/-1
+2026-10-03T10:31:29.6862598Z 
+2026-10-03T10:31:29.6862726Z DBG-MARK: <ACCT-LIFECYCLE> at OK/SKIP/FAIL = 923/-1/-1
+2026-10-03T10:31:29.6862946Z 
+2026-10-03T10:31:29.6863066Z DBG-MARK: <ADVCMD-LEAF> at OK/SKIP/FAIL = 943/-1/-1
+2026-10-03T10:31:29.6863274Z 
+2026-10-03T10:31:29.6863422Z DBG-MARK: <ASLMANAGER-DEMAND> at OK/SKIP/FAIL = -1/960/-1
+2026-10-03T10:31:29.6863656Z 
+2026-10-03T10:31:29.6863773Z DBG-MARK: <BOOT-BANNER> at OK/SKIP/FAIL = -1/985/-1
+2026-10-03T10:31:29.6863976Z 
+2026-10-03T10:31:29.6864093Z DBG-MARK: <BOOTSTRAP> at OK/SKIP/FAIL = 1004/-1/-1
+2026-10-03T10:31:29.6864300Z 
+2026-10-03T10:31:29.6864432Z DBG-MARK: <BOOTSTRAP-REMOTE> at OK/SKIP/FAIL = 1019/-1/-1
+2026-10-03T10:31:29.6864660Z 
+2026-10-03T10:31:29.6864888Z DBG-MARK: <BUSYSTATE> at OK/SKIP/FAIL = 1041/-1/-1
+2026-10-03T10:31:29.6865095Z 
+2026-10-03T10:31:29.6865814Z FAIL: BOOTSTRAP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6866359Z 
+2026-10-03T10:31:29.6866997Z FAIL: BOOTSTRAP-REMOTE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6868001Z 
+2026-10-03T10:31:29.6869194Z FAIL: BUSYSTATE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6870207Z 
+2026-10-03T10:31:29.6871333Z FAIL: CONFIGD-LIST — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6872350Z 
+2026-10-03T10:31:29.6873376Z FAIL: CONFIGD-MULTI — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6874388Z 
+2026-10-03T10:31:29.6875439Z FAIL: CONFIGD-NOTIFY — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6876441Z 
+2026-10-03T10:31:29.6877508Z FAIL: CONFIGD-PATTERN — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6878672Z 
+2026-10-03T10:31:29.6879252Z FAIL: CONFIGD-STORE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6879818Z 
+2026-10-03T10:31:29.6880357Z FAIL: COREFOUNDATION — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6880899Z 
+2026-10-03T10:31:29.6881406Z FAIL: DA-BOOT — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6881920Z 
+2026-10-03T10:31:29.6882446Z FAIL: DOMAIN-DIRS — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6883116Z 
+2026-10-03T10:31:29.6884071Z FAIL: FBSDGLUE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6884822Z 
+2026-10-03T10:31:29.6885367Z FAIL: FILECMD-LEAF — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6886084Z 
+2026-10-03T10:31:29.6886631Z FAIL: HOST-BOOTSTRAP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6887176Z 
+2026-10-03T10:31:29.6887700Z FAIL: HOSTNAMED — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6888493Z 
+2026-10-03T10:31:29.6889042Z FAIL: HOSTNAMED-DHCP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6889579Z 
+2026-10-03T10:31:29.6890131Z FAIL: HOSTNAMED-PREFS — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6890681Z 
+2026-10-03T10:31:29.6891206Z FAIL: IPCFG-ARP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6891763Z 
+2026-10-03T10:31:29.6892276Z FAIL: IPCFG-BOOT — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6892939Z 
+2026-10-03T10:31:29.6893471Z FAIL: IPCFG-BOUND — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6893994Z 
+2026-10-03T10:31:29.6894512Z FAIL: IPCFG-DHCP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6895038Z 
+2026-10-03T10:31:29.6895570Z FAIL: IPCFG-IPCONFIG — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6896108Z 
+2026-10-03T10:31:29.6896623Z FAIL: IPCFG-RA — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6897140Z 
+2026-10-03T10:31:29.6897670Z FAIL: IPCFG-RENEW — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6898435Z 
+2026-10-03T10:31:29.6898966Z FAIL: IPCFG-RPC — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6899481Z 
+2026-10-03T10:31:29.6900002Z FAIL: IPCFG-STORE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6900771Z 
+2026-10-03T10:31:29.6901724Z FAIL: KEM-LINK — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6902346Z 
+2026-10-03T10:31:29.6902910Z FAIL: LAUNCHCTL-BUILD — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6903461Z 
+2026-10-03T10:31:29.6904006Z FAIL: LAUNCHCTL-LIST — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6904648Z 
+2026-10-03T10:31:29.6905578Z FAIL: LAUNCHD-BUILD — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6906430Z 
+2026-10-03T10:31:29.6906966Z FAIL: LIBDISPATCH — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6907497Z 
+2026-10-03T10:31:29.6908040Z FAIL: LIBDISPATCH-MACH — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6909082Z 
+2026-10-03T10:31:29.6909654Z FAIL: LIBSYSTEM-KERNEL — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6910201Z 
+2026-10-03T10:31:29.6910731Z FAIL: LIBXPC — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6911267Z 
+2026-10-03T10:31:29.6911801Z FAIL: LINUX-MOUNTS — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6912344Z 
+2026-10-03T10:31:29.6912863Z FAIL: MACH-PORT — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6913383Z 
+2026-10-03T10:31:29.6913894Z FAIL: MACH-SMOKE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6914426Z 
+2026-10-03T10:31:29.6914936Z FAIL: MDNS-BOOT — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6915446Z 
+2026-10-03T10:31:29.6916083Z FAIL: MDNS-DNSSD — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6916607Z 
+2026-10-03T10:31:29.6917131Z FAIL: MDNS-ENGINE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6917807Z 
+2026-10-03T10:31:29.6918973Z FAIL: MDNS-IFWATCH — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6919686Z 
+2026-10-03T10:31:29.6920236Z FAIL: MIG-BUILD — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6920790Z 
+2026-10-03T10:31:29.6921331Z FAIL: NOTIFYD-PROC — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6921868Z 
+2026-10-03T10:31:29.6922385Z FAIL: SC-BOND — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6922900Z 
+2026-10-03T10:31:29.6923411Z FAIL: SC-BRIDGE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6923931Z 
+2026-10-03T10:31:29.6924427Z FAIL: SC-LOCK — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6924937Z 
+2026-10-03T10:31:29.6925444Z FAIL: SC-MULTI — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6925967Z 
+2026-10-03T10:31:29.6926475Z FAIL: SC-NETIF — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6926983Z 
+2026-10-03T10:31:29.6927505Z FAIL: SC-NETSET — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6928026Z 
+2026-10-03T10:31:29.6928916Z FAIL: SC-NETSVC — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6929447Z 
+2026-10-03T10:31:29.6929973Z FAIL: SC-NOTIFY — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6930497Z 
+2026-10-03T10:31:29.6931009Z FAIL: SC-PATH — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6932115Z 
+2026-10-03T10:31:29.6932655Z FAIL: SC-PLINK — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6933305Z 
+2026-10-03T10:31:29.6933872Z FAIL: SC-PNOTIFY — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6934803Z 
+2026-10-03T10:31:29.6935591Z FAIL: SC-PREFS — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6936129Z 
+2026-10-03T10:31:29.6936793Z FAIL: SC-RUNLOOP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6937322Z 
+2026-10-03T10:31:29.6937839Z FAIL: SC-STORE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6938679Z 
+2026-10-03T10:31:29.6939202Z FAIL: SC-VLAN — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6939719Z 
+2026-10-03T10:31:29.6940453Z FAIL: SERVICE-LDCONFIG — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6941018Z 
+2026-10-03T10:31:29.6941554Z FAIL: SHELLCMD-LEAF — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6942095Z 
+2026-10-03T10:31:29.6942622Z FAIL: SYSCMD-LEAF — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6943156Z 
+2026-10-03T10:31:29.6943678Z FAIL: SYSLOG-RUN — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6944214Z 
+2026-10-03T10:31:29.6944742Z FAIL: SYSLOGD-PROC — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6945287Z 
+2026-10-03T10:31:29.6945842Z FAIL: TASK-SPECIAL-PORT — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6946402Z 
+2026-10-03T10:31:29.6946935Z FAIL: TEXTCMD-LEAF — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6947471Z 
+2026-10-03T10:31:29.6947996Z FAIL: WAITQUIET — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:29.6948861Z 
+2026-10-03T10:31:29.6949029Z FAIL: 66 must-pass marker(s) missing from the suite output
+2026-10-03T10:31:29.6949385Z NEXTBSD-TEST-SUMMARY ok=81 fail=0 skip=6
+2026-10-03T10:31:29.6949783Z ==> boot-test FAILED rc=1 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh)
+2026-10-03T10:31:29.6950189Z     serial transcript: tests/boot.log
+2026-10-03T10:31:29.6950462Z SELFTEST OK:   case reboot (rc=1)
+2026-10-03T10:31:29.6951061Z ==> case: two-suite (suite: /usr/tests/freebsd-launchd-mach/run.sh /usr/tests/nextbsd-iokit/run.sh) — expect rc 0
+2026-10-03T10:31:29.6966721Z ==> boot test: tests/fake.img
+2026-10-03T10:31:29.6977083Z -rw-r--r-- 1 runner runner 0 Oct  3 10:30 tests/fake.img
+2026-10-03T10:31:29.7052270Z ==> using KVM acceleration
+2026-10-03T10:31:29.7052658Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T10:31:29.7241301Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T10:31:29.7287526Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T10:31:29.7288381Z 
+2026-10-03T10:31:29.7288387Z 
+2026-10-03T10:31:29.7288500Z Loading /boot/loader.conf
+2026-10-03T10:31:29.7288655Z 
+2026-10-03T10:31:29.7288659Z 
+2026-10-03T10:31:29.7288855Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T10:31:29.7289135Z 
+2026-10-03T10:31:29.7289138Z 
+2026-10-03T10:31:29.7289221Z OK 
+2026-10-03T10:31:29.7289412Z ==> at loader prompt
+2026-10-03T10:31:30.9122843Z  set console=comconsole
+2026-10-03T10:31:30.9123394Z OK set console=comconsole
+2026-10-03T10:31:30.9123730Z 
+2026-10-03T10:31:30.9123737Z 
+2026-10-03T10:31:31.9749191Z OK set boot_serial=YES
+2026-10-03T10:31:31.9749782Z OK set boot_serial=YES
+2026-10-03T10:31:31.9750046Z 
+2026-10-03T10:31:31.9750051Z 
+2026-10-03T10:31:33.3591252Z OK set comconsole_speed=115200
+2026-10-03T10:31:33.3591861Z OK set comconsole_speed=115200
+2026-10-03T10:31:33.3592149Z 
+2026-10-03T10:31:33.3592154Z 
+2026-10-03T10:31:34.5426461Z OK set boot_multicons=YES
+2026-10-03T10:31:34.5427050Z OK set boot_multicons=YES
+2026-10-03T10:31:34.5427403Z 
+2026-10-03T10:31:34.5427412Z 
+2026-10-03T10:31:35.6457427Z OK set boot_mutemsgs=NO
+2026-10-03T10:31:35.6457972Z OK set boot_mutemsgs=NO
+2026-10-03T10:31:35.6458662Z 
+2026-10-03T10:31:35.6458670Z 
+2026-10-03T10:31:36.2275529Z OK boot -v
+2026-10-03T10:31:36.2276023Z Booting [/boot/kernel/kernel]
+2026-10-03T10:31:36.2276403Z 
+2026-10-03T10:31:36.2276410Z 
+2026-10-03T10:31:36.2276971Z ---<<BOOT>>---
+2026-10-03T10:31:36.2277235Z 
+2026-10-03T10:31:36.2277242Z 
+2026-10-03T10:31:36.2277476Z Copyright (c) 1992-2025 The FreeBSD Project.
+2026-10-03T10:31:36.2277915Z 
+2026-10-03T10:31:36.2277921Z 
+2026-10-03T10:31:36.2278409Z early-init: sethostname('selftest')
+2026-10-03T10:31:36.2278788Z 
+2026-10-03T10:31:36.2278794Z 
+2026-10-03T10:31:36.2279145Z early-init: opened /dev/klog (kernel.log_open=1; console quiet)
+2026-10-03T10:31:36.2279696Z 
+2026-10-03T10:31:36.2279702Z 
+2026-10-03T10:31:36.2279904Z NextBSD/amd64 (selftest) (console)
+2026-10-03T10:31:36.2280334Z 
+2026-10-03T10:31:36.2280340Z 
+2026-10-03T10:31:36.2280774Z 
+2026-10-03T10:31:36.2281578Z OK: BOOT-BANNER-OK — getty shows the synthesized hostname 'selftest'
+2026-10-03T10:31:36.5280557Z login:
+2026-10-03T10:31:36.5280888Z 
+2026-10-03T10:31:36.5280894Z 
+2026-10-03T10:31:36.5280901Z 
+2026-10-03T10:31:36.5281120Z OK: boot reached the login prompt
+2026-10-03T10:31:36.5283573Z admin
+2026-10-03T10:31:36.5283962Z Password:
+2026-10-03T10:31:36.5284242Z 
+2026-10-03T10:31:36.5284248Z 
+2026-10-03T10:31:36.5284292Z 
+2026-10-03T10:31:36.5285114Z admin@selftest ~ % 
+2026-10-03T10:31:36.5285538Z OK: logged in as admin
+2026-10-03T10:31:36.5287439Z ==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T10:31:36.5298943Z r() { if [ "$(id -u)" = 0 ]; then "$@"; else sudo "$@"; fi; }
+2026-10-03T10:31:36.5299686Z admin@selftest ~ % r /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T10:31:36.5300256Z ACCT-HELPERS-OK
+2026-10-03T10:31:36.5300465Z 
+2026-10-03T10:31:36.5300471Z 
+2026-10-03T10:31:36.5300606Z ACCT-LIFECYCLE-OK
+2026-10-03T10:31:36.5300840Z 
+2026-10-03T10:31:36.5300845Z 
+2026-10-03T10:31:36.5300974Z ADVCMD-LEAF-OK
+2026-10-03T10:31:36.5301169Z 
+2026-10-03T10:31:36.5301174Z 
+2026-10-03T10:31:36.5301327Z ASLMANAGER-DEMAND-SKIP
+2026-10-03T10:31:36.5301558Z 
+2026-10-03T10:31:36.5301563Z 
+2026-10-03T10:31:36.5301701Z BOOT-BANNER-SKIP
+2026-10-03T10:31:36.5301899Z 
+2026-10-03T10:31:36.5301904Z 
+2026-10-03T10:31:36.5302052Z BOOTSTRAP-OK
+2026-10-03T10:31:36.5302244Z 
+2026-10-03T10:31:36.5302249Z 
+2026-10-03T10:31:36.5302391Z BOOTSTRAP-REMOTE-OK
+2026-10-03T10:31:36.5302607Z 
+2026-10-03T10:31:36.5302612Z 
+2026-10-03T10:31:36.5302740Z BUSYSTATE-OK
+2026-10-03T10:31:36.5302928Z 
+2026-10-03T10:31:36.5302933Z 
+2026-10-03T10:31:36.5303063Z CONFIGD-LIST-OK
+2026-10-03T10:31:36.5303277Z 
+2026-10-03T10:31:36.5303281Z 
+2026-10-03T10:31:36.5303420Z CONFIGD-MULTI-OK
+2026-10-03T10:31:36.5303618Z 
+2026-10-03T10:31:36.5303622Z 
+2026-10-03T10:31:36.5303764Z CONFIGD-NOTIFY-OK
+2026-10-03T10:31:36.5303963Z 
+2026-10-03T10:31:36.5303968Z 
+2026-10-03T10:31:36.5304115Z CONFIGD-PATTERN-OK
+2026-10-03T10:31:36.5304664Z 
+2026-10-03T10:31:36.5304669Z 
+2026-10-03T10:31:36.5304802Z CONFIGD-STORE-OK
+2026-10-03T10:31:36.5305005Z 
+2026-10-03T10:31:36.5305010Z 
+2026-10-03T10:31:36.5305144Z COREFOUNDATION-OK
+2026-10-03T10:31:36.5305354Z 
+2026-10-03T10:31:36.5305358Z 
+2026-10-03T10:31:36.5305480Z DA-BOOT-OK
+2026-10-03T10:31:36.5305661Z 
+2026-10-03T10:31:36.5305673Z 
+2026-10-03T10:31:36.5305809Z DA-IOKIT-OK
+2026-10-03T10:31:36.5305983Z 
+2026-10-03T10:31:36.5305988Z 
+2026-10-03T10:31:36.5306126Z DAEMON-STATE-OK
+2026-10-03T10:31:36.5306317Z 
+2026-10-03T10:31:36.5306321Z 
+2026-10-03T10:31:36.5306455Z DOMAIN-DIRS-OK
+2026-10-03T10:31:36.5306673Z 
+2026-10-03T10:31:36.5306678Z 
+2026-10-03T10:31:36.5306954Z EVFILT-MACHPORT-SKIP
+2026-10-03T10:31:36.5307289Z 
+2026-10-03T10:31:36.5307294Z 
+2026-10-03T10:31:36.5307552Z EVFILT-MACHPORT-CONCURRENT-OK
+2026-10-03T10:31:36.5307871Z 
+2026-10-03T10:31:36.5307875Z 
+2026-10-03T10:31:36.5308051Z FBSDGLUE-OK
+2026-10-03T10:31:36.5308793Z 
+2026-10-03T10:31:36.5308808Z 
+2026-10-03T10:31:36.5309099Z FILECMD-LEAF-OK
+2026-10-03T10:31:36.5309343Z 
+2026-10-03T10:31:36.5309348Z 
+2026-10-03T10:31:36.5309561Z GETTY-OK
+2026-10-03T10:31:36.5309751Z 
+2026-10-03T10:31:36.5309756Z 
+2026-10-03T10:31:36.5310078Z HOMEDIR-OK
+2026-10-03T10:31:36.5310348Z 
+2026-10-03T10:31:36.5310353Z 
+2026-10-03T10:31:36.5310533Z HOST-BOOTSTRAP-OK
+2026-10-03T10:31:36.5311038Z 
+2026-10-03T10:31:36.5311045Z 
+2026-10-03T10:31:36.5311200Z HOSTNAMED-OK
+2026-10-03T10:31:36.5311578Z 
+2026-10-03T10:31:36.5311583Z 
+2026-10-03T10:31:36.5311844Z HOSTNAMED-BONJOUR-RENAME-SKIP
+2026-10-03T10:31:36.5367503Z 
+2026-10-03T10:31:36.5367509Z 
+2026-10-03T10:31:36.5367681Z HOSTNAMED-DHCP-OK
+2026-10-03T10:31:36.5367909Z 
+2026-10-03T10:31:36.5367913Z 
+2026-10-03T10:31:36.5368045Z HOSTNAMED-MDNS-SKIP
+2026-10-03T10:31:36.5369082Z 
+2026-10-03T10:31:36.5369088Z 
+2026-10-03T10:31:36.5369236Z HOSTNAMED-PREFS-OK
+2026-10-03T10:31:36.5369438Z 
+2026-10-03T10:31:36.5369443Z 
+2026-10-03T10:31:36.5369578Z IPCFG-ARP-OK
+2026-10-03T10:31:36.5369778Z 
+2026-10-03T10:31:36.5369783Z 
+2026-10-03T10:31:36.5369963Z IPCFG-BOOT-OK
+2026-10-03T10:31:36.5370179Z 
+2026-10-03T10:31:36.5370184Z 
+2026-10-03T10:31:36.5370324Z IPCFG-BOUND-OK
+2026-10-03T10:31:36.5370502Z 
+2026-10-03T10:31:36.5370507Z 
+2026-10-03T10:31:36.5370626Z IPCFG-DHCP-OK
+2026-10-03T10:31:36.5370802Z 
+2026-10-03T10:31:36.5370807Z 
+2026-10-03T10:31:36.5370942Z IPCFG-IPCONFIG-OK
+2026-10-03T10:31:36.5371161Z 
+2026-10-03T10:31:36.5371166Z 
+2026-10-03T10:31:36.5371291Z IPCFG-RA-OK
+2026-10-03T10:31:36.5371474Z 
+2026-10-03T10:31:36.5371480Z 
+2026-10-03T10:31:36.5371614Z IPCFG-RENEW-OK
+2026-10-03T10:31:36.5371808Z 
+2026-10-03T10:31:36.5371812Z 
+2026-10-03T10:31:36.5371944Z IPCFG-RPC-OK
+2026-10-03T10:31:36.5372126Z 
+2026-10-03T10:31:36.5372130Z 
+2026-10-03T10:31:36.5372265Z IPCFG-STORE-OK
+2026-10-03T10:31:36.5372437Z 
+2026-10-03T10:31:36.5372441Z 
+2026-10-03T10:31:36.5372517Z KEM-LINK-OK
+2026-10-03T10:31:36.5372626Z 
+2026-10-03T10:31:36.5372629Z 
+2026-10-03T10:31:36.5372709Z LAUNCHCTL-BUILD-OK
+2026-10-03T10:31:36.5372841Z 
+2026-10-03T10:31:36.5372844Z 
+2026-10-03T10:31:36.5372923Z LAUNCHCTL-LIST-OK
+2026-10-03T10:31:36.5373050Z 
+2026-10-03T10:31:36.5373053Z 
+2026-10-03T10:31:36.5373137Z LAUNCHD-BUILD-OK
+2026-10-03T10:31:36.5373253Z 
+2026-10-03T10:31:36.5373256Z 
+2026-10-03T10:31:36.5373331Z LIBDISPATCH-OK
+2026-10-03T10:31:36.5373441Z 
+2026-10-03T10:31:36.5373444Z 
+2026-10-03T10:31:36.5373529Z LIBDISPATCH-MACH-OK
+2026-10-03T10:31:36.5373656Z 
+2026-10-03T10:31:36.5373659Z 
+2026-10-03T10:31:36.5373731Z LIBDS-OK
+2026-10-03T10:31:36.5373828Z 
+2026-10-03T10:31:36.5373832Z 
+2026-10-03T10:31:36.5373916Z LIBSYSTEM-KERNEL-OK
+2026-10-03T10:31:36.5374033Z 
+2026-10-03T10:31:36.5374035Z 
+2026-10-03T10:31:36.5374107Z LIBXPC-OK
+2026-10-03T10:31:36.5374204Z 
+2026-10-03T10:31:36.5374207Z 
+2026-10-03T10:31:36.5374283Z LINUX-MOUNTS-OK
+2026-10-03T10:31:36.5374395Z 
+2026-10-03T10:31:36.5374398Z 
+2026-10-03T10:31:36.5374471Z MACH-PORT-OK
+2026-10-03T10:31:36.5374580Z 
+2026-10-03T10:31:36.5374583Z 
+2026-10-03T10:31:36.5374654Z MACH-SMOKE-OK
+2026-10-03T10:31:36.5374983Z 
+2026-10-03T10:31:36.5374986Z 
+2026-10-03T10:31:36.5375058Z MDNS-BOOT-OK
+2026-10-03T10:31:36.5375164Z 
+2026-10-03T10:31:36.5375168Z 
+2026-10-03T10:31:36.5375244Z MDNS-DNSSD-OK
+2026-10-03T10:31:36.5375346Z 
+2026-10-03T10:31:36.5375350Z 
+2026-10-03T10:31:36.5375432Z MDNS-ENGINE-OK
+2026-10-03T10:31:36.5375540Z 
+2026-10-03T10:31:36.5375547Z 
+2026-10-03T10:31:36.5375630Z MDNS-IFWATCH-OK
+2026-10-03T10:31:36.5375745Z 
+2026-10-03T10:31:36.5375748Z 
+2026-10-03T10:31:36.5375821Z MDNS-STATIC-OK
+2026-10-03T10:31:36.5375931Z 
+2026-10-03T10:31:36.5375934Z 
+2026-10-03T10:31:36.5376007Z MIG-BUILD-OK
+2026-10-03T10:31:36.5376112Z 
+2026-10-03T10:31:36.5376115Z 
+2026-10-03T10:31:36.5376188Z NFS-OK
+2026-10-03T10:31:36.5376290Z 
+2026-10-03T10:31:36.5376293Z 
+2026-10-03T10:31:36.5376375Z NOTIFYD-PROC-OK
+2026-10-03T10:31:36.5376484Z 
+2026-10-03T10:31:36.5376487Z 
+2026-10-03T10:31:36.5376561Z NSS-DS-OK
+2026-10-03T10:31:36.5376659Z 
+2026-10-03T10:31:36.5376662Z 
+2026-10-03T10:31:36.5376736Z NTP-OK
+2026-10-03T10:31:36.5376842Z 
+2026-10-03T10:31:36.5376845Z 
+2026-10-03T10:31:36.5376917Z SC-BOND-OK
+2026-10-03T10:31:36.5377021Z 
+2026-10-03T10:31:36.5377024Z 
+2026-10-03T10:31:36.5377098Z SC-BRIDGE-OK
+2026-10-03T10:31:36.5377207Z 
+2026-10-03T10:31:36.5377210Z 
+2026-10-03T10:31:36.5377281Z SC-LOCK-OK
+2026-10-03T10:31:36.5377385Z 
+2026-10-03T10:31:36.5377388Z 
+2026-10-03T10:31:36.5377596Z SC-MULTI-OK
+2026-10-03T10:31:36.5377701Z 
+2026-10-03T10:31:36.5377704Z 
+2026-10-03T10:31:36.5377781Z SC-NETIF-OK
+2026-10-03T10:31:36.5377877Z 
+2026-10-03T10:31:36.5377880Z 
+2026-10-03T10:31:36.5377957Z SC-NETSET-OK
+2026-10-03T10:31:36.5378061Z 
+2026-10-03T10:31:36.5378069Z 
+2026-10-03T10:31:36.5378470Z SC-NETSVC-OK
+2026-10-03T10:31:36.5378586Z 
+2026-10-03T10:31:36.5378589Z 
+2026-10-03T10:31:36.5378663Z SC-NOTIFY-OK
+2026-10-03T10:31:36.5378770Z 
+2026-10-03T10:31:36.5378773Z 
+2026-10-03T10:31:36.5378846Z SC-PATH-OK
+2026-10-03T10:31:36.5378950Z 
+2026-10-03T10:31:36.5378953Z 
+2026-10-03T10:31:36.5379031Z SC-PLINK-OK
+2026-10-03T10:31:36.5379137Z 
+2026-10-03T10:31:36.5379140Z 
+2026-10-03T10:31:36.5379222Z SC-PNOTIFY-OK
+2026-10-03T10:31:36.5379334Z 
+2026-10-03T10:31:36.5379337Z 
+2026-10-03T10:31:36.5379417Z SC-PREFS-OK
+2026-10-03T10:31:36.5379516Z 
+2026-10-03T10:31:36.5379526Z 
+2026-10-03T10:31:36.5379600Z SC-RUNLOOP-OK
+2026-10-03T10:31:36.5379708Z 
+2026-10-03T10:31:36.5379711Z 
+2026-10-03T10:31:36.5379788Z SC-STORE-OK
+2026-10-03T10:31:36.5379890Z 
+2026-10-03T10:31:36.5379893Z 
+2026-10-03T10:31:36.5379963Z SC-VLAN-OK
+2026-10-03T10:31:36.5380063Z 
+2026-10-03T10:31:36.5380066Z 
+2026-10-03T10:31:36.5380153Z SERVICE-LDCONFIG-OK
+2026-10-03T10:31:36.5380277Z 
+2026-10-03T10:31:36.5380280Z 
+2026-10-03T10:31:36.5380365Z SHELLCMD-LEAF-OK
+2026-10-03T10:31:36.5380478Z 
+2026-10-03T10:31:36.5380481Z 
+2026-10-03T10:31:36.5380557Z SUDO-OK
+2026-10-03T10:31:36.5380651Z 
+2026-10-03T10:31:36.5380654Z 
+2026-10-03T10:31:36.5380735Z SYSCMD-LEAF-OK
+2026-10-03T10:31:36.5380851Z 
+2026-10-03T10:31:36.5380854Z 
+2026-10-03T10:31:36.5380928Z SYSLOG-RUN-OK
+2026-10-03T10:31:36.5381045Z 
+2026-10-03T10:31:36.5381048Z 
+2026-10-03T10:31:36.5381123Z SYSLOGD-PROC-OK
+2026-10-03T10:31:36.5381240Z 
+2026-10-03T10:31:36.5381242Z 
+2026-10-03T10:31:36.5381333Z TASK-SPECIAL-PORT-OK
+2026-10-03T10:31:36.5381462Z 
+2026-10-03T10:31:36.5381465Z 
+2026-10-03T10:31:36.5381547Z TEXTCMD-LEAF-OK
+2026-10-03T10:31:36.5381655Z 
+2026-10-03T10:31:36.5381658Z 
+2026-10-03T10:31:36.5381810Z WAITQUIET-OK
+2026-10-03T10:31:36.5382003Z 
+2026-10-03T10:31:36.5382008Z 
+2026-10-03T10:31:36.5382154Z WEDGE-CHECK-SKIP
+2026-10-03T10:31:36.5382360Z 
+2026-10-03T10:31:36.5382365Z 
+2026-10-03T10:31:36.5382497Z ADVCMD-LEAF-OK
+2026-10-03T10:31:36.5382701Z 
+2026-10-03T10:31:36.5382706Z 
+2026-10-03T10:31:36.5382882Z NEXTBSD-TEST-SUMMARY ok=81 fail=0 skip=6
+2026-10-03T10:31:36.5383224Z 
+2026-10-03T10:31:36.5383229Z 
+2026-10-03T10:31:36.5383382Z admin@selftest ~ % 
+2026-10-03T10:31:36.5383623Z OK: ACCT-HELPERS
+2026-10-03T10:31:36.5383736Z 
+2026-10-03T10:31:36.5383819Z OK: ACCT-LIFECYCLE
+2026-10-03T10:31:36.5383933Z 
+2026-10-03T10:31:36.5384175Z OK: ADVCMD-LEAF
+2026-10-03T10:31:36.5384285Z 
+2026-10-03T10:31:36.5384363Z OK: ADVCMD-LEAF
+2026-10-03T10:31:36.5384472Z 
+2026-10-03T10:31:36.5384714Z OK: /usr/tests/freebsd-launchd-mach/run.sh: NEXTBSD-TEST-SUMMARY ok=81 fail=0 skip=6
+2026-10-03T10:31:36.5385052Z 
+2026-10-03T10:31:36.5386462Z DBG: transcript 2446 bytes; tail: <NL><NL>SC-RUNLOOP-OK<NL><NL><NL>SC-STORE-OK<NL><NL><NL>SC-VLAN-OK<NL><NL><NL>SERVICE-LDCONFIG-OK<NL><NL><NL>SHELLCMD-LEAF-OK<NL><NL><NL>SUDO-OK<NL><NL><NL>SYSCMD-LEAF-OK<NL><NL><NL>SYSLOG-RUN-OK<NL><NL><NL>SYSLOGD-PROC-OK<NL><NL><NL>TASK-SPECIAL-PORT-OK<NL><NL><NL>TEXTCMD-LEAF-OK<NL><NL><NL>WAITQUIET-OK<NL><NL><NL>WEDGE-CHECK-SKIP<NL><NL><NL>ADVCMD-LEAF-OK<NL><NL><NL>NEXTBSD-TEST-SUMMARY ok=81 fail=0 skip=6<NL><NL><NL>admin@selftest ~ % 
+2026-10-03T10:31:36.5387975Z 
+2026-10-03T10:31:36.5388068Z DBG: markers recorded: 3
+2026-10-03T10:31:36.5388477Z 
+2026-10-03T10:31:36.5388612Z DBG-MARK: <ACCT-HELPERS> at OK/SKIP/FAIL = 905/-1/-1
+2026-10-03T10:31:36.5388831Z 
+2026-10-03T10:31:36.5388975Z DBG-MARK: <ACCT-LIFECYCLE> at OK/SKIP/FAIL = 923/-1/-1
+2026-10-03T10:31:36.5389199Z 
+2026-10-03T10:31:36.5389316Z DBG-MARK: <ADVCMD-LEAF> at OK/SKIP/FAIL = 943/-1/-1
+2026-10-03T10:31:36.5389532Z 
+2026-10-03T10:31:36.5389675Z DBG-MARK: <ASLMANAGER-DEMAND> at OK/SKIP/FAIL = -1/960/-1
+2026-10-03T10:31:36.5389911Z 
+2026-10-03T10:31:36.5390156Z DBG-MARK: <BOOT-BANNER> at OK/SKIP/FAIL = -1/985/-1
+2026-10-03T10:31:36.5390374Z 
+2026-10-03T10:31:36.5390494Z DBG-MARK: <BOOTSTRAP> at OK/SKIP/FAIL = 1004/-1/-1
+2026-10-03T10:31:36.5390699Z 
+2026-10-03T10:31:36.5390838Z DBG-MARK: <BOOTSTRAP-REMOTE> at OK/SKIP/FAIL = 1019/-1/-1
+2026-10-03T10:31:36.5391063Z 
+2026-10-03T10:31:36.5391180Z DBG-MARK: <BUSYSTATE> at OK/SKIP/FAIL = 1041/-1/-1
+2026-10-03T10:31:36.5391527Z ==> running on-image suite: /usr/tests/nextbsd-iokit/run.sh
+2026-10-03T10:31:36.5391859Z r /usr/tests/nextbsd-iokit/run.sh
+2026-10-03T10:31:36.5392102Z CAFFEINATE-OK
+2026-10-03T10:31:36.5392217Z 
+2026-10-03T10:31:36.5392221Z 
+2026-10-03T10:31:36.5392302Z EM-AUTOLOAD-OK
+2026-10-03T10:31:36.5392419Z 
+2026-10-03T10:31:36.5392422Z 
+2026-10-03T10:31:36.5392505Z IOCATALOGUE-OK
+2026-10-03T10:31:36.5392611Z 
+2026-10-03T10:31:36.5392614Z 
+2026-10-03T10:31:36.5392697Z IOKIT-LOOKUP-OK
+2026-10-03T10:31:36.5392812Z 
+2026-10-03T10:31:36.5392814Z 
+2026-10-03T10:31:36.5392895Z IOKITNOTIFY-OK
+2026-10-03T10:31:36.5393001Z 
+2026-10-03T10:31:36.5393016Z 
+2026-10-03T10:31:36.5393090Z IOREG-OK
+2026-10-03T10:31:36.5393196Z 
+2026-10-03T10:31:36.5393199Z 
+2026-10-03T10:31:36.5393276Z KEXTD-LOAD-OK
+2026-10-03T10:31:36.5393388Z 
+2026-10-03T10:31:36.5393391Z 
+2026-10-03T10:31:36.5393492Z NEXTBSD-TEST-SUMMARY ok=7 fail=0 skip=0
+2026-10-03T10:31:36.5393686Z 
+2026-10-03T10:31:36.5393689Z 
+2026-10-03T10:31:36.5393779Z admin@selftest ~ % 
+2026-10-03T10:31:36.5393978Z OK: CAFFEINATE
+2026-10-03T10:31:36.5394082Z 
+2026-10-03T10:31:36.5394162Z OK: EM-AUTOLOAD
+2026-10-03T10:31:36.5394270Z 
+2026-10-03T10:31:36.5394353Z OK: IOCATALOGUE
+2026-10-03T10:31:36.5394460Z 
+2026-10-03T10:31:36.5394550Z OK: IOKIT-LOOKUP
+2026-10-03T10:31:36.5394670Z 
+2026-10-03T10:31:36.5394745Z OK: IOKITNOTIFY
+2026-10-03T10:31:36.5394855Z 
+2026-10-03T10:31:36.5394927Z OK: IOREG
+2026-10-03T10:31:36.5395030Z 
+2026-10-03T10:31:36.5395105Z OK: KEXTD-LOAD
+2026-10-03T10:31:36.5395216Z 
+2026-10-03T10:31:36.5395433Z OK: /usr/tests/nextbsd-iokit/run.sh: NEXTBSD-TEST-SUMMARY ok=7 fail=0 skip=0
+2026-10-03T10:31:36.5395748Z 
+2026-10-03T10:31:36.5397059Z DBG: transcript 2653 bytes; tail: E-CHECK-SKIP<NL><NL><NL>ADVCMD-LEAF-OK<NL><NL><NL>NEXTBSD-TEST-SUMMARY ok=81 fail=0 skip=6<NL><NL><NL>admin@selftest ~ % r /usr/tests/nextbsd-iokit/run.sh<NL>CAFFEINATE-OK<NL><NL><NL>EM-AUTOLOAD-OK<NL><NL><NL>IOCATALOGUE-OK<NL><NL><NL>IOKIT-LOOKUP-OK<NL><NL><NL>IOKITNOTIFY-OK<NL><NL><NL>IOREG-OK<NL><NL><NL>KEXTD-LOAD-OK<NL><NL><NL>NEXTBSD-TEST-SUMMARY ok=7 fail=0 skip=0<NL><NL><NL>admin@selftest ~ % 
+2026-10-03T10:31:36.5398765Z 
+2026-10-03T10:31:36.5398900Z DBG: markers recorded: 10
+2026-10-03T10:31:36.5399172Z 
+2026-10-03T10:31:36.5399385Z DBG-MARK: <ACCT-HELPERS> at OK/SKIP/FAIL = 905/-1/-1
+2026-10-03T10:31:36.5399989Z 
+2026-10-03T10:31:36.5400213Z DBG-MARK: <ACCT-LIFECYCLE> at OK/SKIP/FAIL = 923/-1/-1
+2026-10-03T10:31:36.5400595Z 
+2026-10-03T10:31:36.5400726Z DBG-MARK: <ADVCMD-LEAF> at OK/SKIP/FAIL = 943/-1/-1
+2026-10-03T10:31:36.5400937Z 
+2026-10-03T10:31:36.5401089Z DBG-MARK: <ASLMANAGER-DEMAND> at OK/SKIP/FAIL = -1/960/-1
+2026-10-03T10:31:36.5401321Z 
+2026-10-03T10:31:36.5401442Z DBG-MARK: <BOOT-BANNER> at OK/SKIP/FAIL = -1/985/-1
+2026-10-03T10:31:36.5401642Z 
+2026-10-03T10:31:36.5401764Z DBG-MARK: <BOOTSTRAP> at OK/SKIP/FAIL = 1004/-1/-1
+2026-10-03T10:31:36.5401971Z 
+2026-10-03T10:31:36.5402108Z DBG-MARK: <BOOTSTRAP-REMOTE> at OK/SKIP/FAIL = 1019/-1/-1
+2026-10-03T10:31:36.5402339Z 
+2026-10-03T10:31:36.5402450Z DBG-MARK: <BUSYSTATE> at OK/SKIP/FAIL = 1041/-1/-1
+2026-10-03T10:31:36.5402658Z 
+2026-10-03T10:31:36.5403386Z FAIL: BOOTSTRAP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5403947Z 
+2026-10-03T10:31:36.5404515Z FAIL: BOOTSTRAP-REMOTE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5405069Z 
+2026-10-03T10:31:36.5405742Z FAIL: BUSYSTATE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5406272Z 
+2026-10-03T10:31:36.5406805Z FAIL: CONFIGD-LIST — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5407344Z 
+2026-10-03T10:31:36.5407876Z FAIL: CONFIGD-MULTI — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5408736Z 
+2026-10-03T10:31:36.5409294Z FAIL: CONFIGD-NOTIFY — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5409855Z 
+2026-10-03T10:31:36.5410400Z FAIL: CONFIGD-PATTERN — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5410944Z 
+2026-10-03T10:31:36.5411483Z FAIL: CONFIGD-STORE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5412023Z 
+2026-10-03T10:31:36.5412691Z FAIL: COREFOUNDATION — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5413697Z 
+2026-10-03T10:31:36.5414648Z FAIL: DA-BOOT — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5415514Z 
+2026-10-03T10:31:36.5416101Z FAIL: DOMAIN-DIRS — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5416976Z 
+2026-10-03T10:31:36.5417736Z FAIL: FBSDGLUE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5418569Z 
+2026-10-03T10:31:36.5419140Z FAIL: FILECMD-LEAF — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5419683Z 
+2026-10-03T10:31:36.5420467Z FAIL: HOST-BOOTSTRAP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5421473Z 
+2026-10-03T10:31:36.5422126Z FAIL: HOSTNAMED — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5422654Z 
+2026-10-03T10:31:36.5423199Z FAIL: HOSTNAMED-DHCP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5423941Z 
+2026-10-03T10:31:36.5424490Z FAIL: HOSTNAMED-PREFS — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5425039Z 
+2026-10-03T10:31:36.5425555Z FAIL: IPCFG-ARP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5426083Z 
+2026-10-03T10:31:36.5426599Z FAIL: IPCFG-BOOT — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5427135Z 
+2026-10-03T10:31:36.5427659Z FAIL: IPCFG-BOUND — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5428838Z 
+2026-10-03T10:31:36.5429827Z FAIL: IPCFG-DHCP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5430455Z 
+2026-10-03T10:31:36.5431016Z FAIL: IPCFG-IPCONFIG — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5431728Z 
+2026-10-03T10:31:36.5432248Z FAIL: IPCFG-RA — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5432770Z 
+2026-10-03T10:31:36.5433295Z FAIL: IPCFG-RENEW — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5433820Z 
+2026-10-03T10:31:36.5434334Z FAIL: IPCFG-RPC — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5434852Z 
+2026-10-03T10:31:36.5435380Z FAIL: IPCFG-STORE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5435909Z 
+2026-10-03T10:31:36.5436414Z FAIL: KEM-LINK — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5436946Z 
+2026-10-03T10:31:36.5437486Z FAIL: LAUNCHCTL-BUILD — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5438045Z 
+2026-10-03T10:31:36.5438884Z FAIL: LAUNCHCTL-LIST — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5439435Z 
+2026-10-03T10:31:36.5439982Z FAIL: LAUNCHD-BUILD — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5440536Z 
+2026-10-03T10:31:36.5441058Z FAIL: LIBDISPATCH — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5441588Z 
+2026-10-03T10:31:36.5442140Z FAIL: LIBDISPATCH-MACH — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5442690Z 
+2026-10-03T10:31:36.5443239Z FAIL: LIBSYSTEM-KERNEL — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5443790Z 
+2026-10-03T10:31:36.5444295Z FAIL: LIBXPC — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5444802Z 
+2026-10-03T10:31:36.5445329Z FAIL: LINUX-MOUNTS — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5446003Z 
+2026-10-03T10:31:36.5446514Z FAIL: MACH-PORT — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5447036Z 
+2026-10-03T10:31:36.5447558Z FAIL: MACH-SMOKE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5448084Z 
+2026-10-03T10:31:36.5448857Z FAIL: MDNS-BOOT — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5449374Z 
+2026-10-03T10:31:36.5449889Z FAIL: MDNS-DNSSD — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5450406Z 
+2026-10-03T10:31:36.5450925Z FAIL: MDNS-ENGINE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5451471Z 
+2026-10-03T10:31:36.5452003Z FAIL: MDNS-IFWATCH — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5452546Z 
+2026-10-03T10:31:36.5453215Z FAIL: MIG-BUILD — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5453738Z 
+2026-10-03T10:31:36.5454270Z FAIL: NOTIFYD-PROC — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5454828Z 
+2026-10-03T10:31:36.5455331Z FAIL: SC-BOND — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5455842Z 
+2026-10-03T10:31:36.5456354Z FAIL: SC-BRIDGE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5456890Z 
+2026-10-03T10:31:36.5457389Z FAIL: SC-LOCK — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5457901Z 
+2026-10-03T10:31:36.5458711Z FAIL: SC-MULTI — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5459232Z 
+2026-10-03T10:31:36.5459749Z FAIL: SC-NETIF — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5460260Z 
+2026-10-03T10:31:36.5460773Z FAIL: SC-NETSET — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5461297Z 
+2026-10-03T10:31:36.5461800Z FAIL: SC-NETSVC — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5462327Z 
+2026-10-03T10:31:36.5462831Z FAIL: SC-NOTIFY — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5463349Z 
+2026-10-03T10:31:36.5463860Z FAIL: SC-PATH — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5464366Z 
+2026-10-03T10:31:36.5464878Z FAIL: SC-PLINK — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5465396Z 
+2026-10-03T10:31:36.5465910Z FAIL: SC-PNOTIFY — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5466434Z 
+2026-10-03T10:31:36.5466934Z FAIL: SC-PREFS — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5467592Z 
+2026-10-03T10:31:36.5468363Z FAIL: SC-RUNLOOP — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5468892Z 
+2026-10-03T10:31:36.5469414Z FAIL: SC-STORE — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5469923Z 
+2026-10-03T10:31:36.5470425Z FAIL: SC-VLAN — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5470939Z 
+2026-10-03T10:31:36.5471487Z FAIL: SERVICE-LDCONFIG — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5472042Z 
+2026-10-03T10:31:36.5472567Z FAIL: SHELLCMD-LEAF — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5473118Z 
+2026-10-03T10:31:36.5473641Z FAIL: SYSCMD-LEAF — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5474165Z 
+2026-10-03T10:31:36.5474816Z FAIL: SYSLOG-RUN — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5475347Z 
+2026-10-03T10:31:36.5475877Z FAIL: SYSLOGD-PROC — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5476413Z 
+2026-10-03T10:31:36.5476963Z FAIL: TASK-SPECIAL-PORT — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5477519Z 
+2026-10-03T10:31:36.5478048Z FAIL: TEXTCMD-LEAF — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5478805Z 
+2026-10-03T10:31:36.5479327Z FAIL: WAITQUIET — must-pass marker never emitted (suite did not reach it, or the image predates the capability; overlay to warn if that is expected)
+2026-10-03T10:31:36.5479865Z 
+2026-10-03T10:31:36.5480024Z FAIL: 66 must-pass marker(s) missing from the suite output
+2026-10-03T10:31:36.5480383Z NEXTBSD-TEST-SUMMARY ok=7 fail=0 skip=0
+2026-10-03T10:31:36.5480905Z ==> boot-test FAILED rc=1 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh /usr/tests/nextbsd-iokit/run.sh)
+2026-10-03T10:31:36.5481422Z     serial transcript: tests/boot.log
+2026-10-03T10:31:36.5481797Z SELFTEST FAIL: case two-suite — expected rc 0, got 1
+2026-10-03T10:31:36.5482098Z ==> SELFTEST FAILED
+2026-10-03T10:31:36.5493129Z ##[error]Process completed with exit code 1.
+2026-10-03T10:31:36.5624515Z Post job cleanup.
+2026-10-03T10:31:36.6483001Z [command]/usr/bin/git version
+2026-10-03T10:31:36.6528711Z git version 2.55.0
+2026-10-03T10:31:36.6573148Z Temporarily overriding HOME='/home/runner/work/_temp/e572903e-7ba7-472d-a4ce-6be0bcd72286' before making global git config changes
+2026-10-03T10:31:36.6574689Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-03T10:31:36.6579454Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/nextbsd-ci/nextbsd-ci
+2026-10-03T10:31:36.6622725Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-03T10:31:36.6663147Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-03T10:31:36.6919646Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-03T10:31:36.6953550Z http.https://github.com/.extraheader
+2026-10-03T10:31:36.6966964Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-03T10:31:36.7010984Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-03T10:31:36.7294825Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-03T10:31:36.7336867Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-03T10:31:36.7752402Z Cleaning up orphan processes
+2026-10-03T10:31:36.8076748Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

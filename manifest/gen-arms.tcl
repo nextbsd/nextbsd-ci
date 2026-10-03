@@ -107,21 +107,29 @@ proc esc {s} {
 
 # ------------------------------------------------------------------ list mode --
 if {$mode eq "list"} {
+    # Pick the failure target FIRST (the first must-pass, else the first
+    # warn, in sort order). It is emitted only as its FAIL line: the `ok`
+    # case converts that line to OK in the mock, the `fail` case emits it
+    # as a real failure. Emitting an OK line AND a FAIL line for the same
+    # marker would make the mock print it twice; the duplicate -OK text
+    # later in the stream lets the marker arm re-match and swallow the
+    # markers in between (expect resumes after the later match).
     set failtarget ""
-    foreach m $onarch {
-        set p [set eff($m,policy)]
-        if {$p eq "must-pass" || $p eq "fail-gates"} {
-            puts "OK $m [set eff($m,owner)]"
-        } else {
-            puts "SKIP $m [set eff($m,owner)]"
-        }
-    }
     foreach m $mustpass {
         if {$failtarget eq ""} { set failtarget $m }
     }
     if {$failtarget eq ""} {
         foreach m $warnfail {
             if {$failtarget eq ""} { set failtarget $m }
+        }
+    }
+    foreach m $onarch {
+        if {$m eq $failtarget} continue
+        set p [set eff($m,policy)]
+        if {$p eq "must-pass" || $p eq "fail-gates"} {
+            puts "OK $m [set eff($m,owner)]"
+        } else {
+            puts "SKIP $m [set eff($m,owner)]"
         }
     }
     if {$failtarget ne ""} { puts "FAIL $failtarget [set eff($failtarget,owner)]" }
