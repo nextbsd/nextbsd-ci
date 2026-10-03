@@ -64,6 +64,12 @@ golden "login: login(1) session message" $re_session_msg \
     "login on console as admin"
 golden "login: zsh prompt" $re_shell_prompt \
     "admin@pc-q35-8-2 ~ % "
+# nextbsd-fetch(1) runs from /etc/zprofile at login, inside the shell after the
+# autologin; on the console it is ANSI-wrapped (ESC[1;97m ... ESC[0m). Match the
+# bare text through the wrappers. (Synthetic sample: the CI images can't be
+# sampled from a Gershwin desktop, but the source emits exactly this shape.)
+golden "login: nextbsd-fetch banner (ANSI-wrapped)" $re_fetch_banner \
+    "\033[1;97mWelcome to NextBSD!\033[0m"
 
 # The panic family.
 golden "panic: page fault" $re_panic "kernel: Fatal trap 12: page fault in kernel mode"

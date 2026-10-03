@@ -47,22 +47,26 @@ expect {
     }
 }
 
-# Boot completes and we get a shell, in one block. Splitting the wait from the
-# decision was the original bug: on an image where automatic login works there
-# is no prompt, so a wait-only block waits out eight minutes and the decision
-# never runs.
+# Get a usable shell, in two stages.
 #
-# The "login on console as ..." session message cannot be relied on: it is a
-# syslog message, not console output (LOG_CONS reaches the console only when
-# syslogd is unreachable), so whether it appears at all is a race (lost on
-# arm64 under qemu while a working shell sat on the console — nextbsd-userland#289).
-# On timeout, probe for a shell before concluding anything.
-# Cap the login-wait window: once the banner is up, the login (or autologin)
-# should follow within seconds -- getty prints the banner and immediately shows
-# the prompt or logs in. An autologin image with no prompt and a console-lost
-# session message (arm64) would otherwise wait out the whole NB_TIMEOUT_GLOBAL
-# before the shell probe below runs, which reads as a 30-minute hang on a
-# perfectly good boot. Past this cap with no prompt/message we probe, then bail.
+# Stage 1 waits for the nextbsd-fetch login banner ("Welcome to NextBSD!",
+# run from /etc/zprofile at login, so it prints INSIDE the shell after the
+# autologin -- proof the shell is alive), or a login prompt / the session
+# message on an image that does not autologin. The CI images are
+# headless-console (no desktop login window), so nextbsd-fetch always prints
+# after a clean login; it is the hard "shell is alive" gate.
+#
+# Stage 2 (below) waits for the shell prompt ([#%$] $) -- proof the shell is
+# idle and accepting input, which the banner alone does not establish (it
+# renders before the shell settles). The % only counts once the banner (or
+# login) has been seen, so a stray driver line ending in % before the banner
+# can't false-trigger it.
+#
+# The window is capped (180s) so a hung image bails quickly instead of waiting
+# out the whole NB_TIMEOUT_GLOBAL. The "login on console as ..." session message
+# is a syslog line that only reaches the console when syslogd is unreachable
+# (a lost race on arm64, nextbsd-userland#289), so it is a secondary signal,
+# not the gate.
 set _saved_login_timeout $timeout
 if {$timeout > 180} { set timeout 180 }
 set at_login 1
@@ -90,6 +94,10 @@ expect {
     -re $re_panic {
         puts "\nFAIL: kernel panic during boot"
         exit 1
+    }
+    -re $re_fetch_banner {
+        set at_login 0
+        puts "\nOK: shell alive (nextbsd-fetch banner)"
     }
     "login:" { puts "\nOK: boot reached the login prompt" }
     -re $re_session_msg {
@@ -125,19 +133,36 @@ if {$at_login} {
         "Password:" { send "\r"; exp_continue }
         -re $re_shell_prompt { puts "\nOK: logged in as admin" }
     }
-} else {
-    # Do NOT match a prompt: automatic login lands early, with driver attach
-    # messages still arriving, so the prompt is often not the last thing in the
-    # buffer. Ask for a marker instead; characters typed before the shell is
-    # ready are buffered by the tty.
-    send "\r"
-    send "echo NB-SHELL-READY\r"
-    expect {
-        timeout {
-            puts "\nFAIL: no shell response after automatic login"
-            exit 1
+}
+# Stage 2: the shell prompt (the shell is idle/ready). The % only counts once
+# the fetch banner (or the login above) has already been seen, so a stray
+# driver line ending in % before the banner can't false-trigger it. On timeout
+# (the prompt never rendered), probe for a shell before concluding anything.
+expect {
+    timeout {
+        send "\r"
+        send "echo NB-SHELL-READY\r"
+        expect {
+            -timeout 90
+            timeout {
+                puts "\nFAIL: no shell prompt, and no shell responded to the probe"
+                exit 2
+            }
+            -re $re_panic {
+                puts "\nFAIL: kernel panic during boot"
+                exit 1
+            }
+            "NB-SHELL-READY" {
+                puts "\nOK: shell confirmed by probe"
+            }
         }
-        "NB-SHELL-READY" { puts "\nOK: shell is responding" }
+    }
+    -re $re_panic {
+        puts "\nFAIL: kernel panic during boot"
+        exit 1
+    }
+    -re $re_shell_prompt {
+        puts "\nOK: shell prompt (idle/ready)"
     }
 }
 # admin is not root (and on the Apple image root is disabled), so wrap the

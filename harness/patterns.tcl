@@ -32,6 +32,14 @@ set re_early_init  {early-init: sethostname\('([^']+)'\)}
 set re_session_msg  {login on console as ([a-z_][a-z0-9_.-]*)}
 set re_shell_prompt {[#%$] $}
 
+# nextbsd-fetch(1) login banner (nextbsd-userland#298): "Welcome to NextBSD!".
+# Run from /etc/zprofile at login, so it prints INSIDE the shell after the
+# autologin -- proof the shell is alive. On the console it is ANSI-coloured
+# (ESC[1;97m ... ESC[0m), so match the bare text; the wrappers are inert.
+# Gated off where a desktop login window answers first, but the CI images are
+# headless-console, so this always prints after a clean login.
+set re_fetch_banner {Welcome to NextBSD!}
+
 # The panic family, and the loader's "we are leaving the prompt" signals.
 # `panic:` carries the colon: a real kernel panic prints "panic: <reason>",
 # but on-image suites print the bare word in a PASS result ("...no panic
