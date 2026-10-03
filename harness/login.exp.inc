@@ -25,7 +25,7 @@ set early_name ""
 set banner_fail ""
 expect {
     timeout {
-        puts "\nFAIL: boot banner not seen within 8 minutes"
+        puts "\nFAIL: boot banner not seen within $timeout s (the global budget)"
         exit 2
     }
     -re $re_panic {
