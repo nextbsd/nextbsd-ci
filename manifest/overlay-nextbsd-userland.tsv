@@ -6,3 +6,4 @@
 # the base table lists must-pass gets a warn here until it backports).
 #
 marker	owner	arches	policy	timeout	reason
+FBSDGLUE	nextbsd-freebsd-compat	both	warn	480	T4: the userland native FreeBSD-based image REMOVED the fbsdglue file-existence checklist (nextbsd-userland#159 - it checked 25 Apple-port FreeBSD binaries this image does not ship; "emitted a marker nothing read ... removed rather than left as decoration"). The run.sh no longer emits FBSDGLUE, so it is warn here: a must-pass it never prints would fail the shared harness absence check on every userland boot. The nextbsd Apple image does emit it, so the base row stays must-pass for that consumer.
