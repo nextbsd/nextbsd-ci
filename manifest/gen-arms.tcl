@@ -34,7 +34,11 @@ if {[lindex $argv 0] eq "list"} {
     # arm mode: tclsh gen-arms.tcl <markers.tsv> <overlay.tsv> <arch> <nsuites> <suite-list>
     # The suite list is one space-separated argument (as boot-test.sh passes it).
     set mode       arms
-    set base       [lindex $argv 0]
+# The shared patterns (the sentinel arm is emitted as a variable reference so
+# the generator never holds a bracketed literal in a double-quoted string).
+source [file normalize [file join [file dirname [info script]] .. harness patterns.tcl]]
+
+set base    [lindex $argv 0]
     set overlay    [lindex $argv 1]
     set arch       [lindex $argv 2]
     set suites     [lindex $argv 3]
@@ -216,13 +220,13 @@ for {set i 0} {$i < $suites} {incr i} {
         puts "    \"$m-OK\"   { puts \"\\nINFO: $m (not expected on $arch)\"; exp_continue }"
         puts "    \"$m-SKIP\" { puts \"\\nINFO: $m-SKIP (not expected on $arch)\"; exp_continue }"
     }
-    puts "    -re {NEXTBSD-TEST-SUMMARY ok=([0-9]+) fail=([0-9]+) skip=([0-9]+)} {"
+    puts "    -re \$re_summary {"
     puts "        set nb_ok   \$expect_out(1,string)"
     puts "        set nb_fail \$expect_out(2,string)"
     puts "        set nb_skip \$expect_out(3,string)"
     puts "        set nb_warnfail_sum 0"
     puts "        foreach w \$nb_warnfail {"
-    puts "            if {[info exists nb_wfail(\$w)]} { incr nb_warnfail_sum }"
+    puts {            if {[info exists nb_wfail($w)]} { incr nb_warnfail_sum }}
     puts "        }"
     puts "        if {\$nb_fail > \$nb_warnfail_sum} {"
     puts "            puts \"\\nFAIL: $suite: NEXTBSD-TEST-SUMMARY ok=\$nb_ok fail=\$nb_fail skip=\$nb_skip — the suite's own verdict is a failure\""
