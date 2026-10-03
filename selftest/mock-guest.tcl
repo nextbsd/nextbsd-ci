@@ -34,7 +34,7 @@ proc sayraw {s} { puts -nonewline $s; flush stdout }
 proc prompt {} { sayraw "admin@selftest ~ % " }
 proc readline {} {
     set line [gets stdin]
-    if {eof stdin} { exit 0 }
+    if {[eof stdin]} { exit 0 }
     return [string trim $line]
 }
 
