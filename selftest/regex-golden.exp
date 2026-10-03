@@ -22,6 +22,21 @@ proc golden {name pat sample} {
     }
 }
 
+# The negative twin: the pattern must NOT match (guards the marker arm from
+# consuming lines it should leave alone — the summary, prompts, kernel chatter).
+proc golden_not {name pat sample} {
+    global failures
+    if {[regexp $pat $sample]} {
+        puts "FAIL $name"
+        puts "     pattern matched where it must not:"
+        puts "     pattern: $pat"
+        puts "     sample:  $sample"
+        incr failures
+    } else {
+        puts "OK   $name"
+    }
+}
+
 # Stage 0 — the UEFI loader handshake.
 golden "loader: EDK2 autoboot countdown" $re_hit_enter \
     "Hit \[Enter\] to boot immediately, or any other key for command prompt."
@@ -66,6 +81,15 @@ golden "teardown: reboot (the wrong outcome)" $re_reboot "Rebooting system now..
 # The sentinel (T1).
 golden "sentinel: summary line" $re_summary \
     "NEXTBSD-TEST-SUMMARY ok=92 fail=3 skip=18"
+
+# The capability marker lines (T1) — one arm, any marker, in arrival order.
+golden "marker: OK line (LF)" $re_marker "ACCT-HELPERS-OK\n"
+golden "marker: FAIL line (CR LF, as the pty delivers it)" $re_marker "ADVCMD-LEAF-FAIL\r\n"
+golden "marker: SKIP line (embedded in a burst)" $re_marker "garbage WEDGE-CHECK-SKIP\r\nmore"
+golden_not "marker: the summary line is not a marker" $re_marker \
+    "NEXTBSD-TEST-SUMMARY ok=80 fail=0 skip=6\n"
+golden_not "marker: the shell prompt is not a marker" $re_marker "admin@selftest ~ % "
+golden_not "marker: lowercase output is not a marker" $re_marker "acct-helpers-ok\n"
 
 if {$failures > 0} {
     puts "\ngolden: $failures assertion(s) FAILED"

@@ -177,30 +177,10 @@ if {$scope eq ""} { set scope "any" }
 puts "set nb_scope { $scope }"
 foreach m $markers {
     puts "set nb_owner($m) [set eff($m,owner)]"
+    puts "set nb_pol($m) [set eff($m,policy)]"
+    puts "set nb_reason($m) [esc [set eff($m,reason)]]"
 }
 
-proc arm_block {m p r a} {
-    set r [esc $r]
-    if {$p eq "must-pass"} {
-        return [join [list \
-            "\"$m-FAIL\" { puts \"\\nFAIL: $m — $r\"; exit 1 }" \
-            "\"$m-OK\"   { set nb_seen($m) 1; puts \"\\nOK: $m\"; exp_continue }" \
-            "\"$m-SKIP\" { puts \"\\nFAIL: $m-SKIP — a must-pass capability self-skipped (absent from this image)\"; exit 1 }" \
-        ] "\n"]
-    }
-    if {$p eq "fail-gates"} {
-        return [join [list \
-            "\"$m-FAIL\" { puts \"\\nFAIL: $m — $r\"; exit 1 }" \
-            "\"$m-OK\"   { set nb_seen($m) 1; puts \"\\nOK: $m\"; exp_continue }" \
-            "\"$m-SKIP\" { set nb_seen($m) 1; puts \"\\nWARN: $m-SKIP — $r\"; exp_continue }" \
-        ] "\n"]
-    }
-    return [join [list \
-        "\"$m-FAIL\" { set nb_wfail($m) 1; puts \"\\nWARN: $m-FAIL — $r (informational)\"; exp_continue }" \
-        "\"$m-OK\"   { set nb_seen($m) 1; puts \"\\nOK: $m\"; exp_continue }" \
-        "\"$m-SKIP\" { set nb_seen($m) 1; puts \"\\nWARN: $m-SKIP — $r\"; exp_continue }" \
-    ] "\n"]
-}
 
 for {set i 0} {$i < $suites} {incr i} {
     set suite [lindex $suite_list $i]
@@ -218,7 +198,7 @@ for {set i 0} {$i < $suites} {incr i} {
     puts "            close \$fh"
     puts "            set cmap \[list \"\\r\" {<CR>} \"\\n\" {<NL>} \"\\t\" {<TAB>}\]"
     puts "            set d2 \[string range \$d end-300 end]"
-    puts "            puts \"\\nDBG-TIMEOUT: transcript \[string length \$d\] bytes; tail: \[string map \$dcmap \$d2\]\""
+    puts "            puts \"\\nDBG-TIMEOUT: transcript \[string length \$d\] bytes; tail: \[string map \$cmap \$d2\]\""
     puts "        }"
     puts "        exit 2"
     puts "    }"
@@ -228,15 +208,46 @@ for {set i 0} {$i < $suites} {incr i} {
     # summary (which ends the block) is seen last. A sentinel arm ahead of the
     # markers would end the block on the first scan and drop every marker in
     # the same chunk.
-    foreach m $onarch {
-        puts [arm_block $m [set eff($m,policy)] [set eff($m,reason)] $arch]
-    }
-    foreach m $offarch {
-        set r [esc [set eff($m,reason)]]
-        puts "    \"$m-FAIL\" { puts \"\\nINFO: $m-FAIL (not expected on $arch — $r)\"; exp_continue }"
-        puts "    \"$m-OK\"   { puts \"\\nINFO: $m (not expected on $arch)\"; exp_continue }"
-        puts "    \"$m-SKIP\" { puts \"\\nINFO: $m-SKIP (not expected on $arch)\"; exp_continue }"
-    }
+# The marker arms are ONE arm (re_marker, from patterns.tcl) plus the runtime
+# policy table above: the runners' expect takes the first arm in FILE ORDER
+# that matches ANYWHERE in the buffer, so 93 sorted per-marker arms let a
+# marker whose text arrives late in the stream match first and consume every
+# marker in between (the selftest's 3-of-86 cascade). One pattern consumes
+# the stream strictly in arrival order; nb_pol decides each marker's outcome.
+    puts "    -re \$re_marker {"
+    puts "        set m   \$expect_out(1,string)"
+    puts "        set sfx \$expect_out(2,string)"
+    puts "        if {!\[info exists nb_pol(\$m)]} { exp_continue }"
+    puts "        set pol \$nb_pol(\$m)"
+    puts "        set r   \$nb_reason(\$m)"
+    puts "        if {\$sfx eq \"OK\"} {"
+    puts "            set nb_seen(\$m) 1"
+    puts "            puts \"\\nOK: \$m\""
+    puts "            exp_continue"
+    puts "        }"
+    puts "        if {\$sfx eq \"FAIL\"} {"
+    puts "            if {\$pol eq \"must-pass\" || \$pol eq \"fail-gates\"} {"
+    puts "                puts \"\\nFAIL: \$m — \$r\""
+    puts "                exit 1"
+    puts "            }"
+    puts "            if {\$pol eq \"offarch\"} {"
+    puts "                puts \"\\nINFO: \$m-FAIL (not expected on $arch — \$r)\""
+    puts "                exp_continue"
+    puts "            }"
+    puts "            set nb_wfail(\$m) 1"
+    puts "            puts \"\\nWARN: \$m-FAIL — \$r (informational)\""
+    puts "            exp_continue"
+    puts "        }"
+    puts "        if {\$sfx eq \"SKIP\"} {"
+    puts "            if {\$pol eq \"must-pass\"} {"
+    puts "                puts \"\\nFAIL: \$m-SKIP — a must-pass capability self-skipped (absent from this image)\""
+    puts "                exit 1"
+    puts "            }"
+    puts "            set nb_seen(\$m) 1"
+    puts "            puts \"\\nWARN: \$m-SKIP — \$r\""
+    puts "            exp_continue"
+    puts "        }"
+    puts "    }"
     puts "    -re \$re_summary {"
     puts "        set nb_ok   \$expect_out(1,string)"
     puts "        set nb_fail \$expect_out(2,string)"
@@ -267,7 +278,7 @@ for {set i 0} {$i < $suites} {incr i} {
     puts "            close \$fh"
     puts "            set cmap \[list \"\\r\" {<CR>} \"\\n\" {<NL>} \"\\t\" {<TAB>}\]"
     puts "            set d2 \[string range \$d end-300 end]"
-    puts "            puts \"\\nDBG-EOF: transcript \[string length \$d\] bytes; tail: \[string map \$dcmap \$d2\]\""
+    puts "            puts \"\\nDBG-EOF: transcript \[string length \$d\] bytes; tail: \[string map \$cmap \$d2\]\""
     puts "        }"
     puts "        exit 2"
     puts "    }"
