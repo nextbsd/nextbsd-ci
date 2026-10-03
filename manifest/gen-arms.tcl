@@ -294,7 +294,6 @@ for {set i 0} {$i < $suites} {incr i} {
     puts "    set cmap \[list \"\\r\" {<CR>} \"\\n\" {<NL>} \"\\t\" {<TAB>}\]"
     puts "    set d2 \[string range \$dbgfull end-300 end]"
     puts "    puts \"\\nDBG: transcript \[string length \$dbgfull\] bytes; tail: \[string map \$cmap \$d2\]\""
-    puts "    puts \"\\nDBG: marker arm fired \$dbg_arms time(s)\""
     puts "    puts \"\\nDBG: markers recorded: \[llength \[array names nb_seen\]\]\""
     puts "    foreach m \[lrange \$nb_dbgmarks 0 7\] {"
     puts "        puts \"\\nDBG-MARK: <\$m> at OK/SKIP/FAIL = \[string first \$m-OK \$dbgfull\]/\[string first \$m-SKIP \$dbgfull\]/\[string first \$m-FAIL \$dbgfull\]\""
