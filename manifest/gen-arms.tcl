@@ -219,10 +219,9 @@ for {set i 0} {$i < $suites} {incr i} {
     foreach sfx {OK FAIL SKIP} {
         set sfxl [string tolower $sfx]
     puts "    -re \$re_marker_$sfxl {"
-    puts "        incr dbg_arms"
     puts "        set m \$expect_out(1,string)"
     puts "        set sfx $sfx"
-    puts "        if {!\[info exists nb_pol(\$m)]} { puts \"\\nDBG-ARM: unlisted marker <\$m>-\$sfx — ignoring\"; exp_continue }"
+    puts "        if {!\[info exists nb_pol(\$m)]} { if {\$env(NB_DEBUG) ne \"\"} { puts \"\\nDBG-ARM: unlisted marker <\$m>-\$sfx — ignoring\" }; exp_continue }"
     puts "        set pol \$nb_pol(\$m)"
     puts "        set r   \$nb_reason(\$m)"
     puts "        if {\$sfx eq \"OK\"} {"
