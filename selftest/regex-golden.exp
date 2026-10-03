@@ -68,6 +68,13 @@ golden "login: zsh prompt" $re_shell_prompt \
 # The panic family.
 golden "panic: page fault" $re_panic "kernel: Fatal trap 12: page fault in kernel mode"
 golden "panic: data abort (arm64)" $re_panic "Fatal data abort: data abort from kernel"
+golden "panic: a real witness panic (panic: with the colon)" $re_panic \
+    "panic: witness_object 0xffff8000 is not a lock order ancestor"
+# The negative twin that the real-image validation (T4) forced: an on-image
+# suite prints the bare word in a PASS result. `panic:` (colon) must not match
+# it, or every userland boot reads as a kernel crash.
+golden_not "panic: a suite's 'no panic' PASS result is not a crash" $re_panic \
+    "attach + 4 move workers x 300 iters, no panic under 2s"
 
 # Teardown.
 golden "teardown: shutdown progress" $re_shutdown_wait \

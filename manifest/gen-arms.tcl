@@ -271,7 +271,9 @@ for {set i 0} {$i < $suites} {incr i} {
     puts "            puts \"\\nOK: $suite: NEXTBSD-TEST-SUMMARY ok=\$nb_ok fail=0 skip=\$nb_skip\""
     puts "        }"
     puts "    }"
-    puts "    -re {panic|Fatal trap|Fatal data abort} {"
+    # $re_panic (patterns.tcl), not a literal here: the colon in `panic:` is
+    # what keeps a suite's "...no panic..." PASS result from reading as a crash.
+    puts "    -re \$re_panic {"
     puts "        puts \"\\nFAIL: kernel panic during $suite\""
     puts "        exit 1"
     puts "    }"

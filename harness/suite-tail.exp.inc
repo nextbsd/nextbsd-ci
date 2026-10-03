@@ -49,7 +49,7 @@ expect {
         puts "\nFAIL: shell did not answer after the suite — end-state lost (the nextbsd#428 class); no PASS"
         exit 2
     }
-    -re {panic|Fatal trap|Fatal data abort} {
+    -re $re_panic {
         puts "\nFAIL: kernel panic in the end-state window"
         exit 1
     }

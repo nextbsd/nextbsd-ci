@@ -33,7 +33,11 @@ set re_session_msg  {login on console as ([a-z_][a-z0-9_.-]*)}
 set re_shell_prompt {[#%$] $}
 
 # The panic family, and the loader's "we are leaving the prompt" signals.
-set re_panic   {panic|Fatal trap|Fatal data abort}
+# `panic:` carries the colon: a real kernel panic prints "panic: <reason>",
+# but on-image suites print the bare word in a PASS result ("...no panic
+# under 2s") and a bare `panic` would false-fire on it. `Fatal trap` /
+# `Fatal data abort` are already specific enough to leave alone.
+set re_panic   {panic:|Fatal trap|Fatal data abort}
 set re_boot_go {Booting|/boot/kernel/kernel|Loading kernel|---<<}
 
 # Teardown: shutdown(8) progress markers, the poweroff line, the reboot line.
