@@ -1,0 +1,2297 @@
+﻿2026-10-03T12:23:41.9213597Z Current runner version: '2.337.0'
+2026-10-03T12:23:41.9237565Z ##[group]Runner Image Provisioner
+2026-10-03T12:23:41.9238389Z Hosted Compute Agent
+2026-10-03T12:23:41.9239064Z Version: 20260901.588
+2026-10-03T12:23:41.9239666Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-03T12:23:41.9240502Z Build Date: 2026-09-01T19:56:44Z
+2026-10-03T12:23:41.9241160Z Worker ID: {d0f6645b-74d6-4673-88c0-93f0d6aa0efd}
+2026-10-03T12:23:41.9241858Z Azure Region: northcentralus
+2026-10-03T12:23:41.9242457Z ##[endgroup]
+2026-10-03T12:23:41.9244245Z ##[group]Operating System
+2026-10-03T12:23:41.9245005Z Ubuntu
+2026-10-03T12:23:41.9245539Z 24.04.5
+2026-10-03T12:23:41.9246058Z LTS
+2026-10-03T12:23:41.9246646Z ##[endgroup]
+2026-10-03T12:23:41.9247173Z ##[group]Runner Image
+2026-10-03T12:23:41.9247733Z Image: ubuntu-24.04
+2026-10-03T12:23:41.9248278Z Version: 20260927.320.1
+2026-10-03T12:23:41.9249513Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-03T12:23:41.9251241Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+2026-10-03T12:23:41.9252194Z ##[endgroup]
+2026-10-03T12:23:41.9253299Z ##[group]GITHUB_TOKEN Permissions
+2026-10-03T12:23:41.9256046Z Contents: read
+2026-10-03T12:23:41.9256612Z Metadata: read
+2026-10-03T12:23:41.9257128Z Packages: read
+2026-10-03T12:23:41.9257693Z ##[endgroup]
+2026-10-03T12:23:41.9260356Z Secret source: Actions
+2026-10-03T12:23:41.9261326Z Cache mode: write
+2026-10-03T12:23:41.9261991Z Prepare workflow directory
+2026-10-03T12:23:41.9572147Z Prepare all required actions
+2026-10-03T12:23:41.9621072Z Getting action download info
+2026-10-03T12:23:42.1875802Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-03T12:23:42.4060633Z Complete job name: selftest (amd64, ubuntu-24.04)
+2026-10-03T12:23:42.4744264Z ##[group]Run actions/checkout@v4
+2026-10-03T12:23:42.4745668Z with:
+2026-10-03T12:23:42.4746250Z   repository: nextbsd/nextbsd-ci
+2026-10-03T12:23:42.4750219Z   token: ***
+2026-10-03T12:23:42.4750685Z   ssh-strict: true
+2026-10-03T12:23:42.4751240Z   ssh-user: git
+2026-10-03T12:23:42.4751751Z   persist-credentials: true
+2026-10-03T12:23:42.4752290Z   clean: true
+2026-10-03T12:23:42.4752831Z   sparse-checkout-cone-mode: true
+2026-10-03T12:23:42.4753568Z   fetch-depth: 1
+2026-10-03T12:23:42.4754115Z   fetch-tags: false
+2026-10-03T12:23:42.4754737Z   show-progress: true
+2026-10-03T12:23:42.4755271Z   lfs: false
+2026-10-03T12:23:42.4755774Z   submodules: false
+2026-10-03T12:23:42.4756282Z   set-safe-directory: true
+2026-10-03T12:23:42.4756857Z   allow-unsafe-pr-checkout: false
+2026-10-03T12:23:42.4757648Z ##[endgroup]
+2026-10-03T12:23:42.5747874Z Syncing repository: nextbsd/nextbsd-ci
+2026-10-03T12:23:42.5750475Z ##[group]Getting Git version info
+2026-10-03T12:23:42.5751816Z Working directory is '/home/runner/work/nextbsd-ci/nextbsd-ci'
+2026-10-03T12:23:42.5753038Z [command]/usr/bin/git version
+2026-10-03T12:23:42.5832300Z git version 2.55.0
+2026-10-03T12:23:42.5853965Z ##[endgroup]
+2026-10-03T12:23:42.5870339Z Temporarily overriding HOME='/home/runner/work/_temp/1dd28ac0-3ee8-45b1-ab87-7232a6b03ebd' before making global git config changes
+2026-10-03T12:23:42.5872228Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-03T12:23:42.5877255Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/nextbsd-ci/nextbsd-ci
+2026-10-03T12:23:42.5922692Z Deleting the contents of '/home/runner/work/nextbsd-ci/nextbsd-ci'
+2026-10-03T12:23:42.5927425Z ##[group]Initializing the repository
+2026-10-03T12:23:42.5931479Z [command]/usr/bin/git init /home/runner/work/nextbsd-ci/nextbsd-ci
+2026-10-03T12:23:42.6018476Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-03T12:23:42.6019930Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-03T12:23:42.6021497Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-03T12:23:42.6022787Z hint: call:
+2026-10-03T12:23:42.6023622Z hint:
+2026-10-03T12:23:42.6024467Z hint: 	git config --global init.defaultBranch <name>
+2026-10-03T12:23:42.6025431Z hint:
+2026-10-03T12:23:42.6026230Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-03T12:23:42.6027380Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-03T12:23:42.6028408Z hint:
+2026-10-03T12:23:42.6029153Z hint: 	git branch -m <name>
+2026-10-03T12:23:42.6029752Z hint:
+2026-10-03T12:23:42.6030428Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-03T12:23:42.6031436Z Initialized empty Git repository in /home/runner/work/nextbsd-ci/nextbsd-ci/.git/
+2026-10-03T12:23:42.6033459Z [command]/usr/bin/git remote add origin https://github.com/nextbsd/nextbsd-ci
+2026-10-03T12:23:42.6122952Z ##[endgroup]
+2026-10-03T12:23:42.6123947Z ##[group]Disabling automatic garbage collection
+2026-10-03T12:23:42.6127463Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-03T12:23:42.6163601Z ##[endgroup]
+2026-10-03T12:23:42.6164906Z ##[group]Setting up auth
+2026-10-03T12:23:42.6170753Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-03T12:23:42.6201557Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-03T12:23:42.6535737Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-03T12:23:42.6572687Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-03T12:23:42.6770261Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-03T12:23:42.6798565Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-03T12:23:42.6975519Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-03T12:23:42.7018645Z ##[endgroup]
+2026-10-03T12:23:42.7027636Z ##[group]Fetching the repository
+2026-10-03T12:23:42.7029325Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +2170f10bd9e79e18b07de3e57c96dce34fcb1138:refs/remotes/pull/9/merge
+2026-10-03T12:23:43.1185157Z From https://github.com/nextbsd/nextbsd-ci
+2026-10-03T12:23:43.1186428Z  * [new ref]         2170f10bd9e79e18b07de3e57c96dce34fcb1138 -> pull/9/merge
+2026-10-03T12:23:43.1189630Z ##[endgroup]
+2026-10-03T12:23:43.1191035Z ##[group]Determining the checkout info
+2026-10-03T12:23:43.1192404Z ##[endgroup]
+2026-10-03T12:23:43.1197413Z [command]/usr/bin/git sparse-checkout disable
+2026-10-03T12:23:43.1249803Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-03T12:23:43.1286177Z ##[group]Checking out the ref
+2026-10-03T12:23:43.1288929Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/9/merge
+2026-10-03T12:23:43.1411580Z Note: switching to 'refs/remotes/pull/9/merge'.
+2026-10-03T12:23:43.1412428Z 
+2026-10-03T12:23:43.1412957Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-03T12:23:43.1414206Z changes and commit them, and you can discard any commits you make in this
+2026-10-03T12:23:43.1415613Z state without impacting any branches by switching back to a branch.
+2026-10-03T12:23:43.1416358Z 
+2026-10-03T12:23:43.1417025Z If you want to create a new branch to retain commits you create, you may
+2026-10-03T12:23:43.1418522Z do so (now or later) by using -c with the switch command. Example:
+2026-10-03T12:23:43.1419277Z 
+2026-10-03T12:23:43.1419724Z   git switch -c <new-branch-name>
+2026-10-03T12:23:43.1420374Z 
+2026-10-03T12:23:43.1420867Z Or undo this operation with:
+2026-10-03T12:23:43.1421777Z 
+2026-10-03T12:23:43.1422202Z   git switch -
+2026-10-03T12:23:43.1422702Z 
+2026-10-03T12:23:43.1423436Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-03T12:23:43.1424465Z 
+2026-10-03T12:23:43.1425694Z HEAD is now at 2170f10 Merge 8721e4b2207e3676be5b3902091573ea15e46601 into bae13410f0ff570b952d51053ed0c462272008b7
+2026-10-03T12:23:43.1429101Z ##[endgroup]
+2026-10-03T12:23:43.1458944Z [command]/usr/bin/git log -1 --format=%H
+2026-10-03T12:23:43.1479572Z 2170f10bd9e79e18b07de3e57c96dce34fcb1138
+2026-10-03T12:23:43.1696974Z ##[group]Run sudo apt-get update && sudo apt-get install -y expect shellcheck
+2026-10-03T12:23:43.1698258Z [36;1msudo apt-get update && sudo apt-get install -y expect shellcheck[0m
+2026-10-03T12:23:43.1889893Z shell: /usr/bin/bash -e {0}
+2026-10-03T12:23:43.1890663Z ##[endgroup]
+2026-10-03T12:23:43.2615126Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-03T12:23:43.2950590Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-10-03T12:23:43.3044033Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-10-03T12:23:43.3061684Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-10-03T12:23:43.3122316Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-10-03T12:23:43.3152390Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-10-03T12:23:43.3638293Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [458 kB]
+2026-10-03T12:23:43.3769484Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [12.6 kB]
+2026-10-03T12:23:43.3786435Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [511 kB]
+2026-10-03T12:23:43.4599801Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1364 kB]
+2026-10-03T12:23:43.4686773Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [304 kB]
+2026-10-03T12:23:43.4706624Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [181 kB]
+2026-10-03T12:23:43.4748429Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1699 kB]
+2026-10-03T12:23:43.4816584Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [341 kB]
+2026-10-03T12:23:43.4835778Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [388 kB]
+2026-10-03T12:23:43.4869999Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1720 kB]
+2026-10-03T12:23:43.4968594Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [394 kB]
+2026-10-03T12:23:43.4996258Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2026-10-03T12:23:43.5059318Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [5736 B]
+2026-10-03T12:23:43.5518794Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [12.6 kB]
+2026-10-03T12:23:43.5535930Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1069 kB]
+2026-10-03T12:23:43.5596810Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [221 kB]
+2026-10-03T12:23:43.5616607Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [46.5 kB]
+2026-10-03T12:23:43.5630637Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1216 kB]
+2026-10-03T12:23:43.5698462Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [244 kB]
+2026-10-03T12:23:43.5719810Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [76.3 kB]
+2026-10-03T12:23:43.5734881Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1566 kB]
+2026-10-03T12:23:43.5821547Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [361 kB]
+2026-10-03T12:23:48.0262116Z Fetched 12.6 MB in 1s (8809 kB/s)
+2026-10-03T12:23:48.8597207Z Reading package lists...
+2026-10-03T12:23:48.8916064Z Reading package lists...
+2026-10-03T12:23:49.0601518Z Building dependency tree...
+2026-10-03T12:23:49.0606610Z Reading state information...
+2026-10-03T12:23:49.2390822Z shellcheck is already the newest version (0.9.0-1).
+2026-10-03T12:23:49.2391647Z The following NEW packages will be installed:
+2026-10-03T12:23:49.2416903Z   expect tcl-expect
+2026-10-03T12:23:49.2566653Z 0 upgraded, 2 newly installed, 0 to remove and 25 not upgraded.
+2026-10-03T12:23:49.2567528Z Need to get 247 kB of archives.
+2026-10-03T12:23:49.2568185Z After this operation, 538 kB of additional disk space will be used.
+2026-10-03T12:23:49.2568910Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-03T12:23:49.2987097Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 tcl-expect amd64 5.45.4-3 [110 kB]
+2026-10-03T12:23:49.3220874Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 expect amd64 5.45.4-3 [137 kB]
+2026-10-03T12:23:49.5698718Z Fetched 247 kB in 0s (3282 kB/s)
+2026-10-03T12:23:49.5925565Z Selecting previously unselected package tcl-expect:amd64.
+2026-10-03T12:23:49.6106198Z (Reading database ... 
+2026-10-03T12:23:49.6106752Z (Reading database ... 5%
+2026-10-03T12:23:49.6107282Z (Reading database ... 10%
+2026-10-03T12:23:49.6107905Z (Reading database ... 15%
+2026-10-03T12:23:49.6108384Z (Reading database ... 20%
+2026-10-03T12:23:49.6109092Z (Reading database ... 25%
+2026-10-03T12:23:49.6154347Z (Reading database ... 30%
+2026-10-03T12:23:49.6155267Z (Reading database ... 35%
+2026-10-03T12:23:49.6155941Z (Reading database ... 40%
+2026-10-03T12:23:49.6156437Z (Reading database ... 45%
+2026-10-03T12:23:49.6157165Z (Reading database ... 50%
+2026-10-03T12:23:49.6157678Z (Reading database ... 55%
+2026-10-03T12:23:49.7528761Z (Reading database ... 60%
+2026-10-03T12:23:49.9590796Z (Reading database ... 65%
+2026-10-03T12:23:50.1566114Z (Reading database ... 70%
+2026-10-03T12:23:50.3159645Z (Reading database ... 75%
+2026-10-03T12:23:50.5093659Z (Reading database ... 80%
+2026-10-03T12:23:50.6612505Z (Reading database ... 85%
+2026-10-03T12:23:50.8255003Z (Reading database ... 90%
+2026-10-03T12:23:50.9709855Z (Reading database ... 95%
+2026-10-03T12:23:50.9710574Z (Reading database ... 100%
+2026-10-03T12:23:50.9711561Z (Reading database ... 202296 files and directories currently installed.)
+2026-10-03T12:23:50.9756575Z Preparing to unpack .../tcl-expect_5.45.4-3_amd64.deb ...
+2026-10-03T12:23:50.9888498Z Unpacking tcl-expect:amd64 (5.45.4-3) ...
+2026-10-03T12:23:51.0116632Z Selecting previously unselected package expect.
+2026-10-03T12:23:51.0235466Z Preparing to unpack .../expect_5.45.4-3_amd64.deb ...
+2026-10-03T12:23:51.0247513Z Unpacking expect (5.45.4-3) ...
+2026-10-03T12:23:51.0741290Z Setting up tcl-expect:amd64 (5.45.4-3) ...
+2026-10-03T12:23:51.0773865Z Setting up expect (5.45.4-3) ...
+2026-10-03T12:23:51.0803494Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-10-03T12:23:51.0826513Z Not building database; man-db/auto-update is not 'true'.
+2026-10-03T12:23:51.0841378Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+2026-10-03T12:23:51.6753688Z 
+2026-10-03T12:23:51.6754901Z Running kernel seems to be up-to-date.
+2026-10-03T12:23:51.6755386Z 
+2026-10-03T12:23:51.6755675Z No services need to be restarted.
+2026-10-03T12:23:51.6755916Z 
+2026-10-03T12:23:51.6756116Z No containers need to be restarted.
+2026-10-03T12:23:51.6756515Z 
+2026-10-03T12:23:51.6756713Z No user sessions are running outdated binaries.
+2026-10-03T12:23:51.6757072Z 
+2026-10-03T12:23:51.6757324Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-10-03T12:23:52.5559162Z ##[group]Run fail=0
+2026-10-03T12:23:52.5559510Z [36;1mfail=0[0m
+2026-10-03T12:23:52.5559897Z [36;1mfor f in $(find harness manifest selftest -name '*.sh' -type f); do[0m
+2026-10-03T12:23:52.5560446Z [36;1m  sh -n "$f" || { echo "sh -n failed: $f"; fail=1; }[0m
+2026-10-03T12:23:52.5560932Z [36;1mdone[0m
+2026-10-03T12:23:52.5561214Z [36;1mexit $fail[0m
+2026-10-03T12:23:52.5605366Z shell: /usr/bin/bash -e {0}
+2026-10-03T12:23:52.5605870Z ##[endgroup]
+2026-10-03T12:23:52.5756382Z ##[group]Run find harness manifest selftest -name '*.sh' -type f -print0 | xargs -0 -r shellcheck -x
+2026-10-03T12:23:52.5757110Z [36;1mfind harness manifest selftest -name '*.sh' -type f -print0 | xargs -0 -r shellcheck -x[0m
+2026-10-03T12:23:52.5795245Z shell: /usr/bin/bash -e {0}
+2026-10-03T12:23:52.5795586Z ##[endgroup]
+2026-10-03T12:23:53.4607654Z ##[group]Run sh manifest/validate.sh \
+2026-10-03T12:23:53.4608083Z [36;1msh manifest/validate.sh \[0m
+2026-10-03T12:23:53.4608446Z [36;1m  manifest/markers.tsv \[0m
+2026-10-03T12:23:53.4608823Z [36;1m  manifest/overlay-nextbsd.tsv \[0m
+2026-10-03T12:23:53.4609209Z [36;1m  manifest/overlay-nextbsd-userland.tsv \[0m
+2026-10-03T12:23:53.4609757Z [36;1m  manifest/overlay-nextbsd-kernel.tsv[0m
+2026-10-03T12:23:53.4651527Z shell: /usr/bin/bash -e {0}
+2026-10-03T12:23:53.4652053Z ##[endgroup]
+2026-10-03T12:23:53.4748340Z manifest/markers.tsv: 93 markers OK
+2026-10-03T12:23:53.4763248Z manifest/overlay-nextbsd.tsv:  markers OK
+2026-10-03T12:23:53.4777724Z manifest/overlay-nextbsd-userland.tsv:  markers OK
+2026-10-03T12:23:53.4791583Z manifest/overlay-nextbsd-kernel.tsv:  markers OK
+2026-10-03T12:23:53.4868056Z ##[group]Run sh selftest/run-selftest.sh
+2026-10-03T12:23:53.4868460Z [36;1msh selftest/run-selftest.sh[0m
+2026-10-03T12:23:53.4903708Z shell: /usr/bin/bash -e {0}
+2026-10-03T12:23:53.4904052Z env:
+2026-10-03T12:23:53.4904391Z   ARCH: amd64
+2026-10-03T12:23:53.4904923Z ##[endgroup]
+2026-10-03T12:23:53.4979292Z ==> golden: the shared patterns against production stream shapes
+2026-10-03T12:23:53.6011971Z OK   loader: EDK2 autoboot countdown
+2026-10-03T12:23:53.6012868Z OK   loader: UEFI self-ID (FreeBSD brand)
+2026-10-03T12:23:53.6013368Z OK   loader: UEFI self-ID (NextBSD brand)
+2026-10-03T12:23:53.6014001Z OK   loader: leaving the prompt to boot
+2026-10-03T12:23:53.6014488Z OK   loader: kernel entry marker
+2026-10-03T12:23:53.6015129Z OK   banner: synthesized hostname (amd64)
+2026-10-03T12:23:53.6015682Z OK   banner: synthesized hostname (arm64)
+2026-10-03T12:23:53.6016165Z OK   banner: the Amnesiac race-loser
+2026-10-03T12:23:53.6016901Z OK   banner: the early-init sethostname line
+2026-10-03T12:23:53.6017409Z OK   login: login(1) session message
+2026-10-03T12:23:53.6017851Z OK   login: zsh prompt
+2026-10-03T12:23:53.6018352Z OK   panic: page fault
+2026-10-03T12:23:53.6018772Z OK   panic: data abort (arm64)
+2026-10-03T12:23:53.6019253Z OK   teardown: shutdown progress
+2026-10-03T12:23:53.6019685Z OK   teardown: syncing
+2026-10-03T12:23:53.6020089Z OK   teardown: buffers synced
+2026-10-03T12:23:53.6020528Z OK   teardown: uptime
+2026-10-03T12:23:53.6020959Z OK   teardown: poweroff
+2026-10-03T12:23:53.6021408Z OK   teardown: reboot (the wrong outcome)
+2026-10-03T12:23:53.6021874Z OK   sentinel: summary line
+2026-10-03T12:23:53.6022298Z OK   marker: OK line (LF)
+2026-10-03T12:23:53.6022713Z OK   marker: FAIL line (CR LF, as the pty delivers it)
+2026-10-03T12:23:53.6024078Z OK   marker: SKIP line (embedded in a burst)
+2026-10-03T12:23:53.6024933Z OK   marker: the summary line is not a marker
+2026-10-03T12:23:53.6025326Z OK   marker: the shell prompt is not a marker
+2026-10-03T12:23:53.6025715Z OK   marker: lowercase output is not a marker
+2026-10-03T12:23:53.6026044Z 
+2026-10-03T12:23:53.6026216Z golden: all patterns match the production stream shapes
+2026-10-03T12:23:53.6026646Z ==> manifest: schema
+2026-10-03T12:23:53.6062808Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/markers.tsv: 93 markers OK
+2026-10-03T12:23:53.6077616Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/overlay-nextbsd.tsv:  markers OK
+2026-10-03T12:23:53.6091999Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/overlay-nextbsd-userland.tsv:  markers OK
+2026-10-03T12:23:53.6106621Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/overlay-nextbsd-kernel.tsv:  markers OK
+2026-10-03T12:23:53.6132265Z ==> harness vs mock guest (arch=amd64)
+2026-10-03T12:23:53.6197920Z     plan: 93 markers
+2026-10-03T12:23:53.6198851Z ==> case: ok (suite: /usr/tests/freebsd-launchd-mach/run.sh) — expect rc 0
+2026-10-03T12:23:53.6223417Z ==> boot test: tests/fake.img
+2026-10-03T12:23:53.6231989Z -rw-r--r-- 1 runner runner 0 Oct  3 12:23 tests/fake.img
+2026-10-03T12:23:53.6290387Z ==> using KVM acceleration
+2026-10-03T12:23:53.6291242Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T12:23:53.6410705Z === DBG: tests/boot.exp total lines: 908
+2026-10-03T12:23:53.6432540Z 379:set nb_mustpass { ADVCMD-LEAF BOOTSTRAP BOOTSTRAP-REMOTE BUSYSTATE CONFIGD-LIST CONFIGD-MULTI CONFIGD-NOTIFY CONFIGD-PATTERN CONFIGD-STORE COREFOUNDATION DA-BOOT DOMAIN-DIRS FBSDGLUE FILECMD-LEAF HOST-BOOTSTRAP HOSTNAMED HOSTNAMED-DHCP HOSTNAMED-PREFS IPCFG-ARP IPCFG-BOOT IPCFG-BOUND IPCFG-DHCP IPCFG-IPCONFIG IPCFG-RA IPCFG-RENEW IPCFG-RPC IPCFG-STORE KEM-LINK LAUNCHCTL-BUILD LAUNCHCTL-LIST LAUNCHD-BUILD LIBDISPATCH LIBDISPATCH-MACH LIBSYSTEM-KERNEL LIBXPC LINUX-MOUNTS MACH-PORT MACH-SMOKE MDNS-BOOT MDNS-DNSSD MDNS-ENGINE MDNS-IFWATCH MIG-BUILD NOTIFYD-PROC SC-BOND SC-BRIDGE SC-LOCK SC-MULTI SC-NETIF SC-NETSET SC-NETSVC SC-NOTIFY SC-PATH SC-PLINK SC-PNOTIFY SC-PREFS SC-RUNLOOP SC-STORE SC-VLAN SERVICE-LDCONFIG SHELLCMD-LEAF SYSCMD-LEAF SYSLOG-RUN SYSLOGD-PROC TASK-SPECIAL-PORT TEXTCMD-LEAF WAITQUIET }
+2026-10-03T12:23:53.6437532Z 382:set nb_scope { nextbsd-userland nextbsd-freebsd-compat }
+2026-10-03T12:23:53.6438328Z 384:set nb_pol(ACCT-HELPERS) "fail-gates"
+2026-10-03T12:23:53.6439018Z 664:puts "==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh"
+2026-10-03T12:23:53.6439713Z === DBG: context around the suite expect
+2026-10-03T12:23:53.6440406Z         "Password:" { send "\r"; exp_continue }
+2026-10-03T12:23:53.6441265Z         -re $re_shell_prompt { puts "\nOK: logged in as admin" }
+2026-10-03T12:23:53.6442012Z     }
+2026-10-03T12:23:53.6442391Z } else {
+2026-10-03T12:23:53.6443017Z     # Do NOT match a prompt: automatic login lands early, with driver attach
+2026-10-03T12:23:53.6443929Z     # messages still arriving, so the prompt is often not the last thing in the
+2026-10-03T12:23:53.6444911Z     # buffer. Ask for a marker instead; characters typed before the shell is
+2026-10-03T12:23:53.6445642Z     # ready are buffered by the tty.
+2026-10-03T12:23:53.6446118Z     send "\r"
+2026-10-03T12:23:53.6446516Z     send "echo NB-SHELL-READY\r"
+2026-10-03T12:23:53.6447010Z     expect {
+2026-10-03T12:23:53.6447368Z         timeout {
+2026-10-03T12:23:53.6447856Z             puts "\nFAIL: no shell response after automatic login"
+2026-10-03T12:23:53.6448379Z             exit 1
+2026-10-03T12:23:53.6448743Z         }
+2026-10-03T12:23:53.6449286Z         "NB-SHELL-READY" { puts "\nOK: shell is responding" }
+2026-10-03T12:23:53.6449865Z     }
+2026-10-03T12:23:53.6450282Z }
+2026-10-03T12:23:53.6450796Z # admin is not root (and on the Apple image root is disabled), so wrap the
+2026-10-03T12:23:53.6451621Z # privileged commands rather than repeating the test at each one. A function,
+2026-10-03T12:23:53.6452473Z # so it behaves the same in sh and in zsh, which is admin's shell.
+2026-10-03T12:23:53.6452967Z send "r() { if \[ \"\$(id -u)\" = 0 \]; then \"\$@\"; else sudo \"\$@\"; fi; }\r"
+2026-10-03T12:23:53.6453655Z # generated by manifest/gen-arms.tcl — do not edit
+2026-10-03T12:23:53.6454225Z # arch: amd64 | suites: 1 | manifest: /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/markers.tsv + /dev/null
+2026-10-03T12:23:53.6457420Z set nb_mustpass { ADVCMD-LEAF BOOTSTRAP BOOTSTRAP-REMOTE BUSYSTATE CONFIGD-LIST CONFIGD-MULTI CONFIGD-NOTIFY CONFIGD-PATTERN CONFIGD-STORE COREFOUNDATION DA-BOOT DOMAIN-DIRS FBSDGLUE FILECMD-LEAF HOST-BOOTSTRAP HOSTNAMED HOSTNAMED-DHCP HOSTNAMED-PREFS IPCFG-ARP IPCFG-BOOT IPCFG-BOUND IPCFG-DHCP IPCFG-IPCONFIG IPCFG-RA IPCFG-RENEW IPCFG-RPC IPCFG-STORE KEM-LINK LAUNCHCTL-BUILD LAUNCHCTL-LIST LAUNCHD-BUILD LIBDISPATCH LIBDISPATCH-MACH LIBSYSTEM-KERNEL LIBXPC LINUX-MOUNTS MACH-PORT MACH-SMOKE MDNS-BOOT MDNS-DNSSD MDNS-ENGINE MDNS-IFWATCH MIG-BUILD NOTIFYD-PROC SC-BOND SC-BRIDGE SC-LOCK SC-MULTI SC-NETIF SC-NETSET SC-NETSVC SC-NOTIFY SC-PATH SC-PLINK SC-PNOTIFY SC-PREFS SC-RUNLOOP SC-STORE SC-VLAN SERVICE-LDCONFIG SHELLCMD-LEAF SYSCMD-LEAF SYSLOG-RUN SYSLOGD-PROC TASK-SPECIAL-PORT TEXTCMD-LEAF WAITQUIET }
+2026-10-03T12:23:53.6460384Z set nb_warnfail { ASLMANAGER-DEMAND BOOT-BANNER EVFILT-MACHPORT HOSTNAMED-BONJOUR-RENAME HOSTNAMED-MDNS WEDGE-CHECK }
+2026-10-03T12:23:53.6461007Z === DBG: context around the marker arm
+2026-10-03T12:23:53.6461537Z set nb_reason(TEXTCMD-LEAF) "pending T3 audit; live arms: monolith t=fail/f=fail/s=continue"
+2026-10-03T12:23:53.6462036Z set nb_owner(WAITQUIET) "nextbsd-userland"
+2026-10-03T12:23:53.6462442Z set nb_pol(WAITQUIET) "must-pass"
+2026-10-03T12:23:53.6463002Z set nb_reason(WAITQUIET) "pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue"
+2026-10-03T12:23:53.6463570Z set nb_owner(WEDGE-CHECK) "nextbsd-userland"
+2026-10-03T12:23:53.6463947Z set nb_pol(WEDGE-CHECK) "warn"
+2026-10-03T12:23:53.6464668Z set nb_reason(WEDGE-CHECK) "pending T3: emitted by wedge-check.sh, invoked with || true, armed nowhere today; the fork leaves its verdict informational."
+2026-10-03T12:23:53.6465402Z 
+2026-10-03T12:23:53.6465563Z set timeout $env(NB_SUITE_TIMEOUT)
+2026-10-03T12:23:53.6466074Z puts "==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh"
+2026-10-03T12:23:53.6466530Z send "r /usr/tests/freebsd-launchd-mach/run.sh\r"
+2026-10-03T12:23:53.6466896Z expect {
+2026-10-03T12:23:53.6467164Z     timeout {
+2026-10-03T12:23:53.6467959Z         puts "\nFAIL: /usr/tests/freebsd-launchd-mach/run.sh printed no NEXTBSD-TEST-SUMMARY within the $env(NB_SUITE_TIMEOUT)s budget (no sentinel — the suite hung or died)"
+2026-10-03T12:23:53.6468670Z         if {$env(NB_DEBUG) ne ""} {
+2026-10-03T12:23:53.6469013Z             set fh [open $env(NB_LOG) r]
+2026-10-03T12:23:53.6469409Z             set d [read $fh]
+2026-10-03T12:23:53.6469746Z             close $fh
+2026-10-03T12:23:53.6470069Z             set cmap [list "\r" {<CR>} "\n" {<NL>} "\t" {<TAB>}]
+2026-10-03T12:23:53.6470493Z             set d2 [string range $d end-300 end]
+2026-10-03T12:23:53.6470991Z             puts "\nDBG-TIMEOUT: transcript [string length $d] bytes; tail: [string map $cmap $d2]"
+2026-10-03T12:23:53.6471463Z         }
+2026-10-03T12:23:53.6471743Z         exit 2
+2026-10-03T12:23:53.6472042Z     }
+2026-10-03T12:23:53.6472327Z     -re $re_marker {
+2026-10-03T12:23:53.6472629Z         incr dbg_arms
+2026-10-03T12:23:53.6472970Z         set m   $expect_out(1,string)
+2026-10-03T12:23:53.6473441Z         set sfx [string range $expect_out(string) [expr {[string length $m] + 1}] end]
+2026-10-03T12:23:53.6474150Z         if {![info exists nb_pol($m)]} { puts "\nDBG-ARM: unlisted marker <$m>-$sfx — ignoring"; exp_continue }
+2026-10-03T12:23:53.6474788Z         set pol $nb_pol($m)
+2026-10-03T12:23:53.6475115Z         set r   $nb_reason($m)
+2026-10-03T12:23:53.6475425Z         if {$sfx eq "OK"} {
+2026-10-03T12:23:53.6475763Z             set nb_seen($m) 1
+2026-10-03T12:23:53.6476099Z             puts "\nOK: $m"
+2026-10-03T12:23:53.6476485Z             exp_continue
+2026-10-03T12:23:53.6476861Z         }
+2026-10-03T12:23:53.6477931Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T12:23:53.6527773Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T12:23:53.6528220Z 
+2026-10-03T12:23:53.6528227Z 
+2026-10-03T12:23:53.6528491Z Loading /boot/loader.conf
+2026-10-03T12:23:53.6528769Z 
+2026-10-03T12:23:53.6528774Z 
+2026-10-03T12:23:53.6529016Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T12:23:53.6529390Z 
+2026-10-03T12:23:53.6529395Z 
+2026-10-03T12:23:53.6529554Z OK 
+2026-10-03T12:23:53.6529901Z ==> at loader prompt
+2026-10-03T12:23:54.8357743Z  set console=comconsole
+2026-10-03T12:23:54.8358152Z OK set console=comconsole
+2026-10-03T12:23:54.8358371Z 
+2026-10-03T12:23:54.8358375Z 
+2026-10-03T12:23:55.8982515Z OK set boot_serial=YES
+2026-10-03T12:23:55.8983143Z OK set boot_serial=YES
+2026-10-03T12:23:55.8983364Z 
+2026-10-03T12:23:55.8983369Z 
+2026-10-03T12:23:57.2819289Z OK set comconsole_speed=115200
+2026-10-03T12:23:57.2819809Z OK set comconsole_speed=115200
+2026-10-03T12:23:57.2820289Z 
+2026-10-03T12:23:57.2820294Z 
+2026-10-03T12:23:58.4650118Z OK set boot_multicons=YES
+2026-10-03T12:23:58.4650571Z OK set boot_multicons=YES
+2026-10-03T12:23:58.4650942Z 
+2026-10-03T12:23:58.4650946Z 
+2026-10-03T12:23:59.5675769Z OK set boot_mutemsgs=NO
+2026-10-03T12:23:59.5676308Z OK set boot_mutemsgs=NO
+2026-10-03T12:23:59.5676767Z 
+2026-10-03T12:23:59.5676773Z 
+2026-10-03T12:24:00.1488921Z OK boot -v
+2026-10-03T12:24:00.1489666Z Booting [/boot/kernel/kernel]
+2026-10-03T12:24:00.1490005Z 
+2026-10-03T12:24:00.1490060Z 
+2026-10-03T12:24:00.1490271Z ---<<BOOT>>---
+2026-10-03T12:24:00.1490559Z 
+2026-10-03T12:24:00.1490565Z 
+2026-10-03T12:24:00.1491280Z Copyright (c) 1992-2025 The FreeBSD Project.
+2026-10-03T12:24:00.1491646Z 
+2026-10-03T12:24:00.1491697Z 
+2026-10-03T12:24:00.1491892Z early-init: sethostname('selftest')
+2026-10-03T12:24:00.1492159Z 
+2026-10-03T12:24:00.1492163Z 
+2026-10-03T12:24:00.1492514Z early-init: opened /dev/klog (kernel.log_open=1; console quiet)
+2026-10-03T12:24:00.1492902Z 
+2026-10-03T12:24:00.1492909Z 
+2026-10-03T12:24:00.1493207Z NextBSD/amd64 (selftest) (console)
+2026-10-03T12:24:00.1493779Z 
+2026-10-03T12:24:00.1493784Z 
+2026-10-03T12:24:00.1493791Z 
+2026-10-03T12:24:00.1494360Z OK: BOOT-BANNER-OK — getty shows the synthesized hostname 'selftest'
+2026-10-03T12:24:00.4492628Z login:
+2026-10-03T12:24:00.4492967Z 
+2026-10-03T12:24:00.4492975Z 
+2026-10-03T12:24:00.4492981Z 
+2026-10-03T12:24:00.4493242Z OK: boot reached the login prompt
+2026-10-03T12:24:00.4494019Z admin
+2026-10-03T12:24:00.4494426Z Password:
+2026-10-03T12:24:00.4494878Z 
+2026-10-03T12:24:00.4494885Z 
+2026-10-03T12:24:00.4494892Z 
+2026-10-03T12:24:00.4495065Z admin@selftest ~ % 
+2026-10-03T12:24:00.4495592Z OK: logged in as admin
+2026-10-03T12:24:00.4498897Z ==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T12:24:00.4504091Z r() { if [ "$(id -u)" = 0 ]; then "$@"; else sudo "$@"; fi; }
+2026-10-03T12:24:00.4505208Z r /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T12:24:00.4505807Z admin@selftest ~ % ACCT-HELPERS-OK
+2026-10-03T12:24:00.4506158Z 
+2026-10-03T12:24:00.4506163Z 
+2026-10-03T12:24:00.4506390Z ACCT-LIFECYCLE-OK
+2026-10-03T12:24:00.4506675Z 
+2026-10-03T12:24:00.4506692Z 
+2026-10-03T12:24:00.4506941Z ASLMANAGER-DEMAND-SKIP
+2026-10-03T12:24:00.4507170Z 
+2026-10-03T12:24:00.4507174Z 
+2026-10-03T12:24:00.4507397Z BOOT-BANNER-SKIP
+2026-10-03T12:24:00.4507643Z 
+2026-10-03T12:24:00.4507649Z 
+2026-10-03T12:24:00.4507849Z BOOTSTRAP-OK
+2026-10-03T12:24:00.4508069Z 
+2026-10-03T12:24:00.4508119Z 
+2026-10-03T12:24:00.4508379Z BOOTSTRAP-REMOTE-OK
+2026-10-03T12:24:00.4508671Z 
+2026-10-03T12:24:00.4508675Z 
+2026-10-03T12:24:00.4508811Z BUSYSTATE-OK
+2026-10-03T12:24:00.4509020Z 
+2026-10-03T12:24:00.4509024Z 
+2026-10-03T12:24:00.4509189Z CONFIGD-LIST-OK
+2026-10-03T12:24:00.4509423Z 
+2026-10-03T12:24:00.4509426Z 
+2026-10-03T12:24:00.4509608Z CONFIGD-MULTI-OK
+2026-10-03T12:24:00.4509854Z 
+2026-10-03T12:24:00.4509863Z 
+2026-10-03T12:24:00.4510025Z CONFIGD-NOTIFY-OK
+2026-10-03T12:24:00.4510241Z 
+2026-10-03T12:24:00.4510244Z 
+2026-10-03T12:24:00.4510468Z CONFIGD-PATTERN-OK
+2026-10-03T12:24:00.4510696Z 
+2026-10-03T12:24:00.4510710Z 
+2026-10-03T12:24:00.4510952Z can't read "expect_out(string)": no such element in array
+2026-10-03T12:24:00.4511410Z     while executing
+2026-10-03T12:24:00.4511837Z "string range $expect_out(string) [expr {[string length $m] + 1}] end"
+2026-10-03T12:24:00.4512349Z     invoked from within
+2026-10-03T12:24:00.4512651Z "expect {
+2026-10-03T12:24:00.4512932Z     timeout {
+2026-10-03T12:24:00.4513511Z         puts "\nFAIL: /usr/tests/freebsd-launchd-mach/run.sh printed no NEXTBSD-TEST-SUMMARY within the $env(NB_SUITE_TIMEOUT)s..."
+2026-10-03T12:24:00.4514088Z     (file "tests/boot.exp" line 666)
+2026-10-03T12:24:00.4582705Z NEXTBSD-TEST-SUMMARY ok= fail= skip=
+2026-10-03T12:24:00.4585134Z ==> boot-test FAILED rc=1 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh)
+2026-10-03T12:24:00.4586165Z     serial transcript: tests/boot.log
+2026-10-03T12:24:00.4586976Z SELFTEST FAIL: case ok — expected rc 0, got 1
+2026-10-03T12:24:00.4587715Z ==> case: fail (suite: /usr/tests/freebsd-launchd-mach/run.sh) — expect rc 1
+2026-10-03T12:24:00.4612692Z ==> boot test: tests/fake.img
+2026-10-03T12:24:00.4620184Z -rw-r--r-- 1 runner runner 0 Oct  3 12:23 tests/fake.img
+2026-10-03T12:24:00.4679085Z ==> using KVM acceleration
+2026-10-03T12:24:00.4679690Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T12:24:00.4804043Z === DBG: tests/boot.exp total lines: 908
+2026-10-03T12:24:00.4820140Z 379:set nb_mustpass { ADVCMD-LEAF BOOTSTRAP BOOTSTRAP-REMOTE BUSYSTATE CONFIGD-LIST CONFIGD-MULTI CONFIGD-NOTIFY CONFIGD-PATTERN CONFIGD-STORE COREFOUNDATION DA-BOOT DOMAIN-DIRS FBSDGLUE FILECMD-LEAF HOST-BOOTSTRAP HOSTNAMED HOSTNAMED-DHCP HOSTNAMED-PREFS IPCFG-ARP IPCFG-BOOT IPCFG-BOUND IPCFG-DHCP IPCFG-IPCONFIG IPCFG-RA IPCFG-RENEW IPCFG-RPC IPCFG-STORE KEM-LINK LAUNCHCTL-BUILD LAUNCHCTL-LIST LAUNCHD-BUILD LIBDISPATCH LIBDISPATCH-MACH LIBSYSTEM-KERNEL LIBXPC LINUX-MOUNTS MACH-PORT MACH-SMOKE MDNS-BOOT MDNS-DNSSD MDNS-ENGINE MDNS-IFWATCH MIG-BUILD NOTIFYD-PROC SC-BOND SC-BRIDGE SC-LOCK SC-MULTI SC-NETIF SC-NETSET SC-NETSVC SC-NOTIFY SC-PATH SC-PLINK SC-PNOTIFY SC-PREFS SC-RUNLOOP SC-STORE SC-VLAN SERVICE-LDCONFIG SHELLCMD-LEAF SYSCMD-LEAF SYSLOG-RUN SYSLOGD-PROC TASK-SPECIAL-PORT TEXTCMD-LEAF WAITQUIET }
+2026-10-03T12:24:00.4823183Z 382:set nb_scope { nextbsd-userland nextbsd-freebsd-compat }
+2026-10-03T12:24:00.4823769Z 384:set nb_pol(ACCT-HELPERS) "fail-gates"
+2026-10-03T12:24:00.4824229Z 664:puts "==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh"
+2026-10-03T12:24:00.4826439Z === DBG: context around the suite expect
+2026-10-03T12:24:00.4835697Z         "Password:" { send "\r"; exp_continue }
+2026-10-03T12:24:00.4836384Z         -re $re_shell_prompt { puts "\nOK: logged in as admin" }
+2026-10-03T12:24:00.4837256Z     }
+2026-10-03T12:24:00.4837585Z } else {
+2026-10-03T12:24:00.4838167Z     # Do NOT match a prompt: automatic login lands early, with driver attach
+2026-10-03T12:24:00.4838940Z     # messages still arriving, so the prompt is often not the last thing in the
+2026-10-03T12:24:00.4839716Z     # buffer. Ask for a marker instead; characters typed before the shell is
+2026-10-03T12:24:00.4840449Z     # ready are buffered by the tty.
+2026-10-03T12:24:00.4840908Z     send "\r"
+2026-10-03T12:24:00.4841300Z     send "echo NB-SHELL-READY\r"
+2026-10-03T12:24:00.4841753Z     expect {
+2026-10-03T12:24:00.4842139Z         timeout {
+2026-10-03T12:24:00.4842668Z             puts "\nFAIL: no shell response after automatic login"
+2026-10-03T12:24:00.4843201Z             exit 1
+2026-10-03T12:24:00.4843582Z         }
+2026-10-03T12:24:00.4844139Z         "NB-SHELL-READY" { puts "\nOK: shell is responding" }
+2026-10-03T12:24:00.4844902Z     }
+2026-10-03T12:24:00.4845319Z }
+2026-10-03T12:24:00.4845824Z # admin is not root (and on the Apple image root is disabled), so wrap the
+2026-10-03T12:24:00.4846655Z # privileged commands rather than repeating the test at each one. A function,
+2026-10-03T12:24:00.4847425Z # so it behaves the same in sh and in zsh, which is admin's shell.
+2026-10-03T12:24:00.4848035Z send "r() { if \[ \"\$(id -u)\" = 0 \]; then \"\$@\"; else sudo \"\$@\"; fi; }\r"
+2026-10-03T12:24:00.4848992Z # generated by manifest/gen-arms.tcl — do not edit
+2026-10-03T12:24:00.4849827Z # arch: amd64 | suites: 1 | manifest: /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/markers.tsv + /dev/null
+2026-10-03T12:24:00.4854529Z set nb_mustpass { ADVCMD-LEAF BOOTSTRAP BOOTSTRAP-REMOTE BUSYSTATE CONFIGD-LIST CONFIGD-MULTI CONFIGD-NOTIFY CONFIGD-PATTERN CONFIGD-STORE COREFOUNDATION DA-BOOT DOMAIN-DIRS FBSDGLUE FILECMD-LEAF HOST-BOOTSTRAP HOSTNAMED HOSTNAMED-DHCP HOSTNAMED-PREFS IPCFG-ARP IPCFG-BOOT IPCFG-BOUND IPCFG-DHCP IPCFG-IPCONFIG IPCFG-RA IPCFG-RENEW IPCFG-RPC IPCFG-STORE KEM-LINK LAUNCHCTL-BUILD LAUNCHCTL-LIST LAUNCHD-BUILD LIBDISPATCH LIBDISPATCH-MACH LIBSYSTEM-KERNEL LIBXPC LINUX-MOUNTS MACH-PORT MACH-SMOKE MDNS-BOOT MDNS-DNSSD MDNS-ENGINE MDNS-IFWATCH MIG-BUILD NOTIFYD-PROC SC-BOND SC-BRIDGE SC-LOCK SC-MULTI SC-NETIF SC-NETSET SC-NETSVC SC-NOTIFY SC-PATH SC-PLINK SC-PNOTIFY SC-PREFS SC-RUNLOOP SC-STORE SC-VLAN SERVICE-LDCONFIG SHELLCMD-LEAF SYSCMD-LEAF SYSLOG-RUN SYSLOGD-PROC TASK-SPECIAL-PORT TEXTCMD-LEAF WAITQUIET }
+2026-10-03T12:24:00.4859565Z set nb_warnfail { ASLMANAGER-DEMAND BOOT-BANNER EVFILT-MACHPORT HOSTNAMED-BONJOUR-RENAME HOSTNAMED-MDNS WEDGE-CHECK }
+2026-10-03T12:24:00.4860480Z === DBG: context around the marker arm
+2026-10-03T12:24:00.4861232Z set nb_reason(TEXTCMD-LEAF) "pending T3 audit; live arms: monolith t=fail/f=fail/s=continue"
+2026-10-03T12:24:00.4861948Z set nb_owner(WAITQUIET) "nextbsd-userland"
+2026-10-03T12:24:00.4862500Z set nb_pol(WAITQUIET) "must-pass"
+2026-10-03T12:24:00.4863371Z set nb_reason(WAITQUIET) "pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue"
+2026-10-03T12:24:00.4864274Z set nb_owner(WEDGE-CHECK) "nextbsd-userland"
+2026-10-03T12:24:00.4865012Z set nb_pol(WEDGE-CHECK) "warn"
+2026-10-03T12:24:00.4866182Z set nb_reason(WEDGE-CHECK) "pending T3: emitted by wedge-check.sh, invoked with || true, armed nowhere today; the fork leaves its verdict informational."
+2026-10-03T12:24:00.4867024Z 
+2026-10-03T12:24:00.4867235Z set timeout $env(NB_SUITE_TIMEOUT)
+2026-10-03T12:24:00.4867850Z puts "==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh"
+2026-10-03T12:24:00.4868573Z send "r /usr/tests/freebsd-launchd-mach/run.sh\r"
+2026-10-03T12:24:00.4869122Z expect {
+2026-10-03T12:24:00.4869528Z     timeout {
+2026-10-03T12:24:00.4870913Z         puts "\nFAIL: /usr/tests/freebsd-launchd-mach/run.sh printed no NEXTBSD-TEST-SUMMARY within the $env(NB_SUITE_TIMEOUT)s budget (no sentinel — the suite hung or died)"
+2026-10-03T12:24:00.4872060Z         if {$env(NB_DEBUG) ne ""} {
+2026-10-03T12:24:00.4872596Z             set fh [open $env(NB_LOG) r]
+2026-10-03T12:24:00.4873119Z             set d [read $fh]
+2026-10-03T12:24:00.4873561Z             close $fh
+2026-10-03T12:24:00.4874027Z             set cmap [list "\r" {<CR>} "\n" {<NL>} "\t" {<TAB>}]
+2026-10-03T12:24:00.4874884Z             set d2 [string range $d end-300 end]
+2026-10-03T12:24:00.4875707Z             puts "\nDBG-TIMEOUT: transcript [string length $d] bytes; tail: [string map $cmap $d2]"
+2026-10-03T12:24:00.4876443Z         }
+2026-10-03T12:24:00.4876794Z         exit 2
+2026-10-03T12:24:00.4877132Z     }
+2026-10-03T12:24:00.4877532Z     -re $re_marker {
+2026-10-03T12:24:00.4877962Z         incr dbg_arms
+2026-10-03T12:24:00.4878393Z         set m   $expect_out(1,string)
+2026-10-03T12:24:00.4879060Z         set sfx [string range $expect_out(string) [expr {[string length $m] + 1}] end]
+2026-10-03T12:24:00.4880193Z         if {![info exists nb_pol($m)]} { puts "\nDBG-ARM: unlisted marker <$m>-$sfx — ignoring"; exp_continue }
+2026-10-03T12:24:00.4881003Z         set pol $nb_pol($m)
+2026-10-03T12:24:00.4881412Z         set r   $nb_reason($m)
+2026-10-03T12:24:00.4881841Z         if {$sfx eq "OK"} {
+2026-10-03T12:24:00.4882277Z             set nb_seen($m) 1
+2026-10-03T12:24:00.4882691Z             puts "\nOK: $m"
+2026-10-03T12:24:00.4883137Z             exp_continue
+2026-10-03T12:24:00.4883564Z         }
+2026-10-03T12:24:00.4883948Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T12:24:00.4922343Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T12:24:00.4922704Z 
+2026-10-03T12:24:00.4922709Z 
+2026-10-03T12:24:00.4922890Z Loading /boot/loader.conf
+2026-10-03T12:24:00.4923075Z 
+2026-10-03T12:24:00.4923079Z 
+2026-10-03T12:24:00.4923488Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T12:24:00.4923858Z 
+2026-10-03T12:24:00.4923862Z 
+2026-10-03T12:24:00.4923979Z OK 
+2026-10-03T12:24:00.4924271Z ==> at loader prompt
+2026-10-03T12:24:01.6752636Z  set console=comconsole
+2026-10-03T12:24:01.6753412Z OK set console=comconsole
+2026-10-03T12:24:01.6753846Z 
+2026-10-03T12:24:01.6753851Z 
+2026-10-03T12:24:02.7378749Z OK set boot_serial=YES
+2026-10-03T12:24:02.7379277Z OK set boot_serial=YES
+2026-10-03T12:24:02.7379458Z 
+2026-10-03T12:24:02.7379737Z 
+2026-10-03T12:24:04.1213559Z OK set comconsole_speed=115200
+2026-10-03T12:24:04.1215467Z OK set comconsole_speed=115200
+2026-10-03T12:24:04.1215973Z 
+2026-10-03T12:24:04.1215979Z 
+2026-10-03T12:24:05.3045516Z OK set boot_multicons=YES
+2026-10-03T12:24:05.3046022Z OK set boot_multicons=YES
+2026-10-03T12:24:05.3046491Z 
+2026-10-03T12:24:05.3046497Z 
+2026-10-03T12:24:06.4073901Z OK set boot_mutemsgs=NO
+2026-10-03T12:24:06.4074366Z OK set boot_mutemsgs=NO
+2026-10-03T12:24:06.4075060Z 
+2026-10-03T12:24:06.4075066Z 
+2026-10-03T12:24:06.9887382Z OK boot -v
+2026-10-03T12:24:06.9888157Z Booting [/boot/kernel/kernel]
+2026-10-03T12:24:06.9888576Z 
+2026-10-03T12:24:06.9888584Z 
+2026-10-03T12:24:06.9888754Z ---<<BOOT>>---
+2026-10-03T12:24:06.9889100Z 
+2026-10-03T12:24:06.9889106Z 
+2026-10-03T12:24:06.9890808Z Copyright (c) 1992-2025 The FreeBSD Project.
+2026-10-03T12:24:06.9891245Z 
+2026-10-03T12:24:06.9891261Z 
+2026-10-03T12:24:06.9891568Z early-init: sethostname('selftest')
+2026-10-03T12:24:06.9891918Z 
+2026-10-03T12:24:06.9891936Z 
+2026-10-03T12:24:06.9892584Z early-init: opened /dev/klog (kernel.log_open=1; console quiet)
+2026-10-03T12:24:06.9893139Z 
+2026-10-03T12:24:06.9893145Z 
+2026-10-03T12:24:06.9893350Z NextBSD/amd64 (selftest) (console)
+2026-10-03T12:24:06.9893683Z 
+2026-10-03T12:24:06.9893689Z 
+2026-10-03T12:24:06.9893709Z 
+2026-10-03T12:24:06.9894260Z OK: BOOT-BANNER-OK — getty shows the synthesized hostname 'selftest'
+2026-10-03T12:24:07.2902465Z login:
+2026-10-03T12:24:07.2902779Z 
+2026-10-03T12:24:07.2902839Z 
+2026-10-03T12:24:07.2902845Z 
+2026-10-03T12:24:07.2903049Z OK: boot reached the login prompt
+2026-10-03T12:24:07.2903813Z admin
+2026-10-03T12:24:07.2904225Z Password:
+2026-10-03T12:24:07.2904492Z 
+2026-10-03T12:24:07.2904545Z 
+2026-10-03T12:24:07.2904763Z 
+2026-10-03T12:24:07.2905036Z admin@selftest ~ % 
+2026-10-03T12:24:07.2905585Z OK: logged in as admin
+2026-10-03T12:24:07.2908996Z ==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T12:24:07.2914078Z r() { if [ "$(id -u)" = 0 ]; then "$@"; else sudo "$@"; fi; }
+2026-10-03T12:24:07.2915257Z admin@selftest ~ % r /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T12:24:07.2915916Z ACCT-HELPERS-OK
+2026-10-03T12:24:07.2916148Z 
+2026-10-03T12:24:07.2916154Z 
+2026-10-03T12:24:07.2916358Z ACCT-LIFECYCLE-OK
+2026-10-03T12:24:07.2916618Z 
+2026-10-03T12:24:07.2916623Z 
+2026-10-03T12:24:07.2916849Z ASLMANAGER-DEMAND-SKIP
+2026-10-03T12:24:07.2917092Z 
+2026-10-03T12:24:07.2917096Z 
+2026-10-03T12:24:07.2917236Z BOOT-BANNER-SKIP
+2026-10-03T12:24:07.2917450Z 
+2026-10-03T12:24:07.2917456Z 
+2026-10-03T12:24:07.2917636Z BOOTSTRAP-OK
+2026-10-03T12:24:07.2917903Z 
+2026-10-03T12:24:07.2917907Z 
+2026-10-03T12:24:07.2918090Z BOOTSTRAP-REMOTE-OK
+2026-10-03T12:24:07.2918347Z 
+2026-10-03T12:24:07.2918353Z 
+2026-10-03T12:24:07.2918501Z BUSYSTATE-OK
+2026-10-03T12:24:07.2919246Z 
+2026-10-03T12:24:07.2919252Z 
+2026-10-03T12:24:07.2919506Z CONFIGD-LIST-OK
+2026-10-03T12:24:07.2919763Z 
+2026-10-03T12:24:07.2919767Z 
+2026-10-03T12:24:07.2919932Z CONFIGD-MULTI-OK
+2026-10-03T12:24:07.2920196Z 
+2026-10-03T12:24:07.2920203Z 
+2026-10-03T12:24:07.2920383Z CONFIGD-NOTIFY-OK
+2026-10-03T12:24:07.2920654Z 
+2026-10-03T12:24:07.2920659Z 
+2026-10-03T12:24:07.2920800Z CONFIGD-PATTERN-OK
+2026-10-03T12:24:07.2921042Z 
+2026-10-03T12:24:07.2921047Z 
+2026-10-03T12:24:07.2921206Z CONFIGD-STORE-OK
+2026-10-03T12:24:07.2921409Z 
+2026-10-03T12:24:07.2921413Z 
+2026-10-03T12:24:07.2921607Z COREFOUNDATION-OK
+2026-10-03T12:24:07.2921805Z 
+2026-10-03T12:24:07.2921808Z 
+2026-10-03T12:24:07.2921988Z DA-BOOT-OK
+2026-10-03T12:24:07.2922182Z 
+2026-10-03T12:24:07.2922187Z 
+2026-10-03T12:24:07.2922382Z DA-IOKIT-OK
+2026-10-03T12:24:07.2922608Z 
+2026-10-03T12:24:07.2922613Z 
+2026-10-03T12:24:07.2922745Z DAEMON-STATE-OK
+2026-10-03T12:24:07.2923308Z 
+2026-10-03T12:24:07.2923313Z 
+2026-10-03T12:24:07.2923481Z DOMAIN-DIRS-OK
+2026-10-03T12:24:07.2923684Z 
+2026-10-03T12:24:07.2923688Z 
+2026-10-03T12:24:07.2923883Z EVFILT-MACHPORT-SKIP
+2026-10-03T12:24:07.2924114Z 
+2026-10-03T12:24:07.2924118Z 
+2026-10-03T12:24:07.2924293Z EVFILT-MACHPORT-CONCURRENT-OK
+2026-10-03T12:24:07.2924513Z 
+2026-10-03T12:24:07.2924544Z 
+2026-10-03T12:24:07.2924935Z FBSDGLUE-OK
+2026-10-03T12:24:07.2925120Z 
+2026-10-03T12:24:07.2925123Z 
+2026-10-03T12:24:07.2925249Z FILECMD-LEAF-OK
+2026-10-03T12:24:07.2925429Z 
+2026-10-03T12:24:07.2925431Z 
+2026-10-03T12:24:07.2925536Z GETTY-OK
+2026-10-03T12:24:07.2925704Z 
+2026-10-03T12:24:07.2925708Z 
+2026-10-03T12:24:07.2925861Z HOMEDIR-OK
+2026-10-03T12:24:07.2925997Z 
+2026-10-03T12:24:07.2926001Z 
+2026-10-03T12:24:07.2926153Z HOST-BOOTSTRAP-OK
+2026-10-03T12:24:07.2926326Z 
+2026-10-03T12:24:07.2926329Z 
+2026-10-03T12:24:07.2926478Z HOSTNAMED-OK
+2026-10-03T12:24:07.2926658Z 
+2026-10-03T12:24:07.2926661Z 
+2026-10-03T12:24:07.2926801Z HOSTNAMED-BONJOUR-RENAME-SKIP
+2026-10-03T12:24:07.2927011Z 
+2026-10-03T12:24:07.2927015Z 
+2026-10-03T12:24:07.2927128Z HOSTNAMED-DHCP-OK
+2026-10-03T12:24:07.2927310Z 
+2026-10-03T12:24:07.2927313Z 
+2026-10-03T12:24:07.2927435Z HOSTNAMED-MDNS-SKIP
+2026-10-03T12:24:07.2927616Z 
+2026-10-03T12:24:07.2927619Z 
+2026-10-03T12:24:07.2927790Z HOSTNAMED-PREFS-OK
+2026-10-03T12:24:07.2928024Z 
+2026-10-03T12:24:07.2928028Z 
+2026-10-03T12:24:07.2928174Z IPCFG-ARP-OK
+2026-10-03T12:24:07.2928323Z 
+2026-10-03T12:24:07.2928326Z 
+2026-10-03T12:24:07.2928470Z IPCFG-BOOT-OK
+2026-10-03T12:24:07.2928646Z 
+2026-10-03T12:24:07.2928650Z 
+2026-10-03T12:24:07.2928760Z IPCFG-BOUND-OK
+2026-10-03T12:24:07.2928936Z 
+2026-10-03T12:24:07.2928939Z 
+2026-10-03T12:24:07.2929061Z IPCFG-DHCP-OK
+2026-10-03T12:24:07.2929230Z 
+2026-10-03T12:24:07.2929233Z 
+2026-10-03T12:24:07.2929405Z IPCFG-IPCONFIG-OK
+2026-10-03T12:24:07.2929551Z 
+2026-10-03T12:24:07.2929554Z 
+2026-10-03T12:24:07.2929694Z IPCFG-RA-OK
+2026-10-03T12:24:07.2929839Z 
+2026-10-03T12:24:07.2929848Z 
+2026-10-03T12:24:07.2929984Z IPCFG-RENEW-OK
+2026-10-03T12:24:07.2930123Z 
+2026-10-03T12:24:07.2930162Z 
+2026-10-03T12:24:07.2930271Z IPCFG-RPC-OK
+2026-10-03T12:24:07.2930437Z 
+2026-10-03T12:24:07.2930440Z 
+2026-10-03T12:24:07.2930559Z IPCFG-STORE-OK
+2026-10-03T12:24:07.2930753Z 
+2026-10-03T12:24:07.2930756Z 
+2026-10-03T12:24:07.2930861Z KEM-LINK-OK
+2026-10-03T12:24:07.2931031Z 
+2026-10-03T12:24:07.2931034Z 
+2026-10-03T12:24:07.2931177Z LAUNCHCTL-BUILD-OK
+2026-10-03T12:24:07.2931337Z 
+2026-10-03T12:24:07.2931340Z 
+2026-10-03T12:24:07.2931480Z LAUNCHCTL-LIST-OK
+2026-10-03T12:24:07.2931621Z 
+2026-10-03T12:24:07.2931624Z 
+2026-10-03T12:24:07.2931766Z LAUNCHD-BUILD-OK
+2026-10-03T12:24:07.2931949Z 
+2026-10-03T12:24:07.2931952Z 
+2026-10-03T12:24:07.2932072Z LIBDISPATCH-OK
+2026-10-03T12:24:07.2932266Z 
+2026-10-03T12:24:07.2932269Z 
+2026-10-03T12:24:07.2932383Z LIBDISPATCH-MACH-OK
+2026-10-03T12:24:07.2932565Z 
+2026-10-03T12:24:07.2932568Z 
+2026-10-03T12:24:07.2932656Z LIBDS-OK
+2026-10-03T12:24:07.2932858Z 
+2026-10-03T12:24:07.2932862Z 
+2026-10-03T12:24:07.2933005Z LIBSYSTEM-KERNEL-OK
+2026-10-03T12:24:07.2933152Z 
+2026-10-03T12:24:07.2933155Z 
+2026-10-03T12:24:07.2933293Z LIBXPC-OK
+2026-10-03T12:24:07.2933405Z 
+2026-10-03T12:24:07.2933408Z 
+2026-10-03T12:24:07.2933591Z LINUX-MOUNTS-OK
+2026-10-03T12:24:07.2933792Z 
+2026-10-03T12:24:07.2933795Z 
+2026-10-03T12:24:07.2933903Z MACH-PORT-OK
+2026-10-03T12:24:07.2934117Z 
+2026-10-03T12:24:07.2934122Z 
+2026-10-03T12:24:07.2934241Z MACH-SMOKE-OK
+2026-10-03T12:24:07.2934498Z 
+2026-10-03T12:24:07.2934503Z 
+2026-10-03T12:24:07.2934778Z MDNS-BOOT-OK
+2026-10-03T12:24:07.2934958Z 
+2026-10-03T12:24:07.2934963Z 
+2026-10-03T12:24:07.2935137Z MDNS-DNSSD-OK
+2026-10-03T12:24:07.2935300Z 
+2026-10-03T12:24:07.2935305Z 
+2026-10-03T12:24:07.2935527Z MDNS-ENGINE-OK
+2026-10-03T12:24:07.2935732Z 
+2026-10-03T12:24:07.2935777Z 
+2026-10-03T12:24:07.2935909Z MDNS-IFWATCH-OK
+2026-10-03T12:24:07.2936121Z 
+2026-10-03T12:24:07.2936125Z 
+2026-10-03T12:24:07.2936233Z MDNS-STATIC-OK
+2026-10-03T12:24:07.2936608Z 
+2026-10-03T12:24:07.2936615Z 
+2026-10-03T12:24:07.2936754Z MIG-BUILD-OK
+2026-10-03T12:24:07.2936966Z 
+2026-10-03T12:24:07.2936971Z 
+2026-10-03T12:24:07.2937142Z NFS-OK
+2026-10-03T12:24:07.2937295Z 
+2026-10-03T12:24:07.2937299Z 
+2026-10-03T12:24:07.2937551Z NOTIFYD-PROC-OK
+2026-10-03T12:24:07.2937734Z 
+2026-10-03T12:24:07.2937738Z 
+2026-10-03T12:24:07.2938162Z NSS-DS-OK
+2026-10-03T12:24:07.2938355Z 
+2026-10-03T12:24:07.2938404Z 
+2026-10-03T12:24:07.2938517Z NTP-OK
+2026-10-03T12:24:07.2938766Z 
+2026-10-03T12:24:07.2938771Z 
+2026-10-03T12:24:07.2938901Z SC-BOND-OK
+2026-10-03T12:24:07.2939111Z 
+2026-10-03T12:24:07.2939115Z 
+2026-10-03T12:24:07.2939253Z SC-BRIDGE-OK
+2026-10-03T12:24:07.2939462Z 
+2026-10-03T12:24:07.2939466Z 
+2026-10-03T12:24:07.2939717Z SC-LOCK-OK
+2026-10-03T12:24:07.2939889Z 
+2026-10-03T12:24:07.2939896Z 
+2026-10-03T12:24:07.2940078Z SC-MULTI-OK
+2026-10-03T12:24:07.2940252Z 
+2026-10-03T12:24:07.2940258Z 
+2026-10-03T12:24:07.2940418Z SC-NETIF-OK
+2026-10-03T12:24:07.2940676Z 
+2026-10-03T12:24:07.2940682Z 
+2026-10-03T12:24:07.2940820Z SC-NETSET-OK
+2026-10-03T12:24:07.2941047Z 
+2026-10-03T12:24:07.2941051Z 
+2026-10-03T12:24:07.2941183Z SC-NETSVC-OK
+2026-10-03T12:24:07.2941376Z 
+2026-10-03T12:24:07.2941380Z 
+2026-10-03T12:24:07.2941564Z SC-NOTIFY-OK
+2026-10-03T12:24:07.2941788Z 
+2026-10-03T12:24:07.2941792Z 
+2026-10-03T12:24:07.2941977Z SC-PATH-OK
+2026-10-03T12:24:07.2942298Z 
+2026-10-03T12:24:07.2942304Z 
+2026-10-03T12:24:07.2942469Z SC-PLINK-OK
+2026-10-03T12:24:07.2942674Z 
+2026-10-03T12:24:07.2942679Z 
+2026-10-03T12:24:07.2942879Z SC-PNOTIFY-OK
+2026-10-03T12:24:07.2943115Z 
+2026-10-03T12:24:07.2943120Z 
+2026-10-03T12:24:07.2943261Z SC-PREFS-OK
+2026-10-03T12:24:07.2943495Z 
+2026-10-03T12:24:07.2943500Z 
+2026-10-03T12:24:07.2943665Z SC-RUNLOOP-OK
+2026-10-03T12:24:07.2943899Z 
+2026-10-03T12:24:07.2943903Z 
+2026-10-03T12:24:07.2944072Z SC-STORE-OK
+2026-10-03T12:24:07.2944236Z 
+2026-10-03T12:24:07.2944241Z 
+2026-10-03T12:24:07.2944400Z SC-VLAN-OK
+2026-10-03T12:24:07.2944750Z 
+2026-10-03T12:24:07.2944767Z 
+2026-10-03T12:24:07.2944983Z SERVICE-LDCONFIG-OK
+2026-10-03T12:24:07.2945196Z 
+2026-10-03T12:24:07.2945201Z 
+2026-10-03T12:24:07.2945407Z SHELLCMD-LEAF-OK
+2026-10-03T12:24:07.2945604Z 
+2026-10-03T12:24:07.2945607Z 
+2026-10-03T12:24:07.2945738Z SUDO-OK
+2026-10-03T12:24:07.2945913Z 
+2026-10-03T12:24:07.2945916Z 
+2026-10-03T12:24:07.2946026Z SYSCMD-LEAF-OK
+2026-10-03T12:24:07.2946207Z 
+2026-10-03T12:24:07.2946210Z 
+2026-10-03T12:24:07.2946338Z SYSLOG-RUN-OK
+2026-10-03T12:24:07.2946492Z 
+2026-10-03T12:24:07.2946495Z 
+2026-10-03T12:24:07.2946652Z SYSLOGD-PROC-OK
+2026-10-03T12:24:07.2946797Z 
+2026-10-03T12:24:07.2946800Z 
+2026-10-03T12:24:07.2946976Z TASK-SPECIAL-PORT-OK
+2026-10-03T12:24:07.2947142Z 
+2026-10-03T12:24:07.2947165Z 
+2026-10-03T12:24:07.2947291Z TEXTCMD-LEAF-OK
+2026-10-03T12:24:07.2947477Z 
+2026-10-03T12:24:07.2947480Z 
+2026-10-03T12:24:07.2947583Z WAITQUIET-OK
+2026-10-03T12:24:07.2947751Z 
+2026-10-03T12:24:07.2947755Z 
+2026-10-03T12:24:07.2947865Z WEDGE-CHECK-SKIP
+2026-10-03T12:24:07.2948050Z 
+2026-10-03T12:24:07.2948052Z 
+2026-10-03T12:24:07.2948204Z ADVCMD-LEAF-FAIL
+2026-10-03T12:24:07.2948342Z 
+2026-10-03T12:24:07.2948345Z 
+2026-10-03T12:24:07.2948544Z NEXTBSD-TEST-SUMMARY ok=79 fail=1 skip=6
+2026-10-03T12:24:07.2948812Z 
+2026-10-03T12:24:07.2948818Z 
+2026-10-03T12:24:07.2949348Z can't read "expect_out(string)": no such element in array
+2026-10-03T12:24:07.2949907Z     while executing
+2026-10-03T12:24:07.2950476Z "string range $expect_out(string) [expr {[string length $m] + 1}] end"
+2026-10-03T12:24:07.2950922Z     invoked from within
+2026-10-03T12:24:07.2951248Z "expect {
+2026-10-03T12:24:07.2951553Z     timeout {
+2026-10-03T12:24:07.2952118Z         puts "\nFAIL: /usr/tests/freebsd-launchd-mach/run.sh printed no NEXTBSD-TEST-SUMMARY within the $env(NB_SUITE_TIMEOUT)s..."
+2026-10-03T12:24:07.2952709Z     (file "tests/boot.exp" line 666)
+2026-10-03T12:24:07.2987383Z admin@selftest ~ % NEXTBSD-TEST-SUMMARY ok= fail= skip=
+2026-10-03T12:24:07.2988267Z ==> boot-test FAILED rc=1 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh)
+2026-10-03T12:24:07.2989243Z     serial transcript: tests/boot.log
+2026-10-03T12:24:07.2989786Z SELFTEST OK:   case fail (rc=1)
+2026-10-03T12:24:07.2990796Z ==> case: nosummary (suite: /usr/tests/freebsd-launchd-mach/run.sh) — expect rc 2
+2026-10-03T12:24:07.3070652Z ==> boot test: tests/fake.img
+2026-10-03T12:24:07.3078686Z -rw-r--r-- 1 runner runner 0 Oct  3 12:23 tests/fake.img
+2026-10-03T12:24:07.3136552Z ==> using KVM acceleration
+2026-10-03T12:24:07.3137361Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T12:24:07.3268360Z === DBG: tests/boot.exp total lines: 908
+2026-10-03T12:24:07.3284407Z 379:set nb_mustpass { ADVCMD-LEAF BOOTSTRAP BOOTSTRAP-REMOTE BUSYSTATE CONFIGD-LIST CONFIGD-MULTI CONFIGD-NOTIFY CONFIGD-PATTERN CONFIGD-STORE COREFOUNDATION DA-BOOT DOMAIN-DIRS FBSDGLUE FILECMD-LEAF HOST-BOOTSTRAP HOSTNAMED HOSTNAMED-DHCP HOSTNAMED-PREFS IPCFG-ARP IPCFG-BOOT IPCFG-BOUND IPCFG-DHCP IPCFG-IPCONFIG IPCFG-RA IPCFG-RENEW IPCFG-RPC IPCFG-STORE KEM-LINK LAUNCHCTL-BUILD LAUNCHCTL-LIST LAUNCHD-BUILD LIBDISPATCH LIBDISPATCH-MACH LIBSYSTEM-KERNEL LIBXPC LINUX-MOUNTS MACH-PORT MACH-SMOKE MDNS-BOOT MDNS-DNSSD MDNS-ENGINE MDNS-IFWATCH MIG-BUILD NOTIFYD-PROC SC-BOND SC-BRIDGE SC-LOCK SC-MULTI SC-NETIF SC-NETSET SC-NETSVC SC-NOTIFY SC-PATH SC-PLINK SC-PNOTIFY SC-PREFS SC-RUNLOOP SC-STORE SC-VLAN SERVICE-LDCONFIG SHELLCMD-LEAF SYSCMD-LEAF SYSLOG-RUN SYSLOGD-PROC TASK-SPECIAL-PORT TEXTCMD-LEAF WAITQUIET }
+2026-10-03T12:24:07.3287399Z 382:set nb_scope { nextbsd-userland nextbsd-freebsd-compat }
+2026-10-03T12:24:07.3287955Z 384:set nb_pol(ACCT-HELPERS) "fail-gates"
+2026-10-03T12:24:07.3288426Z 664:puts "==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh"
+2026-10-03T12:24:07.3289984Z === DBG: context around the suite expect
+2026-10-03T12:24:07.3297618Z         "Password:" { send "\r"; exp_continue }
+2026-10-03T12:24:07.3298207Z         -re $re_shell_prompt { puts "\nOK: logged in as admin" }
+2026-10-03T12:24:07.3298815Z     }
+2026-10-03T12:24:07.3299190Z } else {
+2026-10-03T12:24:07.3299724Z     # Do NOT match a prompt: automatic login lands early, with driver attach
+2026-10-03T12:24:07.3300544Z     # messages still arriving, so the prompt is often not the last thing in the
+2026-10-03T12:24:07.3301132Z     # buffer. Ask for a marker instead; characters typed before the shell is
+2026-10-03T12:24:07.3301601Z     # ready are buffered by the tty.
+2026-10-03T12:24:07.3301939Z     send "\r"
+2026-10-03T12:24:07.3302232Z     send "echo NB-SHELL-READY\r"
+2026-10-03T12:24:07.3302633Z     expect {
+2026-10-03T12:24:07.3302912Z         timeout {
+2026-10-03T12:24:07.3303299Z             puts "\nFAIL: no shell response after automatic login"
+2026-10-03T12:24:07.3303694Z             exit 1
+2026-10-03T12:24:07.3303970Z         }
+2026-10-03T12:24:07.3304310Z         "NB-SHELL-READY" { puts "\nOK: shell is responding" }
+2026-10-03T12:24:07.3304857Z     }
+2026-10-03T12:24:07.3305143Z }
+2026-10-03T12:24:07.3305565Z # admin is not root (and on the Apple image root is disabled), so wrap the
+2026-10-03T12:24:07.3306172Z # privileged commands rather than repeating the test at each one. A function,
+2026-10-03T12:24:07.3306944Z # so it behaves the same in sh and in zsh, which is admin's shell.
+2026-10-03T12:24:07.3307654Z send "r() { if \[ \"\$(id -u)\" = 0 \]; then \"\$@\"; else sudo \"\$@\"; fi; }\r"
+2026-10-03T12:24:07.3308546Z # generated by manifest/gen-arms.tcl — do not edit
+2026-10-03T12:24:07.3309387Z # arch: amd64 | suites: 1 | manifest: /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/markers.tsv + /dev/null
+2026-10-03T12:24:07.3312346Z set nb_mustpass { ADVCMD-LEAF BOOTSTRAP BOOTSTRAP-REMOTE BUSYSTATE CONFIGD-LIST CONFIGD-MULTI CONFIGD-NOTIFY CONFIGD-PATTERN CONFIGD-STORE COREFOUNDATION DA-BOOT DOMAIN-DIRS FBSDGLUE FILECMD-LEAF HOST-BOOTSTRAP HOSTNAMED HOSTNAMED-DHCP HOSTNAMED-PREFS IPCFG-ARP IPCFG-BOOT IPCFG-BOUND IPCFG-DHCP IPCFG-IPCONFIG IPCFG-RA IPCFG-RENEW IPCFG-RPC IPCFG-STORE KEM-LINK LAUNCHCTL-BUILD LAUNCHCTL-LIST LAUNCHD-BUILD LIBDISPATCH LIBDISPATCH-MACH LIBSYSTEM-KERNEL LIBXPC LINUX-MOUNTS MACH-PORT MACH-SMOKE MDNS-BOOT MDNS-DNSSD MDNS-ENGINE MDNS-IFWATCH MIG-BUILD NOTIFYD-PROC SC-BOND SC-BRIDGE SC-LOCK SC-MULTI SC-NETIF SC-NETSET SC-NETSVC SC-NOTIFY SC-PATH SC-PLINK SC-PNOTIFY SC-PREFS SC-RUNLOOP SC-STORE SC-VLAN SERVICE-LDCONFIG SHELLCMD-LEAF SYSCMD-LEAF SYSLOG-RUN SYSLOGD-PROC TASK-SPECIAL-PORT TEXTCMD-LEAF WAITQUIET }
+2026-10-03T12:24:07.3315532Z set nb_warnfail { ASLMANAGER-DEMAND BOOT-BANNER EVFILT-MACHPORT HOSTNAMED-BONJOUR-RENAME HOSTNAMED-MDNS WEDGE-CHECK }
+2026-10-03T12:24:07.3316147Z === DBG: context around the marker arm
+2026-10-03T12:24:07.3316685Z set nb_reason(TEXTCMD-LEAF) "pending T3 audit; live arms: monolith t=fail/f=fail/s=continue"
+2026-10-03T12:24:07.3317217Z set nb_owner(WAITQUIET) "nextbsd-userland"
+2026-10-03T12:24:07.3317592Z set nb_pol(WAITQUIET) "must-pass"
+2026-10-03T12:24:07.3318212Z set nb_reason(WAITQUIET) "pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue"
+2026-10-03T12:24:07.3318846Z set nb_owner(WEDGE-CHECK) "nextbsd-userland"
+2026-10-03T12:24:07.3319236Z set nb_pol(WEDGE-CHECK) "warn"
+2026-10-03T12:24:07.3319857Z set nb_reason(WEDGE-CHECK) "pending T3: emitted by wedge-check.sh, invoked with || true, armed nowhere today; the fork leaves its verdict informational."
+2026-10-03T12:24:07.3320383Z 
+2026-10-03T12:24:07.3320577Z set timeout $env(NB_SUITE_TIMEOUT)
+2026-10-03T12:24:07.3321070Z puts "==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh"
+2026-10-03T12:24:07.3321537Z send "r /usr/tests/freebsd-launchd-mach/run.sh\r"
+2026-10-03T12:24:07.3321904Z expect {
+2026-10-03T12:24:07.3322187Z     timeout {
+2026-10-03T12:24:07.3322967Z         puts "\nFAIL: /usr/tests/freebsd-launchd-mach/run.sh printed no NEXTBSD-TEST-SUMMARY within the $env(NB_SUITE_TIMEOUT)s budget (no sentinel — the suite hung or died)"
+2026-10-03T12:24:07.3323706Z         if {$env(NB_DEBUG) ne ""} {
+2026-10-03T12:24:07.3324044Z             set fh [open $env(NB_LOG) r]
+2026-10-03T12:24:07.3324366Z             set d [read $fh]
+2026-10-03T12:24:07.3324973Z             close $fh
+2026-10-03T12:24:07.3325318Z             set cmap [list "\r" {<CR>} "\n" {<NL>} "\t" {<TAB>}]
+2026-10-03T12:24:07.3325774Z             set d2 [string range $d end-300 end]
+2026-10-03T12:24:07.3326310Z             puts "\nDBG-TIMEOUT: transcript [string length $d] bytes; tail: [string map $cmap $d2]"
+2026-10-03T12:24:07.3326803Z         }
+2026-10-03T12:24:07.3327104Z         exit 2
+2026-10-03T12:24:07.3327457Z     }
+2026-10-03T12:24:07.3327753Z     -re $re_marker {
+2026-10-03T12:24:07.3328085Z         incr dbg_arms
+2026-10-03T12:24:07.3328407Z         set m   $expect_out(1,string)
+2026-10-03T12:24:07.3328922Z         set sfx [string range $expect_out(string) [expr {[string length $m] + 1}] end]
+2026-10-03T12:24:07.3329669Z         if {![info exists nb_pol($m)]} { puts "\nDBG-ARM: unlisted marker <$m>-$sfx — ignoring"; exp_continue }
+2026-10-03T12:24:07.3330222Z         set pol $nb_pol($m)
+2026-10-03T12:24:07.3330558Z         set r   $nb_reason($m)
+2026-10-03T12:24:07.3330885Z         if {$sfx eq "OK"} {
+2026-10-03T12:24:07.3331316Z             set nb_seen($m) 1
+2026-10-03T12:24:07.3331790Z             puts "\nOK: $m"
+2026-10-03T12:24:07.3332225Z             exp_continue
+2026-10-03T12:24:07.3332770Z         }
+2026-10-03T12:24:07.3333333Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T12:24:07.3374777Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T12:24:07.3375169Z 
+2026-10-03T12:24:07.3375225Z 
+2026-10-03T12:24:07.3375422Z Loading /boot/loader.conf
+2026-10-03T12:24:07.3375753Z 
+2026-10-03T12:24:07.3375759Z 
+2026-10-03T12:24:07.3376065Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T12:24:07.3376651Z 
+2026-10-03T12:24:07.3376656Z 
+2026-10-03T12:24:07.3376828Z OK 
+2026-10-03T12:24:07.3377255Z ==> at loader prompt
+2026-10-03T12:24:08.5201292Z  set console=comconsole
+2026-10-03T12:24:08.5201699Z OK set console=comconsole
+2026-10-03T12:24:08.5202152Z 
+2026-10-03T12:24:08.5202443Z 
+2026-10-03T12:24:09.5822136Z OK set boot_serial=YES
+2026-10-03T12:24:09.5822739Z OK set boot_serial=YES
+2026-10-03T12:24:09.5823409Z 
+2026-10-03T12:24:09.5823418Z 
+2026-10-03T12:24:10.9651491Z OK set comconsole_speed=115200
+2026-10-03T12:24:10.9652187Z OK set comconsole_speed=115200
+2026-10-03T12:24:10.9652450Z 
+2026-10-03T12:24:10.9652456Z 
+2026-10-03T12:24:12.1478383Z OK set boot_multicons=YES
+2026-10-03T12:24:12.1479113Z OK set boot_multicons=YES
+2026-10-03T12:24:12.1479366Z 
+2026-10-03T12:24:12.1479371Z 
+2026-10-03T12:24:13.2503886Z OK set boot_mutemsgs=NO
+2026-10-03T12:24:13.2505079Z OK set boot_mutemsgs=NO
+2026-10-03T12:24:13.2505326Z 
+2026-10-03T12:24:13.2505332Z 
+2026-10-03T12:24:13.8318251Z OK boot -v
+2026-10-03T12:24:13.8318880Z Booting [/boot/kernel/kernel]
+2026-10-03T12:24:13.8319133Z 
+2026-10-03T12:24:13.8319139Z 
+2026-10-03T12:24:13.8319288Z ---<<BOOT>>---
+2026-10-03T12:24:13.8319439Z 
+2026-10-03T12:24:13.8319442Z 
+2026-10-03T12:24:13.8319639Z Copyright (c) 1992-2025 The FreeBSD Project.
+2026-10-03T12:24:13.8319916Z 
+2026-10-03T12:24:13.8319919Z 
+2026-10-03T12:24:13.8320084Z early-init: sethostname('selftest')
+2026-10-03T12:24:13.8320316Z 
+2026-10-03T12:24:13.8320320Z 
+2026-10-03T12:24:13.8320506Z early-init: opened /dev/klog (kernel.log_open=1; console quiet)
+2026-10-03T12:24:13.8320879Z 
+2026-10-03T12:24:13.8320886Z 
+2026-10-03T12:24:13.8321479Z NextBSD/amd64 (selftest) (console)
+2026-10-03T12:24:13.8321772Z 
+2026-10-03T12:24:13.8321778Z 
+2026-10-03T12:24:13.8321802Z 
+2026-10-03T12:24:13.8322515Z OK: BOOT-BANNER-OK — getty shows the synthesized hostname 'selftest'
+2026-10-03T12:24:14.1334219Z login:
+2026-10-03T12:24:14.1334720Z 
+2026-10-03T12:24:14.1334729Z 
+2026-10-03T12:24:14.1334736Z 
+2026-10-03T12:24:14.1334965Z OK: boot reached the login prompt
+2026-10-03T12:24:14.1335815Z admin
+2026-10-03T12:24:14.1336287Z Password:
+2026-10-03T12:24:14.1336508Z 
+2026-10-03T12:24:14.1336515Z 
+2026-10-03T12:24:14.1336521Z 
+2026-10-03T12:24:14.1344840Z admin@selftest ~ % 
+2026-10-03T12:24:14.1347803Z can't read "expect_out(string)": no such element in array
+2026-10-03T12:24:14.1348405Z     while executing
+2026-10-03T12:24:14.1349015Z "string range $expect_out(string) [expr {[string length $m] + 1}] end"
+2026-10-03T12:24:14.1349648Z     invoked from within
+2026-10-03T12:24:14.1350111Z "expect {
+2026-10-03T12:24:14.1350605Z     timeout {
+2026-10-03T12:24:14.1351360Z         puts "\nFAIL: /usr/tests/freebsd-launchd-mach/run.sh printed no NEXTBSD-TEST-SUMMARY within the $env(NB_SUITE_TIMEOUT)s..."
+2026-10-03T12:24:14.1351995Z     (file "tests/boot.exp" line 666)
+2026-10-03T12:24:14.1352475Z OK: logged in as admin
+2026-10-03T12:24:14.1352858Z ==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T12:24:14.1353395Z r() { if [ "$(id -u)" = 0 ]; then "$@"; else sudo "$@"; fi; }
+2026-10-03T12:24:14.1353857Z admin@selftest ~ % r /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T12:24:14.1354319Z ACCT-HELPERS-OK
+2026-10-03T12:24:14.1354748Z 
+2026-10-03T12:24:14.1354753Z 
+2026-10-03T12:24:14.1354949Z ACCT-LIFECYCLE-OK
+2026-10-03T12:24:14.1355125Z 
+2026-10-03T12:24:14.1355130Z 
+2026-10-03T12:24:14.1355312Z ASLMANAGER-DEMAND-SKIP
+2026-10-03T12:24:14.1355545Z 
+2026-10-03T12:24:14.1355550Z 
+2026-10-03T12:24:14.1355773Z BOOT-BANNER-SKIP
+2026-10-03T12:24:14.1355995Z 
+2026-10-03T12:24:14.1356000Z 
+2026-10-03T12:24:14.1356134Z BOOTSTRAP-OK
+2026-10-03T12:24:14.1356311Z 
+2026-10-03T12:24:14.1356323Z 
+2026-10-03T12:24:14.1356424Z BOOTSTRAP-REMOTE-OK
+2026-10-03T12:24:14.1356636Z 
+2026-10-03T12:24:14.1356639Z 
+2026-10-03T12:24:14.1356746Z BUSYSTATE-OK
+2026-10-03T12:24:14.1356913Z 
+2026-10-03T12:24:14.1356916Z 
+2026-10-03T12:24:14.1357082Z CONFIGD-LIST-OK
+2026-10-03T12:24:14.1357211Z 
+2026-10-03T12:24:14.1357214Z 
+2026-10-03T12:24:14.1357388Z CONFIGD-MULTI-OK
+2026-10-03T12:24:14.1357529Z 
+2026-10-03T12:24:14.1357532Z 
+2026-10-03T12:24:14.1357679Z CONFIGD-NOTIFY-OK
+2026-10-03T12:24:14.1358016Z 
+2026-10-03T12:24:14.1358020Z 
+2026-10-03T12:24:14.1358124Z CONFIGD-PATTERN-OK
+2026-10-03T12:24:14.1358332Z 
+2026-10-03T12:24:14.1358573Z 
+2026-10-03T12:24:14.1358681Z CONFIGD-STORE-OK
+2026-10-03T12:24:14.1358857Z 
+2026-10-03T12:24:14.1358860Z 
+2026-10-03T12:24:14.1359035Z COREFOUNDATION-OK
+2026-10-03T12:24:14.1359165Z 
+2026-10-03T12:24:14.1359168Z 
+2026-10-03T12:24:14.1359340Z DA-BOOT-OK
+2026-10-03T12:24:14.1359473Z 
+2026-10-03T12:24:14.1359476Z 
+2026-10-03T12:24:14.1359621Z DA-IOKIT-OK
+2026-10-03T12:24:14.1359763Z 
+2026-10-03T12:24:14.1359766Z 
+2026-10-03T12:24:14.1359897Z DAEMON-STATE-OK
+2026-10-03T12:24:14.1360102Z 
+2026-10-03T12:24:14.1360106Z 
+2026-10-03T12:24:14.1360212Z DOMAIN-DIRS-OK
+2026-10-03T12:24:14.1360408Z 
+2026-10-03T12:24:14.1360412Z 
+2026-10-03T12:24:14.1360530Z EVFILT-MACHPORT-SKIP
+2026-10-03T12:24:14.1360708Z 
+2026-10-03T12:24:14.1360711Z 
+2026-10-03T12:24:14.1360909Z EVFILT-MACHPORT-CONCURRENT-OK
+2026-10-03T12:24:14.1361086Z 
+2026-10-03T12:24:14.1361090Z 
+2026-10-03T12:24:14.1361227Z FBSDGLUE-OK
+2026-10-03T12:24:14.1361358Z 
+2026-10-03T12:24:14.1361361Z 
+2026-10-03T12:24:14.1361486Z FILECMD-LEAF-OK
+2026-10-03T12:24:14.1361693Z 
+2026-10-03T12:24:14.1361696Z 
+2026-10-03T12:24:14.1361799Z GETTY-OK
+2026-10-03T12:24:14.1361984Z 
+2026-10-03T12:24:14.1361987Z 
+2026-10-03T12:24:14.1362092Z HOMEDIR-OK
+2026-10-03T12:24:14.1362258Z 
+2026-10-03T12:24:14.1362261Z 
+2026-10-03T12:24:14.1362389Z HOST-BOOTSTRAP-OK
+2026-10-03T12:24:14.1362580Z 
+2026-10-03T12:24:14.1362584Z 
+2026-10-03T12:24:14.1362807Z HOSTNAMED-OK
+2026-10-03T12:24:14.1362941Z 
+2026-10-03T12:24:14.1362945Z 
+2026-10-03T12:24:14.1363092Z HOSTNAMED-BONJOUR-RENAME-SKIP
+2026-10-03T12:24:14.1363287Z 
+2026-10-03T12:24:14.1363290Z 
+2026-10-03T12:24:14.1363471Z HOSTNAMED-DHCP-OK
+2026-10-03T12:24:14.1363647Z 
+2026-10-03T12:24:14.1363651Z 
+2026-10-03T12:24:14.1363763Z HOSTNAMED-MDNS-SKIP
+2026-10-03T12:24:14.1363928Z 
+2026-10-03T12:24:14.1363931Z 
+2026-10-03T12:24:14.1364062Z HOSTNAMED-PREFS-OK
+2026-10-03T12:24:14.1364400Z 
+2026-10-03T12:24:14.1364403Z 
+2026-10-03T12:24:14.1364548Z IPCFG-ARP-OK
+2026-10-03T12:24:14.1364885Z 
+2026-10-03T12:24:14.1364888Z 
+2026-10-03T12:24:14.1365023Z IPCFG-BOOT-OK
+2026-10-03T12:24:14.1365248Z 
+2026-10-03T12:24:14.1365253Z 
+2026-10-03T12:24:14.1365514Z IPCFG-BOUND-OK
+2026-10-03T12:24:14.1365687Z 
+2026-10-03T12:24:14.1365737Z 
+2026-10-03T12:24:14.1365869Z IPCFG-DHCP-OK
+2026-10-03T12:24:14.1366079Z 
+2026-10-03T12:24:14.1366083Z 
+2026-10-03T12:24:14.1366257Z IPCFG-IPCONFIG-OK
+2026-10-03T12:24:14.1366500Z 
+2026-10-03T12:24:14.1366513Z 
+2026-10-03T12:24:14.1366645Z IPCFG-RA-OK
+2026-10-03T12:24:14.1366855Z 
+2026-10-03T12:24:14.1366859Z 
+2026-10-03T12:24:14.1367010Z IPCFG-RENEW-OK
+2026-10-03T12:24:14.1367220Z 
+2026-10-03T12:24:14.1367225Z 
+2026-10-03T12:24:14.1367444Z IPCFG-RPC-OK
+2026-10-03T12:24:14.1367626Z 
+2026-10-03T12:24:14.1367631Z 
+2026-10-03T12:24:14.1367812Z IPCFG-STORE-OK
+2026-10-03T12:24:14.1367996Z 
+2026-10-03T12:24:14.1368026Z 
+2026-10-03T12:24:14.1368200Z KEM-LINK-OK
+2026-10-03T12:24:14.1368441Z 
+2026-10-03T12:24:14.1368446Z 
+2026-10-03T12:24:14.1368591Z LAUNCHCTL-BUILD-OK
+2026-10-03T12:24:14.1368838Z 
+2026-10-03T12:24:14.1368843Z 
+2026-10-03T12:24:14.1368994Z LAUNCHCTL-LIST-OK
+2026-10-03T12:24:14.1369237Z 
+2026-10-03T12:24:14.1369242Z 
+2026-10-03T12:24:14.1369467Z LAUNCHD-BUILD-OK
+2026-10-03T12:24:14.1369656Z 
+2026-10-03T12:24:14.1369661Z 
+2026-10-03T12:24:14.1369842Z LIBDISPATCH-OK
+2026-10-03T12:24:14.1370033Z 
+2026-10-03T12:24:14.1370037Z 
+2026-10-03T12:24:14.1370246Z LIBDISPATCH-MACH-OK
+2026-10-03T12:24:14.1370527Z 
+2026-10-03T12:24:14.1370533Z 
+2026-10-03T12:24:14.1370668Z LIBDS-OK
+2026-10-03T12:24:14.1370881Z 
+2026-10-03T12:24:14.1370886Z 
+2026-10-03T12:24:14.1371035Z LIBSYSTEM-KERNEL-OK
+2026-10-03T12:24:14.1371292Z 
+2026-10-03T12:24:14.1371298Z 
+2026-10-03T12:24:14.1371522Z LIBXPC-OK
+2026-10-03T12:24:14.1371697Z 
+2026-10-03T12:24:14.1371702Z 
+2026-10-03T12:24:14.1371887Z LINUX-MOUNTS-OK
+2026-10-03T12:24:14.1372075Z 
+2026-10-03T12:24:14.1372080Z 
+2026-10-03T12:24:14.1372269Z MACH-PORT-OK
+2026-10-03T12:24:14.1372466Z 
+2026-10-03T12:24:14.1372471Z 
+2026-10-03T12:24:14.1372655Z MACH-SMOKE-OK
+2026-10-03T12:24:14.1372881Z 
+2026-10-03T12:24:14.1373081Z 
+2026-10-03T12:24:14.1373229Z MDNS-BOOT-OK
+2026-10-03T12:24:14.1373516Z 
+2026-10-03T12:24:14.1373522Z 
+2026-10-03T12:24:14.1373682Z MDNS-DNSSD-OK
+2026-10-03T12:24:14.1373912Z 
+2026-10-03T12:24:14.1373918Z 
+2026-10-03T12:24:14.1374104Z MDNS-ENGINE-OK
+2026-10-03T12:24:14.1374288Z 
+2026-10-03T12:24:14.1374294Z 
+2026-10-03T12:24:14.1374476Z MDNS-IFWATCH-OK
+2026-10-03T12:24:14.1374847Z 
+2026-10-03T12:24:14.1374853Z 
+2026-10-03T12:24:14.1375048Z MDNS-STATIC-OK
+2026-10-03T12:24:14.1375239Z 
+2026-10-03T12:24:14.1375287Z 
+2026-10-03T12:24:14.1375456Z MIG-BUILD-OK
+2026-10-03T12:24:14.1375687Z 
+2026-10-03T12:24:14.1375692Z 
+2026-10-03T12:24:14.1375831Z NFS-OK
+2026-10-03T12:24:14.1376160Z 
+2026-10-03T12:24:14.1376163Z 
+2026-10-03T12:24:14.1376275Z NOTIFYD-PROC-OK
+2026-10-03T12:24:14.1376450Z 
+2026-10-03T12:24:14.1376453Z 
+2026-10-03T12:24:14.1376602Z NSS-DS-OK
+2026-10-03T12:24:14.1376742Z 
+2026-10-03T12:24:14.1376745Z 
+2026-10-03T12:24:14.1376883Z NTP-OK
+2026-10-03T12:24:14.1377010Z 
+2026-10-03T12:24:14.1377018Z 
+2026-10-03T12:24:14.1377182Z SC-BOND-OK
+2026-10-03T12:24:14.1377351Z 
+2026-10-03T12:24:14.1377354Z 
+2026-10-03T12:24:14.1377472Z SC-BRIDGE-OK
+2026-10-03T12:24:14.1377635Z 
+2026-10-03T12:24:14.1377639Z 
+2026-10-03T12:24:14.1377742Z SC-LOCK-OK
+2026-10-03T12:24:14.1377903Z 
+2026-10-03T12:24:14.1377906Z 
+2026-10-03T12:24:14.1377993Z SC-MULTI-OK
+2026-10-03T12:24:14.1378187Z 
+2026-10-03T12:24:14.1378289Z 
+2026-10-03T12:24:14.1378424Z SC-NETIF-OK
+2026-10-03T12:24:14.1378578Z 
+2026-10-03T12:24:14.1378581Z 
+2026-10-03T12:24:14.1378722Z SC-NETSET-OK
+2026-10-03T12:24:14.1378836Z 
+2026-10-03T12:24:14.1378839Z 
+2026-10-03T12:24:14.1379006Z SC-NETSVC-OK
+2026-10-03T12:24:14.1379171Z 
+2026-10-03T12:24:14.1379174Z 
+2026-10-03T12:24:14.1379321Z SC-NOTIFY-OK
+2026-10-03T12:24:14.1379904Z 
+2026-10-03T12:24:14.1379909Z 
+2026-10-03T12:24:14.1380031Z SC-PATH-OK
+2026-10-03T12:24:14.1380291Z 
+2026-10-03T12:24:14.1380297Z 
+2026-10-03T12:24:14.1380470Z SC-PLINK-OK
+2026-10-03T12:24:14.1380672Z 
+2026-10-03T12:24:14.1380677Z 
+2026-10-03T12:24:14.1380975Z SC-PNOTIFY-OK
+2026-10-03T12:24:14.1381100Z 
+2026-10-03T12:24:14.1381103Z 
+2026-10-03T12:24:14.1381274Z SC-PREFS-OK
+2026-10-03T12:24:14.1381402Z 
+2026-10-03T12:24:14.1381405Z 
+2026-10-03T12:24:14.1381545Z SC-RUNLOOP-OK
+2026-10-03T12:24:14.1381712Z 
+2026-10-03T12:24:14.1381716Z 
+2026-10-03T12:24:14.1381804Z SC-STORE-OK
+2026-10-03T12:24:14.1382002Z 
+2026-10-03T12:24:14.1382009Z 
+2026-10-03T12:24:14.1382111Z SC-VLAN-OK
+2026-10-03T12:24:14.1382298Z 
+2026-10-03T12:24:14.1382301Z 
+2026-10-03T12:24:14.1382446Z SERVICE-LDCONFIG-OK
+2026-10-03T12:24:14.1382581Z 
+2026-10-03T12:24:14.1382584Z 
+2026-10-03T12:24:14.1382762Z SHELLCMD-LEAF-OK
+2026-10-03T12:24:14.1382905Z 
+2026-10-03T12:24:14.1382908Z 
+2026-10-03T12:24:14.1383046Z SUDO-OK
+2026-10-03T12:24:14.1383172Z 
+2026-10-03T12:24:14.1383209Z 
+2026-10-03T12:24:14.1383300Z SYSCMD-LEAF-OK
+2026-10-03T12:24:14.1383499Z 
+2026-10-03T12:24:14.1383502Z 
+2026-10-03T12:24:14.1383608Z SYSLOG-RUN-OK
+2026-10-03T12:24:14.1383801Z 
+2026-10-03T12:24:14.1383804Z 
+2026-10-03T12:24:14.1383918Z SYSLOGD-PROC-OK
+2026-10-03T12:24:14.1384081Z 
+2026-10-03T12:24:14.1384084Z 
+2026-10-03T12:24:14.1384258Z TASK-SPECIAL-PORT-OK
+2026-10-03T12:24:14.1384422Z 
+2026-10-03T12:24:14.1384425Z 
+2026-10-03T12:24:14.1384702Z TEXTCMD-LEAF-OK
+2026-10-03T12:24:14.1384947Z 
+2026-10-03T12:24:14.1384950Z 
+2026-10-03T12:24:14.1385080Z WAITQUIET-OK
+2026-10-03T12:24:14.1385298Z 
+2026-10-03T12:24:14.1385302Z 
+2026-10-03T12:24:14.1385435Z WEDGE-CHECK-SKIP
+2026-10-03T12:24:14.1385612Z 
+2026-10-03T12:24:14.1385615Z 
+2026-10-03T12:24:14.1385724Z ADVCMD-LEAF-OK
+2026-10-03T12:24:14.1385884Z 
+2026-10-03T12:24:14.1385887Z 
+2026-10-03T12:24:14.1417477Z admin@selftest ~ % NEXTBSD-TEST-SUMMARY ok= fail= skip=
+2026-10-03T12:24:14.1418490Z ==> boot-test FAILED rc=1 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh)
+2026-10-03T12:24:14.1419051Z     serial transcript: tests/boot.log
+2026-10-03T12:24:14.1419970Z SELFTEST FAIL: case nosummary — expected rc 2, got 1
+2026-10-03T12:24:14.1420814Z ==> case: deadend (suite: /usr/tests/freebsd-launchd-mach/run.sh) — expect rc 2
+2026-10-03T12:24:14.1445908Z ==> boot test: tests/fake.img
+2026-10-03T12:24:14.1453631Z -rw-r--r-- 1 runner runner 0 Oct  3 12:23 tests/fake.img
+2026-10-03T12:24:14.1512484Z ==> using KVM acceleration
+2026-10-03T12:24:14.1513151Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T12:24:14.1642221Z === DBG: tests/boot.exp total lines: 908
+2026-10-03T12:24:14.1662658Z 379:set nb_mustpass { ADVCMD-LEAF BOOTSTRAP BOOTSTRAP-REMOTE BUSYSTATE CONFIGD-LIST CONFIGD-MULTI CONFIGD-NOTIFY CONFIGD-PATTERN CONFIGD-STORE COREFOUNDATION DA-BOOT DOMAIN-DIRS FBSDGLUE FILECMD-LEAF HOST-BOOTSTRAP HOSTNAMED HOSTNAMED-DHCP HOSTNAMED-PREFS IPCFG-ARP IPCFG-BOOT IPCFG-BOUND IPCFG-DHCP IPCFG-IPCONFIG IPCFG-RA IPCFG-RENEW IPCFG-RPC IPCFG-STORE KEM-LINK LAUNCHCTL-BUILD LAUNCHCTL-LIST LAUNCHD-BUILD LIBDISPATCH LIBDISPATCH-MACH LIBSYSTEM-KERNEL LIBXPC LINUX-MOUNTS MACH-PORT MACH-SMOKE MDNS-BOOT MDNS-DNSSD MDNS-ENGINE MDNS-IFWATCH MIG-BUILD NOTIFYD-PROC SC-BOND SC-BRIDGE SC-LOCK SC-MULTI SC-NETIF SC-NETSET SC-NETSVC SC-NOTIFY SC-PATH SC-PLINK SC-PNOTIFY SC-PREFS SC-RUNLOOP SC-STORE SC-VLAN SERVICE-LDCONFIG SHELLCMD-LEAF SYSCMD-LEAF SYSLOG-RUN SYSLOGD-PROC TASK-SPECIAL-PORT TEXTCMD-LEAF WAITQUIET }
+2026-10-03T12:24:14.1666128Z 382:set nb_scope { nextbsd-userland nextbsd-freebsd-compat }
+2026-10-03T12:24:14.1666837Z 384:set nb_pol(ACCT-HELPERS) "fail-gates"
+2026-10-03T12:24:14.1667328Z 664:puts "==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh"
+2026-10-03T12:24:14.1667785Z === DBG: context around the suite expect
+2026-10-03T12:24:14.1673787Z         "Password:" { send "\r"; exp_continue }
+2026-10-03T12:24:14.1674460Z         -re $re_shell_prompt { puts "\nOK: logged in as admin" }
+2026-10-03T12:24:14.1675602Z     }
+2026-10-03T12:24:14.1675971Z } else {
+2026-10-03T12:24:14.1676474Z     # Do NOT match a prompt: automatic login lands early, with driver attach
+2026-10-03T12:24:14.1677278Z     # messages still arriving, so the prompt is often not the last thing in the
+2026-10-03T12:24:14.1678132Z     # buffer. Ask for a marker instead; characters typed before the shell is
+2026-10-03T12:24:14.1678791Z     # ready are buffered by the tty.
+2026-10-03T12:24:14.1679323Z     send "\r"
+2026-10-03T12:24:14.1679733Z     send "echo NB-SHELL-READY\r"
+2026-10-03T12:24:14.1680189Z     expect {
+2026-10-03T12:24:14.1680541Z         timeout {
+2026-10-03T12:24:14.1681042Z             puts "\nFAIL: no shell response after automatic login"
+2026-10-03T12:24:14.1681646Z             exit 1
+2026-10-03T12:24:14.1682032Z         }
+2026-10-03T12:24:14.1682505Z         "NB-SHELL-READY" { puts "\nOK: shell is responding" }
+2026-10-03T12:24:14.1683057Z     }
+2026-10-03T12:24:14.1683450Z }
+2026-10-03T12:24:14.1684030Z # admin is not root (and on the Apple image root is disabled), so wrap the
+2026-10-03T12:24:14.1685061Z # privileged commands rather than repeating the test at each one. A function,
+2026-10-03T12:24:14.1685832Z # so it behaves the same in sh and in zsh, which is admin's shell.
+2026-10-03T12:24:14.1686532Z send "r() { if \[ \"\$(id -u)\" = 0 \]; then \"\$@\"; else sudo \"\$@\"; fi; }\r"
+2026-10-03T12:24:14.1687546Z # generated by manifest/gen-arms.tcl — do not edit
+2026-10-03T12:24:14.1688374Z # arch: amd64 | suites: 1 | manifest: /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/markers.tsv + /dev/null
+2026-10-03T12:24:14.1693079Z set nb_mustpass { ADVCMD-LEAF BOOTSTRAP BOOTSTRAP-REMOTE BUSYSTATE CONFIGD-LIST CONFIGD-MULTI CONFIGD-NOTIFY CONFIGD-PATTERN CONFIGD-STORE COREFOUNDATION DA-BOOT DOMAIN-DIRS FBSDGLUE FILECMD-LEAF HOST-BOOTSTRAP HOSTNAMED HOSTNAMED-DHCP HOSTNAMED-PREFS IPCFG-ARP IPCFG-BOOT IPCFG-BOUND IPCFG-DHCP IPCFG-IPCONFIG IPCFG-RA IPCFG-RENEW IPCFG-RPC IPCFG-STORE KEM-LINK LAUNCHCTL-BUILD LAUNCHCTL-LIST LAUNCHD-BUILD LIBDISPATCH LIBDISPATCH-MACH LIBSYSTEM-KERNEL LIBXPC LINUX-MOUNTS MACH-PORT MACH-SMOKE MDNS-BOOT MDNS-DNSSD MDNS-ENGINE MDNS-IFWATCH MIG-BUILD NOTIFYD-PROC SC-BOND SC-BRIDGE SC-LOCK SC-MULTI SC-NETIF SC-NETSET SC-NETSVC SC-NOTIFY SC-PATH SC-PLINK SC-PNOTIFY SC-PREFS SC-RUNLOOP SC-STORE SC-VLAN SERVICE-LDCONFIG SHELLCMD-LEAF SYSCMD-LEAF SYSLOG-RUN SYSLOGD-PROC TASK-SPECIAL-PORT TEXTCMD-LEAF WAITQUIET }
+2026-10-03T12:24:14.1698152Z set nb_warnfail { ASLMANAGER-DEMAND BOOT-BANNER EVFILT-MACHPORT HOSTNAMED-BONJOUR-RENAME HOSTNAMED-MDNS WEDGE-CHECK }
+2026-10-03T12:24:14.1699082Z === DBG: context around the marker arm
+2026-10-03T12:24:14.1699894Z set nb_reason(TEXTCMD-LEAF) "pending T3 audit; live arms: monolith t=fail/f=fail/s=continue"
+2026-10-03T12:24:14.1700627Z set nb_owner(WAITQUIET) "nextbsd-userland"
+2026-10-03T12:24:14.1701131Z set nb_pol(WAITQUIET) "must-pass"
+2026-10-03T12:24:14.1701997Z set nb_reason(WAITQUIET) "pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue"
+2026-10-03T12:24:14.1702886Z set nb_owner(WEDGE-CHECK) "nextbsd-userland"
+2026-10-03T12:24:14.1703431Z set nb_pol(WEDGE-CHECK) "warn"
+2026-10-03T12:24:14.1704419Z set nb_reason(WEDGE-CHECK) "pending T3: emitted by wedge-check.sh, invoked with || true, armed nowhere today; the fork leaves its verdict informational."
+2026-10-03T12:24:14.1705404Z 
+2026-10-03T12:24:14.1705615Z set timeout $env(NB_SUITE_TIMEOUT)
+2026-10-03T12:24:14.1706267Z puts "==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh"
+2026-10-03T12:24:14.1706993Z send "r /usr/tests/freebsd-launchd-mach/run.sh\r"
+2026-10-03T12:24:14.1707534Z expect {
+2026-10-03T12:24:14.1708094Z     timeout {
+2026-10-03T12:24:14.1709434Z         puts "\nFAIL: /usr/tests/freebsd-launchd-mach/run.sh printed no NEXTBSD-TEST-SUMMARY within the $env(NB_SUITE_TIMEOUT)s budget (no sentinel — the suite hung or died)"
+2026-10-03T12:24:14.1710839Z         if {$env(NB_DEBUG) ne ""} {
+2026-10-03T12:24:14.1711385Z             set fh [open $env(NB_LOG) r]
+2026-10-03T12:24:14.1711872Z             set d [read $fh]
+2026-10-03T12:24:14.1712428Z             close $fh
+2026-10-03T12:24:14.1712919Z             set cmap [list "\r" {<CR>} "\n" {<NL>} "\t" {<TAB>}]
+2026-10-03T12:24:14.1713522Z             set d2 [string range $d end-300 end]
+2026-10-03T12:24:14.1714297Z             puts "\nDBG-TIMEOUT: transcript [string length $d] bytes; tail: [string map $cmap $d2]"
+2026-10-03T12:24:14.1715145Z         }
+2026-10-03T12:24:14.1715556Z         exit 2
+2026-10-03T12:24:14.1715920Z     }
+2026-10-03T12:24:14.1716304Z     -re $re_marker {
+2026-10-03T12:24:14.1716756Z         incr dbg_arms
+2026-10-03T12:24:14.1717220Z         set m   $expect_out(1,string)
+2026-10-03T12:24:14.1717934Z         set sfx [string range $expect_out(string) [expr {[string length $m] + 1}] end]
+2026-10-03T12:24:14.1719035Z         if {![info exists nb_pol($m)]} { puts "\nDBG-ARM: unlisted marker <$m>-$sfx — ignoring"; exp_continue }
+2026-10-03T12:24:14.1719707Z         set pol $nb_pol($m)
+2026-10-03T12:24:14.1720198Z         set r   $nb_reason($m)
+2026-10-03T12:24:14.1720648Z         if {$sfx eq "OK"} {
+2026-10-03T12:24:14.1721087Z             set nb_seen($m) 1
+2026-10-03T12:24:14.1721505Z             puts "\nOK: $m"
+2026-10-03T12:24:14.1721883Z             exp_continue
+2026-10-03T12:24:14.1722376Z         }
+2026-10-03T12:24:14.1722942Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T12:24:14.1762755Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T12:24:14.1763255Z 
+2026-10-03T12:24:14.1763263Z 
+2026-10-03T12:24:14.1763496Z Loading /boot/loader.conf
+2026-10-03T12:24:14.1763767Z 
+2026-10-03T12:24:14.1763807Z 
+2026-10-03T12:24:14.1764227Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T12:24:14.1764934Z 
+2026-10-03T12:24:14.1765013Z 
+2026-10-03T12:24:14.1765151Z OK 
+2026-10-03T12:24:14.1765611Z ==> at loader prompt
+2026-10-03T12:24:15.3595916Z  set console=comconsole
+2026-10-03T12:24:15.3596596Z OK set console=comconsole
+2026-10-03T12:24:15.3596825Z 
+2026-10-03T12:24:15.3596831Z 
+2026-10-03T12:24:16.4222116Z OK set boot_serial=YES
+2026-10-03T12:24:16.4222513Z OK set boot_serial=YES
+2026-10-03T12:24:16.4222927Z 
+2026-10-03T12:24:16.4222933Z 
+2026-10-03T12:24:17.8058086Z OK set comconsole_speed=115200
+2026-10-03T12:24:17.8059459Z OK set comconsole_speed=115200
+2026-10-03T12:24:17.8059689Z 
+2026-10-03T12:24:17.8059694Z 
+2026-10-03T12:24:18.9890073Z OK set boot_multicons=YES
+2026-10-03T12:24:18.9891009Z OK set boot_multicons=YES
+2026-10-03T12:24:18.9891217Z 
+2026-10-03T12:24:18.9891224Z 
+2026-10-03T12:24:20.0919173Z OK set boot_mutemsgs=NO
+2026-10-03T12:24:20.0920156Z OK set boot_mutemsgs=NO
+2026-10-03T12:24:20.0920412Z 
+2026-10-03T12:24:20.0920430Z 
+2026-10-03T12:24:20.6732959Z OK boot -v
+2026-10-03T12:24:20.6733445Z Booting [/boot/kernel/kernel]
+2026-10-03T12:24:20.6733811Z 
+2026-10-03T12:24:20.6733817Z 
+2026-10-03T12:24:20.6733963Z ---<<BOOT>>---
+2026-10-03T12:24:20.6734226Z 
+2026-10-03T12:24:20.6734230Z 
+2026-10-03T12:24:20.6734447Z Copyright (c) 1992-2025 The FreeBSD Project.
+2026-10-03T12:24:20.6735068Z 
+2026-10-03T12:24:20.6735076Z 
+2026-10-03T12:24:20.6735349Z early-init: sethostname('selftest')
+2026-10-03T12:24:20.6735549Z 
+2026-10-03T12:24:20.6735553Z 
+2026-10-03T12:24:20.6735789Z early-init: opened /dev/klog (kernel.log_open=1; console quiet)
+2026-10-03T12:24:20.6736111Z 
+2026-10-03T12:24:20.6736149Z 
+2026-10-03T12:24:20.6736325Z NextBSD/amd64 (selftest) (console)
+2026-10-03T12:24:20.6736654Z 
+2026-10-03T12:24:20.6736658Z 
+2026-10-03T12:24:20.6736668Z 
+2026-10-03T12:24:20.6737276Z OK: BOOT-BANNER-OK — getty shows the synthesized hostname 'selftest'
+2026-10-03T12:24:20.9736682Z login:
+2026-10-03T12:24:20.9736989Z 
+2026-10-03T12:24:20.9737036Z 
+2026-10-03T12:24:20.9737043Z 
+2026-10-03T12:24:20.9737507Z OK: boot reached the login prompt
+2026-10-03T12:24:20.9738052Z admin
+2026-10-03T12:24:20.9738445Z Password:
+2026-10-03T12:24:20.9738708Z 
+2026-10-03T12:24:20.9738720Z 
+2026-10-03T12:24:20.9738727Z 
+2026-10-03T12:24:20.9739052Z admin@selftest ~ % 
+2026-10-03T12:24:20.9739517Z OK: logged in as admin
+2026-10-03T12:24:20.9745258Z ==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T12:24:20.9747901Z r() { if [ "$(id -u)" = 0 ]; then "$@"; else sudo "$@"; fi; }
+2026-10-03T12:24:20.9748563Z admin@selftest ~ % r /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T12:24:20.9748989Z ACCT-HELPERS-OK
+2026-10-03T12:24:20.9749142Z 
+2026-10-03T12:24:20.9749146Z 
+2026-10-03T12:24:20.9749870Z can't read "expect_out(string)": no such element in array
+2026-10-03T12:24:20.9750376Z     while executing
+2026-10-03T12:24:20.9750807Z "string range $expect_out(string) [expr {[string length $m] + 1}] end"
+2026-10-03T12:24:20.9751232Z     invoked from within
+2026-10-03T12:24:20.9751538Z "expect {
+2026-10-03T12:24:20.9751853Z     timeout {
+2026-10-03T12:24:20.9752473Z         puts "\nFAIL: /usr/tests/freebsd-launchd-mach/run.sh printed no NEXTBSD-TEST-SUMMARY within the $env(NB_SUITE_TIMEOUT)s..."
+2026-10-03T12:24:20.9753143Z     (file "tests/boot.exp" line 666)
+2026-10-03T12:24:20.9816226Z NEXTBSD-TEST-SUMMARY ok= fail= skip=
+2026-10-03T12:24:20.9817303Z ==> boot-test FAILED rc=1 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh)
+2026-10-03T12:24:20.9818128Z     serial transcript: tests/boot.log
+2026-10-03T12:24:20.9819059Z SELFTEST FAIL: case deadend — expected rc 2, got 1
+2026-10-03T12:24:20.9820049Z ==> case: reboot (suite: /usr/tests/freebsd-launchd-mach/run.sh) — expect rc 1
+2026-10-03T12:24:20.9845574Z ==> boot test: tests/fake.img
+2026-10-03T12:24:20.9852643Z -rw-r--r-- 1 runner runner 0 Oct  3 12:23 tests/fake.img
+2026-10-03T12:24:20.9911157Z ==> using KVM acceleration
+2026-10-03T12:24:20.9911852Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T12:24:21.0039647Z === DBG: tests/boot.exp total lines: 908
+2026-10-03T12:24:21.0053985Z 379:set nb_mustpass { ADVCMD-LEAF BOOTSTRAP BOOTSTRAP-REMOTE BUSYSTATE CONFIGD-LIST CONFIGD-MULTI CONFIGD-NOTIFY CONFIGD-PATTERN CONFIGD-STORE COREFOUNDATION DA-BOOT DOMAIN-DIRS FBSDGLUE FILECMD-LEAF HOST-BOOTSTRAP HOSTNAMED HOSTNAMED-DHCP HOSTNAMED-PREFS IPCFG-ARP IPCFG-BOOT IPCFG-BOUND IPCFG-DHCP IPCFG-IPCONFIG IPCFG-RA IPCFG-RENEW IPCFG-RPC IPCFG-STORE KEM-LINK LAUNCHCTL-BUILD LAUNCHCTL-LIST LAUNCHD-BUILD LIBDISPATCH LIBDISPATCH-MACH LIBSYSTEM-KERNEL LIBXPC LINUX-MOUNTS MACH-PORT MACH-SMOKE MDNS-BOOT MDNS-DNSSD MDNS-ENGINE MDNS-IFWATCH MIG-BUILD NOTIFYD-PROC SC-BOND SC-BRIDGE SC-LOCK SC-MULTI SC-NETIF SC-NETSET SC-NETSVC SC-NOTIFY SC-PATH SC-PLINK SC-PNOTIFY SC-PREFS SC-RUNLOOP SC-STORE SC-VLAN SERVICE-LDCONFIG SHELLCMD-LEAF SYSCMD-LEAF SYSLOG-RUN SYSLOGD-PROC TASK-SPECIAL-PORT TEXTCMD-LEAF WAITQUIET }
+2026-10-03T12:24:21.0057484Z 382:set nb_scope { nextbsd-userland nextbsd-freebsd-compat }
+2026-10-03T12:24:21.0058038Z 384:set nb_pol(ACCT-HELPERS) "fail-gates"
+2026-10-03T12:24:21.0058598Z 664:puts "==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh"
+2026-10-03T12:24:21.0059159Z === DBG: context around the suite expect
+2026-10-03T12:24:21.0060902Z         "Password:" { send "\r"; exp_continue }
+2026-10-03T12:24:21.0061347Z         -re $re_shell_prompt { puts "\nOK: logged in as admin" }
+2026-10-03T12:24:21.0061841Z     }
+2026-10-03T12:24:21.0062118Z } else {
+2026-10-03T12:24:21.0062774Z     # Do NOT match a prompt: automatic login lands early, with driver attach
+2026-10-03T12:24:21.0063530Z     # messages still arriving, so the prompt is often not the last thing in the
+2026-10-03T12:24:21.0064199Z     # buffer. Ask for a marker instead; characters typed before the shell is
+2026-10-03T12:24:21.0064888Z     # ready are buffered by the tty.
+2026-10-03T12:24:21.0065524Z     send "\r"
+2026-10-03T12:24:21.0066115Z     send "echo NB-SHELL-READY\r"
+2026-10-03T12:24:21.0066525Z     expect {
+2026-10-03T12:24:21.0066913Z         timeout {
+2026-10-03T12:24:21.0067384Z             puts "\nFAIL: no shell response after automatic login"
+2026-10-03T12:24:21.0068008Z             exit 1
+2026-10-03T12:24:21.0068359Z         }
+2026-10-03T12:24:21.0068777Z         "NB-SHELL-READY" { puts "\nOK: shell is responding" }
+2026-10-03T12:24:21.0069438Z     }
+2026-10-03T12:24:21.0069727Z }
+2026-10-03T12:24:21.0070084Z # admin is not root (and on the Apple image root is disabled), so wrap the
+2026-10-03T12:24:21.0070764Z # privileged commands rather than repeating the test at each one. A function,
+2026-10-03T12:24:21.0071479Z # so it behaves the same in sh and in zsh, which is admin's shell.
+2026-10-03T12:24:21.0072197Z send "r() { if \[ \"\$(id -u)\" = 0 \]; then \"\$@\"; else sudo \"\$@\"; fi; }\r"
+2026-10-03T12:24:21.0073177Z # generated by manifest/gen-arms.tcl — do not edit
+2026-10-03T12:24:21.0074046Z # arch: amd64 | suites: 1 | manifest: /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/markers.tsv + /dev/null
+2026-10-03T12:24:21.0078110Z set nb_mustpass { ADVCMD-LEAF BOOTSTRAP BOOTSTRAP-REMOTE BUSYSTATE CONFIGD-LIST CONFIGD-MULTI CONFIGD-NOTIFY CONFIGD-PATTERN CONFIGD-STORE COREFOUNDATION DA-BOOT DOMAIN-DIRS FBSDGLUE FILECMD-LEAF HOST-BOOTSTRAP HOSTNAMED HOSTNAMED-DHCP HOSTNAMED-PREFS IPCFG-ARP IPCFG-BOOT IPCFG-BOUND IPCFG-DHCP IPCFG-IPCONFIG IPCFG-RA IPCFG-RENEW IPCFG-RPC IPCFG-STORE KEM-LINK LAUNCHCTL-BUILD LAUNCHCTL-LIST LAUNCHD-BUILD LIBDISPATCH LIBDISPATCH-MACH LIBSYSTEM-KERNEL LIBXPC LINUX-MOUNTS MACH-PORT MACH-SMOKE MDNS-BOOT MDNS-DNSSD MDNS-ENGINE MDNS-IFWATCH MIG-BUILD NOTIFYD-PROC SC-BOND SC-BRIDGE SC-LOCK SC-MULTI SC-NETIF SC-NETSET SC-NETSVC SC-NOTIFY SC-PATH SC-PLINK SC-PNOTIFY SC-PREFS SC-RUNLOOP SC-STORE SC-VLAN SERVICE-LDCONFIG SHELLCMD-LEAF SYSCMD-LEAF SYSLOG-RUN SYSLOGD-PROC TASK-SPECIAL-PORT TEXTCMD-LEAF WAITQUIET }
+2026-10-03T12:24:21.0080936Z set nb_warnfail { ASLMANAGER-DEMAND BOOT-BANNER EVFILT-MACHPORT HOSTNAMED-BONJOUR-RENAME HOSTNAMED-MDNS WEDGE-CHECK }
+2026-10-03T12:24:21.0081528Z === DBG: context around the marker arm
+2026-10-03T12:24:21.0082048Z set nb_reason(TEXTCMD-LEAF) "pending T3 audit; live arms: monolith t=fail/f=fail/s=continue"
+2026-10-03T12:24:21.0082560Z set nb_owner(WAITQUIET) "nextbsd-userland"
+2026-10-03T12:24:21.0082921Z set nb_pol(WAITQUIET) "must-pass"
+2026-10-03T12:24:21.0083498Z set nb_reason(WAITQUIET) "pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue"
+2026-10-03T12:24:21.0084074Z set nb_owner(WEDGE-CHECK) "nextbsd-userland"
+2026-10-03T12:24:21.0084466Z set nb_pol(WEDGE-CHECK) "warn"
+2026-10-03T12:24:21.0085358Z set nb_reason(WEDGE-CHECK) "pending T3: emitted by wedge-check.sh, invoked with || true, armed nowhere today; the fork leaves its verdict informational."
+2026-10-03T12:24:21.0085885Z 
+2026-10-03T12:24:21.0086015Z set timeout $env(NB_SUITE_TIMEOUT)
+2026-10-03T12:24:21.0086809Z puts "==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh"
+2026-10-03T12:24:21.0087321Z send "r /usr/tests/freebsd-launchd-mach/run.sh\r"
+2026-10-03T12:24:21.0087748Z expect {
+2026-10-03T12:24:21.0088031Z     timeout {
+2026-10-03T12:24:21.0088833Z         puts "\nFAIL: /usr/tests/freebsd-launchd-mach/run.sh printed no NEXTBSD-TEST-SUMMARY within the $env(NB_SUITE_TIMEOUT)s budget (no sentinel — the suite hung or died)"
+2026-10-03T12:24:21.0089512Z         if {$env(NB_DEBUG) ne ""} {
+2026-10-03T12:24:21.0089886Z             set fh [open $env(NB_LOG) r]
+2026-10-03T12:24:21.0090251Z             set d [read $fh]
+2026-10-03T12:24:21.0090554Z             close $fh
+2026-10-03T12:24:21.0090900Z             set cmap [list "\r" {<CR>} "\n" {<NL>} "\t" {<TAB>}]
+2026-10-03T12:24:21.0091312Z             set d2 [string range $d end-300 end]
+2026-10-03T12:24:21.0091861Z             puts "\nDBG-TIMEOUT: transcript [string length $d] bytes; tail: [string map $cmap $d2]"
+2026-10-03T12:24:21.0092361Z         }
+2026-10-03T12:24:21.0092625Z         exit 2
+2026-10-03T12:24:21.0093018Z     }
+2026-10-03T12:24:21.0093295Z     -re $re_marker {
+2026-10-03T12:24:21.0093622Z         incr dbg_arms
+2026-10-03T12:24:21.0093924Z         set m   $expect_out(1,string)
+2026-10-03T12:24:21.0094351Z         set sfx [string range $expect_out(string) [expr {[string length $m] + 1}] end]
+2026-10-03T12:24:21.0095438Z         if {![info exists nb_pol($m)]} { puts "\nDBG-ARM: unlisted marker <$m>-$sfx — ignoring"; exp_continue }
+2026-10-03T12:24:21.0095942Z         set pol $nb_pol($m)
+2026-10-03T12:24:21.0096298Z         set r   $nb_reason($m)
+2026-10-03T12:24:21.0096653Z         if {$sfx eq "OK"} {
+2026-10-03T12:24:21.0097054Z             set nb_seen($m) 1
+2026-10-03T12:24:21.0097603Z             puts "\nOK: $m"
+2026-10-03T12:24:21.0098007Z             exp_continue
+2026-10-03T12:24:21.0098390Z         }
+2026-10-03T12:24:21.0098976Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T12:24:21.0139917Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T12:24:21.0140430Z 
+2026-10-03T12:24:21.0140778Z 
+2026-10-03T12:24:21.0141166Z Loading /boot/loader.conf
+2026-10-03T12:24:21.0141412Z 
+2026-10-03T12:24:21.0141418Z 
+2026-10-03T12:24:21.0141741Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T12:24:21.0142117Z 
+2026-10-03T12:24:21.0142121Z 
+2026-10-03T12:24:21.0142291Z OK 
+2026-10-03T12:24:21.0142576Z ==> at loader prompt
+2026-10-03T12:24:22.1972443Z  set console=comconsole
+2026-10-03T12:24:22.1973173Z OK set console=comconsole
+2026-10-03T12:24:22.1973386Z 
+2026-10-03T12:24:22.1973392Z 
+2026-10-03T12:24:23.2600974Z OK set boot_serial=YES
+2026-10-03T12:24:23.2601624Z OK set boot_serial=YES
+2026-10-03T12:24:23.2601871Z 
+2026-10-03T12:24:23.2601876Z 
+2026-10-03T12:24:24.6438087Z OK set comconsole_speed=115200
+2026-10-03T12:24:24.6438974Z OK set comconsole_speed=115200
+2026-10-03T12:24:24.6439206Z 
+2026-10-03T12:24:24.6439213Z 
+2026-10-03T12:24:25.8267705Z OK set boot_multicons=YES
+2026-10-03T12:24:25.8268399Z OK set boot_multicons=YES
+2026-10-03T12:24:25.8268768Z 
+2026-10-03T12:24:25.8268773Z 
+2026-10-03T12:24:26.9293272Z OK set boot_mutemsgs=NO
+2026-10-03T12:24:26.9294528Z OK set boot_mutemsgs=NO
+2026-10-03T12:24:26.9295018Z 
+2026-10-03T12:24:26.9295087Z 
+2026-10-03T12:24:27.5109708Z OK boot -v
+2026-10-03T12:24:27.5110288Z Booting [/boot/kernel/kernel]
+2026-10-03T12:24:27.5110628Z 
+2026-10-03T12:24:27.5110636Z 
+2026-10-03T12:24:27.5110776Z ---<<BOOT>>---
+2026-10-03T12:24:27.5111017Z 
+2026-10-03T12:24:27.5111024Z 
+2026-10-03T12:24:27.5111238Z Copyright (c) 1992-2025 The FreeBSD Project.
+2026-10-03T12:24:27.5111466Z 
+2026-10-03T12:24:27.5111471Z 
+2026-10-03T12:24:27.5111648Z early-init: sethostname('selftest')
+2026-10-03T12:24:27.5112203Z 
+2026-10-03T12:24:27.5112208Z 
+2026-10-03T12:24:27.5112534Z early-init: opened /dev/klog (kernel.log_open=1; console quiet)
+2026-10-03T12:24:27.5112960Z 
+2026-10-03T12:24:27.5112968Z 
+2026-10-03T12:24:27.5113166Z NextBSD/amd64 (selftest) (console)
+2026-10-03T12:24:27.5113529Z 
+2026-10-03T12:24:27.5113534Z 
+2026-10-03T12:24:27.5113563Z 
+2026-10-03T12:24:27.5114168Z OK: BOOT-BANNER-OK — getty shows the synthesized hostname 'selftest'
+2026-10-03T12:24:27.8117361Z login:
+2026-10-03T12:24:27.8117736Z 
+2026-10-03T12:24:27.8117743Z 
+2026-10-03T12:24:27.8117749Z 
+2026-10-03T12:24:27.8118221Z OK: boot reached the login prompt
+2026-10-03T12:24:27.8118856Z admin
+2026-10-03T12:24:27.8119220Z Password:
+2026-10-03T12:24:27.8119473Z 
+2026-10-03T12:24:27.8119480Z 
+2026-10-03T12:24:27.8119489Z 
+2026-10-03T12:24:27.8119738Z admin@selftest ~ % 
+2026-10-03T12:24:27.8120214Z OK: logged in as admin
+2026-10-03T12:24:27.8123452Z ==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T12:24:27.8128631Z r() { if [ "$(id -u)" = 0 ]; then "$@"; else sudo "$@"; fi; }
+2026-10-03T12:24:27.8129641Z admin@selftest ~ % r /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T12:24:27.8130245Z ACCT-HELPERS-OK
+2026-10-03T12:24:27.8130458Z 
+2026-10-03T12:24:27.8130464Z 
+2026-10-03T12:24:27.8130733Z ACCT-LIFECYCLE-OK
+2026-10-03T12:24:27.8130952Z 
+2026-10-03T12:24:27.8131327Z 
+2026-10-03T12:24:27.8131494Z ASLMANAGER-DEMAND-SKIP
+2026-10-03T12:24:27.8131786Z 
+2026-10-03T12:24:27.8131792Z 
+2026-10-03T12:24:27.8131951Z BOOT-BANNER-SKIP
+2026-10-03T12:24:27.8132211Z 
+2026-10-03T12:24:27.8132215Z 
+2026-10-03T12:24:27.8132357Z BOOTSTRAP-OK
+2026-10-03T12:24:27.8132588Z 
+2026-10-03T12:24:27.8132593Z 
+2026-10-03T12:24:27.8132770Z BOOTSTRAP-REMOTE-OK
+2026-10-03T12:24:27.8133003Z 
+2026-10-03T12:24:27.8133008Z 
+2026-10-03T12:24:27.8133210Z BUSYSTATE-OK
+2026-10-03T12:24:27.8133391Z 
+2026-10-03T12:24:27.8133396Z 
+2026-10-03T12:24:27.8133584Z CONFIGD-LIST-OK
+2026-10-03T12:24:27.8133888Z 
+2026-10-03T12:24:27.8133909Z 
+2026-10-03T12:24:27.8134090Z CONFIGD-MULTI-OK
+2026-10-03T12:24:27.8134382Z 
+2026-10-03T12:24:27.8134388Z 
+2026-10-03T12:24:27.8134534Z CONFIGD-NOTIFY-OK
+2026-10-03T12:24:27.8134918Z 
+2026-10-03T12:24:27.8134924Z 
+2026-10-03T12:24:27.8135127Z CONFIGD-PATTERN-OK
+2026-10-03T12:24:27.8135409Z 
+2026-10-03T12:24:27.8135415Z 
+2026-10-03T12:24:27.8135625Z CONFIGD-STORE-OK
+2026-10-03T12:24:27.8135826Z 
+2026-10-03T12:24:27.8135830Z 
+2026-10-03T12:24:27.8136052Z COREFOUNDATION-OK
+2026-10-03T12:24:27.8136248Z 
+2026-10-03T12:24:27.8136253Z 
+2026-10-03T12:24:27.8136435Z DA-BOOT-OK
+2026-10-03T12:24:27.8136666Z 
+2026-10-03T12:24:27.8136669Z 
+2026-10-03T12:24:27.8136808Z DA-IOKIT-OK
+2026-10-03T12:24:27.8137000Z 
+2026-10-03T12:24:27.8137004Z 
+2026-10-03T12:24:27.8137115Z DAEMON-STATE-OK
+2026-10-03T12:24:27.8137297Z 
+2026-10-03T12:24:27.8137301Z 
+2026-10-03T12:24:27.8137459Z DOMAIN-DIRS-OK
+2026-10-03T12:24:27.8137665Z 
+2026-10-03T12:24:27.8137670Z 
+2026-10-03T12:24:27.8137863Z EVFILT-MACHPORT-SKIP
+2026-10-03T12:24:27.8138064Z 
+2026-10-03T12:24:27.8138069Z 
+2026-10-03T12:24:27.8138272Z EVFILT-MACHPORT-CONCURRENT-OK
+2026-10-03T12:24:27.8138531Z 
+2026-10-03T12:24:27.8138535Z 
+2026-10-03T12:24:27.8138660Z FBSDGLUE-OK
+2026-10-03T12:24:27.8138863Z 
+2026-10-03T12:24:27.8138868Z 
+2026-10-03T12:24:27.8139005Z FILECMD-LEAF-OK
+2026-10-03T12:24:27.8139238Z 
+2026-10-03T12:24:27.8139242Z 
+2026-10-03T12:24:27.8139388Z GETTY-OK
+2026-10-03T12:24:27.8139589Z 
+2026-10-03T12:24:27.8139595Z 
+2026-10-03T12:24:27.8139799Z HOMEDIR-OK
+2026-10-03T12:24:27.8139930Z 
+2026-10-03T12:24:27.8139933Z 
+2026-10-03T12:24:27.8140081Z HOST-BOOTSTRAP-OK
+2026-10-03T12:24:27.8140240Z 
+2026-10-03T12:24:27.8140243Z 
+2026-10-03T12:24:27.8140381Z HOSTNAMED-OK
+2026-10-03T12:24:27.8140551Z 
+2026-10-03T12:24:27.8140554Z 
+2026-10-03T12:24:27.8140681Z HOSTNAMED-BONJOUR-RENAME-SKIP
+2026-10-03T12:24:27.8140899Z 
+2026-10-03T12:24:27.8140902Z 
+2026-10-03T12:24:27.8141022Z HOSTNAMED-DHCP-OK
+2026-10-03T12:24:27.8141196Z 
+2026-10-03T12:24:27.8141199Z 
+2026-10-03T12:24:27.8141504Z HOSTNAMED-MDNS-SKIP
+2026-10-03T12:24:27.8141654Z 
+2026-10-03T12:24:27.8141658Z 
+2026-10-03T12:24:27.8141809Z HOSTNAMED-PREFS-OK
+2026-10-03T12:24:27.8141969Z 
+2026-10-03T12:24:27.8141972Z 
+2026-10-03T12:24:27.8142112Z IPCFG-ARP-OK
+2026-10-03T12:24:27.8142251Z 
+2026-10-03T12:24:27.8142254Z 
+2026-10-03T12:24:27.8142397Z IPCFG-BOOT-OK
+2026-10-03T12:24:27.8142569Z 
+2026-10-03T12:24:27.8142578Z 
+2026-10-03T12:24:27.8142706Z IPCFG-BOUND-OK
+2026-10-03T12:24:27.8142948Z 
+2026-10-03T12:24:27.8142953Z 
+2026-10-03T12:24:27.8143064Z IPCFG-DHCP-OK
+2026-10-03T12:24:27.8143236Z 
+2026-10-03T12:24:27.8143240Z 
+2026-10-03T12:24:27.8143385Z IPCFG-IPCONFIG-OK
+2026-10-03T12:24:27.8143538Z 
+2026-10-03T12:24:27.8143541Z 
+2026-10-03T12:24:27.8143676Z IPCFG-RA-OK
+2026-10-03T12:24:27.8143808Z 
+2026-10-03T12:24:27.8143811Z 
+2026-10-03T12:24:27.8143953Z IPCFG-RENEW-OK
+2026-10-03T12:24:27.8144130Z 
+2026-10-03T12:24:27.8144134Z 
+2026-10-03T12:24:27.8144255Z IPCFG-RPC-OK
+2026-10-03T12:24:27.8144446Z 
+2026-10-03T12:24:27.8144455Z 
+2026-10-03T12:24:27.8144700Z IPCFG-STORE-OK
+2026-10-03T12:24:27.8144925Z 
+2026-10-03T12:24:27.8144929Z 
+2026-10-03T12:24:27.8145034Z KEM-LINK-OK
+2026-10-03T12:24:27.8145270Z 
+2026-10-03T12:24:27.8145275Z 
+2026-10-03T12:24:27.8145450Z LAUNCHCTL-BUILD-OK
+2026-10-03T12:24:27.8145600Z 
+2026-10-03T12:24:27.8145603Z 
+2026-10-03T12:24:27.8145751Z LAUNCHCTL-LIST-OK
+2026-10-03T12:24:27.8145964Z 
+2026-10-03T12:24:27.8145968Z 
+2026-10-03T12:24:27.8146189Z LAUNCHD-BUILD-OK
+2026-10-03T12:24:27.8146361Z 
+2026-10-03T12:24:27.8146364Z 
+2026-10-03T12:24:27.8146472Z LIBDISPATCH-OK
+2026-10-03T12:24:27.8146646Z 
+2026-10-03T12:24:27.8146649Z 
+2026-10-03T12:24:27.8146748Z LIBDISPATCH-MACH-OK
+2026-10-03T12:24:27.8146959Z 
+2026-10-03T12:24:27.8146962Z 
+2026-10-03T12:24:27.8147104Z LIBDS-OK
+2026-10-03T12:24:27.8147231Z 
+2026-10-03T12:24:27.8147235Z 
+2026-10-03T12:24:27.8147377Z LIBSYSTEM-KERNEL-OK
+2026-10-03T12:24:27.8147506Z 
+2026-10-03T12:24:27.8147510Z 
+2026-10-03T12:24:27.8147743Z LIBXPC-OK
+2026-10-03T12:24:27.8147915Z 
+2026-10-03T12:24:27.8147927Z 
+2026-10-03T12:24:27.8148106Z LINUX-MOUNTS-OK
+2026-10-03T12:24:27.8148323Z 
+2026-10-03T12:24:27.8148328Z 
+2026-10-03T12:24:27.8148443Z MACH-PORT-OK
+2026-10-03T12:24:27.8148694Z 
+2026-10-03T12:24:27.8148698Z 
+2026-10-03T12:24:27.8148831Z MACH-SMOKE-OK
+2026-10-03T12:24:27.8149044Z 
+2026-10-03T12:24:27.8149048Z 
+2026-10-03T12:24:27.8149217Z MDNS-BOOT-OK
+2026-10-03T12:24:27.8149374Z 
+2026-10-03T12:24:27.8149379Z 
+2026-10-03T12:24:27.8149626Z MDNS-DNSSD-OK
+2026-10-03T12:24:27.8149789Z 
+2026-10-03T12:24:27.8149793Z 
+2026-10-03T12:24:27.8149969Z MDNS-ENGINE-OK
+2026-10-03T12:24:27.8150148Z 
+2026-10-03T12:24:27.8150196Z 
+2026-10-03T12:24:27.8150317Z MDNS-IFWATCH-OK
+2026-10-03T12:24:27.8150577Z 
+2026-10-03T12:24:27.8150582Z 
+2026-10-03T12:24:27.8150724Z MDNS-STATIC-OK
+2026-10-03T12:24:27.8150960Z 
+2026-10-03T12:24:27.8150964Z 
+2026-10-03T12:24:27.8151096Z MIG-BUILD-OK
+2026-10-03T12:24:27.8151328Z 
+2026-10-03T12:24:27.8151334Z 
+2026-10-03T12:24:27.8151558Z NFS-OK
+2026-10-03T12:24:27.8151726Z 
+2026-10-03T12:24:27.8151737Z 
+2026-10-03T12:24:27.8151915Z NOTIFYD-PROC-OK
+2026-10-03T12:24:27.8152097Z 
+2026-10-03T12:24:27.8152101Z 
+2026-10-03T12:24:27.8152257Z NSS-DS-OK
+2026-10-03T12:24:27.8152510Z 
+2026-10-03T12:24:27.8152515Z 
+2026-10-03T12:24:27.8152648Z NTP-OK
+2026-10-03T12:24:27.8152872Z 
+2026-10-03T12:24:27.8152877Z 
+2026-10-03T12:24:27.8153019Z SC-BOND-OK
+2026-10-03T12:24:27.8153260Z 
+2026-10-03T12:24:27.8153266Z 
+2026-10-03T12:24:27.8153432Z SC-BRIDGE-OK
+2026-10-03T12:24:27.8153666Z 
+2026-10-03T12:24:27.8153672Z 
+2026-10-03T12:24:27.8153849Z SC-LOCK-OK
+2026-10-03T12:24:27.8154029Z 
+2026-10-03T12:24:27.8154034Z 
+2026-10-03T12:24:27.8154188Z SC-MULTI-OK
+2026-10-03T12:24:27.8154381Z 
+2026-10-03T12:24:27.8154386Z 
+2026-10-03T12:24:27.8154726Z SC-NETIF-OK
+2026-10-03T12:24:27.8154960Z 
+2026-10-03T12:24:27.8154964Z 
+2026-10-03T12:24:27.8155106Z SC-NETSET-OK
+2026-10-03T12:24:27.8155346Z 
+2026-10-03T12:24:27.8155350Z 
+2026-10-03T12:24:27.8155517Z SC-NETSVC-OK
+2026-10-03T12:24:27.8155759Z 
+2026-10-03T12:24:27.8155948Z 
+2026-10-03T12:24:27.8156140Z SC-NOTIFY-OK
+2026-10-03T12:24:27.8156327Z 
+2026-10-03T12:24:27.8156332Z 
+2026-10-03T12:24:27.8156496Z SC-PATH-OK
+2026-10-03T12:24:27.8156698Z 
+2026-10-03T12:24:27.8156704Z 
+2026-10-03T12:24:27.8156894Z SC-PLINK-OK
+2026-10-03T12:24:27.8157061Z 
+2026-10-03T12:24:27.8157066Z 
+2026-10-03T12:24:27.8157271Z SC-PNOTIFY-OK
+2026-10-03T12:24:27.8157488Z 
+2026-10-03T12:24:27.8157494Z 
+2026-10-03T12:24:27.8157656Z SC-PREFS-OK
+2026-10-03T12:24:27.8157894Z 
+2026-10-03T12:24:27.8157900Z 
+2026-10-03T12:24:27.8158034Z SC-RUNLOOP-OK
+2026-10-03T12:24:27.8158249Z 
+2026-10-03T12:24:27.8158254Z 
+2026-10-03T12:24:27.8158536Z SC-STORE-OK
+2026-10-03T12:24:27.8158689Z 
+2026-10-03T12:24:27.8158693Z 
+2026-10-03T12:24:27.8158841Z SC-VLAN-OK
+2026-10-03T12:24:27.8158972Z 
+2026-10-03T12:24:27.8158975Z 
+2026-10-03T12:24:27.8159152Z SERVICE-LDCONFIG-OK
+2026-10-03T12:24:27.8159307Z 
+2026-10-03T12:24:27.8159332Z 
+2026-10-03T12:24:27.8159476Z SHELLCMD-LEAF-OK
+2026-10-03T12:24:27.8159677Z 
+2026-10-03T12:24:27.8159685Z 
+2026-10-03T12:24:27.8159791Z SUDO-OK
+2026-10-03T12:24:27.8159969Z 
+2026-10-03T12:24:27.8159973Z 
+2026-10-03T12:24:27.8160086Z SYSCMD-LEAF-OK
+2026-10-03T12:24:27.8160277Z 
+2026-10-03T12:24:27.8160280Z 
+2026-10-03T12:24:27.8160444Z SYSLOG-RUN-OK
+2026-10-03T12:24:27.8160611Z 
+2026-10-03T12:24:27.8160615Z 
+2026-10-03T12:24:27.8160784Z SYSLOGD-PROC-OK
+2026-10-03T12:24:27.8161027Z 
+2026-10-03T12:24:27.8161031Z 
+2026-10-03T12:24:27.8161190Z TASK-SPECIAL-PORT-OK
+2026-10-03T12:24:27.8161417Z 
+2026-10-03T12:24:27.8161420Z 
+2026-10-03T12:24:27.8161538Z TEXTCMD-LEAF-OK
+2026-10-03T12:24:27.8161779Z 
+2026-10-03T12:24:27.8161785Z 
+2026-10-03T12:24:27.8161942Z WAITQUIET-OK
+2026-10-03T12:24:27.8162183Z 
+2026-10-03T12:24:27.8162189Z 
+2026-10-03T12:24:27.8162423Z WEDGE-CHECK-SKIP
+2026-10-03T12:24:27.8162620Z 
+2026-10-03T12:24:27.8162625Z 
+2026-10-03T12:24:27.8162822Z ADVCMD-LEAF-OK
+2026-10-03T12:24:27.8163011Z 
+2026-10-03T12:24:27.8163016Z 
+2026-10-03T12:24:27.8163245Z NEXTBSD-TEST-SUMMARY ok=80 fail=0 skip=6
+2026-10-03T12:24:27.8163625Z 
+2026-10-03T12:24:27.8163628Z 
+2026-10-03T12:24:27.8164006Z can't read "expect_out(string)": no such element in array
+2026-10-03T12:24:27.8164408Z     while executing
+2026-10-03T12:24:27.8165022Z "string range $expect_out(string) [expr {[string length $m] + 1}] end"
+2026-10-03T12:24:27.8165449Z     invoked from within
+2026-10-03T12:24:27.8166173Z "expect {
+2026-10-03T12:24:27.8166469Z     timeout {
+2026-10-03T12:24:27.8167031Z         puts "\nFAIL: /usr/tests/freebsd-launchd-mach/run.sh printed no NEXTBSD-TEST-SUMMARY within the $env(NB_SUITE_TIMEOUT)s..."
+2026-10-03T12:24:27.8167670Z     (file "tests/boot.exp" line 666)
+2026-10-03T12:24:27.8199588Z admin@selftest ~ % NEXTBSD-TEST-SUMMARY ok= fail= skip=
+2026-10-03T12:24:27.8201336Z ==> boot-test FAILED rc=1 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh)
+2026-10-03T12:24:27.8202169Z     serial transcript: tests/boot.log
+2026-10-03T12:24:27.8202657Z SELFTEST OK:   case reboot (rc=1)
+2026-10-03T12:24:27.8203709Z ==> case: two-suite (suite: /usr/tests/freebsd-launchd-mach/run.sh /usr/tests/nextbsd-iokit/run.sh) — expect rc 0
+2026-10-03T12:24:27.8227581Z ==> boot test: tests/fake.img
+2026-10-03T12:24:27.8235613Z -rw-r--r-- 1 runner runner 0 Oct  3 12:23 tests/fake.img
+2026-10-03T12:24:27.8295071Z ==> using KVM acceleration
+2026-10-03T12:24:27.8295880Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T12:24:27.8426827Z === DBG: tests/boot.exp total lines: 1010
+2026-10-03T12:24:27.8446128Z 379:set nb_mustpass { ADVCMD-LEAF BOOTSTRAP BOOTSTRAP-REMOTE BUSYSTATE CONFIGD-LIST CONFIGD-MULTI CONFIGD-NOTIFY CONFIGD-PATTERN CONFIGD-STORE COREFOUNDATION DA-BOOT DOMAIN-DIRS FBSDGLUE FILECMD-LEAF HOST-BOOTSTRAP HOSTNAMED HOSTNAMED-DHCP HOSTNAMED-PREFS IPCFG-ARP IPCFG-BOOT IPCFG-BOUND IPCFG-DHCP IPCFG-IPCONFIG IPCFG-RA IPCFG-RENEW IPCFG-RPC IPCFG-STORE KEM-LINK LAUNCHCTL-BUILD LAUNCHCTL-LIST LAUNCHD-BUILD LIBDISPATCH LIBDISPATCH-MACH LIBSYSTEM-KERNEL LIBXPC LINUX-MOUNTS MACH-PORT MACH-SMOKE MDNS-BOOT MDNS-DNSSD MDNS-ENGINE MDNS-IFWATCH MIG-BUILD NOTIFYD-PROC SC-BOND SC-BRIDGE SC-LOCK SC-MULTI SC-NETIF SC-NETSET SC-NETSVC SC-NOTIFY SC-PATH SC-PLINK SC-PNOTIFY SC-PREFS SC-RUNLOOP SC-STORE SC-VLAN SERVICE-LDCONFIG SHELLCMD-LEAF SYSCMD-LEAF SYSLOG-RUN SYSLOGD-PROC TASK-SPECIAL-PORT TEXTCMD-LEAF WAITQUIET }
+2026-10-03T12:24:27.8451008Z 382:set nb_scope { nextbsd-userland nextbsd-freebsd-compat nextbsd-kernel-extensions }
+2026-10-03T12:24:27.8451896Z 384:set nb_pol(ACCT-HELPERS) "fail-gates"
+2026-10-03T12:24:27.8452615Z 664:puts "==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh"
+2026-10-03T12:24:27.8453482Z 766:puts "==> running on-image suite: /usr/tests/nextbsd-iokit/run.sh"
+2026-10-03T12:24:27.8454132Z === DBG: context around the suite expect
+2026-10-03T12:24:27.8454968Z         "Password:" { send "\r"; exp_continue }
+2026-10-03T12:24:27.8455496Z         -re $re_shell_prompt { puts "\nOK: logged in as admin" }
+2026-10-03T12:24:27.8455989Z     }
+2026-10-03T12:24:27.8456371Z } else {
+2026-10-03T12:24:27.8456858Z     # Do NOT match a prompt: automatic login lands early, with driver attach
+2026-10-03T12:24:27.8457661Z     # messages still arriving, so the prompt is often not the last thing in the
+2026-10-03T12:24:27.8458432Z     # buffer. Ask for a marker instead; characters typed before the shell is
+2026-10-03T12:24:27.8459056Z     # ready are buffered by the tty.
+2026-10-03T12:24:27.8459757Z     send "\r"
+2026-10-03T12:24:27.8460153Z     send "echo NB-SHELL-READY\r"
+2026-10-03T12:24:27.8460590Z     expect {
+2026-10-03T12:24:27.8460991Z         timeout {
+2026-10-03T12:24:27.8461451Z             puts "\nFAIL: no shell response after automatic login"
+2026-10-03T12:24:27.8462031Z             exit 1
+2026-10-03T12:24:27.8462460Z         }
+2026-10-03T12:24:27.8462897Z         "NB-SHELL-READY" { puts "\nOK: shell is responding" }
+2026-10-03T12:24:27.8463468Z     }
+2026-10-03T12:24:27.8463849Z }
+2026-10-03T12:24:27.8464360Z # admin is not root (and on the Apple image root is disabled), so wrap the
+2026-10-03T12:24:27.8465305Z # privileged commands rather than repeating the test at each one. A function,
+2026-10-03T12:24:27.8466115Z # so it behaves the same in sh and in zsh, which is admin's shell.
+2026-10-03T12:24:27.8466633Z send "r() { if \[ \"\$(id -u)\" = 0 \]; then \"\$@\"; else sudo \"\$@\"; fi; }\r"
+2026-10-03T12:24:27.8467328Z # generated by manifest/gen-arms.tcl — do not edit
+2026-10-03T12:24:27.8467966Z # arch: amd64 | suites: 2 | manifest: /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/markers.tsv + /dev/null
+2026-10-03T12:24:27.8470707Z set nb_mustpass { ADVCMD-LEAF BOOTSTRAP BOOTSTRAP-REMOTE BUSYSTATE CONFIGD-LIST CONFIGD-MULTI CONFIGD-NOTIFY CONFIGD-PATTERN CONFIGD-STORE COREFOUNDATION DA-BOOT DOMAIN-DIRS FBSDGLUE FILECMD-LEAF HOST-BOOTSTRAP HOSTNAMED HOSTNAMED-DHCP HOSTNAMED-PREFS IPCFG-ARP IPCFG-BOOT IPCFG-BOUND IPCFG-DHCP IPCFG-IPCONFIG IPCFG-RA IPCFG-RENEW IPCFG-RPC IPCFG-STORE KEM-LINK LAUNCHCTL-BUILD LAUNCHCTL-LIST LAUNCHD-BUILD LIBDISPATCH LIBDISPATCH-MACH LIBSYSTEM-KERNEL LIBXPC LINUX-MOUNTS MACH-PORT MACH-SMOKE MDNS-BOOT MDNS-DNSSD MDNS-ENGINE MDNS-IFWATCH MIG-BUILD NOTIFYD-PROC SC-BOND SC-BRIDGE SC-LOCK SC-MULTI SC-NETIF SC-NETSET SC-NETSVC SC-NOTIFY SC-PATH SC-PLINK SC-PNOTIFY SC-PREFS SC-RUNLOOP SC-STORE SC-VLAN SERVICE-LDCONFIG SHELLCMD-LEAF SYSCMD-LEAF SYSLOG-RUN SYSLOGD-PROC TASK-SPECIAL-PORT TEXTCMD-LEAF WAITQUIET }
+2026-10-03T12:24:27.8473443Z set nb_warnfail { ASLMANAGER-DEMAND BOOT-BANNER EVFILT-MACHPORT HOSTNAMED-BONJOUR-RENAME HOSTNAMED-MDNS WEDGE-CHECK }
+2026-10-03T12:24:27.8474096Z === DBG: context around the marker arm
+2026-10-03T12:24:27.8474762Z set nb_reason(TEXTCMD-LEAF) "pending T3 audit; live arms: monolith t=fail/f=fail/s=continue"
+2026-10-03T12:24:27.8475271Z set nb_owner(WAITQUIET) "nextbsd-userland"
+2026-10-03T12:24:27.8475630Z set nb_pol(WAITQUIET) "must-pass"
+2026-10-03T12:24:27.8476153Z set nb_reason(WAITQUIET) "pending T3 audit; live arms: monolith t=fail/f=fail/s=continue ; fork t=fail/f=fail/s=continue"
+2026-10-03T12:24:27.8476756Z set nb_owner(WEDGE-CHECK) "nextbsd-userland"
+2026-10-03T12:24:27.8477302Z set nb_pol(WEDGE-CHECK) "warn"
+2026-10-03T12:24:27.8477936Z set nb_reason(WEDGE-CHECK) "pending T3: emitted by wedge-check.sh, invoked with || true, armed nowhere today; the fork leaves its verdict informational."
+2026-10-03T12:24:27.8478419Z 
+2026-10-03T12:24:27.8478583Z set timeout $env(NB_SUITE_TIMEOUT)
+2026-10-03T12:24:27.8478989Z puts "==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh"
+2026-10-03T12:24:27.8479475Z send "r /usr/tests/freebsd-launchd-mach/run.sh\r"
+2026-10-03T12:24:27.8479859Z expect {
+2026-10-03T12:24:27.8480134Z     timeout {
+2026-10-03T12:24:27.8480921Z         puts "\nFAIL: /usr/tests/freebsd-launchd-mach/run.sh printed no NEXTBSD-TEST-SUMMARY within the $env(NB_SUITE_TIMEOUT)s budget (no sentinel — the suite hung or died)"
+2026-10-03T12:24:27.8481634Z         if {$env(NB_DEBUG) ne ""} {
+2026-10-03T12:24:27.8481999Z             set fh [open $env(NB_LOG) r]
+2026-10-03T12:24:27.8482365Z             set d [read $fh]
+2026-10-03T12:24:27.8482681Z             close $fh
+2026-10-03T12:24:27.8483047Z             set cmap [list "\r" {<CR>} "\n" {<NL>} "\t" {<TAB>}]
+2026-10-03T12:24:27.8483448Z             set d2 [string range $d end-300 end]
+2026-10-03T12:24:27.8483965Z             puts "\nDBG-TIMEOUT: transcript [string length $d] bytes; tail: [string map $cmap $d2]"
+2026-10-03T12:24:27.8484464Z         }
+2026-10-03T12:24:27.8485029Z         exit 2
+2026-10-03T12:24:27.8485395Z     }
+2026-10-03T12:24:27.8485742Z     -re $re_marker {
+2026-10-03T12:24:27.8486081Z         incr dbg_arms
+2026-10-03T12:24:27.8486387Z         set m   $expect_out(1,string)
+2026-10-03T12:24:27.8486820Z         set sfx [string range $expect_out(string) [expr {[string length $m] + 1}] end]
+2026-10-03T12:24:27.8487546Z         if {![info exists nb_pol($m)]} { puts "\nDBG-ARM: unlisted marker <$m>-$sfx — ignoring"; exp_continue }
+2026-10-03T12:24:27.8488046Z         set pol $nb_pol($m)
+2026-10-03T12:24:27.8488370Z         set r   $nb_reason($m)
+2026-10-03T12:24:27.8488757Z         if {$sfx eq "OK"} {
+2026-10-03T12:24:27.8489055Z             set nb_seen($m) 1
+2026-10-03T12:24:27.8489400Z             puts "\nOK: $m"
+2026-10-03T12:24:27.8489703Z             exp_continue
+2026-10-03T12:24:27.8490015Z         }
+2026-10-03T12:24:27.8491644Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T12:24:27.8532564Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T12:24:27.8533053Z 
+2026-10-03T12:24:27.8533070Z 
+2026-10-03T12:24:27.8533312Z Loading /boot/loader.conf
+2026-10-03T12:24:27.8533641Z 
+2026-10-03T12:24:27.8533647Z 
+2026-10-03T12:24:27.8533989Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T12:24:27.8534309Z 
+2026-10-03T12:24:27.8534313Z 
+2026-10-03T12:24:27.8534490Z OK 
+2026-10-03T12:24:27.8535076Z ==> at loader prompt
+2026-10-03T12:24:29.0361895Z  set console=comconsole
+2026-10-03T12:24:29.0363258Z OK set console=comconsole
+2026-10-03T12:24:29.0363600Z 
+2026-10-03T12:24:29.0363606Z 
+2026-10-03T12:24:30.0988856Z OK set boot_serial=YES
+2026-10-03T12:24:30.0989378Z OK set boot_serial=YES
+2026-10-03T12:24:30.0989561Z 
+2026-10-03T12:24:30.0989827Z 
+2026-10-03T12:24:31.4825431Z OK set comconsole_speed=115200
+2026-10-03T12:24:31.4826104Z OK set comconsole_speed=115200
+2026-10-03T12:24:31.4826361Z 
+2026-10-03T12:24:31.4826377Z 
+2026-10-03T12:24:32.6656173Z OK set boot_multicons=YES
+2026-10-03T12:24:32.6657090Z OK set boot_multicons=YES
+2026-10-03T12:24:32.6657651Z 
+2026-10-03T12:24:32.6657962Z 
+2026-10-03T12:24:33.7685354Z OK set boot_mutemsgs=NO
+2026-10-03T12:24:33.7685995Z OK set boot_mutemsgs=NO
+2026-10-03T12:24:33.7686180Z 
+2026-10-03T12:24:33.7686185Z 
+2026-10-03T12:24:34.3499891Z OK boot -v
+2026-10-03T12:24:34.3500632Z Booting [/boot/kernel/kernel]
+2026-10-03T12:24:34.3500997Z 
+2026-10-03T12:24:34.3501004Z 
+2026-10-03T12:24:34.3501201Z ---<<BOOT>>---
+2026-10-03T12:24:34.3501436Z 
+2026-10-03T12:24:34.3501442Z 
+2026-10-03T12:24:34.3501717Z Copyright (c) 1992-2025 The FreeBSD Project.
+2026-10-03T12:24:34.3502072Z 
+2026-10-03T12:24:34.3502409Z 
+2026-10-03T12:24:34.3502624Z early-init: sethostname('selftest')
+2026-10-03T12:24:34.3503026Z 
+2026-10-03T12:24:34.3503031Z 
+2026-10-03T12:24:34.3503322Z early-init: opened /dev/klog (kernel.log_open=1; console quiet)
+2026-10-03T12:24:34.3503784Z 
+2026-10-03T12:24:34.3503788Z 
+2026-10-03T12:24:34.3504066Z NextBSD/amd64 (selftest) (console)
+2026-10-03T12:24:34.3504391Z 
+2026-10-03T12:24:34.3504418Z 
+2026-10-03T12:24:34.3504422Z 
+2026-10-03T12:24:34.3505662Z OK: BOOT-BANNER-OK — getty shows the synthesized hostname 'selftest'
+2026-10-03T12:24:34.6507310Z login:
+2026-10-03T12:24:34.6508139Z 
+2026-10-03T12:24:34.6508244Z 
+2026-10-03T12:24:34.6508297Z 
+2026-10-03T12:24:34.6508588Z OK: boot reached the login prompt
+2026-10-03T12:24:34.6509133Z admin
+2026-10-03T12:24:34.6509697Z Password:
+2026-10-03T12:24:34.6510232Z 
+2026-10-03T12:24:34.6510529Z 
+2026-10-03T12:24:34.6510540Z 
+2026-10-03T12:24:34.6511040Z admin@selftest ~ % 
+2026-10-03T12:24:34.6511625Z OK: logged in as admin
+2026-10-03T12:24:34.6518302Z ==> running on-image suite: /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T12:24:34.6522215Z can't read "expect_out(string)": no such element in array
+2026-10-03T12:24:34.6523036Z r() { if [ "$(id -u)" = 0 ]; then "$@"; else sudo "$@"; fi; }
+2026-10-03T12:24:34.6523691Z     while executing
+2026-10-03T12:24:34.6524838Z admin@selftest ~ % r /usr/tests/freebsd-launchd-mach/run.sh
+2026-10-03T12:24:34.6525956Z ACCT-HELPERS-OK
+2026-10-03T12:24:34.6526302Z 
+2026-10-03T12:24:34.6526309Z 
+2026-10-03T12:24:34.6526444Z ACCT-LIFECYCLE-OK
+2026-10-03T12:24:34.6526641Z 
+2026-10-03T12:24:34.6526645Z 
+2026-10-03T12:24:34.6526791Z ASLMANAGER-DEMAND-SKIP
+2026-10-03T12:24:34.6526994Z 
+2026-10-03T12:24:34.6526998Z 
+2026-10-03T12:24:34.6527195Z BOOT-BANNER-SKIP
+2026-10-03T12:24:34.6527361Z 
+2026-10-03T12:24:34.6527364Z 
+2026-10-03T12:24:34.6527527Z BOOTSTRAP-OK
+2026-10-03T12:24:34.6527761Z 
+2026-10-03T12:24:34.6527766Z 
+2026-10-03T12:24:34.6527926Z BOOTSTRAP-REMOTE-OK
+2026-10-03T12:24:34.6528119Z 
+2026-10-03T12:24:34.6528122Z 
+2026-10-03T12:24:34.6528416Z BUSYSTATE-OK
+2026-10-03T12:24:34.6528613Z 
+2026-10-03T12:24:34.6528619Z 
+2026-10-03T12:24:34.6528812Z CONFIGD-LIST-OK
+2026-10-03T12:24:34.6528983Z 
+2026-10-03T12:24:34.6528993Z 
+2026-10-03T12:24:34.6529231Z CONFIGD-MULTI-OK
+2026-10-03T12:24:34.6529457Z 
+2026-10-03T12:24:34.6529462Z 
+2026-10-03T12:24:34.6529666Z CONFIGD-NOTIFY-OK
+2026-10-03T12:24:34.6529900Z 
+2026-10-03T12:24:34.6529915Z 
+2026-10-03T12:24:34.6530053Z CONFIGD-PATTERN-OK
+2026-10-03T12:24:34.6530359Z 
+2026-10-03T12:24:34.6530364Z 
+2026-10-03T12:24:34.6530500Z CONFIGD-STORE-OK
+2026-10-03T12:24:34.6530726Z 
+2026-10-03T12:24:34.6530731Z 
+2026-10-03T12:24:34.6530907Z COREFOUNDATION-OK
+2026-10-03T12:24:34.6531103Z 
+2026-10-03T12:24:34.6531108Z 
+2026-10-03T12:24:34.6531323Z DA-BOOT-OK
+2026-10-03T12:24:34.6531492Z 
+2026-10-03T12:24:34.6531498Z 
+2026-10-03T12:24:34.6531697Z DA-IOKIT-OK
+2026-10-03T12:24:34.6531867Z 
+2026-10-03T12:24:34.6531871Z 
+2026-10-03T12:24:34.6531963Z DAEMON-STATE-OK
+2026-10-03T12:24:34.6532200Z 
+2026-10-03T12:24:34.6532218Z 
+2026-10-03T12:24:34.6532472Z DOMAIN-DIRS-OK
+2026-10-03T12:24:34.6532647Z 
+2026-10-03T12:24:34.6532650Z 
+2026-10-03T12:24:34.6532799Z EVFILT-MACHPORT-SKIP
+2026-10-03T12:24:34.6532940Z 
+2026-10-03T12:24:34.6532943Z 
+2026-10-03T12:24:34.6533144Z EVFILT-MACHPORT-CONCURRENT-OK
+2026-10-03T12:24:34.6533328Z 
+2026-10-03T12:24:34.6533331Z 
+2026-10-03T12:24:34.6533500Z FBSDGLUE-OK
+2026-10-03T12:24:34.6533637Z 
+2026-10-03T12:24:34.6533640Z 
+2026-10-03T12:24:34.6533767Z FILECMD-LEAF-OK
+2026-10-03T12:24:34.6533972Z 
+2026-10-03T12:24:34.6533976Z 
+2026-10-03T12:24:34.6534083Z GETTY-OK
+2026-10-03T12:24:34.6534246Z 
+2026-10-03T12:24:34.6534249Z 
+2026-10-03T12:24:34.6534355Z HOMEDIR-OK
+2026-10-03T12:24:34.6534503Z 
+2026-10-03T12:24:34.6534506Z 
+2026-10-03T12:24:34.6534834Z HOST-BOOTSTRAP-OK
+2026-10-03T12:24:34.6534988Z 
+2026-10-03T12:24:34.6534991Z 
+2026-10-03T12:24:34.6535164Z HOSTNAMED-OK
+2026-10-03T12:24:34.6535298Z 
+2026-10-03T12:24:34.6535302Z 
+2026-10-03T12:24:34.6535454Z HOSTNAMED-BONJOUR-RENAME-SKIP
+2026-10-03T12:24:34.6535835Z 
+2026-10-03T12:24:34.6535838Z 
+2026-10-03T12:24:34.6535947Z HOSTNAMED-DHCP-OK
+2026-10-03T12:24:34.6536122Z 
+2026-10-03T12:24:34.6536125Z 
+2026-10-03T12:24:34.6536238Z HOSTNAMED-MDNS-SKIP
+2026-10-03T12:24:34.6536441Z 
+2026-10-03T12:24:34.6536444Z 
+2026-10-03T12:24:34.6536573Z HOSTNAMED-PREFS-OK
+2026-10-03T12:24:34.6536792Z 
+2026-10-03T12:24:34.6536795Z 
+2026-10-03T12:24:34.6536943Z IPCFG-ARP-OK
+2026-10-03T12:24:34.6537083Z 
+2026-10-03T12:24:34.6537086Z 
+2026-10-03T12:24:34.6537213Z IPCFG-BOOT-OK
+2026-10-03T12:24:34.6537370Z 
+2026-10-03T12:24:34.6537373Z 
+2026-10-03T12:24:34.6537529Z IPCFG-BOUND-OK
+2026-10-03T12:24:34.6537700Z 
+2026-10-03T12:24:34.6537703Z 
+2026-10-03T12:24:34.6537816Z IPCFG-DHCP-OK
+2026-10-03T12:24:34.6537949Z 
+2026-10-03T12:24:34.6537953Z 
+2026-10-03T12:24:34.6538245Z IPCFG-IPCONFIG-OK
+2026-10-03T12:24:34.6538465Z 
+2026-10-03T12:24:34.6538468Z 
+2026-10-03T12:24:34.6538610Z IPCFG-RA-OK
+2026-10-03T12:24:34.6538745Z 
+2026-10-03T12:24:34.6538749Z 
+2026-10-03T12:24:34.6538885Z IPCFG-RENEW-OK
+2026-10-03T12:24:34.6539041Z 
+2026-10-03T12:24:34.6539044Z 
+2026-10-03T12:24:34.6539197Z IPCFG-RPC-OK
+2026-10-03T12:24:34.6539329Z 
+2026-10-03T12:24:34.6539368Z 
+2026-10-03T12:24:34.6539474Z IPCFG-STORE-OK
+2026-10-03T12:24:34.6539720Z 
+2026-10-03T12:24:34.6539725Z 
+2026-10-03T12:24:34.6539887Z KEM-LINK-OK
+2026-10-03T12:24:34.6540147Z 
+2026-10-03T12:24:34.6540252Z 
+2026-10-03T12:24:34.6540391Z LAUNCHCTL-BUILD-OK
+2026-10-03T12:24:34.6540627Z 
+2026-10-03T12:24:34.6540631Z 
+2026-10-03T12:24:34.6540796Z LAUNCHCTL-LIST-OK
+2026-10-03T12:24:34.6541012Z 
+2026-10-03T12:24:34.6541017Z 
+2026-10-03T12:24:34.6541191Z LAUNCHD-BUILD-OK
+2026-10-03T12:24:34.6541372Z 
+2026-10-03T12:24:34.6541376Z 
+2026-10-03T12:24:34.6541543Z LIBDISPATCH-OK
+2026-10-03T12:24:34.6541767Z 
+2026-10-03T12:24:34.6541771Z 
+2026-10-03T12:24:34.6541941Z LIBDISPATCH-MACH-OK
+2026-10-03T12:24:34.6542199Z 
+2026-10-03T12:24:34.6542203Z 
+2026-10-03T12:24:34.6542342Z LIBDS-OK
+2026-10-03T12:24:34.6542562Z 
+2026-10-03T12:24:34.6542567Z 
+2026-10-03T12:24:34.6542739Z LIBSYSTEM-KERNEL-OK
+2026-10-03T12:24:34.6543022Z 
+2026-10-03T12:24:34.6543027Z 
+2026-10-03T12:24:34.6543223Z LIBXPC-OK
+2026-10-03T12:24:34.6543399Z 
+2026-10-03T12:24:34.6543403Z 
+2026-10-03T12:24:34.6543582Z LINUX-MOUNTS-OK
+2026-10-03T12:24:34.6543797Z 
+2026-10-03T12:24:34.6543802Z 
+2026-10-03T12:24:34.6543984Z MACH-PORT-OK
+2026-10-03T12:24:34.6544223Z 
+2026-10-03T12:24:34.6544234Z 
+2026-10-03T12:24:34.6544368Z MACH-SMOKE-OK
+2026-10-03T12:24:34.6544745Z 
+2026-10-03T12:24:34.6544751Z 
+2026-10-03T12:24:34.6544918Z MDNS-BOOT-OK
+2026-10-03T12:24:34.6545165Z 
+2026-10-03T12:24:34.6545170Z 
+2026-10-03T12:24:34.6545369Z MDNS-DNSSD-OK
+2026-10-03T12:24:34.6545559Z 
+2026-10-03T12:24:34.6545563Z 
+2026-10-03T12:24:34.6545748Z MDNS-ENGINE-OK
+2026-10-03T12:24:34.6545959Z 
+2026-10-03T12:24:34.6545963Z 
+2026-10-03T12:24:34.6546177Z MDNS-IFWATCH-OK
+2026-10-03T12:24:34.6546385Z 
+2026-10-03T12:24:34.6546435Z 
+2026-10-03T12:24:34.6546568Z MDNS-STATIC-OK
+2026-10-03T12:24:34.6546780Z 
+2026-10-03T12:24:34.6546795Z 
+2026-10-03T12:24:34.6546941Z MIG-BUILD-OK
+2026-10-03T12:24:34.6547169Z 
+2026-10-03T12:24:34.6547174Z 
+2026-10-03T12:24:34.6547337Z NFS-OK
+2026-10-03T12:24:34.6547566Z 
+2026-10-03T12:24:34.6547572Z 
+2026-10-03T12:24:34.6547915Z NOTIFYD-PROC-OK
+2026-10-03T12:24:34.6548120Z 
+2026-10-03T12:24:34.6548127Z 
+2026-10-03T12:24:34.6548313Z NSS-DS-OK
+2026-10-03T12:24:34.6548513Z 
+2026-10-03T12:24:34.6548526Z 
+2026-10-03T12:24:34.6548708Z NTP-OK
+2026-10-03T12:24:34.6548886Z 
+2026-10-03T12:24:34.6548933Z 
+2026-10-03T12:24:34.6549064Z SC-BOND-OK
+2026-10-03T12:24:34.6549275Z 
+2026-10-03T12:24:34.6549279Z 
+2026-10-03T12:24:34.6549428Z SC-BRIDGE-OK
+2026-10-03T12:24:34.6549648Z 
+2026-10-03T12:24:34.6549653Z 
+2026-10-03T12:24:34.6549789Z SC-LOCK-OK
+2026-10-03T12:24:34.6550043Z 
+2026-10-03T12:24:34.6550049Z 
+2026-10-03T12:24:34.6550228Z SC-MULTI-OK
+2026-10-03T12:24:34.6550415Z 
+2026-10-03T12:24:34.6550420Z 
+2026-10-03T12:24:34.6550650Z SC-NETIF-OK
+2026-10-03T12:24:34.6550784Z 
+2026-10-03T12:24:34.6550787Z 
+2026-10-03T12:24:34.6551092Z SC-NETSET-OK
+2026-10-03T12:24:34.6551266Z 
+2026-10-03T12:24:34.6551270Z 
+2026-10-03T12:24:34.6551389Z SC-NETSVC-OK
+2026-10-03T12:24:34.6551584Z 
+2026-10-03T12:24:34.6551587Z 
+2026-10-03T12:24:34.6551696Z SC-NOTIFY-OK
+2026-10-03T12:24:34.6551866Z 
+2026-10-03T12:24:34.6551870Z 
+2026-10-03T12:24:34.6552015Z SC-PATH-OK
+2026-10-03T12:24:34.6552158Z 
+2026-10-03T12:24:34.6552168Z 
+2026-10-03T12:24:34.6552315Z SC-PLINK-OK
+2026-10-03T12:24:34.6552445Z 
+2026-10-03T12:24:34.6552448Z 
+2026-10-03T12:24:34.6552588Z SC-PNOTIFY-OK
+2026-10-03T12:24:34.6552710Z 
+2026-10-03T12:24:34.6552713Z 
+2026-10-03T12:24:34.6552878Z SC-PREFS-OK
+2026-10-03T12:24:34.6553063Z 
+2026-10-03T12:24:34.6553066Z 
+2026-10-03T12:24:34.6553172Z SC-RUNLOOP-OK
+2026-10-03T12:24:34.6553344Z 
+2026-10-03T12:24:34.6553347Z 
+2026-10-03T12:24:34.6553433Z SC-STORE-OK
+2026-10-03T12:24:34.6553629Z 
+2026-10-03T12:24:34.6553632Z 
+2026-10-03T12:24:34.6553836Z SC-VLAN-OK
+2026-10-03T12:24:34.6554017Z 
+2026-10-03T12:24:34.6554023Z 
+2026-10-03T12:24:34.6554211Z SERVICE-LDCONFIG-OK
+2026-10-03T12:24:34.6554398Z 
+2026-10-03T12:24:34.6554404Z 
+2026-10-03T12:24:34.6554763Z SHELLCMD-LEAF-OK
+2026-10-03T12:24:34.6555002Z 
+2026-10-03T12:24:34.6555048Z 
+2026-10-03T12:24:34.6555182Z SUDO-OK
+2026-10-03T12:24:34.6555482Z 
+2026-10-03T12:24:34.6555485Z 
+2026-10-03T12:24:34.6555578Z SYSCMD-LEAF-OK
+2026-10-03T12:24:34.6555784Z 
+2026-10-03T12:24:34.6555884Z 
+2026-10-03T12:24:34.6555991Z SYSLOG-RUN-OK
+2026-10-03T12:24:34.6556163Z 
+2026-10-03T12:24:34.6556166Z 
+2026-10-03T12:24:34.6556309Z SYSLOGD-PROC-OK
+2026-10-03T12:24:34.6556437Z 
+2026-10-03T12:24:34.6556440Z 
+2026-10-03T12:24:34.6556654Z TASK-SPECIAL-PORT-OK
+2026-10-03T12:24:34.6556817Z 
+2026-10-03T12:24:34.6556820Z 
+2026-10-03T12:24:34.6556960Z TEXTCMD-LEAF-OK
+2026-10-03T12:24:34.6557137Z 
+2026-10-03T12:24:34.6557141Z 
+2026-10-03T12:24:34.6557234Z WAITQUIET-OK
+2026-10-03T12:24:34.6557432Z 
+2026-10-03T12:24:34.6557436Z 
+2026-10-03T12:24:34.6557542Z WEDGE-CHECK-SKIP
+2026-10-03T12:24:34.6557722Z 
+2026-10-03T12:24:34.6557724Z 
+2026-10-03T12:24:34.6557835Z ADVCMD-LEAF-OK
+2026-10-03T12:24:34.6557992Z 
+2026-10-03T12:24:34.6557995Z 
+2026-10-03T12:24:34.6558216Z NEXTBSD-TEST-SUMMARY ok=80 fail=0 skip=6
+2026-10-03T12:24:34.6558427Z 
+2026-10-03T12:24:34.6558430Z 
+2026-10-03T12:24:34.6558689Z "string range $expect_out(string) [expr {[string length $m] + 1}] end"
+2026-10-03T12:24:34.6559109Z     invoked from within
+2026-10-03T12:24:34.6559432Z "expect {
+2026-10-03T12:24:34.6559694Z     timeout {
+2026-10-03T12:24:34.6560279Z         puts "\nFAIL: /usr/tests/freebsd-launchd-mach/run.sh printed no NEXTBSD-TEST-SUMMARY within the $env(NB_SUITE_TIMEOUT)s..."
+2026-10-03T12:24:34.6560895Z     (file "tests/boot.exp" line 666)
+2026-10-03T12:24:34.6591498Z admin@selftest ~ % NEXTBSD-TEST-SUMMARY ok= fail= skip=
+2026-10-03T12:24:34.6592636Z ==> boot-test FAILED rc=1 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh /usr/tests/nextbsd-iokit/run.sh)
+2026-10-03T12:24:34.6593356Z     serial transcript: tests/boot.log
+2026-10-03T12:24:34.6594170Z SELFTEST FAIL: case two-suite — expected rc 0, got 1
+2026-10-03T12:24:34.6595230Z ==> SELFTEST FAILED
+2026-10-03T12:24:34.6609307Z ##[error]Process completed with exit code 1.
+2026-10-03T12:24:34.6752387Z Post job cleanup.
+2026-10-03T12:24:34.7589617Z [command]/usr/bin/git version
+2026-10-03T12:24:34.7630825Z git version 2.55.0
+2026-10-03T12:24:34.7675999Z Temporarily overriding HOME='/home/runner/work/_temp/23b1f934-6b8d-4301-b9c3-89fefb844e24' before making global git config changes
+2026-10-03T12:24:34.7678005Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-03T12:24:34.7705678Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/nextbsd-ci/nextbsd-ci
+2026-10-03T12:24:34.7735792Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-03T12:24:34.7786361Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-03T12:24:34.7955457Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-03T12:24:34.7980179Z http.https://github.com/.extraheader
+2026-10-03T12:24:34.7990121Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-03T12:24:34.8026491Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-03T12:24:34.8243804Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-03T12:24:34.8276942Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-03T12:24:34.8662884Z Cleaning up orphan processes
+2026-10-03T12:24:34.8914453Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
