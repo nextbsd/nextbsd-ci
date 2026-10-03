@@ -78,7 +78,7 @@ proc emit_plan {planvar} {
 # ----------------------------------------------------------------- the boot --
 say "FreeBSD/amd64 EFI loader, Revision 3.0"
 say "Loading /boot/loader.conf"
-say "Hit [Enter] to boot immediately, or any other key for command prompt."
+say {Hit [Enter] to boot immediately, or any other key for command prompt.}
 sayraw "OK "
 
 while {1} {
@@ -88,7 +88,7 @@ while {1} {
     sayraw "OK "
 }
 
-say "Booting [/boot/kernel/kernel]"
+say {Booting [/boot/kernel/kernel]}
 say "---<<BOOT>>---"
 say "Copyright (c) 1992-2025 The FreeBSD Project."
 say "early-init: sethostname('selftest')"
