@@ -176,9 +176,9 @@ for {set i 0} {$i < $suites} {incr i} {
 if {$scope eq ""} { set scope "any" }
 puts "set nb_scope { $scope }"
 foreach m $markers {
-    puts "set nb_owner($m) [set eff($m,owner)]"
-    puts "set nb_pol($m) [set eff($m,policy)]"
-    puts "set nb_reason($m) [esc [set eff($m,reason)]]"
+    puts "set nb_owner($m) \"[set eff($m,owner)]\"" 
+    puts "set nb_pol($m) \"[set eff($m,policy)]\"" 
+    puts "set nb_reason($m) \"[esc [set eff($m,reason)]]\"" 
 }
 
 
