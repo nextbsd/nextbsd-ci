@@ -1,0 +1,415 @@
+﻿2026-10-03T07:42:53.2698715Z Current runner version: '2.337.0'
+2026-10-03T07:42:53.2715693Z ##[group]Runner Image Provisioner
+2026-10-03T07:42:53.2716359Z Hosted Compute Agent
+2026-10-03T07:42:53.2716804Z Version: 20260901.588
+2026-10-03T07:42:53.2717236Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-03T07:42:53.2717723Z Build Date: 2026-09-01T19:56:44Z
+2026-10-03T07:42:53.2718232Z Worker ID: {a7716f08-d44b-4400-b8b8-777cacbd04f9}
+2026-10-03T07:42:53.2718726Z Azure Region: centralus
+2026-10-03T07:42:53.2719118Z ##[endgroup]
+2026-10-03T07:42:53.2720356Z ##[group]Operating System
+2026-10-03T07:42:53.2720775Z Ubuntu
+2026-10-03T07:42:53.2721196Z 24.04.5
+2026-10-03T07:42:53.2721541Z LTS
+2026-10-03T07:42:53.2721896Z ##[endgroup]
+2026-10-03T07:42:53.2722276Z ##[group]Runner Image
+2026-10-03T07:42:53.2722672Z Image: ubuntu-24.04
+2026-10-03T07:42:53.2723077Z Version: 20260927.320.1
+2026-10-03T07:42:53.2723955Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-03T07:42:53.2724997Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+2026-10-03T07:42:53.2725688Z ##[endgroup]
+2026-10-03T07:42:53.2726582Z ##[group]GITHUB_TOKEN Permissions
+2026-10-03T07:42:53.2728042Z Contents: read
+2026-10-03T07:42:53.2728447Z Metadata: read
+2026-10-03T07:42:53.2728873Z Packages: read
+2026-10-03T07:42:53.2729236Z ##[endgroup]
+2026-10-03T07:42:53.2731041Z Secret source: Actions
+2026-10-03T07:42:53.2731655Z Cache mode: write
+2026-10-03T07:42:53.2732161Z Prepare workflow directory
+2026-10-03T07:42:53.2981653Z Prepare all required actions
+2026-10-03T07:42:53.3017337Z Getting action download info
+2026-10-03T07:42:53.5124343Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-03T07:42:53.8873142Z Complete job name: selftest (amd64, ubuntu-24.04)
+2026-10-03T07:42:53.9407110Z ##[group]Run actions/checkout@v4
+2026-10-03T07:42:53.9407837Z with:
+2026-10-03T07:42:53.9408275Z   repository: nextbsd/nextbsd-ci
+2026-10-03T07:42:53.9411640Z   token: ***
+2026-10-03T07:42:53.9412063Z   ssh-strict: true
+2026-10-03T07:42:53.9412466Z   ssh-user: git
+2026-10-03T07:42:53.9412904Z   persist-credentials: true
+2026-10-03T07:42:53.9413361Z   clean: true
+2026-10-03T07:42:53.9413764Z   sparse-checkout-cone-mode: true
+2026-10-03T07:42:53.9414253Z   fetch-depth: 1
+2026-10-03T07:42:53.9414646Z   fetch-tags: false
+2026-10-03T07:42:53.9415051Z   show-progress: true
+2026-10-03T07:42:53.9415492Z   lfs: false
+2026-10-03T07:42:53.9415900Z   submodules: false
+2026-10-03T07:42:53.9416395Z   set-safe-directory: true
+2026-10-03T07:42:53.9416861Z   allow-unsafe-pr-checkout: false
+2026-10-03T07:42:53.9417480Z ##[endgroup]
+2026-10-03T07:42:54.0196401Z Syncing repository: nextbsd/nextbsd-ci
+2026-10-03T07:42:54.0198740Z ##[group]Getting Git version info
+2026-10-03T07:42:54.0200049Z Working directory is '/home/runner/work/nextbsd-ci/nextbsd-ci'
+2026-10-03T07:42:54.0201432Z [command]/usr/bin/git version
+2026-10-03T07:42:54.0270800Z git version 2.55.0
+2026-10-03T07:42:54.0287941Z ##[endgroup]
+2026-10-03T07:42:54.0294188Z Temporarily overriding HOME='/home/runner/work/_temp/052b4d1d-161e-49bc-adad-9112c700f020' before making global git config changes
+2026-10-03T07:42:54.0296418Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-03T07:42:54.0298205Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/nextbsd-ci/nextbsd-ci
+2026-10-03T07:42:54.0884218Z Deleting the contents of '/home/runner/work/nextbsd-ci/nextbsd-ci'
+2026-10-03T07:42:54.0891620Z ##[group]Initializing the repository
+2026-10-03T07:42:54.0892823Z [command]/usr/bin/git init /home/runner/work/nextbsd-ci/nextbsd-ci
+2026-10-03T07:42:54.1783550Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-03T07:42:54.1795474Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-03T07:42:54.1801474Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-03T07:42:54.1802996Z hint: call:
+2026-10-03T07:42:54.1803558Z hint:
+2026-10-03T07:42:54.1804353Z hint: 	git config --global init.defaultBranch <name>
+2026-10-03T07:42:54.1805322Z hint:
+2026-10-03T07:42:54.1806310Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-03T07:42:54.1807855Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-03T07:42:54.1808915Z hint:
+2026-10-03T07:42:54.1809793Z hint: 	git branch -m <name>
+2026-10-03T07:42:54.1810480Z hint:
+2026-10-03T07:42:54.1811372Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-03T07:42:54.1812908Z Initialized empty Git repository in /home/runner/work/nextbsd-ci/nextbsd-ci/.git/
+2026-10-03T07:42:54.1815625Z [command]/usr/bin/git remote add origin https://github.com/nextbsd/nextbsd-ci
+2026-10-03T07:42:54.1985063Z ##[endgroup]
+2026-10-03T07:42:54.1986200Z ##[group]Disabling automatic garbage collection
+2026-10-03T07:42:54.1988502Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-03T07:42:54.2074292Z ##[endgroup]
+2026-10-03T07:42:54.2076000Z ##[group]Setting up auth
+2026-10-03T07:42:54.2080004Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-03T07:42:54.2104885Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-03T07:42:54.2368600Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-03T07:42:54.2392857Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-03T07:42:54.2546478Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-03T07:42:54.2572572Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-03T07:42:54.2716551Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-03T07:42:54.2959729Z ##[endgroup]
+2026-10-03T07:42:54.2961675Z ##[group]Fetching the repository
+2026-10-03T07:42:54.2968317Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +a711bf66f466928bdc443c3b40b014250b21a319:refs/remotes/pull/9/merge
+2026-10-03T07:42:54.6424293Z From https://github.com/nextbsd/nextbsd-ci
+2026-10-03T07:42:54.6425878Z  * [new ref]         a711bf66f466928bdc443c3b40b014250b21a319 -> pull/9/merge
+2026-10-03T07:42:54.6429357Z ##[endgroup]
+2026-10-03T07:42:54.6431165Z ##[group]Determining the checkout info
+2026-10-03T07:42:54.6432788Z ##[endgroup]
+2026-10-03T07:42:54.6435533Z [command]/usr/bin/git sparse-checkout disable
+2026-10-03T07:42:54.7369875Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-03T07:42:54.7471509Z ##[group]Checking out the ref
+2026-10-03T07:42:54.7474105Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/9/merge
+2026-10-03T07:42:54.7865129Z Note: switching to 'refs/remotes/pull/9/merge'.
+2026-10-03T07:42:54.7866248Z 
+2026-10-03T07:42:54.7867027Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-03T07:42:54.7868609Z changes and commit them, and you can discard any commits you make in this
+2026-10-03T07:42:54.7870311Z state without impacting any branches by switching back to a branch.
+2026-10-03T07:42:54.7871198Z 
+2026-10-03T07:42:54.7872035Z If you want to create a new branch to retain commits you create, you may
+2026-10-03T07:42:54.7873466Z do so (now or later) by using -c with the switch command. Example:
+2026-10-03T07:42:54.7874265Z 
+2026-10-03T07:42:54.7874698Z   git switch -c <new-branch-name>
+2026-10-03T07:42:54.7875309Z 
+2026-10-03T07:42:54.7875640Z Or undo this operation with:
+2026-10-03T07:42:54.7876169Z 
+2026-10-03T07:42:54.7876666Z   git switch -
+2026-10-03T07:42:54.7877088Z 
+2026-10-03T07:42:54.7877816Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-03T07:42:54.7878967Z 
+2026-10-03T07:42:54.7880336Z HEAD is now at a711bf6 Merge 0c67e91b360555fbdd9790c49f4e192702158d6b into bae13410f0ff570b952d51053ed0c462272008b7
+2026-10-03T07:42:54.7883703Z ##[endgroup]
+2026-10-03T07:42:54.7895017Z [command]/usr/bin/git log -1 --format=%H
+2026-10-03T07:42:54.7912513Z a711bf66f466928bdc443c3b40b014250b21a319
+2026-10-03T07:42:54.8197508Z ##[group]Run sudo apt-get update && sudo apt-get install -y expect shellcheck
+2026-10-03T07:42:54.8199235Z [36;1msudo apt-get update && sudo apt-get install -y expect shellcheck[0m
+2026-10-03T07:42:54.8448301Z shell: /usr/bin/bash -e {0}
+2026-10-03T07:42:54.8449319Z ##[endgroup]
+2026-10-03T07:42:54.9203727Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-03T07:42:54.9541608Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-10-03T07:42:54.9675146Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-10-03T07:42:54.9721636Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-10-03T07:42:55.0271938Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-10-03T07:42:55.0521985Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [12.6 kB]
+2026-10-03T07:42:55.0570963Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-10-03T07:42:55.0648008Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [458 kB]
+2026-10-03T07:42:55.1111592Z Get:18 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [511 kB]
+2026-10-03T07:42:55.1162094Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1364 kB]
+2026-10-03T07:42:55.1466637Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [304 kB]
+2026-10-03T07:42:55.1966170Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [180 kB]
+2026-10-03T07:42:55.2475133Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1699 kB]
+2026-10-03T07:42:55.3561234Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [341 kB]
+2026-10-03T07:42:55.4773391Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [388 kB]
+2026-10-03T07:42:55.4787499Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1720 kB]
+2026-10-03T07:42:55.5965237Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [394 kB]
+2026-10-03T07:42:55.6461999Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2026-10-03T07:42:55.6466677Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [5764 B]
+2026-10-03T07:42:55.7477385Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [12.6 kB]
+2026-10-03T07:42:55.7682910Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1069 kB]
+2026-10-03T07:42:55.8267794Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [221 kB]
+2026-10-03T07:42:55.8879360Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [46.3 kB]
+2026-10-03T07:42:55.8884665Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1216 kB]
+2026-10-03T07:42:56.0065735Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [244 kB]
+2026-10-03T07:42:56.0070253Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [76.3 kB]
+2026-10-03T07:42:56.1191003Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1566 kB]
+2026-10-03T07:42:56.1218601Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [361 kB]
+2026-10-03T07:43:01.6452891Z Fetched 12.6 MB in 1s (9154 kB/s)
+2026-10-03T07:43:02.2808996Z Reading package lists...
+2026-10-03T07:43:02.3072360Z Reading package lists...
+2026-10-03T07:43:02.4398096Z Building dependency tree...
+2026-10-03T07:43:02.4404206Z Reading state information...
+2026-10-03T07:43:02.5839772Z shellcheck is already the newest version (0.9.0-1).
+2026-10-03T07:43:02.5840646Z The following NEW packages will be installed:
+2026-10-03T07:43:02.5846290Z   expect tcl-expect
+2026-10-03T07:43:02.5996781Z 0 upgraded, 2 newly installed, 0 to remove and 25 not upgraded.
+2026-10-03T07:43:02.5997317Z Need to get 247 kB of archives.
+2026-10-03T07:43:02.5998078Z After this operation, 538 kB of additional disk space will be used.
+2026-10-03T07:43:02.5998551Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-03T07:43:02.6662993Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 tcl-expect amd64 5.45.4-3 [110 kB]
+2026-10-03T07:43:02.7024247Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 expect amd64 5.45.4-3 [137 kB]
+2026-10-03T07:43:02.8844452Z Fetched 247 kB in 0s (2220 kB/s)
+2026-10-03T07:43:02.9012665Z Selecting previously unselected package tcl-expect:amd64.
+2026-10-03T07:43:02.9185757Z (Reading database ... 
+2026-10-03T07:43:02.9186281Z (Reading database ... 5%
+2026-10-03T07:43:02.9186589Z (Reading database ... 10%
+2026-10-03T07:43:02.9186869Z (Reading database ... 15%
+2026-10-03T07:43:02.9187112Z (Reading database ... 20%
+2026-10-03T07:43:02.9187393Z (Reading database ... 25%
+2026-10-03T07:43:02.9187671Z (Reading database ... 30%
+2026-10-03T07:43:02.9187932Z (Reading database ... 35%
+2026-10-03T07:43:02.9188505Z (Reading database ... 40%
+2026-10-03T07:43:02.9188933Z (Reading database ... 45%
+2026-10-03T07:43:02.9189230Z (Reading database ... 50%
+2026-10-03T07:43:02.9231208Z (Reading database ... 55%
+2026-10-03T07:43:03.0658678Z (Reading database ... 60%
+2026-10-03T07:43:03.2693727Z (Reading database ... 65%
+2026-10-03T07:43:03.4741409Z (Reading database ... 70%
+2026-10-03T07:43:03.6634551Z (Reading database ... 75%
+2026-10-03T07:43:03.8201470Z (Reading database ... 80%
+2026-10-03T07:43:04.0233699Z (Reading database ... 85%
+2026-10-03T07:43:04.1766390Z (Reading database ... 90%
+2026-10-03T07:43:04.3301348Z (Reading database ... 95%
+2026-10-03T07:43:04.3302642Z (Reading database ... 100%
+2026-10-03T07:43:04.3303231Z (Reading database ... 202296 files and directories currently installed.)
+2026-10-03T07:43:04.3341653Z Preparing to unpack .../tcl-expect_5.45.4-3_amd64.deb ...
+2026-10-03T07:43:04.3374841Z Unpacking tcl-expect:amd64 (5.45.4-3) ...
+2026-10-03T07:43:04.3610809Z Selecting previously unselected package expect.
+2026-10-03T07:43:04.3699847Z Preparing to unpack .../expect_5.45.4-3_amd64.deb ...
+2026-10-03T07:43:04.3711181Z Unpacking expect (5.45.4-3) ...
+2026-10-03T07:43:04.4083916Z Setting up tcl-expect:amd64 (5.45.4-3) ...
+2026-10-03T07:43:04.4282349Z Setting up expect (5.45.4-3) ...
+2026-10-03T07:43:04.4312777Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-10-03T07:43:04.4334924Z Not building database; man-db/auto-update is not 'true'.
+2026-10-03T07:43:04.4350035Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+2026-10-03T07:43:05.0285184Z 
+2026-10-03T07:43:05.0286207Z Running kernel seems to be up-to-date.
+2026-10-03T07:43:05.0286467Z 
+2026-10-03T07:43:05.0286663Z No services need to be restarted.
+2026-10-03T07:43:05.0286916Z 
+2026-10-03T07:43:05.0287055Z No containers need to be restarted.
+2026-10-03T07:43:05.0287262Z 
+2026-10-03T07:43:05.0287372Z No user sessions are running outdated binaries.
+2026-10-03T07:43:05.0287562Z 
+2026-10-03T07:43:05.0287702Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-10-03T07:43:05.6997762Z ##[group]Run fail=0
+2026-10-03T07:43:05.6998102Z [36;1mfail=0[0m
+2026-10-03T07:43:05.6998397Z [36;1mfor f in $(find harness manifest selftest -name '*.sh' -type f); do[0m
+2026-10-03T07:43:05.6998772Z [36;1m  sh -n "$f" || { echo "sh -n failed: $f"; fail=1; }[0m
+2026-10-03T07:43:05.6999178Z [36;1mdone[0m
+2026-10-03T07:43:05.6999392Z [36;1mexit $fail[0m
+2026-10-03T07:43:05.7033371Z shell: /usr/bin/bash -e {0}
+2026-10-03T07:43:05.7033698Z ##[endgroup]
+2026-10-03T07:43:05.7148469Z ##[group]Run find harness manifest selftest -name '*.sh' -type f -print0 | xargs -0 -r shellcheck -x
+2026-10-03T07:43:05.7149003Z [36;1mfind harness manifest selftest -name '*.sh' -type f -print0 | xargs -0 -r shellcheck -x[0m
+2026-10-03T07:43:05.7173243Z shell: /usr/bin/bash -e {0}
+2026-10-03T07:43:05.7173554Z ##[endgroup]
+2026-10-03T07:43:05.8636614Z ##[group]Run sh manifest/validate.sh \
+2026-10-03T07:43:05.8636936Z [36;1msh manifest/validate.sh \[0m
+2026-10-03T07:43:05.8637182Z [36;1m  manifest/markers.tsv \[0m
+2026-10-03T07:43:05.8637456Z [36;1m  manifest/overlay-nextbsd.tsv \[0m
+2026-10-03T07:43:05.8637741Z [36;1m  manifest/overlay-nextbsd-userland.tsv \[0m
+2026-10-03T07:43:05.8638048Z [36;1m  manifest/overlay-nextbsd-kernel.tsv[0m
+2026-10-03T07:43:05.8668775Z shell: /usr/bin/bash -e {0}
+2026-10-03T07:43:05.8669029Z ##[endgroup]
+2026-10-03T07:43:05.8743627Z manifest/markers.tsv: 93 markers OK
+2026-10-03T07:43:05.8755367Z manifest/overlay-nextbsd.tsv:  markers OK
+2026-10-03T07:43:05.8766295Z manifest/overlay-nextbsd-userland.tsv:  markers OK
+2026-10-03T07:43:05.8777199Z manifest/overlay-nextbsd-kernel.tsv:  markers OK
+2026-10-03T07:43:05.8845723Z ##[group]Run sh selftest/run-selftest.sh
+2026-10-03T07:43:05.8846052Z [36;1msh selftest/run-selftest.sh[0m
+2026-10-03T07:43:05.8870919Z shell: /usr/bin/bash -e {0}
+2026-10-03T07:43:05.8871181Z env:
+2026-10-03T07:43:05.8871380Z   ARCH: amd64
+2026-10-03T07:43:05.8871645Z ##[endgroup]
+2026-10-03T07:43:05.8925491Z ==> golden: the shared patterns against production stream shapes
+2026-10-03T07:43:05.9714186Z OK   loader: EDK2 autoboot countdown
+2026-10-03T07:43:05.9714657Z OK   loader: UEFI self-ID (FreeBSD brand)
+2026-10-03T07:43:05.9714954Z OK   loader: UEFI self-ID (NextBSD brand)
+2026-10-03T07:43:05.9720371Z OK   loader: leaving the prompt to boot
+2026-10-03T07:43:05.9720895Z OK   loader: kernel entry marker
+2026-10-03T07:43:05.9721271Z OK   banner: synthesized hostname (amd64)
+2026-10-03T07:43:05.9721649Z OK   banner: synthesized hostname (arm64)
+2026-10-03T07:43:05.9722041Z OK   banner: the Amnesiac race-loser
+2026-10-03T07:43:05.9722504Z OK   banner: the early-init sethostname line
+2026-10-03T07:43:05.9722780Z OK   login: login(1) session message
+2026-10-03T07:43:05.9723139Z OK   login: zsh prompt
+2026-10-03T07:43:05.9723453Z OK   panic: page fault
+2026-10-03T07:43:05.9723714Z OK   panic: data abort (arm64)
+2026-10-03T07:43:05.9723965Z OK   teardown: shutdown progress
+2026-10-03T07:43:05.9724212Z OK   teardown: syncing
+2026-10-03T07:43:05.9724450Z OK   teardown: buffers synced
+2026-10-03T07:43:05.9724729Z OK   teardown: uptime
+2026-10-03T07:43:05.9724946Z OK   teardown: poweroff
+2026-10-03T07:43:05.9725180Z OK   teardown: reboot (the wrong outcome)
+2026-10-03T07:43:05.9725445Z OK   sentinel: summary line
+2026-10-03T07:43:05.9725600Z 
+2026-10-03T07:43:05.9725755Z golden: all patterns match the production stream shapes
+2026-10-03T07:43:05.9726084Z ==> manifest: schema
+2026-10-03T07:43:05.9751769Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/markers.tsv: 93 markers OK
+2026-10-03T07:43:05.9763814Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/overlay-nextbsd.tsv:  markers OK
+2026-10-03T07:43:05.9775061Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/overlay-nextbsd-userland.tsv:  markers OK
+2026-10-03T07:43:05.9785801Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/overlay-nextbsd-kernel.tsv:  markers OK
+2026-10-03T07:43:05.9806846Z ==> harness vs mock guest (arch=amd64)
+2026-10-03T07:43:05.9855803Z     plan: 94 markers
+2026-10-03T07:43:05.9856505Z ==> case: ok (suite: /usr/tests/freebsd-launchd-mach/run.sh) — expect rc 0
+2026-10-03T07:43:05.9876615Z ==> boot test: tests/fake.img
+2026-10-03T07:43:05.9883200Z -rw-r--r-- 1 runner runner 0 Oct  3 07:43 tests/fake.img
+2026-10-03T07:43:05.9931157Z ==> using KVM acceleration
+2026-10-03T07:43:05.9931817Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T07:43:06.0035513Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T07:43:06.0072301Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T07:43:06.0072489Z 
+2026-10-03T07:43:06.0072493Z 
+2026-10-03T07:43:06.0072736Z Loading /boot/loader.conf
+2026-10-03T07:43:06.0072894Z 
+2026-10-03T07:43:06.0072896Z 
+2026-10-03T07:43:06.0073066Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T07:43:06.0073304Z 
+2026-10-03T07:43:06.0073307Z 
+2026-10-03T07:43:36.0075739Z OK 
+2026-10-03T07:43:36.0078767Z FAIL: boot banner not seen within 30 s (the global budget)
+2026-10-03T07:43:36.0121263Z no NEXTBSD-TEST-SUMMARY in tests/boot.log
+2026-10-03T07:43:36.0124162Z ==> boot-test FAILED rc=2 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh)
+2026-10-03T07:43:36.0124590Z     serial transcript: tests/boot.log
+2026-10-03T07:43:36.0125345Z SELFTEST FAIL: case ok — expected rc 0, got 2
+2026-10-03T07:43:36.0125788Z ==> case: fail (suite: /usr/tests/freebsd-launchd-mach/run.sh) — expect rc 1
+2026-10-03T07:43:36.0164232Z ==> boot test: tests/fake.img
+2026-10-03T07:43:36.0170954Z -rw-r--r-- 1 runner runner 0 Oct  3 07:43 tests/fake.img
+2026-10-03T07:43:36.0226203Z ==> using KVM acceleration
+2026-10-03T07:43:36.0227111Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T07:43:36.0395410Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T07:43:36.0431423Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T07:43:36.0431642Z 
+2026-10-03T07:43:36.0431645Z 
+2026-10-03T07:43:36.0431775Z Loading /boot/loader.conf
+2026-10-03T07:43:36.0431945Z 
+2026-10-03T07:43:36.0431948Z 
+2026-10-03T07:43:36.0432122Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T07:43:36.0432419Z 
+2026-10-03T07:43:36.0432427Z 
+2026-10-03T07:44:06.0436198Z OK 
+2026-10-03T07:44:06.0437029Z FAIL: boot banner not seen within 30 s (the global budget)
+2026-10-03T07:44:06.0460779Z no NEXTBSD-TEST-SUMMARY in tests/boot.log
+2026-10-03T07:44:06.0461474Z ==> boot-test FAILED rc=2 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh)
+2026-10-03T07:44:06.0461928Z     serial transcript: tests/boot.log
+2026-10-03T07:44:06.0463182Z SELFTEST FAIL: case fail — expected rc 1, got 2
+2026-10-03T07:44:06.0463939Z ==> case: nosummary (suite: /usr/tests/freebsd-launchd-mach/run.sh) — expect rc 2
+2026-10-03T07:44:06.0494541Z ==> boot test: tests/fake.img
+2026-10-03T07:44:06.0500577Z -rw-r--r-- 1 runner runner 0 Oct  3 07:43 tests/fake.img
+2026-10-03T07:44:06.0547766Z ==> using KVM acceleration
+2026-10-03T07:44:06.0548230Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T07:44:06.0683076Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T07:44:06.0720409Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T07:44:06.0722405Z 
+2026-10-03T07:44:06.0722659Z 
+2026-10-03T07:44:06.0722834Z Loading /boot/loader.conf
+2026-10-03T07:44:06.0723069Z 
+2026-10-03T07:44:06.0723073Z 
+2026-10-03T07:44:06.0723248Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T07:44:06.0723480Z 
+2026-10-03T07:44:06.0723482Z 
+2026-10-03T07:44:36.0724265Z OK 
+2026-10-03T07:44:36.0725867Z FAIL: boot banner not seen within 30 s (the global budget)
+2026-10-03T07:44:36.0760716Z no NEXTBSD-TEST-SUMMARY in tests/boot.log
+2026-10-03T07:44:36.0762730Z ==> boot-test FAILED rc=2 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh)
+2026-10-03T07:44:36.0763276Z     serial transcript: tests/boot.log
+2026-10-03T07:44:36.0763526Z SELFTEST OK:   case nosummary (rc=2)
+2026-10-03T07:44:36.0764174Z ==> case: deadend (suite: /usr/tests/freebsd-launchd-mach/run.sh) — expect rc 2
+2026-10-03T07:44:36.0795478Z ==> boot test: tests/fake.img
+2026-10-03T07:44:36.0802191Z -rw-r--r-- 1 runner runner 0 Oct  3 07:43 tests/fake.img
+2026-10-03T07:44:36.0851811Z ==> using KVM acceleration
+2026-10-03T07:44:36.0852277Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T07:44:36.0969681Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T07:44:36.1002571Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T07:44:36.1002849Z 
+2026-10-03T07:44:36.1002853Z 
+2026-10-03T07:44:36.1002933Z Loading /boot/loader.conf
+2026-10-03T07:44:36.1003146Z 
+2026-10-03T07:44:36.1003171Z 
+2026-10-03T07:44:36.1003324Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T07:44:36.1003546Z 
+2026-10-03T07:44:36.1003549Z 
+2026-10-03T07:45:06.1008087Z OK 
+2026-10-03T07:45:06.1009231Z FAIL: boot banner not seen within 30 s (the global budget)
+2026-10-03T07:45:06.1048330Z no NEXTBSD-TEST-SUMMARY in tests/boot.log
+2026-10-03T07:45:06.1050671Z ==> boot-test FAILED rc=2 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh)
+2026-10-03T07:45:06.1051267Z     serial transcript: tests/boot.log
+2026-10-03T07:45:06.1051724Z SELFTEST OK:   case deadend (rc=2)
+2026-10-03T07:45:06.1052581Z ==> case: reboot (suite: /usr/tests/freebsd-launchd-mach/run.sh) — expect rc 1
+2026-10-03T07:45:06.1089189Z ==> boot test: tests/fake.img
+2026-10-03T07:45:06.1096656Z -rw-r--r-- 1 runner runner 0 Oct  3 07:43 tests/fake.img
+2026-10-03T07:45:06.1153644Z ==> using KVM acceleration
+2026-10-03T07:45:06.1154217Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T07:45:06.1331844Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T07:45:06.1381834Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T07:45:06.1385247Z 
+2026-10-03T07:45:06.1388885Z 
+2026-10-03T07:45:06.1392695Z Loading /boot/loader.conf
+2026-10-03T07:45:06.1396661Z 
+2026-10-03T07:45:06.1400298Z 
+2026-10-03T07:45:06.1404149Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T07:45:06.1408751Z 
+2026-10-03T07:45:06.1412423Z 
+2026-10-03T07:45:36.1384457Z OK 
+2026-10-03T07:45:36.1385076Z FAIL: boot banner not seen within 30 s (the global budget)
+2026-10-03T07:45:36.1416857Z no NEXTBSD-TEST-SUMMARY in tests/boot.log
+2026-10-03T07:45:36.1417441Z ==> boot-test FAILED rc=2 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh)
+2026-10-03T07:45:36.1417975Z     serial transcript: tests/boot.log
+2026-10-03T07:45:36.1418680Z SELFTEST FAIL: case reboot — expected rc 1, got 2
+2026-10-03T07:45:36.1419218Z ==> case: two-suite (suite: /usr/tests/freebsd-launchd-mach/run.sh /usr/tests/nextbsd-iokit/run.sh) — expect rc 0
+2026-10-03T07:45:36.1459113Z ==> boot test: tests/fake.img
+2026-10-03T07:45:36.1470140Z -rw-r--r-- 1 runner runner 0 Oct  3 07:43 tests/fake.img
+2026-10-03T07:45:36.1517435Z ==> using KVM acceleration
+2026-10-03T07:45:36.1517820Z ==> amd64: qemu-system-x86_64 -machine q35 | firmware 
+2026-10-03T07:45:36.1677891Z spawn tclsh /home/runner/work/nextbsd-ci/nextbsd-ci/selftest/mock-guest.tcl
+2026-10-03T07:45:36.1715323Z FreeBSD/amd64 EFI loader, Revision 3.0
+2026-10-03T07:45:36.1718396Z 
+2026-10-03T07:45:36.1722294Z 
+2026-10-03T07:45:36.1726304Z Loading /boot/loader.conf
+2026-10-03T07:45:36.1730039Z 
+2026-10-03T07:45:36.1730261Z 
+2026-10-03T07:45:36.1730676Z Hit [Enter] to boot immediately, or any other key for command prompt.
+2026-10-03T07:45:36.1730997Z 
+2026-10-03T07:45:36.1731000Z 
+2026-10-03T07:46:06.1716837Z OK 
+2026-10-03T07:46:06.1717926Z FAIL: boot banner not seen within 30 s (the global budget)
+2026-10-03T07:46:06.1755338Z no NEXTBSD-TEST-SUMMARY in tests/boot.log
+2026-10-03T07:46:06.1756039Z ==> boot-test FAILED rc=2 (arch=amd64 suite=/usr/tests/freebsd-launchd-mach/run.sh /usr/tests/nextbsd-iokit/run.sh)
+2026-10-03T07:46:06.1756622Z     serial transcript: tests/boot.log
+2026-10-03T07:46:06.1757455Z SELFTEST FAIL: case two-suite — expected rc 0, got 2
+2026-10-03T07:46:06.1757838Z ==> SELFTEST FAILED
+2026-10-03T07:46:06.1772641Z ##[error]Process completed with exit code 1.
+2026-10-03T07:46:06.1893918Z Post job cleanup.
+2026-10-03T07:46:06.2617795Z [command]/usr/bin/git version
+2026-10-03T07:46:06.2649052Z git version 2.55.0
+2026-10-03T07:46:06.2674800Z Temporarily overriding HOME='/home/runner/work/_temp/ac88cb94-7b93-472f-8791-b7e919dc6fda' before making global git config changes
+2026-10-03T07:46:06.2676257Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-03T07:46:06.2678554Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/nextbsd-ci/nextbsd-ci
+2026-10-03T07:46:06.2707983Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-03T07:46:06.2733260Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-03T07:46:06.2904618Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-03T07:46:06.2925323Z http.https://github.com/.extraheader
+2026-10-03T07:46:06.2932661Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-03T07:46:06.2960204Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-03T07:46:06.3147562Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-03T07:46:06.3173028Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-03T07:46:06.3479998Z Cleaning up orphan processes
+2026-10-03T07:46:06.3686151Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

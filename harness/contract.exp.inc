@@ -40,3 +40,7 @@ proc nb_loader_contract {} {
     }
     loader_boot "boot -v"
 }
+
+# boot-test.sh cats spawn -> loader -> contract -> login; the contract runs
+# here, so the login block below starts only after `boot -v` is accepted.
+nb_loader_contract
