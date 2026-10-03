@@ -129,11 +129,16 @@ puts "# arch: $arch | suites: $suites | manifest: $base + $overlay"
 puts "set nb_mustpass { $mustpass }"
 puts "set nb_warnfail { $warnfail }"
 
-set scope "any"
+set scope {}
 for {set i 0} {$i < $suites} {incr i} {
     set o [suite_owners [lindex $suites $i]]
-    if {$o ne "any"} { set scope $o }
+    if {$o eq "any"} {
+        set scope "any"
+    } else {
+        set scope [join [concat $scope $o] " "]
+    }
 }
+if {$scope eq ""} { set scope "any" }
 puts "set nb_scope { $scope }"
 foreach m [lsort [array names eff -pattern *,policy]] {
     puts "set nb_owner($m) [set eff($m,owner)]"
@@ -174,6 +179,21 @@ for {set i 0} {$i < $suites} {incr i} {
     puts "        puts \"\\nFAIL: $suite printed no NEXTBSD-TEST-SUMMARY within the \$env(NB_SUITE_TIMEOUT)s budget (no sentinel — the suite hung or died)\""
     puts "        exit 2"
     puts "    }"
+    # The marker arms come BEFORE the summary arm: expect re-scans the buffer
+    # from the first arm after each exp_continue, so in a chunk that carries
+    # markers and the sentinel together every marker is recorded first and the
+    # summary (which ends the block) is seen last. A sentinel arm ahead of the
+    # markers would end the block on the first scan and drop every marker in
+    # the same chunk.
+    foreach m $onarch {
+        puts [arm_block $m [set eff($m,policy)] [set eff($m,reason)] $arch]
+    }
+    foreach m $offarch {
+        set r [esc [set eff($m,reason)]]
+        puts "    \"$m-FAIL\" { puts \"\\nINFO: $m-FAIL (not expected on $arch — $r)\"; exp_continue }"
+        puts "    \"$m-OK\"   { puts \"\\nINFO: $m (not expected on $arch)\"; exp_continue }"
+        puts "    \"$m-SKIP\" { puts \"\\nINFO: $m-SKIP (not expected on $arch)\"; exp_continue }"
+    }
     puts "    -re {NEXTBSD-TEST-SUMMARY ok=([0-9]+) fail=([0-9]+) skip=([0-9]+)} {"
     puts "        set nb_ok   \$expect_out(1,string)"
     puts "        set nb_fail \$expect_out(2,string)"
@@ -185,25 +205,13 @@ for {set i 0} {$i < $suites} {incr i} {
     puts "        if {\$nb_fail > \$nb_warnfail_sum} {"
     puts "            puts \"\\nFAIL: $suite: NEXTBSD-TEST-SUMMARY ok=\$nb_ok fail=\$nb_fail skip=\$nb_skip — the suite's own verdict is a failure\""
     puts "            exit 1"
-    puts "        }"
+        puts "        }"
     puts "        if {\$nb_fail > 0} {"
     puts "            puts \"\\nOK: $suite: NEXTBSD-TEST-SUMMARY ok=\$nb_ok fail=\$nb_fail skip=\$nb_skip (\$nb_fail failure(s) are manifest-warn class; not gated)\""
     puts "        } else {"
     puts "            puts \"\\nOK: $suite: NEXTBSD-TEST-SUMMARY ok=\$nb_ok fail=0 skip=\$nb_skip\""
     puts "        }"
     puts "    }"
-    # every marker the stream could carry, in one block: the block stays open
-    # (exp_continue) until the summary, a must-pass -FAIL, a panic, or the
-    # timeout — so a later marker can never scroll past an earlier wait.
-    foreach m $onarch {
-        puts [arm_block $m [set eff($m,policy)] [set eff($m,reason)] $arch]
-    }
-    foreach m $offarch {
-        set r [esc [set eff($m,reason)]]
-        puts "    \"$m-FAIL\" { puts \"\\nINFO: $m-FAIL (not expected on $arch — $r)\"; exp_continue }"
-        puts "    \"$m-OK\"   { puts \"\\nINFO: $m (not expected on $arch)\"; exp_continue }"
-        puts "    \"$m-SKIP\" { puts \"\\nINFO: $m-SKIP (not expected on $arch)\"; exp_continue }"
-    }
     puts "    -re {panic|Fatal trap|Fatal data abort} {"
     puts "        puts \"\\nFAIL: kernel panic during $suite\""
     puts "        exit 1"
