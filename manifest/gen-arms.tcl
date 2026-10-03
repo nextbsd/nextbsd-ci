@@ -216,8 +216,10 @@ for {set i 0} {$i < $suites} {incr i} {
 # the stream strictly in arrival order; nb_pol decides each marker's outcome.
     puts "    -re \$re_marker {"
     puts "        incr dbg_arms"
-    puts "        set m   \$expect_out(1,string)"
-    puts "        set sfx \[string range \$expect_out(string) \[expr {\[string length \$m] + 1}] end]"
+    puts "        set whole \$expect_out(1,string)"
+    puts "        set dash \[string last \"-\" \$whole]"
+    puts "        set m   \[string range \$whole 0 \$dash]"
+    puts "        set sfx \[string range \$whole \[expr {\$dash + 1}] end]"
     puts "        if {!\[info exists nb_pol(\$m)]} { puts \"\\nDBG-ARM: unlisted marker <\$m>-\$sfx — ignoring\"; exp_continue }"
     puts "        set pol \$nb_pol(\$m)"
     puts "        set r   \$nb_reason(\$m)"

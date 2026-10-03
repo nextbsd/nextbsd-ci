@@ -50,8 +50,10 @@ set re_summary {NEXTBSD-TEST-SUMMARY ok=([0-9]+) fail=([0-9]+) skip=([0-9]+)}
 # that matches ANYWHERE in the buffer, so 93 sorted marker arms let a marker
 # whose text arrives late in the stream match first and consume every marker
 # in between. One pattern consumes the stream strictly in arrival order.
-# The line-end tail is deliberately NOT in the pattern: the selftest's
+# Grouping note: the runners' expect populates expect_out(1,string) but
+# NOT expect_out(string)/expect_out(2,string) for this arm, so the whole match
+# must be group 1. The line-end tail is deliberately NOT in the pattern: the selftest's
 # transcript (the same bytes expect reads) shows the pty delivers the markers
 # with a bare LF, and a (\r\n|\n) tail must stay out of the arm's pattern
 # so a match can never fail on line-ending shape.
-set re_marker {[A-Z0-9][A-Z0-9-]*-(OK|SKIP|FAIL)}
+set re_marker {([A-Z0-9][A-Z0-9-]*-(OK|SKIP|FAIL))}
