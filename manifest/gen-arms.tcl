@@ -23,12 +23,22 @@
 #   2  no sentinel within NB_SUITE_TIMEOUT (suite hung or died), which is
 #      what suite-tail/login use for their own hang classes
 
-set base    [lindex $argv 0]
-set overlay [lindex $argv 1]
-set arch    [lindex $argv 2]
-set mode    [lindex $argv 3]
-set suites  [lindex $argv 4]
-if {![string is integer -strict $suites]} { set suites 1 }
+if {[lindex $argv 0] eq "list"} {
+    # list mode: tclsh gen-arms.tcl list <markers.tsv> <overlay.tsv> <arch>
+    set mode    list
+    set base    [lindex $argv 1]
+    set overlay [lindex $argv 2]
+    set arch    [lindex $argv 3]
+    set suites  0
+} else {
+    # arm mode: tclsh gen-arms.tcl <markers.tsv> <overlay.tsv> <arch> <nsuites> <suite...>
+    set mode    arms
+    set base    [lindex $argv 0]
+    set overlay [lindex $argv 1]
+    set arch    [lindex $argv 2]
+    set suites  [lindex $argv 3]
+    if {![string is integer -strict $suites]} { set suites 1 }
+}
 
 # ------------------------------------------------------------------ loading --
 array set eff {}

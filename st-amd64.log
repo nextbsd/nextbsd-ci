@@ -1,0 +1,281 @@
+﻿2026-10-03T06:35:09.1234911Z Current runner version: '2.337.0'
+2026-10-03T06:35:09.1262012Z ##[group]Runner Image Provisioner
+2026-10-03T06:35:09.1262992Z Hosted Compute Agent
+2026-10-03T06:35:09.1263590Z Version: 20260901.588
+2026-10-03T06:35:09.1264305Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-03T06:35:09.1265103Z Build Date: 2026-09-01T19:56:44Z
+2026-10-03T06:35:09.1265780Z Worker ID: {c5062e62-6318-4c9d-86c9-9e787844fb80}
+2026-10-03T06:35:09.1266569Z Azure Region: westus2
+2026-10-03T06:35:09.1267421Z ##[endgroup]
+2026-10-03T06:35:09.1269148Z ##[group]Operating System
+2026-10-03T06:35:09.1269816Z Ubuntu
+2026-10-03T06:35:09.1270344Z 24.04.5
+2026-10-03T06:35:09.1270911Z LTS
+2026-10-03T06:35:09.1271430Z ##[endgroup]
+2026-10-03T06:35:09.1272005Z ##[group]Runner Image
+2026-10-03T06:35:09.1272702Z Image: ubuntu-24.04
+2026-10-03T06:35:09.1273276Z Version: 20260927.320.1
+2026-10-03T06:35:09.1274572Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-03T06:35:09.1276289Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+2026-10-03T06:35:09.1277500Z ##[endgroup]
+2026-10-03T06:35:09.1278676Z ##[group]GITHUB_TOKEN Permissions
+2026-10-03T06:35:09.1280699Z Contents: read
+2026-10-03T06:35:09.1281348Z Metadata: read
+2026-10-03T06:35:09.1282006Z Packages: read
+2026-10-03T06:35:09.1282578Z ##[endgroup]
+2026-10-03T06:35:09.1284653Z Secret source: Actions
+2026-10-03T06:35:09.1285743Z Cache mode: write
+2026-10-03T06:35:09.1286490Z Prepare workflow directory
+2026-10-03T06:35:09.1682447Z Prepare all required actions
+2026-10-03T06:35:09.1735094Z Getting action download info
+2026-10-03T06:35:09.5157684Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-03T06:35:09.7139222Z Complete job name: selftest (amd64, ubuntu-24.04)
+2026-10-03T06:35:09.7949666Z ##[group]Run actions/checkout@v4
+2026-10-03T06:35:09.7950592Z with:
+2026-10-03T06:35:09.7951068Z   repository: nextbsd/nextbsd-ci
+2026-10-03T06:35:09.7954832Z   token: ***
+2026-10-03T06:35:09.7955282Z   ssh-strict: true
+2026-10-03T06:35:09.7955743Z   ssh-user: git
+2026-10-03T06:35:09.7956205Z   persist-credentials: true
+2026-10-03T06:35:09.7956721Z   clean: true
+2026-10-03T06:35:09.7957401Z   sparse-checkout-cone-mode: true
+2026-10-03T06:35:09.7957966Z   fetch-depth: 1
+2026-10-03T06:35:09.7958421Z   fetch-tags: false
+2026-10-03T06:35:09.7958886Z   show-progress: true
+2026-10-03T06:35:09.7959345Z   lfs: false
+2026-10-03T06:35:09.7959773Z   submodules: false
+2026-10-03T06:35:09.7960241Z   set-safe-directory: true
+2026-10-03T06:35:09.7960763Z   allow-unsafe-pr-checkout: false
+2026-10-03T06:35:09.7961628Z ##[endgroup]
+2026-10-03T06:35:09.9005172Z Syncing repository: nextbsd/nextbsd-ci
+2026-10-03T06:35:09.9007961Z ##[group]Getting Git version info
+2026-10-03T06:35:09.9009406Z Working directory is '/home/runner/work/nextbsd-ci/nextbsd-ci'
+2026-10-03T06:35:09.9011561Z [command]/usr/bin/git version
+2026-10-03T06:35:09.9103637Z git version 2.55.0
+2026-10-03T06:35:09.9130419Z ##[endgroup]
+2026-10-03T06:35:09.9146809Z Temporarily overriding HOME='/home/runner/work/_temp/f624e7e4-d660-4f32-9d61-04206e2394fd' before making global git config changes
+2026-10-03T06:35:09.9149787Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-03T06:35:09.9153683Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/nextbsd-ci/nextbsd-ci
+2026-10-03T06:35:09.9208023Z Deleting the contents of '/home/runner/work/nextbsd-ci/nextbsd-ci'
+2026-10-03T06:35:09.9214010Z ##[group]Initializing the repository
+2026-10-03T06:35:09.9219112Z [command]/usr/bin/git init /home/runner/work/nextbsd-ci/nextbsd-ci
+2026-10-03T06:35:09.9316415Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-03T06:35:09.9318110Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-03T06:35:09.9319251Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-03T06:35:09.9320489Z hint: call:
+2026-10-03T06:35:09.9321369Z hint:
+2026-10-03T06:35:09.9322070Z hint: 	git config --global init.defaultBranch <name>
+2026-10-03T06:35:09.9322851Z hint:
+2026-10-03T06:35:09.9323591Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-03T06:35:09.9324680Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-03T06:35:09.9325571Z hint:
+2026-10-03T06:35:09.9326141Z hint: 	git branch -m <name>
+2026-10-03T06:35:09.9326779Z hint:
+2026-10-03T06:35:09.9328161Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-03T06:35:09.9334545Z Initialized empty Git repository in /home/runner/work/nextbsd-ci/nextbsd-ci/.git/
+2026-10-03T06:35:09.9347827Z [command]/usr/bin/git remote add origin https://github.com/nextbsd/nextbsd-ci
+2026-10-03T06:35:09.9401081Z ##[endgroup]
+2026-10-03T06:35:09.9402578Z ##[group]Disabling automatic garbage collection
+2026-10-03T06:35:09.9405561Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-03T06:35:09.9440887Z ##[endgroup]
+2026-10-03T06:35:09.9442212Z ##[group]Setting up auth
+2026-10-03T06:35:09.9448836Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-03T06:35:09.9486034Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-03T06:35:09.9876659Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-03T06:35:09.9916863Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-03T06:35:10.0154293Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-03T06:35:10.0191782Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-03T06:35:10.0421612Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-03T06:35:10.0464049Z ##[endgroup]
+2026-10-03T06:35:10.0464908Z ##[group]Fetching the repository
+2026-10-03T06:35:10.0475073Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +8e2d4ef51bbd2eb8d67adc9f093ad05bfd15ca4c:refs/remotes/pull/9/merge
+2026-10-03T06:35:10.4119491Z From https://github.com/nextbsd/nextbsd-ci
+2026-10-03T06:35:10.4121043Z  * [new ref]         8e2d4ef51bbd2eb8d67adc9f093ad05bfd15ca4c -> pull/9/merge
+2026-10-03T06:35:10.4125346Z ##[endgroup]
+2026-10-03T06:35:10.4126366Z ##[group]Determining the checkout info
+2026-10-03T06:35:10.4128659Z ##[endgroup]
+2026-10-03T06:35:10.4135190Z [command]/usr/bin/git sparse-checkout disable
+2026-10-03T06:35:10.4191147Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-03T06:35:10.4224491Z ##[group]Checking out the ref
+2026-10-03T06:35:10.4228652Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/9/merge
+2026-10-03T06:35:10.4294088Z Note: switching to 'refs/remotes/pull/9/merge'.
+2026-10-03T06:35:10.4294867Z 
+2026-10-03T06:35:10.4295521Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-03T06:35:10.4297044Z changes and commit them, and you can discard any commits you make in this
+2026-10-03T06:35:10.4298832Z state without impacting any branches by switching back to a branch.
+2026-10-03T06:35:10.4299747Z 
+2026-10-03T06:35:10.4300338Z If you want to create a new branch to retain commits you create, you may
+2026-10-03T06:35:10.4301693Z do so (now or later) by using -c with the switch command. Example:
+2026-10-03T06:35:10.4302499Z 
+2026-10-03T06:35:10.4302886Z   git switch -c <new-branch-name>
+2026-10-03T06:35:10.4303443Z 
+2026-10-03T06:35:10.4303797Z Or undo this operation with:
+2026-10-03T06:35:10.4304315Z 
+2026-10-03T06:35:10.4304933Z   git switch -
+2026-10-03T06:35:10.4305350Z 
+2026-10-03T06:35:10.4306004Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-03T06:35:10.4307562Z 
+2026-10-03T06:35:10.4308711Z HEAD is now at 8e2d4ef Merge 1e79ed066bd94dfc80c7950863aab7a1aadf0071 into bae13410f0ff570b952d51053ed0c462272008b7
+2026-10-03T06:35:10.4312237Z ##[endgroup]
+2026-10-03T06:35:10.4349279Z [command]/usr/bin/git log -1 --format=%H
+2026-10-03T06:35:10.4379606Z 8e2d4ef51bbd2eb8d67adc9f093ad05bfd15ca4c
+2026-10-03T06:35:10.4611401Z ##[group]Run sudo apt-get update && sudo apt-get install -y expect shellcheck
+2026-10-03T06:35:10.4612477Z [36;1msudo apt-get update && sudo apt-get install -y expect shellcheck[0m
+2026-10-03T06:35:10.4864408Z shell: /usr/bin/bash -e {0}
+2026-10-03T06:35:10.4864968Z ##[endgroup]
+2026-10-03T06:35:10.5697544Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-03T06:35:10.5980219Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-10-03T06:35:10.5985695Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-10-03T06:35:10.6002796Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-10-03T06:35:10.6068591Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-10-03T06:35:10.6077598Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-10-03T06:35:10.7188157Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [12.6 kB]
+2026-10-03T06:35:10.7322921Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [511 kB]
+2026-10-03T06:35:10.7501209Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [458 kB]
+2026-10-03T06:35:10.7792937Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1364 kB]
+2026-10-03T06:35:10.7874228Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [304 kB]
+2026-10-03T06:35:10.7900459Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [180 kB]
+2026-10-03T06:35:10.7921643Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1699 kB]
+2026-10-03T06:35:10.8004074Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [341 kB]
+2026-10-03T06:35:10.8030801Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [388 kB]
+2026-10-03T06:35:10.8062652Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1720 kB]
+2026-10-03T06:35:10.8152501Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [394 kB]
+2026-10-03T06:35:10.8179158Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2026-10-03T06:35:10.8359371Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [5764 B]
+2026-10-03T06:35:10.8851089Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [12.6 kB]
+2026-10-03T06:35:10.8868274Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1069 kB]
+2026-10-03T06:35:10.8926575Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [221 kB]
+2026-10-03T06:35:10.8950736Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [46.3 kB]
+2026-10-03T06:35:10.8968041Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1216 kB]
+2026-10-03T06:35:10.9034739Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [244 kB]
+2026-10-03T06:35:10.9058063Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [76.3 kB]
+2026-10-03T06:35:10.9073537Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1566 kB]
+2026-10-03T06:35:10.9147658Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [361 kB]
+2026-10-03T06:35:15.2545057Z Fetched 12.6 MB in 1s (9264 kB/s)
+2026-10-03T06:35:16.1088798Z Reading package lists...
+2026-10-03T06:35:16.1399225Z Reading package lists...
+2026-10-03T06:35:16.3310376Z Building dependency tree...
+2026-10-03T06:35:16.3318259Z Reading state information...
+2026-10-03T06:35:16.4943099Z shellcheck is already the newest version (0.9.0-1).
+2026-10-03T06:35:16.4944074Z The following NEW packages will be installed:
+2026-10-03T06:35:16.4951690Z   expect tcl-expect
+2026-10-03T06:35:16.5120644Z 0 upgraded, 2 newly installed, 0 to remove and 25 not upgraded.
+2026-10-03T06:35:16.5121347Z Need to get 247 kB of archives.
+2026-10-03T06:35:16.5121826Z After this operation, 538 kB of additional disk space will be used.
+2026-10-03T06:35:16.5122316Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-03T06:35:16.7984761Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 tcl-expect amd64 5.45.4-3 [110 kB]
+2026-10-03T06:35:17.3639912Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 expect amd64 5.45.4-3 [137 kB]
+2026-10-03T06:35:17.7554553Z Fetched 247 kB in 1s (246 kB/s)
+2026-10-03T06:35:17.7778214Z Selecting previously unselected package tcl-expect:amd64.
+2026-10-03T06:35:17.8041727Z (Reading database ... 
+2026-10-03T06:35:17.8042514Z (Reading database ... 5%
+2026-10-03T06:35:17.8042791Z (Reading database ... 10%
+2026-10-03T06:35:17.8043056Z (Reading database ... 15%
+2026-10-03T06:35:17.8043315Z (Reading database ... 20%
+2026-10-03T06:35:17.8043670Z (Reading database ... 25%
+2026-10-03T06:35:17.8043928Z (Reading database ... 30%
+2026-10-03T06:35:17.8044238Z (Reading database ... 35%
+2026-10-03T06:35:17.8044641Z (Reading database ... 40%
+2026-10-03T06:35:17.8045044Z (Reading database ... 45%
+2026-10-03T06:35:17.8045468Z (Reading database ... 50%
+2026-10-03T06:35:17.8086380Z (Reading database ... 55%
+2026-10-03T06:35:17.9562697Z (Reading database ... 60%
+2026-10-03T06:35:18.1465229Z (Reading database ... 65%
+2026-10-03T06:35:18.3500550Z (Reading database ... 70%
+2026-10-03T06:35:18.5178084Z (Reading database ... 75%
+2026-10-03T06:35:18.6945440Z (Reading database ... 80%
+2026-10-03T06:35:18.8994930Z (Reading database ... 85%
+2026-10-03T06:35:19.0641098Z (Reading database ... 90%
+2026-10-03T06:35:19.2071365Z (Reading database ... 95%
+2026-10-03T06:35:19.2072005Z (Reading database ... 100%
+2026-10-03T06:35:19.2141320Z (Reading database ... 202296 files and directories currently installed.)
+2026-10-03T06:35:19.2144914Z Preparing to unpack .../tcl-expect_5.45.4-3_amd64.deb ...
+2026-10-03T06:35:19.2161077Z Unpacking tcl-expect:amd64 (5.45.4-3) ...
+2026-10-03T06:35:19.2408657Z Selecting previously unselected package expect.
+2026-10-03T06:35:19.2531991Z Preparing to unpack .../expect_5.45.4-3_amd64.deb ...
+2026-10-03T06:35:19.2539819Z Unpacking expect (5.45.4-3) ...
+2026-10-03T06:35:19.3071464Z Setting up tcl-expect:amd64 (5.45.4-3) ...
+2026-10-03T06:35:19.3093487Z Setting up expect (5.45.4-3) ...
+2026-10-03T06:35:19.3119163Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-10-03T06:35:19.3139019Z Not building database; man-db/auto-update is not 'true'.
+2026-10-03T06:35:19.3150072Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+2026-10-03T06:35:19.9723888Z 
+2026-10-03T06:35:19.9724462Z Running kernel seems to be up-to-date.
+2026-10-03T06:35:19.9724879Z 
+2026-10-03T06:35:19.9725040Z No services need to be restarted.
+2026-10-03T06:35:19.9725358Z 
+2026-10-03T06:35:19.9725529Z No containers need to be restarted.
+2026-10-03T06:35:19.9725879Z 
+2026-10-03T06:35:19.9726089Z No user sessions are running outdated binaries.
+2026-10-03T06:35:19.9726457Z 
+2026-10-03T06:35:19.9726791Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-10-03T06:35:20.8839960Z ##[group]Run fail=0
+2026-10-03T06:35:20.8840230Z [36;1mfail=0[0m
+2026-10-03T06:35:20.8840555Z [36;1mfor f in $(find harness manifest selftest -name '*.sh' -type f); do[0m
+2026-10-03T06:35:20.8840988Z [36;1m  sh -n "$f" || { echo "sh -n failed: $f"; fail=1; }[0m
+2026-10-03T06:35:20.8841473Z [36;1mdone[0m
+2026-10-03T06:35:20.8841664Z [36;1mexit $fail[0m
+2026-10-03T06:35:20.8907434Z shell: /usr/bin/bash -e {0}
+2026-10-03T06:35:20.8907696Z ##[endgroup]
+2026-10-03T06:35:20.9078239Z ##[group]Run find harness manifest selftest -name '*.sh' -type f -print0 | xargs -0 -r shellcheck -x
+2026-10-03T06:35:20.9078988Z [36;1mfind harness manifest selftest -name '*.sh' -type f -print0 | xargs -0 -r shellcheck -x[0m
+2026-10-03T06:35:20.9139043Z shell: /usr/bin/bash -e {0}
+2026-10-03T06:35:20.9139300Z ##[endgroup]
+2026-10-03T06:35:21.4475673Z ##[group]Run sh manifest/validate.sh \
+2026-10-03T06:35:21.4476260Z [36;1msh manifest/validate.sh \[0m
+2026-10-03T06:35:21.4476741Z [36;1m  manifest/markers.tsv \[0m
+2026-10-03T06:35:21.4477498Z [36;1m  manifest/overlay-nextbsd.tsv \[0m
+2026-10-03T06:35:21.4478069Z [36;1m  manifest/overlay-nextbsd-userland.tsv \[0m
+2026-10-03T06:35:21.4478642Z [36;1m  manifest/overlay-nextbsd-kernel.tsv[0m
+2026-10-03T06:35:21.4547449Z shell: /usr/bin/bash -e {0}
+2026-10-03T06:35:21.4547717Z ##[endgroup]
+2026-10-03T06:35:21.4678869Z manifest/markers.tsv: 93 markers OK
+2026-10-03T06:35:21.4696905Z manifest/overlay-nextbsd.tsv:  markers OK
+2026-10-03T06:35:21.4715132Z manifest/overlay-nextbsd-userland.tsv:  markers OK
+2026-10-03T06:35:21.4733216Z manifest/overlay-nextbsd-kernel.tsv:  markers OK
+2026-10-03T06:35:21.4816311Z ##[group]Run sh selftest/run-selftest.sh
+2026-10-03T06:35:21.4816675Z [36;1msh selftest/run-selftest.sh[0m
+2026-10-03T06:35:21.4883052Z shell: /usr/bin/bash -e {0}
+2026-10-03T06:35:21.4883298Z env:
+2026-10-03T06:35:21.4883492Z   ARCH: amd64
+2026-10-03T06:35:21.4883694Z ##[endgroup]
+2026-10-03T06:35:21.4999063Z ==> golden: the shared patterns against production stream shapes
+2026-10-03T06:35:21.5441590Z invalid command name "Enter"
+2026-10-03T06:35:21.5442026Z     while executing
+2026-10-03T06:35:21.5442322Z "Enter"
+2026-10-03T06:35:21.5442592Z     invoked from within
+2026-10-03T06:35:21.5443006Z "golden "loader: EDK2 autoboot countdown" $re_hit_enter \
+2026-10-03T06:35:21.5443690Z     "Hit [Enter] to boot immediately, or any other key for command prompt.""
+2026-10-03T06:35:21.5444744Z     (file "/home/runner/work/nextbsd-ci/nextbsd-ci/selftest/regex-golden.exp" line 26)
+2026-10-03T06:35:21.5445688Z ==> manifest: schema
+2026-10-03T06:35:21.5492975Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/markers.tsv: 93 markers OK
+2026-10-03T06:35:21.5512534Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/overlay-nextbsd.tsv:  markers OK
+2026-10-03T06:35:21.5531690Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/overlay-nextbsd-userland.tsv:  markers OK
+2026-10-03T06:35:21.5550830Z /home/runner/work/nextbsd-ci/nextbsd-ci/manifest/overlay-nextbsd-kernel.tsv:  markers OK
+2026-10-03T06:35:21.5582214Z ==> harness vs mock guest (arch=amd64)
+2026-10-03T06:35:21.5633141Z bad option "-pattern": must be -exact, -glob, or -regexp
+2026-10-03T06:35:21.5633525Z     while executing
+2026-10-03T06:35:21.5633785Z "array names eff -pattern *,policy"
+2026-10-03T06:35:21.5634079Z     invoked from within
+2026-10-03T06:35:21.5634340Z "lsort [array names eff -pattern *,policy]"
+2026-10-03T06:35:21.5634631Z     invoked from within
+2026-10-03T06:35:21.5634919Z "set markers [lsort [array names eff -pattern *,policy]]"
+2026-10-03T06:35:21.5635455Z     (file "/home/runner/work/nextbsd-ci/nextbsd-ci/manifest/gen-arms.tcl" line 58)
+2026-10-03T06:35:21.5638325Z SELFTEST FAIL: no marker plan generated
+2026-10-03T06:35:21.5655857Z ##[error]Process completed with exit code 1.
+2026-10-03T06:35:21.5800659Z Post job cleanup.
+2026-10-03T06:35:21.6669441Z [command]/usr/bin/git version
+2026-10-03T06:35:21.6715065Z git version 2.55.0
+2026-10-03T06:35:21.6756248Z Temporarily overriding HOME='/home/runner/work/_temp/3847211d-30f1-4fce-b76f-da16281c60e2' before making global git config changes
+2026-10-03T06:35:21.6758072Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-03T06:35:21.6762996Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/nextbsd-ci/nextbsd-ci
+2026-10-03T06:35:21.6804080Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-03T06:35:21.6841816Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-03T06:35:21.7107450Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-03T06:35:21.7137857Z http.https://github.com/.extraheader
+2026-10-03T06:35:21.7150283Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-03T06:35:21.7188309Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-03T06:35:21.7450067Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-03T06:35:21.7490958Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-03T06:35:21.7874989Z Cleaning up orphan processes
+2026-10-03T06:35:21.8208466Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

@@ -100,7 +100,10 @@ export NB_LOG="$LOG" NB_MEDIA NB_BOOT_TRACE NB_BANNER_POLICY NB_QEMU_ARGV="${NB_
 # manifest -> expect arms (one block per suite, generated for this arch and
 # overlay; selftest passes NB_QEMU_ARGV so no firmware is needed)
 NSUITE=$(printf '%s' "$NB_SUITE" | wc -w | tr -d ' ')
-tclsh "$ROOT/manifest/gen-arms.tcl" "$ROOT/manifest/markers.tsv" "$NB_OVERLAY" "$ARCH" "$NSUITE" "$NB_SUITE" > "$EXP.arms"
+if ! tclsh "$ROOT/manifest/gen-arms.tcl" "$ROOT/manifest/markers.tsv" "$NB_OVERLAY" "$ARCH" "$NSUITE" "$NB_SUITE" > "$EXP.arms"; then
+    echo "FAIL: arm generation failed (bad manifest?); refusing to boot without arms"
+    exit 1
+fi
 
 {
     cat "$HERE/patterns.tcl"
