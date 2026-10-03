@@ -255,7 +255,7 @@ for {set i 0} {$i < $suites} {incr i} {
     puts "    puts \"\\nDBG: remaining buffer \[string length \$dbgbuf\] bytes; escaped head: \[string map \[list \"\\r\" {<CR>} \"\\n\" {<NL>} \"\\t\" {<TAB>}\] \[string range \$dbgbuf 0 250\]\]\""
     puts "    puts \"\\nDBG: markers recorded: \[llength \[array names nb_seen\]\]\""
     puts "    foreach m \[lrange \$nb_dbgmarks 0 5\] {"
-    puts "        puts \"\\nDBG-MARK: arm-text=\\"\$m-OK\" in-buffer OK/SKIP/FAIL = \[expr {\[string first \"\$m-OK\" \$dbgbuf\] >= 0}\]/\[expr {\[string first \"\$m-SKIP\" \$dbgbuf\] >= 0}\]/\[expr {\[string first \"\$m-FAIL\" \$dbgbuf\] >= 0}\]\""
+    puts "        puts \"\\nDBG-MARK: arm-text=<$m-OK> in-buffer OK/SKIP/FAIL = \[expr {\[string first $m-OK $dbgbuf\] >= 0}\]/\[expr {\[string first $m-SKIP $dbgbuf\] >= 0}\]/\[expr {\[string first $m-FAIL $dbgbuf\] >= 0}\]\""
     puts "    }"
     puts "}"
 }
