@@ -44,10 +44,14 @@ set re_reboot        {Rebooting|rebooting}
 # The sentinel (T1): one aggregate line per on-image suite.
 set re_summary {NEXTBSD-TEST-SUMMARY ok=([0-9]+) fail=([0-9]+) skip=([0-9]+)}
 
-# A capability marker line (T1): "<NAME>-<OK|SKIP|FAIL>" at a line end.
+# A capability marker line (T1): "<NAME>-<OK|SKIP|FAIL>".
 # Matched by ONE arm (a runtime policy table decides the outcome) instead of
 # one arm per marker: the runners' expect takes the first arm in file order
 # that matches ANYWHERE in the buffer, so 93 sorted marker arms let a marker
 # whose text arrives late in the stream match first and consume every marker
 # in between. One pattern consumes the stream strictly in arrival order.
-set re_marker {[A-Z0-9][A-Z0-9-]*-(OK|SKIP|FAIL)(\r\n|\n)}
+# The line-end tail is deliberately NOT in the pattern: the selftest's
+# transcript (the same bytes expect reads) shows the pty delivers the markers
+# with a bare LF, and a (\r\n|\n) tail must stay out of the arm's pattern
+# so a match can never fail on line-ending shape.
+set re_marker {[A-Z0-9][A-Z0-9-]*-(OK|SKIP|FAIL)}
