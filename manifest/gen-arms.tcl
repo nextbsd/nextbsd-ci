@@ -31,13 +31,19 @@ if {[lindex $argv 0] eq "list"} {
     set arch    [lindex $argv 3]
     set suites  0
 } else {
-    # arm mode: tclsh gen-arms.tcl <markers.tsv> <overlay.tsv> <arch> <nsuites> <suite...>
-    set mode    arms
-    set base    [lindex $argv 0]
-    set overlay [lindex $argv 1]
-    set arch    [lindex $argv 2]
-    set suites  [lindex $argv 3]
+    # arm mode: tclsh gen-arms.tcl <markers.tsv> <overlay.tsv> <arch> <nsuites> <suite-list>
+    # The suite list is one space-separated argument (as boot-test.sh passes it).
+    set mode       arms
+    set base       [lindex $argv 0]
+    set overlay    [lindex $argv 1]
+    set arch       [lindex $argv 2]
+    set suites     [lindex $argv 3]
     if {![string is integer -strict $suites]} { set suites 1 }
+    if {[llength $argv] > 4} {
+        set suite_list [lindex $argv 4]
+    } else {
+        set suite_list ""
+    }
 }
 
 # ------------------------------------------------------------------ loading --
@@ -87,9 +93,11 @@ foreach m $onarch {
 # The reason strings go into generated Tcl double-quoted strings: escape the
 # backslash first, then the quote, so the generated file parses.
 proc esc {s} {
-    set bs {\\}
-    set s [string map [list [string range $bs 0 0] $bs] $s]
-    set s [string map [list {"} [concat [string range $bs 0 0] "\"]]] $s]
+    set bs [string range {\\} 0 0]
+    set s [string map [list $bs $bs$bs] $s]
+    set s [string map [list {$} $bs{$}] $s]
+    set q "\""
+    set s [string map [list $q $bs$q] $s]
     return $s
 }
 
@@ -145,7 +153,7 @@ puts "set nb_warnfail { $warnfail }"
 
 set scope {}
 for {set i 0} {$i < $suites} {incr i} {
-    set o [suite_owners [lindex $suites $i]]
+    set o [suite_owners [lindex $suite_list $i]]
     if {$o eq "any"} {
         set scope "any"
     } else {
@@ -182,7 +190,7 @@ proc arm_block {m p r a} {
 }
 
 for {set i 0} {$i < $suites} {incr i} {
-    set suite [lindex $suites $i]
+    set suite [lindex $suite_list $i]
     set suite [esc $suite]
     puts ""
     puts "set timeout \$env(NB_SUITE_TIMEOUT)"
