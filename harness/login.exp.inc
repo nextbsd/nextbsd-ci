@@ -57,6 +57,14 @@ expect {
 # syslogd is unreachable), so whether it appears at all is a race (lost on
 # arm64 under qemu while a working shell sat on the console — nextbsd-userland#289).
 # On timeout, probe for a shell before concluding anything.
+# Cap the login-wait window: once the banner is up, the login (or autologin)
+# should follow within seconds -- getty prints the banner and immediately shows
+# the prompt or logs in. An autologin image with no prompt and a console-lost
+# session message (arm64) would otherwise wait out the whole NB_TIMEOUT_GLOBAL
+# before the shell probe below runs, which reads as a 30-minute hang on a
+# perfectly good boot. Past this cap with no prompt/message we probe, then bail.
+set _saved_login_timeout $timeout
+if {$timeout > 180} { set timeout 180 }
 set at_login 1
 expect {
     timeout {
@@ -89,6 +97,7 @@ expect {
         puts "\nOK: boot logged in automatically as $expect_out(1,string)"
     }
 }
+set timeout $_saved_login_timeout
 
 if {$at_login} {
     send "admin\r"
