@@ -162,6 +162,9 @@ seed_overlays() {
     # git can't store sub-0644 modes. sudo refuses a sudoers that is not mode
     # 0440 ("is mode 0644, should be 0440"), as overlays' seed.sh also fixes up.
     [ -f "$ROOTFS/private/etc/sudoers" ] && chmod 0440 "$ROOTFS/private/etc/sudoers"
+    # An empty master.passwd seeds a login with no users — the image would
+    # halt at the prompt. Fail the build instead of shipping it.
+    [ -s "$ROOTFS/private/etc/master.passwd" ] || { echo "ERROR: nextbsd-overlays seed produced no master.passwd" >&2; exit 1; }
     log "seeded /etc from nextbsd-overlays ($SEED_ROOTFS)"
 }
 
@@ -178,6 +181,10 @@ apple_private_runtime() {
     : > "$ROOTFS/var/log/utx.log"
     chmod 644 "$ROOTFS/var/run/utx.active" \
               "$ROOTFS/var/log/utx.lastlogin" "$ROOTFS/var/log/utx.log"
+    # locale(1) err()s on opendir before it can list the built-in C/POSIX
+    # locales if /usr/share/locale is absent; the curated base ships no locale
+    # data, so create the dir so the C locale works.
+    mkdir -p "$ROOTFS/usr/share/locale"
     # root's home (master.passwd: root -> /root). Without it login warns
     # "No home directory. Logging in with home = /". build.sh:145 does the same.
     # FreeBSD ships no pam_mkhomedir, so login won't create it — we must.
