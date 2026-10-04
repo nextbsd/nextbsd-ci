@@ -69,7 +69,7 @@ golden "login: zsh prompt" $re_shell_prompt \
 # bare text through the wrappers. (Synthetic sample: the CI images can't be
 # sampled from a Gershwin desktop, but the source emits exactly this shape.)
 golden "login: nextbsd-fetch banner (ANSI-wrapped)" $re_fetch_banner \
-    "\033[1;97mWelcome to NextBSD!\033[0m"
+    "\033\[1;97mWelcome to NextBSD!\033\[0m"
 
 # The panic family.
 golden "panic: page fault" $re_panic "kernel: Fatal trap 12: page fault in kernel mode"
