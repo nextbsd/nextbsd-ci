@@ -233,6 +233,17 @@ fixup_rootfs() {
     # chown the whole staged tree to 0:0; makefs has no -F manifest so it
     # packages this ownership verbatim.
     chown -R 0:0 "$ROOTFS"
+    # nvidia's bundle ships an activate script that finalizes the driver in
+    # place (run AFTER the chown so its output is root-owned; best-effort —
+    # only the nvidia-kexts bundle carries one).
+    for b in "$ROOTFS"/System/Library/Extensions/*.bundle; do
+        [ -d "$b" ] || continue
+        act="$b/Contents/Resources/nvidia-activate.sh"
+        if [ -f "$act" ]; then
+            sh "$act" "/System/Library/Extensions/$(basename "$b")" "$ROOTFS" \
+                || echo "WARN: nvidia-activate.sh failed for $(basename "$b")" >&2
+        fi
+    done
     # Linux chown(2) clears S_ISUID/S_ISGID even when root does it, so re-apply
     # the setuid bits after the chown. nextbsd-contrib stages sudo as 4511.
     [ -f "$ROOTFS/usr/bin/sudo" ] && chmod 4511 "$ROOTFS/usr/bin/sudo"   # Darwin: -r-s--x--x
