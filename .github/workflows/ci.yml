@@ -31,13 +31,13 @@ jobs:
       - name: "Syntax: all shell scripts"
         run: |
           fail=0
-          for f in $(find harness manifest selftest -name '*.sh' -type f); do
+          for f in $(find harness manifest scripts selftest -name "*.sh" -type f); do
             sh -n "$f" || { echo "sh -n failed: $f"; fail=1; }
           done
           exit $fail
 
       - name: "Lint: shellcheck"
-        run: find harness manifest selftest -name '*.sh' -type f -print0 | xargs -0 -r shellcheck -x
+        run: find harness manifest scripts selftest -name "*.sh" -type f -print0 | xargs -0 -r shellcheck -x
 
       - name: "Manifest: schema"
         run: |
