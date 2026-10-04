@@ -89,8 +89,10 @@ build_host_tools() {
     mkdir -p "$TOOLS"
     for name in makefs mkimg pwd_mkdb cap_mkdb; do
         b="$(find /usr/obj -type f -name "$name" -perm -u+x 2>/dev/null | head -1)"
-        [ -n "$b" ] && install -m755 "$b" "$TOOLS/$name" \
-            || { echo "ERROR: no host $name after bootstrap-tools + _legacy" >&2; exit 1; }
+        if [ -z "$b" ]; then
+            echo "ERROR: no host $name after bootstrap-tools + _legacy" >&2; exit 1
+        fi
+        install -m755 "$b" "$TOOLS/$name"
     done
     export PATH="$TOOLS:$PATH"
     log "host tools: $(command -v makefs) | $(command -v mkimg)"
@@ -214,9 +216,12 @@ fixup_rootfs() {
     # step does. (Runtime `certctl rehash` still refreshes it if certs change.)
     if ls "$ROOTFS"/usr/share/certs/trusted/*.pem >/dev/null 2>&1; then
         mkdir -p "$etc/ssl"
-        cat "$ROOTFS"/usr/share/certs/trusted/*.pem > "$etc/ssl/cert.pem" \
-          && log "generated /etc/ssl/cert.pem ($(ls "$ROOTFS"/usr/share/certs/trusted/*.pem | wc -l | tr -d ' ') trusted certs)" \
-          || echo "WARN: could not build /etc/ssl/cert.pem" >&2
+        if cat "$ROOTFS"/usr/share/certs/trusted/*.pem > "$etc/ssl/cert.pem"; then
+            ncerts=$(find "$ROOTFS/usr/share/certs/trusted" -maxdepth 1 -name '*.pem' | wc -l | tr -d ' ')
+            log "generated /etc/ssl/cert.pem ($ncerts trusted certs)"
+        else
+            echo "WARN: could not build /etc/ssl/cert.pem" >&2
+        fi
     else
         echo "WARN: no /usr/share/certs/trusted — https verification will fail" >&2
     fi
