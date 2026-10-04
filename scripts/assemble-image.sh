@@ -123,11 +123,18 @@ stage_rootfs() {
     # (accounts, sshd_config, pam.d, fstab, the loader fragment) is NOT in the
     # package any more; it is seeded from nextbsd-overlays next (mirrors build.sh).
     tar -C "$ROOTFS" -xzf "$USERLAND_TGZ"
-    # Third-party base programs from nextbsd-contrib (sudo, zsh, pico). Optional
-    # so a local run without the artifact still assembles; CI always passes it.
-    if [ -n "${CONTRIB_TGZ:-}" ]; then
-        [ -f "$CONTRIB_TGZ" ] || { echo "ERROR: CONTRIB_TGZ=$CONTRIB_TGZ not found" >&2; exit 1; }
+    # Third-party base programs from nextbsd-contrib: zsh, sudo, pico. They
+    # live in their own repo by the boundary rule, so nothing above ships them,
+    # and without this the image has no /bin/zsh -- the login shell the
+    # overlay's master.passwd gives admin. LENIENT on purpose: a missing
+    # contrib asset (a mid-flight rebuild of an unrelated component) must not
+    # fail the whole assembly -- the image still boots (root's shell is /bin/sh);
+    # the warning is what surfaces it.
+    if [ -n "${CONTRIB_TGZ:-}" ] && [ -f "${CONTRIB_TGZ:-}" ]; then
         tar -C "$ROOTFS" -xzf "$CONTRIB_TGZ"
+        log "laid in nextbsd-contrib ($(basename "$CONTRIB_TGZ"))"
+    else
+        echo "WARNING: CONTRIB_TGZ not set/found -- no /bin/zsh, admin will not get a shell" >&2
     fi
     seed_overlays
     apple_private_runtime
@@ -201,6 +208,26 @@ apple_private_runtime() {
 # ---------------------------------------------------------------------------
 fixup_rootfs() {
     log "fixup: strip .ko/firmware, kext perms, offline DBs"
+    # /etc/os-release: the base and the overlays ship no /etc, and neither
+    # carries an os-release, so the assembled image would have none and
+    # nextbsd-fetch(1) -- the ONLY reader of PRETTY_NAME -- would print a bare
+    # "NextBSD" login banner with no version for anything to assert on. Stamp
+    # it from the kernel that is actually in this image (the version
+    # newvers.sh compiled in), falling back to the build time. Write only if
+    # absent so a consumer whose artifacts DO carry an os-release is not
+    # clobbered. (nextbsd/build.sh overwrites it with its own IMG_DATE stamp in
+    # step 6, after this, so the real image keeps the build-date identity.)
+    if [ ! -f "$ROOTFS/private/etc/os-release" ]; then
+        _osver="$(strings -a "$ROOTFS/boot/kernel/kernel" 2>/dev/null |
+            sed -n 's/^NextBSD Kernel Version \([0-9][0-9-]*\).*/\1/p' | head -1)"
+        [ -n "$_osver" ] || _osver="$(date -u +%Y%m%d-%H%M%S)"
+        cat > "$ROOTFS/private/etc/os-release" <<OSREL
+NAME="NextBSD"
+ID=nextbsd
+PRETTY_NAME="NextBSD ${_osver}"
+OSREL
+        log "wrote /etc/os-release (PRETTY_NAME=\"NextBSD ${_osver}\")"
+    fi
     rm -f "$ROOTFS"/boot/kernel/*.ko 2>/dev/null || true
     rm -rf "$ROOTFS/boot/firmware" 2>/dev/null || true
     # kext auth: root:wheel, group/other not writable
