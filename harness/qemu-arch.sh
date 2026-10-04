@@ -14,7 +14,7 @@
 #   NIC      e1000 (ROM ships with qemu)    virtio-net-pci, romfile= (see below)
 #   TCG cpu  qemu64                         max
 #   CD       -cdrom (SATA/ATAPI on q35)     virtio-scsi + scsi-cd (virt has no IDE)
-#   video    default VGA (q35 has one)      virtio-gpu-pci (virt has NONE)
+#   video    default VGA + virtio-gpu-pci   virtio-gpu-pci (virt has NONE)
 #
 # The same split is proven in nextbsd-userland's tests/boot-test.sh, which has
 # been booting the aarch64 CI image under KVM on GitHub's ubuntu-24.04-arm
@@ -58,8 +58,14 @@ qemu_arch_setup() {
         CD_ARGS="-cdrom $_media -boot d"
         # q35 always instantiates a VGA adapter (-display none only suppresses
         # the HOST window, not the emulated device), so the guest already gets a
-        # framebuffer, efifb, vt(4) and /dev/ttyv0. Nothing to add.
-        VIDEO_ARGS=""
+        # framebuffer, efifb, vt(4) and /dev/ttyv0. The default VGA STAYS:
+        # replacing it would move every consumer's firmware console path.
+        # virtio-gpu-pci is ADDED alongside it (T6): the kext lane asserts the
+        # same VirtIOGraphics kext on both arches, and kextd only loads it if
+        # the device is present. In lanes whose image ships no graphics kexts
+        # the device is inert: nothing matches it, the harness console is
+        # serial, and EDK2 keeps the first-slot std VGA for GOP.
+        VIDEO_ARGS="-device virtio-gpu-pci"
         ;;
     arm64|aarch64)
         ARCH=arm64
