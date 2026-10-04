@@ -27,6 +27,9 @@
 #   IMG           image file name in $OUT            (default disk.img)
 #   SKIP_ASSEMBLE 1 = stage + fixup the rootfs only, no makefs/mkimg
 #                (consumers with their own media tail, e.g. nextbsd's ISO)
+#   EXTRA_ROOTFS  optional dir, overlaid into the rootfs after fixup (and
+#                re-chowned) — for consumer-baked on-image files such as a
+#                kext lane's on-image test (e.g. /usr/tests/nextbsd/kext)
 #   BASE_TGZ      nextbsd-base-$ARCH.tar.gz           (compat base = whole rootfs)
 #   KERNEL_TGZ    nextbsd-kernel-$ARCH.tar.gz         (-> /boot/kernel/kernel)
 #   MODULES_TGZ   space-separated kext tarball(s)     (-> /System/Library/Extensions)
@@ -302,9 +305,22 @@ assemble() {
     ls -lh "$OUT/$IMG"
 }
 
+# Consumer-baked on-image files: overlay an optional extra tree (e.g. a kext
+# lane's on-image test) into the rootfs, then re-run the ownership pass so the
+# kext-auth / setuid rules hold for anything the consumer added. Runs in both
+# assemble and stage-only modes, after fixup.
+overlay_extra() {
+    if [ -n "${EXTRA_ROOTFS:-}" ] && [ -d "$EXTRA_ROOTFS" ]; then
+        log "overlaying EXTRA_ROOTFS=$EXTRA_ROOTFS"
+        cp -R "$EXTRA_ROOTFS/." "$ROOTFS/"
+        chown -R 0:0 "$ROOTFS" 2>/dev/null || true
+    fi
+}
+
 build_host_tools
 stage_rootfs
 fixup_rootfs
+overlay_extra
 if [ "$SKIP_ASSEMBLE" = 1 ]; then
     log "SKIP_ASSEMBLE=1: rootfs staged at $ROOTFS, no image made (consumer owns the media tail)"
 else
