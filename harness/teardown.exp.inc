@@ -13,6 +13,13 @@
 #                           (bypasses init, so the runner is never left
 #                            hanging; still exit 1)
 #
+# nextbsd#503: the command's exit status is captured via the NB-SHUTDOWN-RC
+# sentinel (appended with `; echo ... $?`). A shutdown that SUCCEEDS powers
+# the VM off and the sentinel never prints, so the sentinel appears only on
+# the "returned early without powering off" path -- the datum the ticket asked
+# for (a silent non-zero was previously invisible). Seeing the banner but qemu
+# not exiting within the budget is now a hard FAIL, not an informational WARN.
+#
 # Two things historically made this stage fail intermittently, and neither was
 # a stall in launchd:
 #   1. The poweroff was timed from when the command went out rather than from
@@ -34,16 +41,25 @@ expect {
     -re {[#%$] $}     { }
 }
 
-send "r shutdown -p now\r"
+send "r shutdown -p now; echo NB-SHUTDOWN-RC=\$?\r"
 set timeout 180
 set shutdown_progress 0
+set shutdown_rc ""
 expect {
     -re $re_shutdown_wait {
         set shutdown_progress 1
         exp_continue
     }
+    -re {NB-SHUTDOWN-RC=([0-9]+)} {
+        set shutdown_rc $expect_out(1,string)
+        set shutdown_progress 1
+        puts "\nNOTE: shutdown -p returned early (rc=$shutdown_rc) without powering off (the nextbsd#503 class); watching for a late poweroff"
+        exp_continue
+    }
     timeout {
-        if {$shutdown_progress} {
+        if {$shutdown_rc ne ""} {
+            puts "\nFAIL: SHUTDOWN-P — shutdown -p returned early (rc=$shutdown_rc) and the system never powered off within 180s (nextbsd#503)"
+        } elseif {$shutdown_progress} {
             puts "\nFAIL: SHUTDOWN-P — shutdown was progressing but produced nothing for 180s and never powered off"
         } else {
             puts "\nFAIL: SHUTDOWN-P — no response at all within 180s of shutdown -p (init-protocol stall; this is what nextbsd#398 was)"
@@ -64,9 +80,23 @@ expect {
     }
     -re $re_poweroff {
         puts "\nOK: SHUTDOWN-P-OK — launchd honored the init poweroff protocol (shutdown -p -> SIGUSR2 -> RB_HALT|RB_POWEROFF)"
+        # The banner means the shutdown sequence STARTED; the gate is the VM
+        # actually going away. A banner with no qemu exit within the budget is
+        # the nextbsd#503 class (shutdown returned, system wedged) and is now
+        # a hard FAIL -- previously an informational WARN that shipped a stuck
+        # VM green.
         expect {
-            timeout { puts "\nWARN: qemu did not exit after poweroff (informational)" }
-            eof     { puts "\nOK: VM exited after poweroff" }
+            timeout {
+                puts "\nFAIL: SHUTDOWN-P — poweroff banner seen but qemu did not exit within 180s (nextbsd#503); forcing halt -p"
+                send "\r"
+                sleep 1
+                send "r halt -p\r"
+                expect { timeout {} eof {} "Uptime:" {} }
+                catch { close }
+                catch { wait }
+                exit 1
+            }
+            eof { puts "\nOK: VM exited after poweroff" }
         }
     }
     eof {

@@ -70,6 +70,27 @@ in the suite ⇒ `exit 1`. No sentinel within `NB_SUITE_TIMEOUT` ⇒ `exit 2`
 `2` a hang (consumers re-gate on 2 regardless of `boot_soft` —
 nextbsd-userland#117).
 
+## Marker emission protocol (line-delimited)
+
+On-image suites must emit capability markers as **one self-contained line
+each**: line-terminated, carrying no other text on the line.
+
+```sh
+printf '%s-OK\n' "$MARKER"        # correct: a bare, newline-terminated token
+echo "${MARKER}-OK trailing"      # wrong: data on the same line
+```
+
+The serial console is a shared stream — a busy kernel interleaves its own
+printf output (probe lines, driver chatter, ACPI events) with the suite's.
+A marker that is not a self-contained line gets split or carries trailing
+data, and the line-anchored arm (and the suite's own `NEXTBSD-TEST-SUMMARY`
+sentinel) stops matching. That is how nextbsd#405 became ~24 minutes of
+cascading expect timeouts on suites that had actually passed. So every
+on-image suite prints markers — and its summary sentinel — as bare
+`<NAME>-<OK|FAIL|SKIP>` lines, each newline-terminated with nothing else on
+the line. The line-termination is what keeps an interleaved kernel printf
+from corrupting the token the suite and the harness both rely on.
+
 ## Exit-code contract
 
 | rc | meaning |

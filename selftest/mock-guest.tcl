@@ -125,6 +125,12 @@ while {1} {
     } elseif {[string match "*NB-END-STATE*" $line]} {
         say "NB-END-STATE"
         prompt
+    } elseif {[string match "*NB-HOLD*" $line]} {
+        # The end-state hold heartbeat (nextbsd#428): answer once; the harness
+        # then watches for a reset. A stable mock stays up, so it never emits
+        # the reset signals the hold fails on.
+        say "NB-HOLD"
+        prompt
     } elseif {[string match "*shutdown*" $line]} {
         if {$mode eq "reboot"} {
             say "Rebooting system now..."
