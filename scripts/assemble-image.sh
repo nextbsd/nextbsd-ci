@@ -281,17 +281,26 @@ OSREL
                 || echo "WARN: nvidia-activate.sh failed for $(basename "$b")" >&2
         fi
     done
-    # Linux chown(2) clears S_ISUID/S_ISGID even when root does it, so re-apply
-    # the setuid bits after the chown. nextbsd-contrib stages sudo as 4511.
-    [ -f "$ROOTFS/usr/bin/sudo" ] && chmod 4511 "$ROOTFS/usr/bin/sudo"   # Darwin: -r-s--x--x
-    # passwd(1) is setuid so a user can change their own password: the plists
-    # are 0644 owned by root, and unlike Darwin we have no opendirectoryd to
-    # hand the write to. Anything else added here must be listed, or the chown
-    # above silently leaves it unprivileged and it fails at the write.
-    [ -f "$ROOTFS/usr/bin/passwd" ] && chmod 4555 "$ROOTFS/usr/bin/passwd"
-    # chpass and its links, for the same reason. The links are symlinks, so
-    # only the target needs the bit.
-    [ -f "$ROOTFS/usr/bin/chpass" ] && chmod 4555 "$ROOTFS/usr/bin/chpass"
+    fixup_setuid
+}
+
+# Re-apply the setuid bits after an ownership pass. Linux chown(2) clears
+# S_ISUID/S_ISGID even when root does it, so EVERY chown -R of the tree must be
+# followed by this -- otherwise the next pass silently strips the bits the last
+# one set. (The kext lane's EXTRA_ROOTFS overlay re-chowns the whole tree
+# after fixup, which stripped sudo's bit and broke `sudo` at login:
+# "must be owned by uid 0 and have the setuid bit set".)
+#
+# nextbsd-contrib stages sudo as 4511. passwd(1) is setuid so a user can change
+# their own password: the plists are 0644 owned by root, and unlike Darwin we
+# have no opendirectoryd to hand the write to. chpass and its links, for the
+# same reason (the links are symlinks, so only the target needs the bit).
+# Anything else added here must be listed, or a chown pass silently leaves it
+# unprivileged and it fails at the write.
+fixup_setuid() {
+    if [ -f "$ROOTFS/usr/bin/sudo" ];   then chmod 4511 "$ROOTFS/usr/bin/sudo";   fi  # Darwin: -r-s--x--x
+    if [ -f "$ROOTFS/usr/bin/passwd" ]; then chmod 4555 "$ROOTFS/usr/bin/passwd"; fi
+    if [ -f "$ROOTFS/usr/bin/chpass" ]; then chmod 4555 "$ROOTFS/usr/bin/chpass"; fi
 }
 
 # ---------------------------------------------------------------------------
@@ -335,12 +344,16 @@ assemble() {
 # Consumer-baked on-image files: overlay an optional extra tree (e.g. a kext
 # lane's on-image test) into the rootfs, then re-run the ownership pass so the
 # kext-auth / setuid rules hold for anything the consumer added. Runs in both
-# assemble and stage-only modes, after fixup.
+# assemble and stage-only modes, after fixup. The re-chown clears the setuid
+# bits fixup just set (Linux chown(2) strips them even as root), so
+# fixup_setuid runs again AFTER it -- otherwise sudo arrives 0511 and dies at
+# login with "must be owned by uid 0 and have the setuid bit set".
 overlay_extra() {
     if [ -n "${EXTRA_ROOTFS:-}" ] && [ -d "$EXTRA_ROOTFS" ]; then
         log "overlaying EXTRA_ROOTFS=$EXTRA_ROOTFS"
         cp -R "$EXTRA_ROOTFS/." "$ROOTFS/"
         chown -R 0:0 "$ROOTFS" 2>/dev/null || true
+        fixup_setuid
     fi
 }
 
