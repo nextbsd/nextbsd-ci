@@ -16,7 +16,7 @@
 #                          own kext build, then boots and asserts)
 #
 # Runs NATIVELY on a Linux runner (host-builds makefs/mkimg/pwd_mkdb/cap_mkdb
-# from $SRC via the kernel-toolchain container) OR inside a FreeBSD VM, where
+# from $SRC via the nextbsd-toolchain container) OR inside a FreeBSD VM, where
 # those tools are already on PATH and the host-build step no-ops.
 #
 # Inputs (env):
@@ -68,7 +68,7 @@ build_host_tools() {
        && command -v pwd_mkdb >/dev/null 2>&1 && command -v cap_mkdb >/dev/null 2>&1; then
         log "makefs/mkimg/pwd_mkdb/cap_mkdb already on PATH"; return
     fi
-    : "${CROSS_BINDIR:?CROSS_BINDIR must be set (the kernel-toolchain image provides it)}"
+    : "${CROSS_BINDIR:?CROSS_BINDIR must be set (the nextbsd-toolchain image provides it)}"
     MKPY="./tools/build/make.py --cross-bindir=$CROSS_BINDIR TARGET=$ARCH TARGET_ARCH=$TARGET_ARCH"
     # makefs/mkimg are host (build) tools that already live in the baked /usr/src.
     # They compile fine in the _legacy stage but link against the build-tool libs
