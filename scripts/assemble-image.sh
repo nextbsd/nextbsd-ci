@@ -12,7 +12,7 @@
 #   nextbsd                ASSEMBLY=artifacts build (SKIP_ASSEMBLE: keeps its
 #                          own 1.5G + ISO + rpi500 media tail on the rootfs)
 #   nextbsd-userland       PR lane (assembles + boots its own image)
-#   nextbsd-kernel-extensions  kext lane (continuous components + the PR's
+#   nextbsd-kernel-extensions-graphics  kext lane (continuous components + the PR's
 #                          own kext build, then boots and asserts)
 #
 # Runs NATIVELY on a Linux runner (host-builds makefs/mkimg/pwd_mkdb/cap_mkdb
@@ -113,7 +113,7 @@ build_host_tools() {
 # .../sys/NEXTBSD/KERNEL-BUILD-ID in its tarball, and every kext records the
 # ID of the kernel it was built against as NBSDKernelBuildID in its Info.plist
 # (nextbsd-kernel#326). A mismatch boots, then panics in some unrelated driver
-# (nextbsd-kernel-extensions#46), so fail here, loudly, instead.
+# (nextbsd-kernel-extensions-graphics#46), so fail here, loudly, instead.
 # ---------------------------------------------------------------------------
 # NBSDKernelBuildID from one Info.plist (XML; key and string on the same line
 # or the next one). Prints nothing if the key is absent.
@@ -152,7 +152,7 @@ check_kext_build_ids() {
         echo "ERROR: $bad of $n kexts were not built for kernel $want" >&2
         [ -n "${EXPECT_KERNEL_BUILD_ID:-}" ] && echo "       (expected ID given by the caller; the image's kernel is ${kid:-<none>})" >&2
         echo "       Refusing to assemble an image whose kexts don't match its kernel." >&2
-        echo "       Rebuild the kexts against this kernel first: merge to nextbsd-kernel-extensions," >&2
+        echo "       Rebuild the kexts against this kernel first: merge to nextbsd-kernel-extensions-graphics," >&2
         echo "       or run freebsd-src's Sync Fork with force for the whole chain." >&2
         exit 1
     fi
