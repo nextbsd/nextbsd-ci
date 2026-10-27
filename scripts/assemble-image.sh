@@ -33,6 +33,10 @@
 #   BASE_TGZ      nextbsd-base-$ARCH.tar.gz           (compat base = whole rootfs)
 #   KERNEL_TGZ    nextbsd-kernel-$ARCH.tar.gz         (-> /boot/kernel/kernel)
 #   MODULES_TGZ   space-separated kext tarball(s)     (-> /System/Library/Extensions)
+#   EXPECT_KERNEL_BUILD_ID  optional: the KERNEL-BUILD-ID every kext must carry.
+#                Default: the one in KERNEL_TGZ. The kernel's own PR lane boots
+#                a kernel no kext was built for yet, so it passes the published
+#                kernel's ID instead (see check_kext_build_ids).
 #   USERLAND_TGZ  nextbsd-userland-$ARCH.tar.gz       (Darwin system layer)
 #   CONTRIB_TGZ   nextbsd-contrib-$ARCH.tar.gz        (sudo, zsh, pico; optional)
 #   SEED_ROOTFS   nextbsd-overlays checkout /rootfs   (the pkg-free /etc seed)
@@ -102,6 +106,59 @@ build_host_tools() {
 }
 
 # ---------------------------------------------------------------------------
+# KERNEL-BUILD-ID: refuse kexts built for a different kernel (nextbsd#549).
+#
+# A kext and the kernel it loads into must agree on every struct they share.
+# Each nextbsd-kernel build stamps <commit>.<run_id>.<run_attempt> into
+# .../sys/NEXTBSD/KERNEL-BUILD-ID in its tarball, and every kext records the
+# ID of the kernel it was built against as NBSDKernelBuildID in its Info.plist
+# (nextbsd-kernel#326). A mismatch boots, then panics in some unrelated driver
+# (nextbsd-kernel-extensions#46), so fail here, loudly, instead.
+# ---------------------------------------------------------------------------
+# NBSDKernelBuildID from one Info.plist (XML; key and string on the same line
+# or the next one). Prints nothing if the key is absent.
+plist_build_id() {
+    awk '/<key>NBSDKernelBuildID<\/key>/ {
+            if ($0 !~ /<string>/) getline
+            if (match($0, /<string>[^<]*<\/string>/)) print substr($0, RSTART + 8, RLENGTH - 17)
+            exit
+         }' "$1"
+}
+
+check_kext_build_ids() {
+    sle="$ROOTFS/System/Library/Extensions"
+    plists="$(find "$sle" -path '*.kext/Contents/Info.plist' 2>/dev/null | sort)"
+    [ -n "$plists" ] || { log "no kexts staged; KERNEL-BUILD-ID check skipped"; return 0; }
+    kidf="$(find "$tmpk" -type f -path '*/sys/NEXTBSD*/KERNEL-BUILD-ID' | head -1)"
+    kid="$( [ -n "$kidf" ] && cat "$kidf" || true)"
+    want="${EXPECT_KERNEL_BUILD_ID:-$kid}"
+    if [ -z "$want" ]; then
+        echo "ERROR: $(basename "$KERNEL_TGZ") carries no KERNEL-BUILD-ID, so its kexts can't be checked." >&2
+        echo "       It predates nextbsd-kernel#326; use a current nextbsd-kernel build." >&2
+        exit 1
+    fi
+    bad=0; n=0
+    for p in $plists; do
+        k="${p#"$sle"/}"; k="${k%/Contents/Info.plist}"
+        got="$(plist_build_id "$p")"
+        n=$((n + 1))
+        if [ "$got" != "$want" ]; then
+            echo "  MISMATCH  $k: ${got:-<no NBSDKernelBuildID>}" >&2
+            bad=$((bad + 1))
+        fi
+    done
+    if [ "$bad" -ne 0 ]; then
+        echo "ERROR: $bad of $n kexts were not built for kernel $want" >&2
+        [ -n "${EXPECT_KERNEL_BUILD_ID:-}" ] && echo "       (expected ID given by the caller; the image's kernel is ${kid:-<none>})" >&2
+        echo "       Refusing to assemble an image whose kexts don't match its kernel." >&2
+        echo "       Rebuild the kexts against this kernel first: merge to nextbsd-kernel-extensions," >&2
+        echo "       or run freebsd-src's Sync Fork with force for the whole chain." >&2
+        exit 1
+    fi
+    log "KERNEL-BUILD-ID: all $n kexts built for kernel $want"
+}
+
+# ---------------------------------------------------------------------------
 # 2. Stage the rootfs: base = whole tree, then kernel/modules/userland, then
 #    the authoritative overlay last (last writer wins, matching build.sh).
 # ---------------------------------------------------------------------------
@@ -118,6 +175,7 @@ stage_rootfs() {
     install -m555 "$kbin" "$ROOTFS/boot/kernel/kernel"
     # driver kexts -> /System/Library/Extensions
     for m in ${MODULES_TGZ:-}; do [ -f "$m" ] && tar -C "$ROOTFS/System/Library/Extensions" -xzf "$m"; done
+    check_kext_build_ids
     # Darwin userland (raw tar rooted at /) — includes the MAINTAINED overlay
     # (LaunchDaemons, services/protocols, usr/tests). The user-editable /etc
     # (accounts, sshd_config, pam.d, fstab, the loader fragment) is NOT in the
