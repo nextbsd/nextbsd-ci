@@ -130,7 +130,8 @@ check_kext_build_ids() {
     plists="$(find "$sle" -path '*.kext/Contents/Info.plist' 2>/dev/null | sort)"
     [ -n "$plists" ] || { log "no kexts staged; KERNEL-BUILD-ID check skipped"; return 0; }
     kidf="$(find "$tmpk" -type f -path '*/sys/NEXTBSD*/KERNEL-BUILD-ID' | head -1)"
-    kid="$( [ -n "$kidf" ] && cat "$kidf" || true)"
+    kid=""
+    if [ -n "$kidf" ]; then kid="$(cat "$kidf")"; fi
     want="${EXPECT_KERNEL_BUILD_ID:-$kid}"
     if [ -z "$want" ]; then
         echo "ERROR: $(basename "$KERNEL_TGZ") carries no KERNEL-BUILD-ID, so its kexts can't be checked." >&2
