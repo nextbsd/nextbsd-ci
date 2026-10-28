@@ -31,7 +31,6 @@ DA-BOOT	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: monolit
 DA-IOKIT	nextbsd-userland	both	must-pass	480	T3 must-pass: DiskArbitration kernel-notify ships in the image; verified OK both arches 2026-10. Was: all-warn arms in both forks.
 DAEMON-STATE	nextbsd-userland	both	must-pass	480	T3 must-pass: the daemon-state assertions ship with the suite; verified OK both arches 2026-10. Was: fork warned for older run.sh images; lanes boot self-assembled images, so the escape is obsolete.
 DOMAIN-DIRS	nextbsd-userland	both	must-pass	480	pending T3 audit; live arms: fork t=fail/f=continue/s=continue
-EM-AUTOLOAD	nextbsd-kernel-extensions	both	fail-gates	480	pending T3 audit; live arms: monolith t=warn/f=fail/s=warn ; fork t=warn/f=fail/s=continue
 EVFILT-MACHPORT	nextbsd-userland	both	must-pass	480	T3 must-pass: kqueue EVFILT_MACHPORT is core Mach; verified OK both arches 2026-10. Was: all-warn arms in both forks.
 EVFILT-MACHPORT-CONCURRENT	nextbsd-userland	both	fail-gates	480	T3 keep fail-gates: -FAIL gates, -SKIP warns — the concurrent filter is kernel-version-scoped, and an old continuous kernel (booted by the kernel smoke lane) may lack it and self-skip. Verified OK both arches 2026-10.
 FBSDGLUE	nextbsd-freebsd-compat	both	must-pass	480	pending T3 audit; live arms: monolith t=fail/f=fail/s=continue
