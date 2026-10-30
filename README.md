@@ -58,7 +58,9 @@ ARCH=amd64 NB_SUITE="/usr/tests/freebsd-launchd-mach/run.sh" \
 
 `NB_OVERLAY` selects the per-repo tolerance table (defaults to
 `overlay-nextbsd.tsv`); `NB_BOOT_TRACE=1` opts into the launchd/mach debug
-kenvs for a root-cause run; `NB_MEDIA=cd` boots a live ISO.
+kenvs for a root-cause run; `NB_MEDIA=cd` boots a live ISO. The guest gets
+two CPUs (`-smp 2`) so early-boot SMP races show up here; `NB_SMP` changes
+the count.
 
 ## Selftest
 

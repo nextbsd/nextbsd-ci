@@ -15,6 +15,7 @@
 #   TCG cpu  qemu64                         max
 #   CD       -cdrom (SATA/ATAPI on q35)     virtio-scsi + scsi-cd (virt has no IDE)
 #   video    default VGA + virtio-gpu-pci   virtio-gpu-pci (virt has NONE)
+#   CPUs     2 (NB_SMP)                     2 (NB_SMP)
 #
 # The same split is proven in nextbsd-userland's tests/boot-test.sh, which has
 # been booting the aarch64 CI image under KVM on GitHub's ubuntu-24.04-arm
@@ -23,6 +24,7 @@
 # Usage:  . harness/qemu-arch.sh ; qemu_arch_setup <media-path> [<name-hint>]
 # Exports (consumed by the generated expect scripts via env):
 #   ARCH QEMU MACHINE FW ACCEL_FLAGS NET_ARGS DISK_ARGS CD_ARGS VIDEO_ARGS
+#   SMP_ARGS
 #
 # NB_QEMU_ARGV: full replacement argv for the guest (space-separated). When
 # set, the spawn uses it instead of the real qemu binary and the UEFI
@@ -104,6 +106,14 @@ qemu_arch_setup() {
     # virtio-blk is available on both machines and needs no option ROM.
     DISK_ARGS="-drive file=$_media,format=raw,if=virtio"
 
+    # Boot with two CPUs. With one, a new kthread can't run until the boot
+    # thread yields, so a kthread that starts early and depends on a later
+    # SYSINIT boots fine here but panics on a multi-core machine as soon as
+    # an AP picks it up. Compiled-in DTrace's dtrace_taskq did exactly that,
+    # caught only by gershwin-desktop's screenshot gate (-smp 2). NB_SMP
+    # overrides the count.
+    SMP_ARGS="-smp ${NB_SMP:-2}"
+
     # KVM when the runner is the same arch as the guest (ubuntu-24.04 for amd64,
     # ubuntu-24.04-arm for arm64); single-threaded TCG otherwise.
     if [ -e /dev/kvm ]; then
@@ -129,5 +139,6 @@ qemu_arch_setup() {
     fi
 
     echo "==> $ARCH: $QEMU -machine $MACHINE | firmware $FW"
-    export ARCH QEMU MACHINE FW ACCEL_FLAGS NET_ARGS DISK_ARGS CD_ARGS VIDEO_ARGS
+    export ARCH QEMU MACHINE FW ACCEL_FLAGS NET_ARGS DISK_ARGS CD_ARGS VIDEO_ARGS \
+        SMP_ARGS
 }
