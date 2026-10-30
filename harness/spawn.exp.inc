@@ -1,5 +1,5 @@
 # spawn.exp.inc — the expect skeleton: spawn the guest exactly as qemu-arch.sh
-# describes it (binary, machine, firmware, accel, NIC, video) with a serial
+# describes it (binary, machine, firmware, accel, CPUs, NIC, video) with a serial
 # console on stdio, a log file, and -no-reboot so a clean halt exits.
 #
 # Env (set by harness/boot-test.sh; the per-arch shape by qemu-arch.sh):
@@ -18,6 +18,7 @@ log_file -a $env(NB_LOG)
 log_user 1
 
 set accel_flags [split $env(ACCEL_FLAGS) " "]
+set smp_args    [split $env(SMP_ARGS) " "]
 set net_args    [split $env(NET_ARGS) " "]
 set video_args  [split $env(VIDEO_ARGS) " "]
 set disk_args   [split $env(DISK_ARGS) " "]
@@ -35,7 +36,7 @@ if {[info exists env(NB_QEMU_ARGV)] && $env(NB_QEMU_ARGV) ne ""} {
     set spawn_args [split $env(NB_QEMU_ARGV) " "]
 } else {
     set spawn_args [concat [list $env(QEMU) -m 4G -machine $env(MACHINE) -bios $env(FW)] \
-                           $accel_flags $media_args $net_args $video_args \
+                           $accel_flags $smp_args $media_args $net_args $video_args \
                            [list -display none -serial stdio -no-reboot]]
 }
 eval spawn $spawn_args
