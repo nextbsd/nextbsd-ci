@@ -80,3 +80,7 @@ set re_summary {NEXTBSD-TEST-SUMMARY ok=([0-9]+) fail=([0-9]+) skip=([0-9]+)}
 set re_marker_ok   {([A-Z0-9][A-Z0-9-]*)-OK}
 set re_marker_fail {([A-Z0-9][A-Z0-9-]*)-FAIL}
 set re_marker_skip {([A-Z0-9][A-Z0-9-]*)-SKIP}
+# The rest of a marker's line, read after a gating -FAIL arm so the suite's
+# reason reaches the transcript (nextbsd-userland#631). Anchored at the start
+# of the unread buffer, which is where the -FAIL arm's match ended.
+set re_marker_rest {^([^\r\n]*)[\r\n]}

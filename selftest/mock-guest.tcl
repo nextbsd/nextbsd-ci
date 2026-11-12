@@ -76,7 +76,9 @@ proc emit_plan {planvar} {
         # In `ok` mode the plan's single FAIL line (the failure target) passes.
         if {$kind eq "FAIL" && $mode ne "fail"} { set kind OK }
         if {$kind eq "FAIL"} {
-            say "$marker-FAIL"; incr fail
+            # The reason arrives after the marker, in a later write, as it
+            # does on a real serial console: the harness must still log it.
+            sayraw "$marker-FAIL"; after 300; say ": mock reason"; incr fail
         } elseif {$kind eq "SKIP"} {
             say "$marker-SKIP"; incr skip
         } else {

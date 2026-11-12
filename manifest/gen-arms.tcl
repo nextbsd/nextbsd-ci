@@ -235,7 +235,20 @@ for {set i 0} {$i < $suites} {incr i} {
     puts "        }"
     puts "        if {\$sfx eq \"FAIL\"} {"
     puts "            if {\$pol eq \"must-pass\" || \$pol eq \"fail-gates\"} {"
+    # The arm matches at "<NAME>-FAIL", so the suite's reason, which follows on
+    # the same line, may not have been read yet. Wait briefly for the rest of
+    # that line and print it before exiting, or a gating failure is reported
+    # with no reason at all (nextbsd-userland#631). The verdict and exit code
+    # are unchanged; only the transcript gains the detail.
+    puts "                set nb_why \"\""
+    puts "                set timeout 15"
+    puts "                expect {"
+    puts "                    -re \$re_marker_rest { set nb_why \$expect_out(1,string) }"
+    puts "                    timeout {}"
+    puts "                    eof {}"
+    puts "                }"
     puts "                puts \"\\nFAIL: \$m — \$r\""
+    puts "                if {\[string trim \$nb_why] ne \"\"} { puts \"FAIL-DETAIL: \$m-FAIL\$nb_why\" }"
     puts "                exit 1"
     puts "            }"
     puts "            if {\$pol eq \"offarch\"} {"
