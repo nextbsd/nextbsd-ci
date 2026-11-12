@@ -91,6 +91,41 @@ if [ -n "$NB_LOGIN_ONLY" ]; then
     echo "==> login-only mode: no on-image suite (gate on login + clean end-state)"
 fi
 
+# The loader contract, delivered through the ESP's /efi/freebsd/loader.env so
+# nothing is typed at the loader (harness/loader-env.sh says why). The values
+# are the ones contract.exp.inc types on the fallback path, with
+# boot_verbose=YES standing in for `boot -v` (both set RB_VERBOSE) and no
+# boot_mutemsgs: loader.env is read BEFORE loader.conf, so the image's
+# boot_mutemsgs="YES" wins either way, and RB_VERBOSE already exempts a boot
+# from the mute (the kernel's cn_mute test). NB_LOADER_ENV=1 tells the expect
+# side to let the loader autoboot; if the write fails (no ESP, the live ISO,
+# no mtools) it stays 0 and the typed contract runs as before. The selftest
+# (NB_QEMU_ARGV) has no real image and sets NB_LOADER_ENV itself.
+if [ -n "${NB_QEMU_ARGV:-}" ]; then
+    NB_LOADER_ENV=${NB_LOADER_ENV:-0}
+else
+    NB_LOADER_ENV=0
+    if [ "$NB_MEDIA" = disk ]; then
+        {
+            echo "console=comconsole"
+            echo "boot_serial=YES"
+            echo "comconsole_speed=115200"
+            echo "boot_multicons=YES"
+            echo "boot_verbose=YES"
+            if [ "$NB_BOOT_TRACE" = 1 ]; then
+                echo "mach.debug_enable=1"
+                echo "launchd_trace=1"
+            fi
+        } > tests/loader.env
+        if sh "$HERE/loader-env.sh" "$IMG" tests/loader.env; then
+            NB_LOADER_ENV=1
+        else
+            echo "==> WARN: could not write loader.env to the ESP; typing the loader contract"
+        fi
+    fi
+fi
+export NB_LOADER_ENV
+
 # The banner verdict policy: the consumer's overlay wins, then the base table,
 # then warn (the nextbsd monolith's long-standing treatment).
 NB_BANNER_POLICY=""

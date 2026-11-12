@@ -13,6 +13,15 @@
 #                         kernel-extensions markers go to the iokit suite,
 #                         the rest to the launchd-mach suite
 #   NB_ARCH            arch name to print in the getty banner
+#   NB_SELFTEST_LOADER efi (default) | env | dropdash — the loader's shape:
+#                         efi       no loader.env: console efi, the harness
+#                                   types the contract at the OK prompt
+#                         env       loader.env applied: console comconsole,
+#                                   autoboot with NOTHING typed (any loader
+#                                   command reaching the guest is a failure)
+#                         dropdash  efi, and the first `boot -v` arrives as
+#                                   `boot v` (the UART drop, nextbsd-kernel
+#                                   job 128521056625): the harness must resend
 #
 # Mode semantics (the exit class the harness is expected to reach):
 #   ok         every marker OK/SKIP per the plan, sentinel fail=0  -> rc 0
@@ -79,19 +88,41 @@ proc emit_plan {planvar} {
 }
 
 # ----------------------------------------------------------------- the boot --
+set loader efi
+if {[info exists env(NB_SELFTEST_LOADER)] && $env(NB_SELFTEST_LOADER) ne ""} {
+    set loader $env(NB_SELFTEST_LOADER)
+}
+say "    Reading loader env vars from /efi/freebsd/loader.env"
 say "FreeBSD/amd64 EFI loader, Revision 3.0"
+if {$loader eq "env"} {
+    say "   Console: comconsole (0x800)"
+} else {
+    say "   Console: efi (0x20000000)"
+}
 say "Loading /boot/loader.conf"
 say {Hit [Enter] to boot immediately, or any other key for command prompt.}
-sayraw "OK "
 
-while {1} {
-    set line [readline]
-    if {[string match "*boot -v" $line] || $line eq "boot"} { break }
-    say "OK $line"
+if {$loader eq "env"} {
+    say {Booting [/boot/kernel/kernel] in 2 seconds...}
+} else {
     sayraw "OK "
+    set dropped 0
+    while {1} {
+        set line [readline]
+        if {[string match "*boot -v" $line] && $loader eq "dropdash" && !$dropped} {
+            set dropped 1
+            say "Loading kernel..."
+            say "Failed to load kernel 'v'"
+            say "can't load 'kernel'"
+            sayraw "OK "
+            continue
+        }
+        if {[string match "*boot -v" $line] || $line eq "boot"} { break }
+        say "OK $line"
+        sayraw "OK "
+    }
+    say {Booting [/boot/kernel/kernel]}
 }
-
-say {Booting [/boot/kernel/kernel]}
 say "---<<BOOT>>---"
 say "Copyright (c) 1992-2025 The FreeBSD Project."
 say "early-init: sethostname('selftest')"
@@ -103,6 +134,12 @@ after 300
 # login path takes the 8-minute wait and is covered by the production boots).
 say "login:"
 set line [readline]                     ;# admin
+if {[string match "set *" $line] || [string match "boot*" $line] || $line eq ""} {
+    # Keystrokes meant for a loader the guest has already left (the env
+    # loader autobooted): the harness typed when it must not have.
+    say "mock-guest: loader input after autoboot: '$line'"
+    exit 0
+}
 say "Password:"
 set line [readline]                     ;# empty
 prompt

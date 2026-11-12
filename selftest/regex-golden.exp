@@ -48,6 +48,16 @@ golden "loader: leaving the prompt to boot" $re_boot_go \
     "Booting \[/boot/kernel/kernel\] in 2 seconds..."
 golden "loader: kernel entry marker" $re_boot_go \
     "---<<BOOT>>---"
+golden "loader: console from loader.env" $re_loader_console \
+    "   Console: comconsole (0x800)"
+golden "loader: firmware console (loader.env not applied)" $re_loader_console \
+    "   Console: efi (0x20000000)"
+golden "loader: boot with a dropped dash (kernel 'v')" $re_boot_fail \
+    "Failed to load kernel 'v'"
+golden "loader: boot that unloaded the kernel" $re_boot_fail \
+    "can't load 'kernel'"
+golden_not "loader: a good boot is not a failed one" $re_boot_fail \
+    "Booting \[/boot/kernel/kernel\] in 2 seconds..."
 
 # Stage 1a — the getty banner (the early-init race, nextbsd#325).
 golden "banner: synthesized hostname (amd64)" $re_boot_banner \
