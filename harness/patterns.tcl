@@ -21,6 +21,12 @@
 set re_hit_enter  {Hit \[Enter\]}
 set re_efi_banner {[A-Za-z]*BSD/[A-Za-z0-9._-]+ EFI}
 
+# The loader's console report, printed right after it reads /efi/freebsd/
+# loader.env ("   Console: efi (0x20000000)"). `comconsole` here is the proof
+# the harness-written loader.env was applied (harness/loader-env.sh), so the
+# loader can autoboot with no keystrokes; `efi` means it was not.
+set re_loader_console {Console: ([a-z]+)[ ,(]}
+
 # getty's boot banner: "<ostype>/<machine> (HOSTNAME) (console)". The
 # hostname is captured for the BOOT-BANNER marker (the early-init race,
 # nextbsd#325).
@@ -47,6 +53,11 @@ set re_fetch_banner {Welcome to NextBSD!}
 # `Fatal data abort` are already specific enough to leave alone.
 set re_panic   {panic:|Fatal trap|Fatal data abort}
 set re_boot_go {Booting|/boot/kernel/kernel|Loading kernel|---<<}
+# A `boot` the loader could not carry out. Seen when the UART dropped the `-`
+# of `boot -v`: the loader took `v` as a kernel name, printed `Loading
+# kernel...` (which re_boot_go matches) and then gave up back at the prompt
+# (nextbsd-kernel job 128521056625).
+set re_boot_fail {Failed to load kernel|can't load 'kernel'}
 
 # Teardown: shutdown(8) progress markers, the poweroff line, the reboot line.
 set re_shutdown_wait {Waiting \(max [0-9]+ seconds\)|Syncing disks|All buffers synced|Uptime:}

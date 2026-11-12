@@ -53,9 +53,12 @@ run_case() {
     expect_rc=$2
     suite=$3
     login_only=${4:-}
-    echo "==> case: $name (suite: $suite, login_only: ${login_only:-no}) — expect rc $expect_rc"
+    loader=${5:-efi}
+    loader_env=${6:-0}
+    echo "==> case: $name (suite: $suite, login_only: ${login_only:-no}, loader: $loader, NB_LOADER_ENV=$loader_env) — expect rc $expect_rc"
     set +e
     NB_SELFTEST=$name NB_SELFTEST_MARKERS="$HERE/../tests/plan.tsv" \
+        NB_SELFTEST_LOADER="$loader" NB_LOADER_ENV="$loader_env" \
         NB_SUITE="$suite" NB_LOGIN_ONLY="$login_only" sh "$ROOT/harness/boot-test.sh" tests/fake.img
     rc=$?
     set -e
@@ -77,6 +80,13 @@ run_case two-suite 0 "/usr/tests/freebsd-launchd-mach/run.sh /usr/tests/nextbsd-
 # kernel smoke image or nextbsd img/iso). Reaches login, skips the absence check,
 # holds a clean end-state, powers off -> rc 0.
 run_case loginonly 0 "" 1
+# The loader contract without typing: loader.env applied, autoboot, nothing
+# sent to the loader (the mock fails the run if a loader command reaches it).
+run_case ok 0 /usr/tests/freebsd-launchd-mach/run.sh "" env 1
+# loader.env expected but not applied (console efi): fall back to typing.
+run_case ok 0 /usr/tests/freebsd-launchd-mach/run.sh "" efi 1
+# The typed fallback survives `boot -v` arriving as `boot v`.
+run_case ok 0 /usr/tests/freebsd-launchd-mach/run.sh "" dropdash 0
 
 if [ "$fail" -ne 0 ]; then
     echo "==> SELFTEST FAILED"

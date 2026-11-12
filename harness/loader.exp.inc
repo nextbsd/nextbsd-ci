@@ -16,6 +16,32 @@
 # ~25 cps: brisk-typist cadence, slow enough for the UART to keep up.
 set send_slow {1 .04}
 
+# loader_autoboot <secs> — the no-typing path (NB_LOADER_ENV=1): the contract
+# is already in the loader's environment from the ESP's loader.env
+# (harness/loader-env.sh), so send NOTHING and let autoboot_delay run out.
+# Returns 1 once the loader reports `Console: comconsole` (the file was read
+# and applied), 0 if it reports any other console (the file was not applied:
+# the caller types the contract instead, and the countdown it interrupts is
+# still ahead in the stream).
+proc loader_autoboot {secs} {
+    global timeout re_loader_console
+    set saved $timeout
+    set timeout $secs
+    expect {
+        timeout { puts "\nFAIL: the loader never reported its console within ${secs}s"; exit 1 }
+        -re $re_loader_console {
+            set con $expect_out(1,string)
+        }
+    }
+    set timeout $saved
+    if {$con eq "comconsole"} {
+        puts "\n==> loader.env applied (console=comconsole, boot_verbose=YES); autobooting, nothing typed"
+        return 1
+    }
+    puts "\n==> loader reports console '$con', so loader.env was not applied; typing the contract"
+    return 0
+}
+
 # loader_prompt <secs> — catch the autoboot countdown and stop at the OK prompt.
 # Under -display none the loader's default `efi` console routes to serial on both
 # arches, so the banner and the prompt come to us over -serial stdio. The EFI
@@ -61,9 +87,13 @@ proc loader_set {cmd} {
 
 # loader_boot <cmd> — issue the final boot command, retrying a garbled send.
 # Success = the loader leaves the prompt to load the kernel: no "unknown
-# command" and no fresh "OK " inside the settle window.
+# command", no failed kernel load, and no fresh "OK " inside the settle window.
+# `Loading kernel...` alone is not success: a `boot v` (dropped dash) prints it
+# too, then "Failed to load kernel 'v'" and drops back to the prompt — so a
+# boot-go line is confirmed against a short follow-up window first. The retry
+# then reloads the default kernel, which the failed load unloaded.
 proc loader_boot {cmd} {
-    global timeout re_boot_go
+    global timeout re_boot_go re_boot_fail
     set saved $timeout
     set timeout 10
     for {set try 1} {$try <= 5} {incr try} {
@@ -75,7 +105,25 @@ proc loader_boot {cmd} {
                 puts "\n==> loader garbled '$cmd' (try $try/5); resending"
                 continue
             }
+            -re $re_boot_fail {
+                puts "\n==> loader could not boot after '$cmd' (garbled; try $try/5); resending"
+                continue
+            }
             -re $re_boot_go {
+                if {[string match "---<<*" $expect_out(0,string)]} {
+                    set timeout $saved
+                    return
+                }
+                set timeout 3
+                expect {
+                    -re $re_boot_fail {
+                        set timeout 10
+                        puts "\n==> loader could not boot after '$cmd' (garbled; try $try/5); resending"
+                        continue
+                    }
+                    -ex "---<<" { }
+                    timeout { }
+                }
                 set timeout $saved
                 return
             }

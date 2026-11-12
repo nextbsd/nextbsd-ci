@@ -13,6 +13,7 @@ harness/
   spawn.exp.inc       the expect skeleton (spawn/log; NB_QEMU_ARGV override hook)
   loader.exp.inc      the FreeBSD loader serial handshake
   contract.exp.inc    THE loader contract: serial console + boot -v, every arch
+  loader-env.sh       writes the contract to the ESP's /efi/freebsd/loader.env
   login.exp.inc       banner capture + get-to-a-shell (login: or automatic)
   suite-tail.exp.inc  must-pass absence check, banner verdict, end-state (#428)
   teardown.exp.inc    poweroff through launchd, verified (#398)
@@ -31,9 +32,18 @@ selftest/
 ## The protocol
 
 The harness boots a real NextBSD image in qemu on a native-arch runner,
-applies the loader contract (serial console + `boot -v`, set at the loader —
+applies the loader contract (serial console + `boot -v`, set at boot time —
 never baked into images), gets a shell, runs the on-image suite(s), and gates
-on exit codes:
+on exit codes.
+
+The contract is not typed at the loader prompt when it can be avoided: typed
+input over the emulated UART gets corrupted (`boot -v` arriving as `boot v`, an
+Enter arriving as NUL), and every such drop is a red run. For a disk image the
+harness writes the contract to its copy's EFI system partition as
+`/efi/freebsd/loader.env` (mtools; installed on demand), the UEFI loader applies
+it before `loader.conf`, and the guest autoboots with nothing typed. The typed
+contract remains the fallback for the live ISO, or if the ESP can't be written
+or the loader doesn't report `Console: comconsole`.
 
 | rc | meaning |
 |---|---|

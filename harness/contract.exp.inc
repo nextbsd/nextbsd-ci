@@ -25,8 +25,33 @@
 # test markers and perturbs timing-sensitive Mach handshakes. Set
 # NB_BOOT_TRACE=1 for a root-cause run.
 #
-# Requires: loader.exp.inc (loader_prompt / loader_set / loader_boot).
+# How it gets there: NOT by typing, whenever the image allows it. Typed input
+# crosses the emulated UART, which corrupts it once the loader is on
+# comconsole — `boot -v` arrived as `boot v` (the loader went looking for a
+# kernel named 'v' and the boot timed out at the banner), an Enter arrived as
+# NUL (no OK prompt ever came back). So boot-test.sh writes these same
+# variables to the disk image's ESP as /efi/freebsd/loader.env
+# (harness/loader-env.sh), the loader applies them before loader.conf and
+# autoboot, and NB_LOADER_ENV=1 tells this proc to send nothing at all.
+# `boot_verbose=YES` there is `boot -v` (both set RB_VERBOSE). boot_mutemsgs is
+# the one variable it can't override — loader.conf is read after loader.env and
+# the image ships "YES" — and it doesn't need to: RB_VERBOSE exempts the boot
+# from the mute, which is exactly how the image's own nextbsd.conf says CI gets
+# its kernel output.
+#
+# The typed contract below stays for media with no writable ESP (the live
+# ISO), for an image whose ESP write failed, and for a loader that reports a
+# console other than comconsole (loader.env not applied).
+#
+# Requires: loader.exp.inc (loader_autoboot / loader_prompt / loader_set /
+# loader_boot).
 proc nb_loader_contract {} {
+    global env
+    if {[info exists env(NB_LOADER_ENV)] && $env(NB_LOADER_ENV) eq "1"} {
+        if {[loader_autoboot 60]} {
+            return
+        }
+    }
     loader_prompt 60
     loader_set "set console=comconsole"
     loader_set "set boot_serial=YES"
