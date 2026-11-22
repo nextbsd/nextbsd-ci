@@ -70,6 +70,9 @@ expect {
 set _saved_login_timeout $timeout
 if {$timeout > 180} { set timeout 180 }
 set at_login 1
+# Set when the login below already consumed the shell prompt, so stage 2 does
+# not wait out the whole budget for a second one.
+set at_prompt 0
 expect {
     timeout {
         puts "\n... no login prompt and no session message; probing for a shell"
@@ -127,17 +130,22 @@ if {$at_login} {
                     exit 1
                 }
                 "Password:" { send "\r"; exp_continue }
-                -re $re_shell_prompt { puts "\nOK: at root shell prompt" }
+                -re $re_shell_prompt { set at_prompt 1; puts "\nOK: at root shell prompt" }
             }
         }
         "Password:" { send "\r"; exp_continue }
-        -re $re_shell_prompt { puts "\nOK: logged in as admin" }
+        -re $re_shell_prompt { set at_prompt 1; puts "\nOK: logged in as admin" }
     }
 }
-# Stage 2: the shell prompt (the shell is idle/ready). The % only counts once
+# Stage 2: the shell prompt (the shell is idle/ready). Skipped when the login
+# above already matched it: an image without automatic login (a Desktop image,
+# whose graphical login turns console autologin off) prints exactly one prompt
+# after `admin`, and waiting for another one stalled for the whole global
+# budget (8 minutes) before the probe answered. The % only counts once
 # the fetch banner (or the login above) has already been seen, so a stray
 # driver line ending in % before the banner can't false-trigger it. On timeout
 # (the prompt never rendered), probe for a shell before concluding anything.
+if {!$at_prompt} {
 expect {
     timeout {
         send "\r"
@@ -164,6 +172,7 @@ expect {
     -re $re_shell_prompt {
         puts "\nOK: shell prompt (idle/ready)"
     }
+}
 }
 # admin is not root (and on the Apple image root is disabled), so wrap the
 # privileged commands rather than repeating the test at each one. A function,
